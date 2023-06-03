@@ -42,37 +42,37 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/Poppins/Poppins-Regular.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-Regular.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Light;
-  src: url('../fonts/Poppins/Poppins-Light.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-Light.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-ExtraLight;
-  src: url('../fonts/Poppins/Poppins-ExtraLight.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-ExtraLight.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('../fonts/Poppins/Poppins-Medium.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-Medium.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Italic;
-  src: url('../fonts/Poppins/Poppins-Italic.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-Italic.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/Poppins/Poppins-Bold.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-SemiBold;
-  src: url('../fonts/Poppins/Poppins-SemiBold.ttf'); 
+  src: url('../fonts/Montserrat/Montserrat-SemiBold.ttf'); 
 }
 
 
@@ -275,7 +275,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   z-index: 1100;
   background-color: transparent;
   width: 100%;
-  height: 84px;
+  height: 110px;
   top: 40px;
   left: 0px; 
 
@@ -324,8 +324,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  height: 65%;
-  margin-right: 55px;
+  height: 100%;
+  margin-right: 25px;
 }
 
 .logo img {
@@ -369,7 +369,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu > li > a {
   font-family: Poppins-Medium;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -615,7 +615,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Fixed menu desktop ]*/
 
 .fix-menu-desktop .wrap-menu-desktop {
-  height: 70px;
+  height: 90px;
   background-color: rgba(255,255,255,1);
   box-shadow: 0 0px 3px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0 0px 3px 0px rgba(0,0,0,0.2);
@@ -651,7 +651,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 100px;
   background-color: #fff;
   padding: 15px;
   display: none;
@@ -668,7 +668,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .logo-mobile {
   display: block;
   position: relative;
-  height: 80%;
+  height: 100%;
   padding-right: 25px;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
@@ -1960,7 +1960,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .table_head th {
-  font-family: Poppins-Bold;
+  font-family: Poppins-Medium;
   font-size: 13px;
   color: #555;
   text-transform: uppercase;
@@ -2128,7 +2128,7 @@ input.num-product::-webkit-inner-spin-button {
 .cl4 {color: #999;}
 .cl5 {color: #222;}
 .cl6 {color: #888;}
-.cl7 {color: #b2b2b2;}
+.cl7 {color: #e6dcdc;}
 .cl8 {color: #555;}
 .cl9 {color: #aaa;}
 .cl10 {color: #1d1d1d;}
@@ -2505,7 +2505,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-118 {
-  min-width: 163px;
+  min-width: 1px;
   height: 45px;
 }
 
