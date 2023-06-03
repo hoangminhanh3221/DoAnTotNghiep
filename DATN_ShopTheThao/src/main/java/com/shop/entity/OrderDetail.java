@@ -1,6 +1,5 @@
 package com.shop.entity;
 
+public class OrderDetail {
 
-public class Product {
-	
 }

@@ -1,6 +1,5 @@
 package com.shop.entity;
 
+public class Transport {
 
-public class Product {
-	
 }

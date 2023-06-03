@@ -1,6 +1,5 @@
 package com.shop.entity;
 
+public class Payment {
 
-public class Product {
-	
 }
