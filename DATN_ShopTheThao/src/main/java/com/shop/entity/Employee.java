@@ -1,5 +1,8 @@
 package com.shop.entity;
 
-public class Employee {
+import lombok.Data;
 
+@Data
+public class Employee {
+	
 }
