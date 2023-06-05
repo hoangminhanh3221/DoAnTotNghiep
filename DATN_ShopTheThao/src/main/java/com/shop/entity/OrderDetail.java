@@ -16,5 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "ORDERDETAIL")
 public class OrderDetail implements Serializable{
 	private Integer orderDetailId;
-	private 
+	private Double productAmount;
+	private Integer QuantityProduct;
+	private Order order;
 }
