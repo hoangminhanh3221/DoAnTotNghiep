@@ -37,7 +37,7 @@ public class Payment implements Serializable{
 	private Double paymentAmount;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PaymentDate")
+	@Column(name = "PaymentDate", nullable = false)
 	private Date paymentDate;
 	 
 	@Column(name = "PaymentStatus", nullable = false)

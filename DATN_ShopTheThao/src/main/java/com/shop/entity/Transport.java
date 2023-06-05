@@ -37,7 +37,7 @@ public class Transport implements Serializable{
 	private Double transportFee;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "TransportDate")
+	@Column(name = "TransportDate", nullable = false)
 	private Date transportDate;
 	 
 	@Column(name = "TransportStatus", nullable = false)
