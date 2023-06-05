@@ -15,5 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "IMAGE")
 public class Image implements Serializable{
-	
+	private String imageId;
+	private String imageName1;
+	private String imageName2;
+	private String imageName3;
+	private String imageName4;
 }
