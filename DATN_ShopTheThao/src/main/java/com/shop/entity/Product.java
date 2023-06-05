@@ -4,16 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.apache.el.parser.AstFalse;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -57,14 +61,38 @@ public class Product implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "ColorId", referencedColumnName = "ColorId", nullable = false)
-	private Color color; 
+	private Color color;
+	
+	@ManyToOne
+	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
 	private Brand brand;
+	
+	@ManyToOne
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
 	private Image image;
+	
+	@ManyToOne
+	@JoinColumn(name = "SizeId", referencedColumnName = "SizeId", nullable = false)
 	private Size size;
+	
+	@ManyToOne
+	@JoinColumn(name = "SubcategoryId", referencedColumnName = "SubcategoryId", nullable = false)
 	private Subcategory subcategory;
+	
+	@ManyToOne
+	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = false)
 	private Discount discount;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetails;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Favorite> favorites;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Feedback> feedbacks;
 	 
 }
