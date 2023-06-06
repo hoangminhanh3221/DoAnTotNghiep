@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,7 +29,8 @@ import lombok.NoArgsConstructor;
 public class Feedback implements Serializable{
 	
 	@Id
-	@Column(name = "FeedbackId", columnDefinition = "varchar(10)")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "FeedbackId")
 	private String feedbackId;
 	
 	@Column(name = "ReviewContent", columnDefinition = "nvarchar(100)", nullable = false)
