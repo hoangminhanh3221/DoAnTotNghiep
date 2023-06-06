@@ -46,22 +46,11 @@ public class Employee implements Serializable{
 	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
 	private String phoneNumber;
 	
-	@Column(name = "Address", columnDefinition = "nvarchar(20)", nullable = false)
-	private String address;
-	
-	@Column(name = "Street", columnDefinition = "nvarchar(20)", nullable = false)
-	private String street;
-	
-	@Column(name = "Ward", columnDefinition = "nvarchar(20)", nullable = false)
-	private String ward;
-	
-	@Column(name = "District", columnDefinition = "nvarchar(20)", nullable = false)
-	private String district;
-	
-	@Column(name = "City", columnDefinition = "nvarchar(20)", nullable = false)
-	private String city;
-	
 	@ManyToOne
 	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
 	private Account account;
+	
+	@ManyToOne
+	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = false)
+	private Address address;
 }
