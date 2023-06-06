@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
   <head>
     <title>Trang chủ</title>
     <meta charset="UTF-8" />
@@ -76,6 +76,19 @@
     <!--===============================================================================================-->
   </head>
   <body class="animsition">
+  	
+  	<!-- Header -->
+	<div th:replace="layout/header.html"></div>
+	<!-- /Header -->
+	
+	<!-- Sidebar -->
+	<div th:replace="layout/sidebar.html"></div>
+	<!-- /Sidebar -->
+	
+	<!-- Cart -->
+	<div th:replace="layout/cart.html"></div>
+	<!-- /Cart -->
+  	
     <!-- Slider -->
     <section class="section-slide">
       <div class="wrap-slick1 rs1-slick1">
@@ -1917,6 +1930,14 @@
       </div>
     </section>
     
+    <!-- Featured-start -->
+	<div th:replace="layout/featured-start.html"></div>
+	<!-- /Featured-start -->
+    
+    <!-- Footer -->
+	<div th:replace="layout/footer.html"></div>
+	<!-- /Footer -->
+	
     <!-- Modal1 -->
     <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
       <div class="overlay-modal1 js-hide-modal1"></div>
