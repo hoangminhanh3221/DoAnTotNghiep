@@ -44,14 +44,14 @@ public class Account implements Serializable {
 	private String role;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "accounnt", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<Customer> customers;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "accounnt", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<Employee> employees;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "accounnt", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<Order> orders;
 }

@@ -29,7 +29,7 @@ public class Image implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ImageId")
-	private String imageId;
+	private Integer imageId;
 	
 	@Column(name="ImageImage1", columnDefinition = "varchar(20)", nullable = false)
 	private String imageName1;

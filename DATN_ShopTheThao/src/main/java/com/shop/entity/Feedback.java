@@ -31,7 +31,7 @@ public class Feedback implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FeedbackId")
-	private String feedbackId;
+	private Integer feedbackId;
 	
 	@Column(name = "ReviewContent", columnDefinition = "nvarchar(100)", nullable = false)
 	private String reviewContent;
