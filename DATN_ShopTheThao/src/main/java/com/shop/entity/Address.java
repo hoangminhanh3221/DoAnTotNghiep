@@ -35,9 +35,6 @@ public class Address implements Serializable{
 	@Column(name = "NumberHome", columnDefinition = "nvarchar(20)", nullable = false)
 	private String numberHome;
 	
-	@Column(name = "Street", columnDefinition = "nvarchar(20)", nullable = false)
-	private String street;
-	
 	@Column(name = "Ward", columnDefinition = "nvarchar(20)", nullable = false)
 	private String ward;
 	
