@@ -687,8 +687,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   margin: auto;
 }
 
-
-
 /*------------------------------------------------------------------
 [ btn show menu ]*/
 .hamburger {
@@ -2370,7 +2368,7 @@ input.num-product::-webkit-inner-spin-button {
   font-family: Montserrat-Bold;
   font-size: 40px;
   line-height: 1.1;
-  color: #1b1c20;
+  color: #132052;
 }
 
 .ltext-106 {
