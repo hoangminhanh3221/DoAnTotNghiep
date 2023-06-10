@@ -1,6 +1,7 @@
 package com.shop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,18 +10,18 @@ import com.shop.entity.Product;
 
 public interface ProductService {
 	
-	Page<Product> findAll(Pageable pageable);
+	Page<Product> findAllProduct(Pageable pageable);
 	
-	Page<Product> findByCategoryID(String cid,Pageable pageable);
+	//Page<Product> findByCategoryID(String cid,Pageable pageable);
 	
-	List<Product> findAll();
+	List<Product> findAllProduct();
 
-	Product findById(String productID);
+	Optional<Product> findProductById(String id);
 	
-	Product create(Product product);
+	Product createProduct(Product product);
 
-	Product update(Product product);
+	Product updateProduct(Product product);
 
-	void delete(String id);
+	void deleteProduct(String id);
 	
 }
