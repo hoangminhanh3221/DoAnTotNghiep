@@ -2040,7 +2040,15 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ Block2 ]*/
 .block2-pic {
+
   position: relative;
+  border-radius: 5px;
+  height: 270px;
+}
+.block2{
+  border: #e7e5e5c9 solid 2px;
+  padding: 5px 12px 5px 12px;
+  border-radius: 5px;
 }
 
 .block2-btn {
@@ -2117,7 +2125,9 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 
-
+.fx1{font-weight: bold;}
+.fx2{font-weight: bolder;}
+.fx3{font-weight: lighter ;}
 /*==================================================================
     TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 ==================================================================*/
@@ -2134,6 +2144,7 @@ input.num-product::-webkit-inner-spin-button {
 .cl10 {color: #1d1d1d;}
 .cl11 {color: #f9ba48;}
 .cl12 {color: #ccc;}
+.cl13 {color: #b83d3d;}
 
 /*//////////////////////////////////////////////////////////////////
 [ S-Text 0 - 15 ]*/
@@ -2164,7 +2175,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .stext-105 {
   font-family: Montserrat-Regular;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.466667;
   letter-spacing: 1px;
 }
@@ -3052,16 +3063,22 @@ input.num-product::-webkit-inner-spin-button {
 .hov-cl0:hover {color: #fff;}
 .hov-bg0:hover {background-color: #fff;}
 .hov-cl1:hover {color: #717fe0;}
+.hov-cl2:hover {color: #6475e2;}
 .hov-bg1:hover {background-color: #717fe0;}
 
 /*---------------------------------------------*/
 .hov-img0 {
   display: block;
   overflow: hidden;
+  
 }
 
 .hov-img0 img{
   width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  
   -webkit-transition: transform 0.9s ease;
   -o-transition: transform 0.9s ease;
   -moz-transition: transform 0.9s ease;
