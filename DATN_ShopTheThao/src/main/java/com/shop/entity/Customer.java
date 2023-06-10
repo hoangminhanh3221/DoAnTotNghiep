@@ -43,6 +43,9 @@ public class Customer implements Serializable{
 	@Column(name = "Birthday", nullable = false)
 	private Date birthday;
 	
+	@Column(name = "CustomerImage", columnDefinition = "varchar(50)", nullable = false)
+	private String customerImage;
+	
 	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
 	private String phoneNumber;
 	
