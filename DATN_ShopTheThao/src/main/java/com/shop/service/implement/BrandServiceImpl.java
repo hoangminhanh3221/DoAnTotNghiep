@@ -6,46 +6,46 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.shop.entity.Product;
-import com.shop.repository.ProductRepository;
-import com.shop.service.ProductService;
+import com.shop.entity.Brand;
+import com.shop.repository.BrandRepository;
+import com.shop.service.BrandService;
 
-public class BrandServiceImpl implements ProductService{
+public class BrandServiceImpl implements BrandService{
 	
-	private final ProductRepository productRepository;
+	private final BrandRepository BrandRepository;
 
-    public BrandServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public BrandServiceImpl(BrandRepository BrandRepository) {
+        this.BrandRepository = BrandRepository;
     }
 
 	@Override
-	public Page<Product> findAllProduct(Pageable pageable) {
-		return productRepository.findAll(pageable);
+	public Page<Brand> findAllBrand(Pageable pageable) {
+		return BrandRepository.findAll(pageable);
 	}
 
 	@Override
-	public List<Product> findAllProduct() {
-		return productRepository.findAll();
+	public List<Brand> findAllBrand() {
+		return BrandRepository.findAll();
 	}
 
 	@Override
-	public Optional<Product> findProductById(String id) {
-		return productRepository.findById(id);
+	public Optional<Brand> findBrandById(String id) {
+		return BrandRepository.findById(id);
 	}
 
 	@Override
-	public Product createProduct(Product product) {
-		return productRepository.save(product);
+	public Brand createBrand(Brand brand) {
+		return BrandRepository.save(brand);
 	}
 
 	@Override
-	public Product updateProduct(Product product) {
-		return productRepository.save(product);
+	public Brand updateBrand(Brand brand) {
+		return BrandRepository.save(brand);
 	}
 
 	@Override
-	public void deleteProduct(String id) {
-		productRepository.deleteById(id);
+	public void deleteBrand(String id) {
+		BrandRepository.deleteById(id);
 		
 	}
     

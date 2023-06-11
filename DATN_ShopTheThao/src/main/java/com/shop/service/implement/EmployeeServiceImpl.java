@@ -14,8 +14,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	private final EmployeeRepository EmployeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository EmployeeRepository) {
-        this.EmployeeRepository = EmployeeRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.EmployeeRepository = employeeRepository;
     }
 
 	@Override
@@ -34,13 +34,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Employee createEmployee(Employee Employee) {
-		return EmployeeRepository.save(Employee);
+	public Employee createEmployee(Employee employee) {
+		return EmployeeRepository.save(employee);
 	}
 
 	@Override
-	public Employee updateEmployee(Employee Employee) {
-		return EmployeeRepository.save(Employee);
+	public Employee updateEmployee(Employee employee) {
+		return EmployeeRepository.save(employee);
 	}
 
 	@Override
