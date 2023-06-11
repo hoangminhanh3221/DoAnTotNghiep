@@ -6,14 +6,21 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.OrderDetail;
 import com.shop.repository.OrderDetailRepository;
+import com.shop.repository.ProductRepository;
 import com.shop.service.OrderdetailService;
 
+@Service
 public class OrderdetailServicelmpl implements OrderdetailService{
-	@Autowired
-    private OrderDetailRepository orderDetailRepository;
+	
+	private final OrderDetailRepository orderDetailRepository;
+
+    public OrderdetailServicelmpl(OrderDetailRepository orderDetailRepository) {
+        this.orderDetailRepository = orderDetailRepository;
+    }
 	
     @Override
     public Page<OrderDetail> findAllOrderDetails(Pageable pageable) {

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import com.shop.entity.OrderDetail;
 
 public interface OrderdetailService{
+	
 	List<OrderDetail> findAllOrderDetails();
 	
 	Page<OrderDetail> findAllOrderDetails(Pageable pageable);
