@@ -5,11 +5,13 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.Product;
 import com.shop.repository.ProductRepository;
 import com.shop.service.ProductService;
 
+@Service
 public class BrandServiceImpl implements ProductService{
 	
 	private final ProductRepository productRepository;
