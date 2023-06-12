@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Danh Sách Sản Phẩm</title>
+    <title>Danh Sách Khuyến Mãi</title>
 
     <meta name="description" content="" />
 
@@ -157,13 +157,13 @@
             </li>
 
             <!-- Sản phẩm -->
-            <li class="menu-item active open">
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons fa-regular fa-shirt" style="color: #696cff"></i>
                 <div data-i18n="Sản Phẩm">Sản Phẩm</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="product-list.html" class="menu-link">
                     <div data-i18n="Sản Phẩm">Sản Phẩm</div>
                   </a>
@@ -453,181 +453,110 @@
                 <li class="breadcrumb-item">
                   <a href="javascript:void(0);">Sản Phẩm</a>
                 </li>
-                <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                <li class="breadcrumb-item active">Danh Sách Khuyến Mãi</li>
               </ol>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                style="position: absolute; right: 2%; top: 13%; z-index: 1"
+              >
+                Thêm
+              </button>
 
               <!-- Basic Layout -->
-              <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
-                </div>
-                <div class="card-body">
-                  <form class="row">
-                    <!-- Mã sản phẩm -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Mã sản phẩm</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
-                    </div>
-                    <!-- Tên sản phẩm -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Tên sản phẩm</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
-                    </div>
-                    <!-- Số lượng -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Số lượng</label>
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control"
-                        id="basic-default-fullname"
-                        placeholder="vd: 69..."
-                      />
-                    </div>
-                    <!-- Giá nhập -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-email">Giá nhập</label>
-                      <div class="input-group input-group-merge">
-                        <input
-                          type="number"
-                          min="0"
-                          id="basic-default-email"
-                          class="form-control"
-                          placeholder="vd: 100000..."
-                          aria-label="john.doe"
-                          aria-describedby="basic-default-email2"
-                        />
-                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
-                      </div>
-                      <div class="form-text">error</div>
-                    </div>
-                    <!-- Giá bán -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-email">Giá bán</label>
-                      <div class="input-group input-group-merge">
-                        <input
-                          type="number"
-                          min="0"
-                          id="basic-default-email"
-                          class="form-control"
-                          placeholder="vd: 100000..."
-                          aria-label="john.doe"
-                          aria-describedby="basic-default-email2"
-                        />
-                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
-                      </div>
-                      <div class="form-text">Đơn vị tiền tệ Việt Nam</div>
-                    </div>
-                    <!-- Chất liệu -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Chất liệu</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Lụa" />
-                    </div>
-                    <!-- Loại sp -->
-                    <div class="col-3 mb-3">
-                      <label class="form-label" for="defaultSelect">Loại sản phẩm:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">H001</option>
-                        <option value="2">H002</option>
-                        <option value="3">H003</option>
-                      </select>
-                    </div>
-                    <!-- Thương hiệu -->
-                    <div class="col-3 mb-3">
-                      <label class="form-label" for="defaultSelect">Thương hiệu:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">C001</option>
-                        <option value="2">C002</option>
-                        <option value="3">C003</option>
-                      </select>
-                    </div>
-                    <!-- Màu sắc -->
-                    <div class="col-3 mb-3">
-                      <label class="form-label" for="defaultSelect">Màu sắc:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">TL001</option>
-                        <option value="2">TL002</option>
-                        <option value="3">TL003</option>
-                      </select>
-                    </div>
-                    <!-- Kích thước -->
-                    <div class="col-3 mb-3">
-                      <label class="form-label" for="defaultSelect">Kích thước:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">S001</option>
-                        <option value="2">S002</option>
-                        <option value="3">S003</option>
-                      </select>
-                    </div>
-                    <!-- Khuyến mãi -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="defaultSelect">Khuyến mãi:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">GG001</option>
-                        <option value="2">GG002</option>
-                        <option value="3">GG003</option>
-                      </select>
-                    </div>
-                    <!-- Ngày nhập -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Ngày nhập</label>
-                      <input type="datetime-local" class="form-control" id="basic-default-fullname" />
-                    </div>
-                    <!-- Trạng thái -->
-                    <div class="col-4 mb-3">
-                      <label class="form-label" for="defaultSelect">Trạng thái</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">Đang bán</option>
-                        <option value="2">Không bán</option>
-                      </select>
-                    </div>
-                    <!-- Chọn hình ảnh 1 -->
-                    <div class="col-6 mb-3">
-                      <label for="formFile1" class="form-label">Chọn hình ảnh 1:</label>
-                      <input class="form-control" type="file" id="formFile1" />
-                    </div>
-                    <!-- Chọn hình ảnh 2 -->
-                    <div class="col-6 mb-3">
-                      <label for="formFile2" class="form-label">Chọn hình ảnh 2:</label>
-                      <input class="form-control" type="file" id="formFile2" />
-                    </div>
-                    <!-- Chọn hình ảnh 3 -->
-                    <div class="col-6 mb-3">
-                      <label for="formFile3" class="form-label">Chọn hình ảnh 3:</label>
-                      <input class="form-control" type="file" id="formFile3" />
-                    </div>
-                    <!-- Chọn hình ảnh 4 -->
-                    <div class="col-6 mb-3">
-                      <label for="formFile4" class="form-label">Chọn hình ảnh 4:</label>
-                      <input class="form-control" type="file" id="formFile4" />
-                    </div>
-                    <!-- Mô tả -->
-                    <div class="col-12 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Mô tả</label>
-                      <textarea
-                        class="form-control"
-                        id="basic-default-fullname"
-                        placeholder="vd: mô tả"
-                        name=""
-                        id=""
-                        cols="30"
-                        rows="2"
-                      ></textarea>
-                    </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Thêm</button>
-                      <button type="submit" class="btn btn-outline-danger">Thoát</button>
-                    </div>
-                  </form>
+              <div class="card" style="height: 975px">
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                            <label class="form-check-label" for="defaultCheck1"> </label>
+                          </div>
+                        </th>
+                        <th>STT</th>
+                        <th>Mã Khuyến Mãi</th>
+                        <th>Phần trăm khuyến mãi</th>
+                        <th>Ngày Bắt Đầu</th>
+                        <th>Ngày Kết Thúc</th>
+                        <th>Hành Động</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr>
+                        <td>
+                          <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                            <label class="form-check-label" for="defaultCheck1"> </label>
+                          </div>
+                        </td>
+                        <td>1</td>
+                        <td>S0001</td>
+                        <td>10%</td>
+                        <td>00:00:00 01/07/2023</td>
+                        <td>23:59:59 01/07/2023</td>
+                        <td>
+                          <a
+                            class="pe-2"
+                            href="javascript:void(0);"
+                            data-bs-toggle="modal"
+                            data-bs-target="#staticBackdropUpdate"
+                            ><i class="bx bx-edit-alt"></i
+                          ></a>
+                          <a
+                            class="ps-2"
+                            href="javascript:void(0);"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalToggle"
+                            ><i class="bx bx-trash"></i
+                          ></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <!-- Basic Layout -->
+
+              <div class="demo-inline-spacing">
+                <!-- Basic Pagination -->
+                <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item first">
+                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-left"></i></a>
+                    </li>
+                    <li class="page-item prev">
+                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">5</a>
+                    </li>
+                    <li class="page-item next">
+                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-right"></i></a>
+                    </li>
+                    <li class="page-item last">
+                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                    </li>
+                  </ul>
+                </nav>
+                <!--/ Basic Pagination -->
+              </div>
             </div>
             <!-- / Content -->
 
@@ -659,6 +588,126 @@
                     class="footer-link me-4"
                     >Support</a
                   >
+                </div>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm Khuyến Mãi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="row">
+                          <div class="col-6 mb-3">
+                            <label class="form-label" for="basic-default-fullname">Id Khuyến Mãi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-default-fullname"
+                              placeholder="vd: S001..."
+                            />
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label class="form-label" for="basic-default-fullname">Tên Khuyến Mãi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-default-fullname"
+                              placeholder="vd: Small..."
+                            />
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary">Thêm</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal Update-->
+                <div
+                  class="modal fade"
+                  id="staticBackdropUpdate"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cập nhật Khuyến Mãi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="row">
+                          <div class="col-6 mb-3">
+                            <label class="form-label" for="basic-default-fullname">Id Khuyến Mãi</label>
+                            <input
+                              type="text"
+                              disabled="true"
+                              class="form-control"
+                              id="basic-default-fullname"
+                              placeholder="vd: S001..."
+                            />
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label class="form-label" for="basic-default-fullname">Tên Khuyến Mãi</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="basic-default-fullname"
+                              placeholder="vd: Small..."
+                            />
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-success">Cập nhật</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal Delete-->
+                <div
+                  class="modal fade"
+                  id="modalToggle"
+                  aria-labelledby="modalToggleLabel"
+                  tabindex="-1"
+                  style="display: none"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">Bạn thật sự muốn xóa Khuyến Mãi <strong>Medium</strong></div>
+                      <div class="modal-footer">
+                        <button
+                          class="btn btn-danger"
+                          data-bs-target="#modalToggle2"
+                          data-bs-toggle="modal"
+                          data-bs-dismiss="modal"
+                        >
+                          Xóa
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </footer>
