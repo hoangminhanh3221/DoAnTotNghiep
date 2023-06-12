@@ -5,11 +5,13 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.Employee;
 import com.shop.repository.EmployeeRepository;
 import com.shop.service.EmployeeService;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService{
 	
 	private final EmployeeRepository EmployeeRepository;
