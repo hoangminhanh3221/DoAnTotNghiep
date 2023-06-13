@@ -2148,6 +2148,11 @@ input.num-product::-webkit-inner-spin-button {
 
 /*//////////////////////////////////////////////////////////////////
 [ S-Text 0 - 15 ]*/
+.stext-100{
+  font-family: Montserrat-Regular;
+  font-size: 18px;
+  text-transform: uppercase;
+}
 .stext-101 {
   font-family: Montserrat-Medium;
   font-size: 15px;
