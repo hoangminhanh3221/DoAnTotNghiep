@@ -44,4 +44,20 @@ public class HomeController {
 	public String getUserInfo() {
 		return "user-page/user-info";
 	}
+	
+
+	@RequestMapping("/register")
+	public String getRegister() {
+		return "account/register";
+	}	
+	
+	@RequestMapping("/login")
+	public String getLogin() {
+		return "account/login";
+	}	
+	
+	@RequestMapping("/forgot-password")
+	public String getForgetPassword() {
+		return "account/forgot-password";
+	}
 }
