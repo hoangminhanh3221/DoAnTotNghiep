@@ -16,9 +16,9 @@ public interface BrandService {
 
 	Optional<Brand> findBrandById(String id);
 	
-	Brand createProduct(Brand brand);
+	Brand createBrand(Brand brand);
 
-	Brand updateProduct(Brand brand);
+	Brand updateBrand(Brand brand);
 
 	void deleteBrand(String id);
 	
