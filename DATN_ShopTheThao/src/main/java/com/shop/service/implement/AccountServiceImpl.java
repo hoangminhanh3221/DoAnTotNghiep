@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.shop.entity.Account;
 import com.shop.repository.AccountRepository;
-import com.shop.repository.ProductRepository;
 import com.shop.service.AccountService;
 
 @Service
