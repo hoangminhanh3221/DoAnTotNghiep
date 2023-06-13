@@ -5,12 +5,14 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.Account;
 import com.shop.repository.AccountRepository;
 import com.shop.repository.ProductRepository;
 import com.shop.service.AccountService;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepository accountRepository;
