@@ -3,14 +3,13 @@
 
 <body>
 	<main>
-	
 	    <!-- Slider -->
 	    <section class="section-slide">
 	      <div class="wrap-slick1 rs1-slick1">
 	        <div class="slick1">
 	          <div
 	            class="item-slick1"
-	            style="background-image: url(images/sl01.jpg);"
+	            th:style="'background-image:url(' + @{/user-page/images/sl01.jpg} + ');'"
 	          >
 	            <div class="container h-full">
 	              <div class="flex-col-l-m h-full p-t-100 p-b-30">
@@ -52,7 +51,7 @@
 	
 	          <div
 	            class="item-slick1"
-	            style="background-image: url(images/sl02.jpg)"
+	            th:style="'background-image:url(' + @{/user-page/images/sl02.jpg} + ');'"
 	          >
 	            <div class="container h-full">
 	              <div class="flex-col-l-m h-full p-t-100 p-b-30">
@@ -92,7 +91,7 @@
 	
 	          <div
 	            class="item-slick1"
-	            style="background-image: url(images/sl03.jpg)"
+	            th:style="'background-image:url(' + @{/user-page/images/sl03.jpg} + ');'"
 	          >
 	            <div class="container h-full">
 	              <div class="flex-col-l-m h-full p-t-100 p-b-30">
@@ -139,7 +138,7 @@
 	        <div class="size-202 m-lr-auto respon4">
 	          <!-- Block1 -->
 	          <div class="block1 wrap-pic-w">
-	            <img src="images/banner02.jpg" alt="IMG-BANNER" />
+	            <img th:src="@{/user-page/images/banner02.jpg}" alt="IMG-BANNER" />
 	
 	            <a
 	              href="product.html"
@@ -167,7 +166,7 @@
 	        <div class="size-202 m-lr-auto respon4">
 	          <!-- Block1 -->
 	          <div class="block1 wrap-pic-w">
-	            <img src="images/banner03.jpg" alt="IMG-BANNER"/>
+	            <img th:src="@{/user-page/images/banner03.jpg}" alt="IMG-BANNER"/>
 	
 	            <a
 	              href="product.html"
@@ -193,7 +192,7 @@
 	        <div class="size-202 m-lr-auto respon4">
 	          <!-- Block1 -->
 	          <div class="block1 wrap-pic-w">
-	            <img src="images/banner01.jpg" class="cropped-image" alt="IMG-BANNER" />
+	            <img th:src="@{/user-page/images/banner01.jpg}" class="cropped-image" alt="IMG-BANNER" />
 	
 	            <a
 	              href="product.html"
@@ -221,7 +220,7 @@
 	          <button type="button" class="btn mt-1" style="background-color: #fbb1bd; color: rgb(0, 0, 0)"> 
 	            07:00
 	          </button>
-	          <button type="button" class="btn btn-danger text-white mt-1">
+	          <button type="button" class="btn mt-1" style="background-color: #fbb1bd; color: rgb(0, 0, 0)"> 
 	            11:00
 	          </button>
 	          <button type="button" class="btn mt-1" style="background-color: #fbb1bd; color: rgb(0, 0, 0)">
@@ -243,11 +242,11 @@
 	    </div>
 	
 	    <!--ProductSale-->
-	    <div class="product-sale" style="background-image: url(images/banner_sale.png); ">
+	    <div class="product-sale" style="background-image: url(@{/user-page/images/banner_sale.png}); ">
 	      <div class="container">
 	        <div class="row">
 	          <div class="col-md-6 mt-2">
-	            <img src="images/banner/flash-sale24h.png" width="60%" />
+	            <img th:src="@{/user-page/images/banner/flash-sale24h.png}" width="60%" />
 	          </div>
 	          <div class="col-md-6 mt-2 d-flex flex-row-reverse">
 	            <button
@@ -263,7 +262,7 @@
 	            <!-- Block2 -->
 	            <div class="block2">
 	              <div class="block2-pic hov-img0">
-	                <img src="images/h1.jpg" alt="IMG-PRODUCT" />
+	                <img th:src="@{/user-page/images/h1.jpg}" alt="IMG-PRODUCT" />
 	
 	                <a
 	                  href="#"
@@ -294,12 +293,12 @@
 	                  >
 	                    <img
 	                      class="icon-heart1 dis-block trans-04"
-	                      src="images/icons/icon-heart-01.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                      alt="ICON"
 	                    />
 	                    <img
 	                      class="icon-heart2 dis-block trans-04 ab-t-l"
-	                      src="images/icons/icon-heart-02.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                      alt="ICON"
 	                    />
 	                  </a>
@@ -312,7 +311,7 @@
 	            <!-- Block2 -->
 	            <div class="block2">
 	              <div class="block2-pic hov-img0">
-	                <img src="images/quandainam.1.1.jpg" alt="IMG-PRODUCT" />
+	                <img th:src="@{images/quandainam.1.1.jpg}" alt="IMG-PRODUCT" />
 	
 	                <a
 	                  href="#"
@@ -343,12 +342,12 @@
 	                  >
 	                    <img
 	                      class="icon-heart1 dis-block trans-04"
-	                      src="images/icons/icon-heart-01.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                      alt="ICON"
 	                    />
 	                    <img
 	                      class="icon-heart2 dis-block trans-04 ab-t-l"
-	                      src="images/icons/icon-heart-02.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                      alt="ICON"
 	                    />
 	                  </a>
@@ -392,12 +391,12 @@
 	                  >
 	                    <img
 	                      class="icon-heart1 dis-block trans-04"
-	                      src="images/icons/icon-heart-01.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                      alt="ICON"
 	                    />
 	                    <img
 	                      class="icon-heart2 dis-block trans-04 ab-t-l"
-	                      src="images/icons/icon-heart-02.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                      alt="ICON"
 	                    />
 	                  </a>
@@ -441,12 +440,12 @@
 	                  >
 	                    <img
 	                      class="icon-heart1 dis-block trans-04"
-	                      src="images/icons/icon-heart-01.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                      alt="ICON"
 	                    />
 	                    <img
 	                      class="icon-heart2 dis-block trans-04 ab-t-l"
-	                      src="images/icons/icon-heart-02.png"
+	                      th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                      alt="ICON"
 	                    />
 	                  </a>
@@ -537,12 +536,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -584,12 +583,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -631,12 +630,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -678,12 +677,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -725,12 +724,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -772,12 +771,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -819,12 +818,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -866,12 +865,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -942,12 +941,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -989,12 +988,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1036,12 +1035,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1083,12 +1082,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1130,12 +1129,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1177,12 +1176,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1224,12 +1223,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1271,12 +1270,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1348,12 +1347,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1395,12 +1394,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1442,12 +1441,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1489,12 +1488,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1536,12 +1535,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1583,12 +1582,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1630,12 +1629,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1677,12 +1676,12 @@
 	                          >
 	                            <img
 	                              class="icon-heart1 dis-block trans-04"
-	                              src="images/icons/icon-heart-01.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-01.png}"
 	                              alt="ICON"
 	                            />
 	                            <img
 	                              class="icon-heart2 dis-block trans-04 ab-t-l"
-	                              src="images/icons/icon-heart-02.png"
+	                              th:src="@{/user-page/images/icons/icon-heart-02.png}"
 	                              alt="ICON"
 	                            />
 	                          </a>
@@ -1753,12 +1752,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -1800,12 +1799,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -1847,12 +1846,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -1894,12 +1893,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -1941,12 +1940,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -1988,12 +1987,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -2035,12 +2034,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
@@ -2082,12 +2081,12 @@
                               >
                                 <img
                                   class="icon-heart1 dis-block trans-04"
-                                  src="images/icons/icon-heart-01.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-01.png}"
                                   alt="ICON"
                                 />
                                 <img
                                   class="icon-heart2 dis-block trans-04 ab-t-l"
-                                  src="images/icons/icon-heart-02.png"
+                                  th:src="@{/user-page/images/icons/icon-heart-02.png}"
                                   alt="ICON"
                                 />
                               </a>
