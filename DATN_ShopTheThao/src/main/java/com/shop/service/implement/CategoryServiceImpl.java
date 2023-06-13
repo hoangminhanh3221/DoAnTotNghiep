@@ -5,47 +5,49 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-import com.shop.entity.Category;
-import com.shop.repository.CategoryRepository;
-import com.shop.service.CategoryService;
+import com.shop.entity.Product;
+import com.shop.repository.ProductRepository;
+import com.shop.service.ProductService;
 
-public class CategoryServiceImpl implements CategoryService{
+@Service
+public class CategoryServiceImpl implements ProductService{
 	
-	private final CategoryRepository CategoryRepository;
+	private final ProductRepository productRepository;
 
-    public CategoryServiceImpl(CategoryRepository categoryRepository) {
-        this.CategoryRepository = categoryRepository;
+    public CategoryServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
 	@Override
-	public Page<Category> findAllCategory(Pageable pageable) {
-		return CategoryRepository.findAll(pageable);
+	public Page<Product> findAllProduct(Pageable pageable) {
+		return productRepository.findAll(pageable);
 	}
 
 	@Override
-	public List<Category> findAllCategory() {
-		return CategoryRepository.findAll();
+	public List<Product> findAllProduct() {
+		return productRepository.findAll();
 	}
 
 	@Override
-	public Optional<Category> findCategoryById(String id) {
-		return CategoryRepository.findById(id);
+	public Optional<Product> findProductById(String id) {
+		return productRepository.findById(id);
 	}
 
 	@Override
-	public Category createCategory(Category category) {
-		return CategoryRepository.save(category);
+	public Product createProduct(Product product) {
+		return productRepository.save(product);
 	}
 
 	@Override
-	public Category updateCategory(Category category) {
-		return CategoryRepository.save(category);
+	public Product updateProduct(Product product) {
+		return productRepository.save(product);
 	}
 
 	@Override
-	public void deleteCategory(String id) {
-		CategoryRepository.deleteById(id);
+	public void deleteProduct(String id) {
+		productRepository.deleteById(id);
 		
 	}
     

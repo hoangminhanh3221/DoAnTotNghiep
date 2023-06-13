@@ -5,17 +5,19 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.Employee;
 import com.shop.repository.EmployeeRepository;
 import com.shop.service.EmployeeService;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService{
 	
 	private final EmployeeRepository EmployeeRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
-        this.EmployeeRepository = employeeRepository;
+    public EmployeeServiceImpl(EmployeeRepository EmployeeRepository) {
+        this.EmployeeRepository = EmployeeRepository;
     }
 
 	@Override
@@ -34,13 +36,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Employee createEmployee(Employee employee) {
-		return EmployeeRepository.save(employee);
+	public Employee createEmployee(Employee Employee) {
+		return EmployeeRepository.save(Employee);
 	}
 
 	@Override
-	public Employee updateEmployee(Employee employee) {
-		return EmployeeRepository.save(employee);
+	public Employee updateEmployee(Employee Employee) {
+		return EmployeeRepository.save(Employee);
 	}
 
 	@Override

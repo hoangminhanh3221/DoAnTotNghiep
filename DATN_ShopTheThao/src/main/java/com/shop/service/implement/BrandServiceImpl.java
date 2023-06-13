@@ -5,47 +5,49 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-import com.shop.entity.Brand;
-import com.shop.repository.BrandRepository;
-import com.shop.service.BrandService;
+import com.shop.entity.Product;
+import com.shop.repository.ProductRepository;
+import com.shop.service.ProductService;
 
-public class BrandServiceImpl implements BrandService{
+@Service
+public class BrandServiceImpl implements ProductService{
 	
-	private final BrandRepository BrandRepository;
+	private final ProductRepository productRepository;
 
-    public BrandServiceImpl(BrandRepository BrandRepository) {
-        this.BrandRepository = BrandRepository;
+    public BrandServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
 	@Override
-	public Page<Brand> findAllBrand(Pageable pageable) {
-		return BrandRepository.findAll(pageable);
+	public Page<Product> findAllProduct(Pageable pageable) {
+		return productRepository.findAll(pageable);
 	}
 
 	@Override
-	public List<Brand> findAllBrand() {
-		return BrandRepository.findAll();
+	public List<Product> findAllProduct() {
+		return productRepository.findAll();
 	}
 
 	@Override
-	public Optional<Brand> findBrandById(String id) {
-		return BrandRepository.findById(id);
+	public Optional<Product> findProductById(String id) {
+		return productRepository.findById(id);
 	}
 
 	@Override
-	public Brand createBrand(Brand brand) {
-		return BrandRepository.save(brand);
+	public Product createProduct(Product product) {
+		return productRepository.save(product);
 	}
 
 	@Override
-	public Brand updateBrand(Brand brand) {
-		return BrandRepository.save(brand);
+	public Product updateProduct(Product product) {
+		return productRepository.save(product);
 	}
 
 	@Override
-	public void deleteBrand(String id) {
-		BrandRepository.deleteById(id);
+	public void deleteProduct(String id) {
+		productRepository.deleteById(id);
 		
 	}
     
