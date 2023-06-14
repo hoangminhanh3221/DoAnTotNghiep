@@ -35,13 +35,13 @@ public class Product implements Serializable{
 	private String productId;
 	
 	@Column(name = "ProductName", columnDefinition = "nvarchar(50)", nullable = false)
-	private String productName;
+	public String productName;
 	
 	@Column(name = "CostPrice", nullable = false)
 	private Double costPrice;
 	
 	@Column(name = "SellingPrice", nullable = false)
-	private Double sellingPrice;
+	public Double sellingPrice;
 	
 	@Column(name = "Quantity", nullable = false)
 	private Integer quantity;
