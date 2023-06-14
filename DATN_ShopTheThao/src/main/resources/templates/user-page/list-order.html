@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
   <head>
     <title>Product Detail</title>
@@ -561,6 +562,72 @@
 
     <!-- Modal chi tiet don hang -->
     <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+	    <!-- breadcrumb -->
+	    <div class="container">
+	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+	          Home
+	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	        </a>
+	
+	        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+	          Men
+	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	        </a>
+	
+	        <span class="stext-109 cl4"> Lightweight Jacket </span>
+	      </div>
+	    </div>
+	
+	    <!-- Content -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-3">
+	          <ul>
+	            <li class="mb-1 mt-3">Thông tin người dùng</li>
+	            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
+	          </ul>
+	        </div>
+	        <div class="col-9">
+	          <h4 class="mb-3 mt-2">Lịch Sử Mua Hàng</h4>
+	          <table class="table">
+	            <thead>
+	              <tr>
+	                <th scope="col">Mã đơn hàng</th>
+	                <th scope="col">Số lượng</th>
+	                <th scope="col">Tổng tiền</th>
+	                <th scope="col">Ngày tạo</th>
+	                <th scope="col">Trạng thái</th>
+	                <th scope="col">Chi Tiết</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	              <tr>
+	                <td>DH002</td>
+	                <td>5</td>
+	                <td>500,000 VND</td>
+	                <td>2023-06-07</td>
+	                <td>Đang xử lý</td>
+	                <td>
+	                  <a href="" class="btn btn-outline-primary js-show-modal1"
+	                    >Xem</a
+	                  >
+	                </td>
+	              </tr>
+	            </tbody>
+	          </table>
+	        </div>
+	      </div>
+	    </div>
+	
+	    <!-- Modal chi tiet don hang -->
+	    <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+>>>>>>> develop
       <div class="overlay-modal1 js-hide-modal1"></div>
 
       <div class="container" style="width: 70%">
@@ -600,6 +667,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -715,3 +783,8 @@
     <script src="js/main.js"></script>
   </body>
 </html>
+=======
+	</main>
+</body>
+</html>
+>>>>>>> develop

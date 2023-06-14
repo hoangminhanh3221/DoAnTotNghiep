@@ -5,47 +5,49 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.shop.entity.Brand;
 import com.shop.repository.BrandRepository;
 import com.shop.service.BrandService;
 
+@Service
 public class BrandServiceImpl implements BrandService{
 	
-	private final BrandRepository BrandRepository;
+	private final BrandRepository brandRepository;
 
-    public BrandServiceImpl(BrandRepository BrandRepository) {
-        this.BrandRepository = BrandRepository;
+    public BrandServiceImpl(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
 
 	@Override
 	public Page<Brand> findAllBrand(Pageable pageable) {
-		return BrandRepository.findAll(pageable);
+		return brandRepository.findAll(pageable);
 	}
 
 	@Override
 	public List<Brand> findAllBrand() {
-		return BrandRepository.findAll();
+		return brandRepository.findAll();
 	}
 
 	@Override
 	public Optional<Brand> findBrandById(String id) {
-		return BrandRepository.findById(id);
+		return brandRepository.findById(id);
 	}
 
 	@Override
 	public Brand createBrand(Brand brand) {
-		return BrandRepository.save(brand);
+		return brandRepository.save(brand);
 	}
 
 	@Override
 	public Brand updateBrand(Brand brand) {
-		return BrandRepository.save(brand);
+		return brandRepository.save(brand);
 	}
 
 	@Override
 	public void deleteBrand(String id) {
-		BrandRepository.deleteById(id);
+		brandRepository.deleteById(id);
 		
 	}
     

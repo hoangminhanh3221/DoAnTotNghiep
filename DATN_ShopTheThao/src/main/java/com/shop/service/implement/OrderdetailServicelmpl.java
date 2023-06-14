@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import com.shop.entity.OrderDetail;
 import com.shop.repository.OrderDetailRepository;
 import com.shop.repository.ProductRepository;
-import com.shop.service.OrderdetailService;
+import com.shop.service.OrderDetailService;
 
 @Service
-public class OrderdetailServicelmpl implements OrderdetailService{
+public class OrderdetailServicelmpl implements OrderDetailService{
 	
 	private final OrderDetailRepository orderDetailRepository;
 
