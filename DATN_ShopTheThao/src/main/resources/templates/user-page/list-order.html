@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<<<<<<< Updated upstream:ShopBanHang/ShopBanHang/user-page/checkout.html
-    <title>Check Out</title>
-=======
-    <title>Shoping Cart</title>
->>>>>>> Stashed changes:DATN_ShopTheThao/src/main/resources/templates/user-page/checkout.html
+    <title>Product Detail</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--===============================================================================================-->
@@ -58,6 +54,20 @@
     <link
       rel="stylesheet"
       type="text/css"
+      href="vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
       href="vendor/perfect-scrollbar/perfect-scrollbar.css"
     />
     <!--===============================================================================================-->
@@ -66,8 +76,6 @@
     <!--===============================================================================================-->
   </head>
   <body class="animsition">
-<<<<<<< Updated upstream:ShopBanHang/ShopBanHang/user-page/checkout.html
-=======
     <!-- Header -->
     <header class="header-v4">
       <!-- Header desktop -->
@@ -383,296 +391,56 @@
           <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
-        <span class="stext-109 cl4"> Shoping Cart </span>
+        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+          Men
+          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <span class="stext-109 cl4"> Lightweight Jacket </span>
       </div>
     </div>
 
->>>>>>> Stashed changes:DATN_ShopTheThao/src/main/resources/templates/user-page/checkout.html
-    <!-- Shoping Cart -->
-    <div class="colorlib-product">
-      <div class="container">
-        <div
-          class="row row-pb-lg justify-content-center"
-          style="padding-bottom: 2em !important"
-        >
-          <div class="col-sm-10 offset-md-1">
-            <div class="process-wrap">
-              <div class="process text-center active">
-                <p><span>01</span></p>
-                <h3>Giỏ Hàng</h3>
-              </div>
-              <div class="process text-center active">
-                <p><span>02</span></p>
-                <h3>Kiểm Tra Đơn Hàng</h3>
-              </div>
-              <div class="process text-center">
-                <p><span>03</span></p>
-                <h3>Đặt Hàng Thành Công</h3>
-              </div>
-            </div>
-          </div>
+    <!-- Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <ul>
+            <li class="mb-1 mt-3">Thông tin người dùng</li>
+            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
+          </ul>
         </div>
-
-        <div class="row justify-content-center pt-5">
-          <div class="col-md-10">
-            <div class="row">
-              <div
-                class="col-lg-8"
-                style="background-color: whitesmoke; height: 100%"
-              >
-                <h4
-                  style="
-                    font-size: 20px;
-                    margin: 30px 15px 40px 15px;
-                    font-weight: bolder;
-                  "
-                >
-                  Thông Tin Hóa Đơn
-                </h4>
-                <form
-                  class="row"
-                  style="width: 100%; margin: 0 auto !important"
-                >
-                  <div class="col-md-6 form-group">
-                    <label for="name">Họ Tên:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Nhập tên của bạn"
-                      style="height: 40px"
-                    />
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="soDienThoai">Số Điện Thoại:</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="soDienThoai"
-                      placeholder="Nhập số điện thoại của bạn"
-                      style="height: 40px"
-                    />
-                  </div>
-                  <div class="col-md-12 form-group mt-2">
-                    <label for="email">Email:</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      aria-describedby="emailHelp"
-                      placeholder="Nhập địa chỉ email của bạn"
-                    />
-                    <small id="emailHelp" class="form-text text-muted"
-                      >Chúng tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn
-                      với bất kỳ ai khác.</small
-                    >
-                  </div>
-                  <div class="col-md-6 form-group mt-2">
-                    <label for="thanhPho">Thành Phố/Tỉnh</label>
-                    <select class="form-control" id="thanhPho">
-                      <option value="" selected>
-                        -- Chọn thành phố/tỉnh --
-                      </option>
-                      <option value="linh-dong">Thành phố Hồ Chí Minh</option>
-                      <option value="linh-xuan">Thành phố Đà Nẵng</option>
-                      <option value="linh-trung">Tỉnh Cà Mau</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6 form-group mt-2">
-                    <label for="quan">Quận/Huyện:</label>
-                    <select class="form-control" id="quan">
-                      <option value="" selected>-- Chọn quận/huyện --</option>
-                      <option value="thu-duc">Quận Thủ Đức</option>
-                      <option value="go-vap">Quận Gò Vấp</option>
-                      <option value="tan-binh">Quận Tân Bình</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6 form-group mt-2">
-                    <label for="phuong">Phường/Xã</label>
-                    <select class="form-control" id="phuong">
-                      <option value="" selected>-- Chọn phường/xã --</option>
-                      <option value="linh-dong">Phường Linh Đông</option>
-                      <option value="linh-xuan">Phường Linh Xuân</option>
-                      <option value="linh-trung">Phường Linh Trung</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6 form-group mt-2">
-                    <label for="address">Địa Chỉ:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="address"
-                      placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
-                      style="height: 40px"
-                    />
-                  </div>
-                  <div class="col-md-12 form-group mt-2">
-                    <label for="note">Ghi Chú:</label>
-                    <textarea
-                      class="form-control"
-                      id="note"
-                      rows="3"
-                      placeholder="Nhập ghi chú"
-                    ></textarea>
-                  </div>
-                </form>
-                <h4
-                  style="
-                    font-size: 20px;
-                    margin: 30px 15px 40px 15px;
-                    font-weight: bolder;
-                  "
-                >
-                  Phương Thức Giao Hàng
-                </h4>
-                <select
-                  class="form-control"
-                  id="thanhPho"
-                  style="width: 95%; height: 40px; margin-left: 15px"
-                >
-                  <option value="" selected>-- Chọn phương thức --</option>
-                  <option value="linh-dong">Viettel Post</option>
-                  <option value="linh-xuan">Giao hàng nhanh</option>
-                  <option value="linh-trung">Giao hàng tiết kiệm</option>
-                </select>
-              </div>
-
-              <div class="col-lg-4">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="cart-detail">
-                      <h2>Tổng Tiền</h2>
-                      <ul>
-                        <li>
-                          <span>Tiền Hàng</span>
-                          <span style="text-align: end">$100.00</span>
-                          <ul>
-                            <li>
-                              <span style="font-size: 14px; color: gray"
-                                >1 x Product Name</span
-                              >
-                              <span
-                                style="
-                                  text-align: end;
-                                  font-size: 14px;
-                                  color: gray;
-                                "
-                                >$99.00</span
-                              >
-                            </li>
-                            <li>
-                              <span style="font-size: 14px; color: gray"
-                                >1 x Product Name</span
-                              >
-                              <span
-                                style="
-                                  text-align: end;
-                                  font-size: 14px;
-                                  color: gray;
-                                "
-                                >$39.00</span
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <span>Phí Vận Chuyển</span>
-                          <span style="text-align: end">$0.00</span>
-                        </li>
-                        <li>
-                          <span
-                            style="
-                              color: rgb(226, 113, 113);
-                              font-weight: bolder;
-                            "
-                            >Order Total</span
-                          >
-                          <span
-                            style="
-                              text-align: end;
-                              color: rgb(226, 113, 113);
-                              font-weight: bolder;
-                            "
-                            >$180.00</span
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="w-100"></div>
-
-                  <div class="col-md-12">
-                    <div class="cart-detail">
-                      <h2>Phương Thức Thanh Toán</h2>
-                      <div
-                        class="form-check"
-                        style="margin-left: 20px; margin-bottom: 20px"
-                      >
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="exampleRadios"
-                          id="exampleRadios1"
-                          value="option1"
-                          checked
-                        />
-                        <label class="form-check-label" for="exampleRadios1">
-                          Thanh toán khi nhận hàng
-                        </label>
-                      </div>
-                      <div
-                        class="form-check"
-                        style="margin-left: 20px; margin-bottom: 20px"
-                      >
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="exampleRadios"
-                          id="exampleRadios2"
-                          value="option2"
-                        />
-                        <label class="form-check-label" for="exampleRadios2">
-                          Chuyển khoản ngân hàng
-                        </label>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div
-                      class="form-check mt-3"
-                      style="width: 85%; margin-left: 15%"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="termsCheck"
-                        required
-                      />
-                      <label class="form-check-label" for="termsCheck">
-                        Tôi đã đọc và chấp nhận các
-                        <a href="#">điều khoản và điều kiện</a>
-                      </label>
-                    </div>
-                    <button
-                      class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" style="width: 90%; margin-left: 5%;"
-                    >
-                    <a href="order-complete.html" style="color: white;">Lập hóa đơn </a>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-9">
+          <h4 class="mb-3 mt-2">Lịch Sử Mua Hàng</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Mã đơn hàng</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DH002</td>
+                <td>5</td>
+                <td>500,000 VND</td>
+                <td>2023-06-07</td>
+                <td>Đang xử lý</td>
+                <td>
+                  <a href="" class="btn btn-outline-primary js-show-modal1"
+                    >Xem</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-<<<<<<< Updated upstream:ShopBanHang/ShopBanHang/user-page/checkout.html
-=======
     <!-- Footer -->
     <footer class="bg3 p-t-75 p-b-32">
       <div class="container">
@@ -791,7 +559,48 @@
       </span>
     </div>
 
->>>>>>> Stashed changes:DATN_ShopTheThao/src/main/resources/templates/user-page/checkout.html
+    <!-- Modal chi tiet don hang -->
+    <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+      <div class="overlay-modal1 js-hide-modal1"></div>
+
+      <div class="container" style="width: 70%">
+        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+          <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+            <img src="images/icons/icon-close.png" alt="CLOSE" />
+          </button>
+
+          <div class="row">
+            <h3 class="ml-5 mb-4">Chi tiết đơn hàng</h3>
+            <table class="table ml-4" style="width: 95%">
+              <thead>
+                <tr>
+                  <th scope="col">Số thứ tự</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Tên loại</th>
+                  <th scope="col">Kích cỡ</th>
+                  <th scope="col">Màu</th>
+                  <th scope="col">Giá sản phẩm</th>
+                  <th scope="col">Số lượng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Sản phẩm A</td>
+                  <td>Loại A</td>
+                  <td>L</td>
+                  <td>Đen</td>
+                  <td>1,000,000 VND</td>
+                  <td>10</td>
+                </tr>
+                <!-- Thêm các dòng khác tương tự -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
@@ -810,7 +619,81 @@
       });
     </script>
     <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script>
+      $(".parallax100").parallax100();
+    </script>
+    <!--===============================================================================================-->
     <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+      $(".gallery-lb").each(function () {
+        // the containers for all your galleries
+        $(this).magnificPopup({
+          delegate: "a", // the selector for gallery item
+          type: "image",
+          gallery: {
+            enabled: true,
+          },
+          mainClass: "mfp-fade",
+        });
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+      $(".js-addwish-b2, .js-addwish-detail").on("click", function (e) {
+        e.preventDefault();
+      });
+
+      $(".js-addwish-b2").each(function () {
+        var nameProduct = $(this).parent().parent().find(".js-name-b2").html();
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass("js-addedwish-b2");
+          $(this).off("click");
+        });
+      });
+
+      $(".js-addwish-detail").each(function () {
+        var nameProduct = $(this)
+          .parent()
+          .parent()
+          .parent()
+          .find(".js-name-detail")
+          .html();
+
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass("js-addedwish-detail");
+          $(this).off("click");
+        });
+      });
+
+      /*---------------------------------------------*/
+
+      $(".js-addcart-detail").each(function () {
+        var nameProduct = $(this)
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .find(".js-name-detail")
+          .html();
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to cart !", "success");
+        });
+      });
+    </script>
     <!--===============================================================================================-->
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script>
