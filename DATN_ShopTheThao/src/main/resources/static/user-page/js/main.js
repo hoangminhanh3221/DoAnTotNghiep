@@ -1,4 +1,7 @@
 
+function showViewPrd(id){
+}
+
 (function ($) {
     "use strict";
 
