@@ -5,59 +5,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/product")
-	public String getProduct() {
+	@RequestMapping("/product/do-nu")
+	public String getDoNu() {
 		return "user-page/product";
 	}
 	
-	@RequestMapping("/listorder")
-	public String getListOrder() {
-		return "user-page/list-order";
+	@RequestMapping("/product/do-nu/quan-ngan")
+	public String getDoNuQuanNgan() {
+		return "user-page/product";
 	}
 	
-	@RequestMapping("/shopping-cart")
-	public String getShopping() {
-		return "user-page/shopping-cart";
+	@RequestMapping("/product/do-nu/ao-thun")
+	public String getDoNuAoThun() {
+		return "user-page/product";
 	}
 	
-	@RequestMapping("/product-detail")
-	public String getProductDetail() {
-		return "user-page/product-detail";
+	@RequestMapping("/product/do-nu/quan-dai")
+	public String getDoNuQuanDai() {
+		return "user-page/product";
 	}
 	
-	@RequestMapping("/home")
-	public String getHome() {
-		return "user-page/home";
+	@RequestMapping("/product/do-nu/ao-khoac")
+	public String getDoNuAoKhoac() {
+		return "user-page/product";
 	}
 	
-	@RequestMapping("/checkout")
-	public String getCheckout() {
-		return "user-page/checkout";
+	@RequestMapping("/product/do-nu/ao-tanktop")
+	public String getDoNuAoTanktop() {
+		return "user-page/product";
 	}
-	
-	@RequestMapping("/order-complete")
-	public String getOrderComplete() {
-		return "user-page/order-complete";
-	}
-	
-	@RequestMapping("/user-info")
-	public String getUserInfo() {
-		return "user-page/user-info";
-	}
-	
 
-	@RequestMapping("/register")
-	public String getRegister() {
-		return "account/register";
-	}	
-	
-	@RequestMapping("/login")
-	public String getLogin() {
-		return "account/login";
-	}	
-	
-	@RequestMapping("/forgot-password")
-	public String getForgetPassword() {
-		return "account/forgot-password";
-	}
 }

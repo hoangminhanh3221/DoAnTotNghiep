@@ -24,7 +24,7 @@ public class ProductController {
 	@RequestMapping("/list-all-product")
 	public String getProduct(Model model) {
 		List<Product> lisProducts = productService.findAllProduct();
-		model.addAttribute("allProduct", lisProducts);
+		model.addAttribute("products", lisProducts);
 		return "user-page/product";
 	}
 	
