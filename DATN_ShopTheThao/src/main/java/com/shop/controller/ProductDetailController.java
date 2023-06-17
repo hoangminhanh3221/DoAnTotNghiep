@@ -40,6 +40,7 @@ public class ProductDetailController {
 		Color Color = colorService.findColorById(prd.color.colorId).get();
 		
 		model.addAttribute("prd", prd);
+		model.addAttribute("quantity", 1);
 		model.addAttribute("size", Size.sizeName);
 		model.addAttribute("color", Color.colorName);
 		return "user-page/Product-detail";
