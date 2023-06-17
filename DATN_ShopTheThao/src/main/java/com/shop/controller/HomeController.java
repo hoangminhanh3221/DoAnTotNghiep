@@ -66,4 +66,9 @@ public class HomeController {
 		return "user-page/product";
 	}
 	
+	@RequestMapping("/list-order")
+	public String getList() {
+		return "user-page/list-order";
+	}
+	
 }
