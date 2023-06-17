@@ -1,6 +1,8 @@
 package com.shop.controller;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +21,10 @@ public class ProductDetailController {
 	@RequestMapping("/product-detail")
 	public String index(Model model, @RequestAttribute("id") String id) {
 		
-		Product prd = productService.findProductById(id);
-		model.addAttribute("lPDateDesc", prd);
-		return "user-page/home";
+		Optional<Product> prdO = productService.findProductById(id);
+		Product prd = prdO.get();
+		model.addAttribute("prd", prd);
+		return "user-page/Product-detail";
 	}
 	
 }
