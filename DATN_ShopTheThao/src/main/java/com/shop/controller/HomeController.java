@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shop.entity.Discount;
 import com.shop.entity.OrderDetail;
 import com.shop.entity.Product;
+import com.shop.service.DiscountService;
 import com.shop.service.OrderDetailService;
 import com.shop.service.ProductService;
 
@@ -27,6 +31,9 @@ public class HomeController {
 	ProductService productService;
 	
 	@Autowired
+	DiscountService discountService;
+	
+	@Autowired
 	OrderDetailService orderDetailService;
 
 	@RequestMapping("/home")
@@ -40,13 +47,24 @@ public class HomeController {
 		return "user-page/home";
 	}
 	
+	@GetMapping("/promotion")
+    @ResponseBody
+    public List<Product> getPromotions() {
+        // Lấy danh sách sản phẩm khuyến mãi từ cơ sở dữ liệu
+        List<Product> promotions = getDiscountProducts();
+        return promotions;
+    }
+
+    // Định nghĩa một lớp Promotion đại diện cho một sản phẩm khuyến mãi
 	
-	// function
+	// ---------------------------function
 	
+	//Lấy và sắp xếp danh sách sản phẩm theo số lượng đã bán 
 	List<Product> softProductByCountSale(){
 		List<OrderDetail> listOrderDef = orderDetailService.findAllOrderDetails();
 		List<Product> listProductDef=	productService.findAllProduct();
 		
+		//tạo map có tên sản phẩm và số lần bán
 		Map<String, Integer> countMap = new HashMap<>();
         for (OrderDetail orderDetail : listOrderDef) {
             String name = orderDetail.toString();
@@ -76,7 +94,36 @@ public class HomeController {
 		}
         
 		return listProductDef;
+	
 	}
-	
-	
+	// Lấy sp khuyến mãi
+	List<Product> getDiscountProducts(){
+		
+		List<Product> listPrd = productService.findAllProduct();
+		List<Discount> listDC = discountService.findAllDiscount();
+		List<Product> list = new ArrayList<>();
+		
+		//xắp xếp khuyến mãi theo tỉ lệ giảm giá với thứ tự giảm dần
+		for (int i = 0; i < listDC.size(); i++) {
+			for (int j = 1; j < listDC.size(); j++) {
+				if (listDC.get(i).discountRate<listDC.get(j).discountRate) {
+					Collections.swap(listDC, i, j);
+				}
+			}
+		}
+		for (int j = 0; j < listDC.size(); j++) {
+			if (listDC.get(j).discountId.equalsIgnoreCase("DS04")) {
+				listDC.remove(j);
+			}
+		}
+		for (int i = 0; i < listDC.size(); i++) {
+			for (int j = 0; j < listPrd.size(); j++) {
+				if (listDC.get(i).discountId.equalsIgnoreCase(listPrd.get(j).discount.discountId )) {
+					list.add(listPrd.get(j));
+				}
+			}
+		}
+		
+		return list;
+	}
 }
