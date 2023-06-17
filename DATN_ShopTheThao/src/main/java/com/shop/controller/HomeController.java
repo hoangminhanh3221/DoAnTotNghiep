@@ -33,9 +33,10 @@ public class HomeController {
 	public String index(Model model) {
 		
 		//Lấy danh sách sản phẩm và xắp xếp theo trường ngày nhận với thứ thự giảm dần và thêm vào model
-		List<Product> lPDateDesc=	productService.getProductsSortByDateDesc();
-		softProductByCountSale();
+		List<Product> lPDateDesc =	productService.getProductsSortByDateDesc();
+		List<Product> lPSaleDesc = softProductByCountSale();
 		model.addAttribute("lPDateDesc", lPDateDesc);
+		model.addAttribute("lPSaleDesc", lPSaleDesc);
 		return "user-page/home";
 	}
 	
@@ -46,38 +47,35 @@ public class HomeController {
 		List<OrderDetail> listOrderDef = orderDetailService.findAllOrderDetails();
 		List<Product> listProductDef=	productService.findAllProduct();
 		
-		// Đếm số lần xuất hiện của mỗi order trong mảng ban đầu
-		Map<OrderDetail, Integer> counts = new HashMap<>();
-        for (OrderDetail order : listOrderDef) {
-            counts.put(order, counts.getOrDefault(order, 0) + 1);
+		Map<String, Integer> countMap = new HashMap<>();
+        for (OrderDetail orderDetail : listOrderDef) {
+            String name = orderDetail.toString();
+            countMap.put(name, countMap.getOrDefault(name, 0) + 1);
         }
-        // Xác định các số lần xuất hiện duy nhất
-        List<Integer> uniqueCounts = new ArrayList<>(new HashSet<>(counts.values()));
-        // Sắp xếp các số lần xuất hiện duy nhất theo thứ tự giảm dần
-        Collections.sort(uniqueCounts, Collections.reverseOrder());
-        // Tạo một mảng mới với các số lần xuất hiện duy nhất đã được sắp xếp
-        List<OrderDetail> orderSoft = new ArrayList<>(); 
-        for (Integer count : uniqueCounts) {
-            for (Map.Entry<OrderDetail, Integer> entry : counts.entrySet()) {
-                if (entry.getValue() == count) {
-                	orderSoft.add(entry.getKey());
-                    break;
-                }
+
+        // Tạo danh sách phụ không trùng lặp
+        List<String> uniqueNames = new ArrayList<>(countMap.keySet());
+
+        // Sắp xếp danh sách phụ theo số lần xuất hiện giảm dần
+        Collections.sort(uniqueNames, new Comparator<String>() {
+            @Override
+            public int compare(String name1, String name2) {
+                return countMap.get(name2) - countMap.get(name1);
             }
-        }
+        });
+        
+     
 		
         // Xắp xếp mảng sản phẩm
-        for (int i = 0; i < orderSoft.size(); i++) {
-        	for (int id = 0; id < listProductDef.size(); id++) {
-        		
-    			if (listProductDef.get(id).productId == orderSoft.get(i).product() {
-					
+        for (int i = 0; i < uniqueNames.size(); i++) {
+        	for (int id = 0; id < uniqueNames.size(); id++) {
+    			if (listProductDef.get(id).productId == uniqueNames.get(i)) {
+					Collections.swap(listProductDef, i, id);
 				}
     		}
 		}
         
-		List<Product> list=	null;
-		return list;
+		return listProductDef;
 	}
 	
 	

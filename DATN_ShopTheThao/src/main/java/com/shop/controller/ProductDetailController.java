@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Product;
 import com.shop.service.ProductService;
@@ -19,7 +20,7 @@ public class ProductDetailController {
 	ProductService productService;
 
 	@RequestMapping("/product-detail")
-	public String index(Model model, @RequestAttribute("id") String id) {
+	public String index(Model model, @RequestParam("id") String id) {
 		
 		Optional<Product> prdO = productService.findProductById(id);
 		Product prd = prdO.get();
