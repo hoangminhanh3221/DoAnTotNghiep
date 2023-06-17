@@ -32,7 +32,7 @@ public class Product implements Serializable{
 	
 	@Id
 	@Column(name = "ProductId", columnDefinition = "varchar(10)")
-	private String productId;
+	public String productId;
 	
 	@Column(name = "ProductName", columnDefinition = "nvarchar(50)", nullable = false)
 	public String productName;
