@@ -28,4 +28,9 @@ public class ProductController {
 		return "user-page/product";
 	}
 	
+	@RequestMapping("/home")
+	public String gethome() {
+		return "user-page/home";
+	}
+	
 }
