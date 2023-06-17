@@ -38,69 +38,71 @@ public class Product implements Serializable{
 	public String productName;
 	
 	@Column(name = "CostPrice", nullable = false)
-	private Double costPrice;
+	public Double costPrice;
 	
 	@Column(name = "SellingPrice", nullable = false)
 	public Double sellingPrice;
 	
 	@Column(name = "Quantity", nullable = false)
-	private Integer quantity;
+	public Integer quantity;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "ArrivalDate", nullable = false)
-	private Date arrivalDate;
+	public Date arrivalDate;
 	
 	@Column(name = "ImageName1", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName1;
+	public String imageName1;
 	
 	@Column(name = "ImageName2", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName2;
+	public String imageName2;
 	
 	@Column(name = "ImageName3", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName3;
+	public String imageName3;
 	
 	@Column(name = "ImageName4", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName4;
+	public String imageName4;
 	
 	@Column(name = "Material", columnDefinition = "nvarchar(100)", nullable = false)
-	private String material;
+	public String material;
 	
 	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)
-	private String description;
+	public String description;
 	
 	@Column(name = "Avaiable", nullable = false)
-	private Boolean available;
+	public Boolean available;
 	
 	@ManyToOne
 	@JoinColumn(name = "ColorId", referencedColumnName = "ColorId", nullable = false)
-	private Color color;
+	public Color color;
 	
 	@ManyToOne
 	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
-	private Brand brand;
+	public Brand brand;
 	
 	@ManyToOne
 	@JoinColumn(name = "SizeId", referencedColumnName = "SizeId", nullable = false)
-	private Size size;
+	public Size size;
 	
 	@ManyToOne
 	@JoinColumn(name = "SubcategoryId", referencedColumnName = "SubcategoryId", nullable = false)
-	private Subcategory subcategory;
+	public Subcategory subcategory;
 	
 	@ManyToOne
 	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = false)
-	private Discount discount;
+	public Discount discount;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private List<OrderDetail> orderDetails;
+	public List<OrderDetail> orderDetails;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private List<Favorite> favorites;
+	public List<Favorite> favorites;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private List<Feedback> feedbacks;
-	 
+	public List<Feedback> feedbacks;
+
+	
+	
 }

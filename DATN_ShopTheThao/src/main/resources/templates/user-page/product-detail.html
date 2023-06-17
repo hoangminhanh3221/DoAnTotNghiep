@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en">
   <head>
     <title>Product Detail</title>
@@ -397,7 +396,7 @@
           <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
-        <span class="stext-109 cl4"> Lightweight Jacket </span>
+        <span class="stext-109 cl4" th:utext="${prd.productName}"> Lightweight Jacket </span>
       </div>
     </div>
 
@@ -494,13 +493,13 @@
 
           <div class="col-md-6 col-lg-5 p-b-30">
             <div class="p-r-50 p-t-5 p-lr-0-lg">
-              <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+              <h4 class="mtext-105 cl2 js-name-detail p-b-14"   th:utext="${prd.productName}">
                 Lightweight Jacket
               </h4>
 
-              <span class="mtext-106 cl2"> $58.79 </span>
+              <span class="mtext-106 cl2" th:utext="${prd.sellingPrice}"> $58.79 </span><span>vnđ</span>
 
-              <p class="stext-102 cl3 p-t-23">
+              <p class="stext-102 cl3 p-t-23"  th:utext="${prd.description}">
                 Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus
                 ligula. Mauris consequat ornare feugiat.
               </p>
@@ -513,11 +512,7 @@
                   <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
                       <select class="js-select2" name="time">
-                        <option>Choose an option</option>
-                        <option>Size S</option>
-                        <option>Size M</option>
-                        <option>Size L</option>
-                        <option>Size XL</option>
+                        <option th:utext="${size}">Choose an option</option>
                       </select>
                       <div class="dropDownSelect2"></div>
                     </div>
@@ -530,11 +525,7 @@
                   <div class="size-204 respon6-next">
                     <div class="rs1-select2 bor8 bg0">
                       <select class="js-select2" name="time">
-                        <option>Choose an option</option>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>White</option>
-                        <option>Grey</option>
+                        <option th:utext="${color}">Choose an option</option>
                       </select>
                       <div class="dropDownSelect2"></div>
                     </div>
@@ -654,7 +645,7 @@
                 role="tabpanel"
               >
                 <div class="how-pos2 p-lr-15-md">
-                  <p class="stext-102 cl6">
+                  <p class="stext-102 cl6" th:utext=${prd.description}>
                     Aenean sit amet gravida nisi. Nam fermentum est felis, quis
                     feugiat nunc fringilla sit amet. Ut in blandit ipsum.
                     Quisque luctus dui at ante aliquet, in hendrerit lectus
@@ -866,7 +857,7 @@
 	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 	        </a>
 	
-	        <span class="stext-109 cl4"> Lightweight Jacket </span>
+	        <span class="stext-109 cl4"  th:utext="${prd.productName}"> Lightweight Jacket </span>
 	      </div>
 	    </div>
 	
@@ -963,13 +954,13 @@
 	
 	          <div class="col-md-6 col-lg-5 p-b-30">
 	            <div class="p-r-50 p-t-5 p-lr-0-lg">
-	              <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+	              <h4 class="mtext-105 cl2 js-name-detail p-b-14" th:utext="${prd.productName}">
 	                Lightweight Jacket
 	              </h4>
 	
-	              <span class="mtext-106 cl2"> $58.79 </span>
+	              <span class="mtext-106 cl2" th:utext="${prd.sellingPrice}"> $58.79 </span><span>vnđ</span>
 	
-	              <p class="stext-102 cl3 p-t-23">
+	              <p class="stext-102 cl3 p-t-23" th:utext="${prd.description}">
 	                Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus
 	                ligula. Mauris consequat ornare feugiat.
 	              </p>
@@ -982,11 +973,7 @@
 	                  <div class="size-204 respon6-next">
 	                    <div class="rs1-select2 bor8 bg0">
 	                      <select class="js-select2" name="time">
-	                        <option>Choose an option</option>
-	                        <option>Size S</option>
-	                        <option>Size M</option>
-	                        <option>Size L</option>
-	                        <option>Size XL</option>
+	                        <option th:utext="${size}">Choose an option</option>
 	                      </select>
 	                      <div class="dropDownSelect2"></div>
 	                    </div>
@@ -999,11 +986,7 @@
 	                  <div class="size-204 respon6-next">
 	                    <div class="rs1-select2 bor8 bg0">
 	                      <select class="js-select2" name="time">
-	                        <option>Choose an option</option>
-	                        <option>Red</option>
-	                        <option>Blue</option>
-	                        <option>White</option>
-	                        <option>Grey</option>
+	                        <option th:utext="${color}">Choose an option</option>
 	                      </select>
 	                      <div class="dropDownSelect2"></div>
 	                    </div>
@@ -1123,7 +1106,7 @@
 	                role="tabpanel"
 	              >
 	                <div class="how-pos2 p-lr-15-md">
-	                  <p class="stext-102 cl6">
+	                  <p class="stext-102 cl6" th:utext=${prd.description}>
 	                    Aenean sit amet gravida nisi. Nam fermentum est felis, quis
 	                    feugiat nunc fringilla sit amet. Ut in blandit ipsum.
 	                    Quisque luctus dui at ante aliquet, in hendrerit lectus
@@ -1983,13 +1966,13 @@
 
             <div class="col-md-6 col-lg-5 p-b-30">
               <div class="p-r-50 p-t-5 p-lr-0-lg">
-                <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                <h4 class="mtext-105 cl2 js-name-detail p-b-14" th:utext="${prd.productName}">
                   Lightweight Jacket
                 </h4>
 
-                <span class="mtext-106 cl2"> $58.79 </span>
+                <span class="mtext-106 cl2" th:utext="${prd.sellingPrice}"> $58.79 </span><span>vnđ</span>
 
-                <p class="stext-102 cl3 p-t-23">
+                <p class="stext-102 cl3 p-t-23" th:utext="${prd.description}">
                   Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus
                   ligula. Mauris consequat ornare feugiat.
                 </p>
@@ -2002,11 +1985,7 @@
                     <div class="size-204 respon6-next">
                       <div class="rs1-select2 bor8 bg0">
                         <select class="js-select2" name="time">
-                          <option>Choose an option</option>
-                          <option>Size S</option>
-                          <option>Size M</option>
-                          <option>Size L</option>
-                          <option>Size XL</option>
+                         <option th:utext="${size}">Choose an option</option>
                         </select>
                         <div class="dropDownSelect2"></div>
                       </div>
@@ -2019,11 +1998,7 @@
                     <div class="size-204 respon6-next">
                       <div class="rs1-select2 bor8 bg0">
                         <select class="js-select2" name="time">
-                          <option>Choose an option</option>
-                          <option>Red</option>
-                          <option>Blue</option>
-                          <option>White</option>
-                          <option>Grey</option>
+                          <option th:utext="${color}">Choose an option</option>
                         </select>
                         <div class="dropDownSelect2"></div>
                       </div>
