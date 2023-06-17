@@ -70,11 +70,9 @@ public class HomeController {
         for (int i = 0; i < orderSoft.size(); i++) {
         	for (int id = 0; id < listProductDef.size(); id++) {
         		
-    			/*if (listProductDef.get(id).productId == orderSoft.get(i). {
+    			if (listProductDef.get(id).productId == orderSoft.get(i).product() {
 					
-				}*/
-        		System.out.println(orderSoft.get(i));
-        		System.out.println(listProductDef.get(i));
+				}
     		}
 		}
         
