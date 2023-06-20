@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.shop.entity.Account;
+import com.shop.entity.Address;
+import com.shop.entity.Customer;
 
 public interface AccountService {
 	
@@ -21,5 +23,7 @@ public interface AccountService {
 	Account updateAccount(Account account);
 
 	void deleteAccount(String id);
+	
+	Object[] findAccountDetailsByUsername(String username);
 	
 }
