@@ -242,11 +242,11 @@
 	    </div>
 	
 	    <!--ProductSale-->
-	    <div class="product-sale" style="background-image: url(@{/user-page/images/banner_sale.png}); ">
+	    <div class="product-sale" th:style="'background-image: url(' + @{/user-page/images/banner_sale.png} + ');'">
 	      <div class="container">
 	        <div class="row">
 	          <div class="col-md-6 mt-2">
-	            <img th:src="@{/user-page/images/banner/flash-sale24h.png}" width="60%" />
+	            <img th:src="@{/user-page/images/banner/flash-sale24h.png}" width="60%" alt=""/>
 	          </div>
 	          <div class="col-md-6 mt-2 d-flex flex-row-reverse">
 	            <button
@@ -764,6 +764,11 @@
         </section>
 
 	</main>
+<<<<<<< HEAD
 	</body>
+=======
+	
+</body>
+>>>>>>> 10bedde9c2a398f429ca0caf51733bb31ad147b5
 
 </html>
