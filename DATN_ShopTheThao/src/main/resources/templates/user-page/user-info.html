@@ -5,32 +5,30 @@
 	<main>
 	    <!-- breadcrumb -->
 	    <div class="container">
-	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+	      <div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
 	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Home
+	          Trang Chủ
 	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 	        </a>
 	
 	        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Men
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	          Thông tin người dùng
 	        </a>
 	
-	        <span class="stext-109 cl4"> Lightweight Jacket </span>
 	      </div>
 	    </div>
 	
 	    <!-- Content -->
 	    <div class="container">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3 mt-4">
           <ul>
-            <li class="mb-1 mt-3">Thông tin người dùng</li>
-            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
+            <a th:href="@{/user/info}"><li class="mb-1 mt-3">Thông tin người dùng</li></a> 
+            <a th:href="@{/user/list-order}"><li class="mb-1 mt-3">Lịch sử mua hàng</li></a> 
           </ul>
         </div>
         <div class="col-9">
-          <h4 class="mb-3 mt-2">Thông Tin Tài Khoản</h4>
+          <h4 class="mb-3 mt-5">Thông Tin Tài Khoản</h4>
           <form class="row">
             <div class="col-6">
               <div class="form-group">
