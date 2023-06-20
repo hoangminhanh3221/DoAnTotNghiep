@@ -74,6 +74,41 @@
     <link rel="stylesheet" type="text/css" href="css/util.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <!--===============================================================================================-->
+
+    <style>
+      .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+      }
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .edit-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .edit-overlay:hover {
+        opacity: 1;
+      }
+      .edit-overlay span {
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body class="animsition">
     <!-- Header -->
@@ -383,34 +418,44 @@
       </div>
     </div>
 
-    <!-- breadcrumb -->
-    <div class="container">
-      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-          Home
-          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-          Men
-          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <span class="stext-109 cl4"> Lightweight Jacket </span>
+    <main>
+      <!-- breadcrumb -->
+      <div class="container">
+        <div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
+          <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+            Trang Chủ
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+          </a>
+  
+          <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+            Thông tin người dùng
+          </a>
+  
+        </div>
       </div>
-    </div>
-
-    <!-- Content -->
-    <div class="container">
+  
+      <!-- Content -->
+      <div class="container">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3 mt-4">
           <ul>
-            <li class="mb-1 mt-3">Thông tin người dùng</li>
-            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
+            <a th:href="@{/user/info}"><li class="mb-1 mt-3">Thông tin người dùng</li></a> 
+            <a th:href="@{/user/list-order}"><li class="mb-1 mt-3">Lịch sử mua hàng</li></a> 
           </ul>
         </div>
         <div class="col-9">
-          <h4 class="mb-3 mt-2">Thông Tin Tài Khoản</h4>
+          <h4 class="mb-3 mt-5 text-center" >Thông Tin Tài Khoản</h4>
+
+            <!-- Code ảnh đại diện ở đây -->
+            <div class="profile-picture" style="margin: auto;">
+              <img id="avatar" src="" alt="Ảnh đại diện" class="rounded-circle"
+               style="width: 200px; height: 200px;">
+               <div class="edit-overlay">
+                <span id="edit-avatar">Chỉnh sửa</span>
+                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+              </div>
+            </div>
+
           <form class="row">
             <div class="col-6">
               <div class="form-group">
@@ -534,6 +579,7 @@
         </div>
       </div>
     </div>
+  </main>
 
     <!-- Footer -->
     <footer class="bg3 p-t-75 p-b-32">
@@ -874,6 +920,25 @@
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#edit-avatar').click(function() {
+          $('#avatar-upload').click();
+        });
+  
+        $('#avatar-upload').change(function() {
+          var file = $(this)[0].files[0];
+          var reader = new FileReader();
+  
+          reader.onload = function(e) {
+            $('#avatar').attr('src', e.target.result);
+          };
+  
+          reader.readAsDataURL(file);
+        });
+      });
+    </script>
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
