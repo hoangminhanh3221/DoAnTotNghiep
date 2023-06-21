@@ -1,5 +1,6 @@
 package com.shop.entity;
 
+import java.awt.Image;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
