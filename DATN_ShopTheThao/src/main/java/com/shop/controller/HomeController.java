@@ -70,5 +70,10 @@ public class HomeController {
 	public String getList() {
 		return "user-page/list-order";
 	}
+	@RequestMapping("/checkout")
+	public String getcheck() {
+		return "user-page/checkout";
+	}
+	
 	
 }
