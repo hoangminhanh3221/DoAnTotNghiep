@@ -40,14 +40,7 @@ public class PaymentServicelmpl implements PaymentService {
 	}
 
 	@Override
-	public Payment createPayment(String paymentMethod, Double paymentAmount, Date paymentDate, Boolean paymentStatus,
-			Order order) {
-		Payment payment = new Payment();
-		payment.setPaymentMethod(paymentMethod);
-		payment.setPaymentAmount(paymentAmount);
-		payment.setPaymentDate(paymentDate);
-		payment.setPaymentStatus(paymentStatus);
-		payment.setOrder(order);
+	public Payment createPayment(Payment payment) {
 		return paymentRepository.save(payment);
 	}
 

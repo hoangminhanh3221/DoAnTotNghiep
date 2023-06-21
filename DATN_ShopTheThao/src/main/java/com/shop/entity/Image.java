@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +39,7 @@ public class Image implements Serializable{
 	@Column(name = "ImageName4", columnDefinition = "varchar(50)", nullable = true)
 	private String imageName4;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "image", cascade = CascadeType.ALL)
 	private List<Product> products;
 	
