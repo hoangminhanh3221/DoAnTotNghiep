@@ -27,12 +27,7 @@ public class UserController {
 	
 	@RequestMapping("/info")
 	public String getInfo(Model model) {
-	    Account account = accountService.findAccountById("kiet").orElse(null);
-	    Object[] obj = accountService.findAccountDetailsByUsername("kiet");
-	    for(int i=0;i<obj.length;i++) {
-	    	System.out.println(obj[i].toString());
-	    }
-	    
+	    Account account = accountService.findAccountById("kiet").orElse(null);  
 	    return "user-page/user-info";
 	}
 
