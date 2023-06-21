@@ -49,7 +49,14 @@ public class Order implements Serializable{
 	private String orderStatus;
 	
 	@ManyToOne
-	@JoinColumn(name = "Username", referencedColumnName = "Username")
+	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
 	private Account account;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<Payment> payments;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<Transport> transports;
 }

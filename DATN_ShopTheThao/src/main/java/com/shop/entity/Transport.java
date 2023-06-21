@@ -44,6 +44,6 @@ public class Transport implements Serializable{
 	private Boolean transportStatus;
 	
 	@ManyToOne
-	@JoinColumn(name = "OrderInfoId", referencedColumnName = "OrderId", nullable = false)
-	private OrderInfo orderInfo;
+	@JoinColumn(name = "OrderId", referencedColumnName = "OrderId", nullable = false)
+	private Order order;
 }
