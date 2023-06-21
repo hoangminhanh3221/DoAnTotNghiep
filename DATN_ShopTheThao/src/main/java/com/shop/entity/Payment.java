@@ -44,6 +44,6 @@ public class Payment implements Serializable{
 	private Boolean paymentStatus;
 	
 	@ManyToOne
-	@JoinColumn(name = "OrderId", referencedColumnName = "OrderId", nullable = false)
-	private Order order;
+	@JoinColumn(name = "OrderInfoId", referencedColumnName = "OrderInfoId", nullable = false)
+	private OrderInfo orderInfo;
 }

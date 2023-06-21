@@ -91,6 +91,10 @@ public class Product implements Serializable{
 	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = false)
 	private Discount discount;
 	
+	@ManyToOne
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
+	private Image image;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetails;
