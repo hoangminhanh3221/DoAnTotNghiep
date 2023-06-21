@@ -27,16 +27,16 @@ public class Image implements Serializable{
 	@Column(name = "ImageId", columnDefinition = "varchar(10)")
 	private String imageId;
 	
-	@Column(name = "ImageName1", columnDefinition = "varchar(50)", nullable = true)
+	@Column(name = "ImageName1", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName1;
 	
-	@Column(name = "ImageName2", columnDefinition = "varchar(50)", nullable = true)
+	@Column(name = "ImageName2", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName2;
 	
-	@Column(name = "ImageName3", columnDefinition = "varchar(50)", nullable = true)
+	@Column(name = "ImageName3", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName3;
 	
-	@Column(name = "ImageName4", columnDefinition = "varchar(50)", nullable = true)
+	@Column(name = "ImageName4", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName4;
 	
 	@JsonIgnore
