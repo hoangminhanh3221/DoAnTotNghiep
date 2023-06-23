@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shop.entity.Product;
@@ -28,9 +29,12 @@ public class ProductController {
 		return "user-page/product";
 	}
 	
-	@RequestMapping("/home")
-	public String gethome() {
-		return "user-page/home";
+	@RequestMapping("/product-detail/{id}")
+	public String getProductDetail(@PathVariable("id") String maSP, Model model) {
+		Product product = productService.findProductById(maSP).orElse(null);
+		model.addAttribute("product", product);
+		return "user-page/product-detail";
+		
 	}
 	
 }
