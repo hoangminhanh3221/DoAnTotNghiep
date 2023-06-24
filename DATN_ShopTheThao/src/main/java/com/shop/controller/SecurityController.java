@@ -12,6 +12,12 @@ public class SecurityController {
 		return "/account/login";
 	}
 	
+	@RequestMapping("/account/login/forgot-password")
+	public String forgotPass(Model model) {
+		model.addAttribute("message","Vui lòng đăng nhập");
+		return "/account/forgot-password";
+	}
+	
 	@RequestMapping("/account/login/success")
 	public String loginSuccess(Model model) {
 		model.addAttribute("message","Đăng nhập thành công");

@@ -46,4 +46,9 @@ public class Payment implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "OrderId", referencedColumnName = "OrderId", nullable = false)
 	private Order order;
+
+	public void setPaymentAmount(Double paymentAmount2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

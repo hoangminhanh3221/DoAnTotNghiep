@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,17 +24,24 @@ import com.shop.service.AccountService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
+	
 	@Autowired
 	AccountService accountService;
-	@Autowired
-	BCryptPasswordEncoder pe;
 	
 	//Cung cấp nguồn dữ liệu đăng nhập
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(username -> {
 			try { 
 				  Optional<Account> user = accountService.findAccountById(username);
-				  String password = pe.encode(user.get().getPassword());
+				  
+				  BCryptPasswordEncoder passwordEncoder = passwordEncoder();
+				  String password = passwordEncoder.encode(user.get().getPassword());;
+				  
 				  String[] roles = user.stream() 
 						  		.map(er -> er.getRole())
 						  		.collect(Collectors.toList()).toArray(new String[0]);
@@ -57,8 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/rest/authorities").hasRole("DIRE")
 			.anyRequest().permitAll();
         http.formLogin(login -> login
-                .loginPage("/account/login")
-                .loginProcessingUrl("/account/login")
+                .loginPage("/account/login/form")
+                .loginProcessingUrl("/account/login/go")
                 .defaultSuccessUrl("/account/login/success", false)
                 .failureUrl("/account/login/error"));
         http.rememberMe(me -> me
