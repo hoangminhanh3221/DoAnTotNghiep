@@ -14,12 +14,12 @@ public interface EmployeeService {
 	
 	List<Employee> findAllEmployee();
 
-	Optional<Employee> findEmployeeById(Integer employeeId);
+	Optional<Employee> findEmployeeById(Integer id);
 	
 	Employee createEmployee(Employee employee);
 
 	Employee updateEmployee(Employee employee);
 
-	void deleteEmployee(Integer employeeId);
+	void deleteEmployee(Integer id);
 	
 }

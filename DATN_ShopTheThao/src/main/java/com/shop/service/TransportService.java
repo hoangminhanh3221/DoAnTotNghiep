@@ -14,12 +14,12 @@ public interface TransportService {
 
 	List<Transport> findAllTransport();
 
-	Optional<Transport> findTransportById(Integer transportId);
+	Optional<Transport> findTransportById(Integer id);
 
 	Transport createTransport(Transport transport);
 
 	Transport updateTransport(Transport transport);
 
-	void deleteTransport(Integer transportId);
+	void deleteTransport(Integer id);
 	
 }
