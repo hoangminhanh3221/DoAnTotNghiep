@@ -27,7 +27,13 @@ public class UserController {
 	
 	@RequestMapping("/info")
 	public String getInfo(Model model) {
-	    Account account = accountService.findAccountById("kiet").orElse(null);  
+	    Account account = accountService.findAccountById("sinh").orElse(null);  
+	    Customer customer = account.getCustomers().get(0);
+	    Address address = customer.getAddress();
+	  
+	    model.addAttribute("account", account);
+	    model.addAttribute("customer", customer);
+	    model.addAttribute("address", address);
 	    return "user-page/user-info";
 	}
 

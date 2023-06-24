@@ -24,6 +24,5 @@ public interface AccountService {
 
 	void deleteAccount(String id);
 	
-	Object[] findAccountDetailsByUsername(String username);
-	
+	List<Customer> findCustomersByUsername(String username);
 }

@@ -52,12 +52,13 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.deleteById(id);
 
 	}
-
-	@Override
-	public Object[] findAccountDetailsByUsername(String username) {
-		// TODO Auto-generated method stub
-		return accountRepository.findAccountDetailsByUsername(username);
-	}
-
-
+	 @Override
+	    public List<Customer> findCustomersByUsername(String username) {
+	        Optional<Account> accountOptional = accountRepository.findById(username);
+	        if (accountOptional.isPresent()) {
+	            Account account = accountOptional.get();
+	            return account.getCustomers();
+	        }
+	        return null;
+	    }
 }
