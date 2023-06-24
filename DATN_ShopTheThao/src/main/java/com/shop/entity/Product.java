@@ -50,18 +50,6 @@ public class Product implements Serializable{
 	@Column(name = "ArrivalDate", nullable = false)
 	private Date arrivalDate;
 	
-	@Column(name = "ImageName1", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName1;
-	
-	@Column(name = "ImageName2", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName2;
-	
-	@Column(name = "ImageName3", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName3;
-	
-	@Column(name = "ImageName4", columnDefinition = "varchar(50)", nullable = false)
-	private String imageName4;
-	
 	@Column(name = "Material", columnDefinition = "nvarchar(100)", nullable = false)
 	private String material;
 	
@@ -74,6 +62,10 @@ public class Product implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "ColorId", referencedColumnName = "ColorId", nullable = false)
 	private Color color;
+	
+	@ManyToOne
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
+	private Image image;
 	
 	@ManyToOne
 	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
