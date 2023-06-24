@@ -17,7 +17,4 @@ public interface AccountRepository  extends JpaRepository<Account, String>{
 	@Query("SELECT c FROM Customer c JOIN c.account a WHERE a.username = :username")
     Customer findCustomerByUsername(@Param("username") String username);
 
-//    @Query("SELECT a FROM Address a JOIN a.customers c WHERE c.customerId = :customerId")
-//    Address findAddressByCustomerId(@Param("customerId") Integer customerId);
-
 }
