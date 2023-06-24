@@ -14,11 +14,11 @@ import com.shop.service.OrderService;
 @RestController
 @RequestMapping("/rest/orders")
 public class OrderRestController {
-	@Autowired
-	private final OrderService orderService;
-	
-	@PostMapping()
-	public Order create(@RequestBody JsonNode orderData) {
-		return orderService.createJson(orderData);
-	}
+//	@Autowired
+//	private final OrderService orderService;
+//	
+//	@PostMapping()
+//	public Order create(@RequestBody JsonNode orderData) {
+//		return orderService.createJson(orderData);
+//	}
 }
