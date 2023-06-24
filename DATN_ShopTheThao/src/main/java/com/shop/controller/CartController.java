@@ -20,8 +20,7 @@ public class CartController {
 	
 	@RequestMapping("/cart/add")
 	public String getAddCart(Model model) {
-		return null;
-		
+		return ;
 	}
 	
 }

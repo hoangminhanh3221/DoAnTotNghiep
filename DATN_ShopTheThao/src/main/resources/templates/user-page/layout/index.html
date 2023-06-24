@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:fragment="dynamic(main)">
+	th:fragment="dynamic(main)" ng-app="shopping-cart-app">
 <head>
 <title>Trang Chủ</title>
 <meta charset="UTF-8" />
@@ -50,9 +50,12 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{~/user-page/css/main.css}" />
 <!--===============================================================================================-->
+<!-- Angular 1.6.9 -->
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js}"></script>
+<!--===============================================================================================-->
 </head>
 
-<body class="animsition">
+<body class="animsition" ng-controller="shopping-cart-ctrl">
 	<!-- Header -->
 	<div th:replace="/user-page/layout/header.html"></div>
 
@@ -373,6 +376,7 @@
 </script>
 	<!--===============================================================================================-->
 	<script th:src="@{/user-page/js/main.js}"></script>
+	<script th:src="@{/user-page/js/shopping-cart-app.js}"></script>
 </body>
 </html>
 
