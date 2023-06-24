@@ -1,4 +1,4 @@
-package com.shop.entity;
+ ackage com.shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shop.repository.AccountRepository;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,4 +55,55 @@ public class Account implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<Order> orders;
+}
+public interface AccountService {
+    void registerAccount(String username, String password);
+    boolean login(String username, String password);
+    void updateAccountInfo(String username, String newEmail, String newPassword);
+    void deleteAccount(String username);
+}
+
+public class AccountServiceImpl implements AccountService {
+    private AccountRepository accountRepository;
+
+    public AccountServiceImpl(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    @Override
+    public void registerAccount(String username, String password) {
+        // Thực hiện logic đăng ký tài khoản
+        Account newAccount = new Account(username, password);
+        accountRepository.save(newAccount);
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        // Thực hiện logic đăng nhập
+        Account account = accountRepository.findByUsername(username);
+        if (account != null && account.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void updateAccountInfo(String username, String newEmail, String newPassword) {
+        // Thực hiện logic cập nhật thông tin tài khoản
+        Account account = accountRepository.findByUsername(username);
+        if (account != null) {
+            account.setEmail(newEmail);
+            account.setPassword(newPassword);
+            accountRepository.update(account);
+        }
+    }
+
+    @Override
+    public void deleteAccount(String username) {
+        // Thực hiện logic xóa tài khoản
+        Account account = accountRepository.findByUsername(username);
+        if (account != null) {
+            accountRepository.delete(account);
+        }
+    }
 }

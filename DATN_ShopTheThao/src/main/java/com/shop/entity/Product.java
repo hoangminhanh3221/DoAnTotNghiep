@@ -1,4 +1,4 @@
-package com.shop.entity;
+package main.java.com.shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
