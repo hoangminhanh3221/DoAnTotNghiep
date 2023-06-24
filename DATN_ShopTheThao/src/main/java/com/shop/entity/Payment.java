@@ -25,11 +25,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "PAYMENT")
 public class Payment implements Serializable{
 	
-	public Payment(String paymentMethod2, Double paymentAmount2, Date paymentDate2, Boolean paymentStatus2,
-			Order order2) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PaymentId")
