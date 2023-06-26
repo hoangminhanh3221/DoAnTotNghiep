@@ -4,7 +4,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 	$scope.cart = {
 		items:[],
 		//Thêm sản phẩm vào giỏ hàng
-		add(id){
+		add(id, number){
 			var item = this.items.find(item => item.id == id);
 			if(item){
 				item.qty++;
