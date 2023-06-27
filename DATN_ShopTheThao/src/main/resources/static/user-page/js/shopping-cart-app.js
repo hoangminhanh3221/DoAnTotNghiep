@@ -22,12 +22,11 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 	    // Thêm sản phẩm vào giỏ hàng
 	    add(productId) {
 			var quantity = $scope.quantity;
-			console.log(quantity)
 		    var item = this.items.find(item => item.productId == productId);
 		    if (item) {
 		        item.qty += quantity;
 		    } else {
-		        $http.get(`/api/products/${productId}`).then(resp => {
+		        $http.get('/api/products/${productId}').then(resp => {
 		            resp.data.qty = quantity;
 		            this.items.push(resp.data);
 		        });
@@ -67,6 +66,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
        //Lưu giỏ hàng vào local storage
        saveToLocalStorage(){
            //dùng angular để copy xong đổi các mặt hàng sang json
+           console.log(this.items)
            var json = JSON.stringify(angular.copy(this.items));
            localStorage.setItem("cart",json);
        },
@@ -75,6 +75,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
        loadFromLocalStorage(){
            var json = localStorage.getItem("cart");
            this.items = json?JSON.parse(json) : [];
+           console.log(this.items)
        },
    };
    $scope.cart.loadFromLocalStorage();
