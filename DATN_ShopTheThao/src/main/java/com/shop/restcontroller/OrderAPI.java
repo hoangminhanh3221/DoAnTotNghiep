@@ -13,7 +13,7 @@ import com.shop.service.OrderService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/orders")
-public class OrderRestController {
+public class OrderAPI {
 //	@Autowired
 //	private final OrderService orderService;
 //	
