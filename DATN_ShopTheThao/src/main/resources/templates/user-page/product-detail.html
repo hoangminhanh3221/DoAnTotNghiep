@@ -9,7 +9,7 @@
 			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
 				<a th:href="@{/home}" class="stext-109 cl8 hov-cl1 trans-04">
 					Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a> <a th:href="@{/demo}" class="stext-109 cl8 hov-cl1 trans-04">
+				</a> <a th:href="@{/product/list-all-product}" class="stext-109 cl8 hov-cl1 trans-04">
 					Men <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 				</a> <span class="stext-109 cl4" th:text="${product.productName}"></span>
 			</div>
@@ -115,21 +115,21 @@
 												class="mtext-104 cl3 txt-center num-product" type="text"
 												name="productId" th:value="${product.productId}" />
 											<div
-												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" ng-click="decreaseQuantity()">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
 											<input class="mtext-104 cl3 txt-center num-product"
-												type="number" name="quantity" th:value="${quantity}" ng-model="productQuantity"/>
+												type="number" name="quantity" th:value="${quantity}" ng-model="quantity"/>
 
 											<div
-												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" ng-click="increaseQuantity()">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 
 										<button type="submit"
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" th:attr="ng-click=@{|addProduct('${product.productId}', ${productQuantity})|}">
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" th:attr="ng-click='cart.add(\'' + ${product.productId} + '\')'">
 											Thêm vào giỏ</button>
 									</form>
 								</div>
