@@ -9,8 +9,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Account;
 import com.shop.entity.Address;
@@ -38,17 +41,18 @@ public class UserController {
 	@Autowired
 	private XDate xDate;
 	
-	@RequestMapping("/info")
-	public String getInfo(Model model) throws ParseException {
-	    Account account = accountService.findAccountById("kiet").orElse(null);  
-	    Customer customer = account.getCustomers().get(0);
-	    Address address = customer.getAddress();
-	    model.addAttribute("account", account);
-	    model.addAttribute("customer", customer);
-	    model.addAttribute("address", address);
-	    return "user-page/user-info";
-	}
+//	@RequestMapping("/info")
+//	public String getInfo(Model model) throws ParseException {
+//	    Account account = accountService.findAccountById("kiet").orElse(null);  
+//	    Customer customer = account.getCustomers().get(0);
+//	    Address address = customer.getAddress();
+//	    model.addAttribute("account", account);
+//	    model.addAttribute("customer", customer);
+//	    model.addAttribute("address", address);
+//	    return "user-page/user-info";
+//	}
 
+	
 	@RequestMapping("/list-order")
 	public String getListOrder(Model model) {
 		Account account = accountService.findAccountById("kiet").orElse(null);
