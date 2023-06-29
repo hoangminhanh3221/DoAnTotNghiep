@@ -34,7 +34,6 @@ public class ProductController {
 		Product product = productService.findProductById(maSP).orElse(null);
 		model.addAttribute("product", product);
 		return "user-page/product-detail";
-		
 	}
 	
 }

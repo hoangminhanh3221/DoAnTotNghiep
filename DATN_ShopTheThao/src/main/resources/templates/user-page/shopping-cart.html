@@ -57,7 +57,7 @@
 
 									<tr class="table_row" ng-repeat="item in cart.items">
 										<td class="column-1">
-											<div class="how-itemcart1">
+											<div class="how-itemcart1" ng-click="cart.remove(item.productId)">
 												<img src="{{item.image.imageName1}}" alt="IMG" />
 											</div>
 										</td>
@@ -66,7 +66,7 @@
 										<td class="column-4">
 											<div class="wrap-num-product flex-w m-l-auto m-r-0">
 												<div
-													class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"ng-click="cart.decreaseQty(item.productId, item.qty)">
+													class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" ng-click="cart.decreaseQty(item.productId, item.qty)">
 													<i class="fs-16 zmdi zmdi-minus"></i>
 												</div>
 
@@ -79,7 +79,7 @@
 												</div>
 											</div>
 										</td>
-										<td class="column-5">$ 36.00</td>
+										<td class="column-5">{{(item.qty * item.sellingPrice).toLocaleString('vi-VN')}} VNĐ</td>
 									</tr>
 								</table>
 							</div>

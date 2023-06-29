@@ -33,10 +33,12 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 				}
 			},
 			//Xóa sản phẩm ra giỏ hàng
-			remove(id){
-				var index = this.items.findIndex(item => item.id == id);
-				this.items.splice(index,1);
-				this.saveToLocalStorage();
+			remove(productId) {
+			  var itemIndex = this.items.findIndex(item => item.productId == productId);
+			  if (itemIndex) {
+			    this.items.splice(itemIndex, 1);
+			    this.saveToLocalStorage();
+			  }
 			},
 			//Xóa toàn bộ sản phẩm ra giỏ hàng
 			clear(){
@@ -69,9 +71,9 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 			
 			decreaseQty(productId, quantity){
 				var item = this.items.find(item => item.productId == productId);
-				if(item && quantity >= 1){
+				if(item && quantity > 1){
 					item.qty--;
-					console.log(item.qty)
+					console.log(quantity)
 					this.saveToLocalStorage();
 				}
 			},
