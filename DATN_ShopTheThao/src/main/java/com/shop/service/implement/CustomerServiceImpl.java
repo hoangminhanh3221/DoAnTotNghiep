@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.shop.entity.Account;
 import com.shop.entity.Customer;
 import com.shop.repository.CustomerRepository;
 import com.shop.service.CustomerService;
@@ -49,5 +50,11 @@ public class CustomerServiceImpl implements CustomerService{
 	public void deleteCustomer(Integer id) {
 		customerRepository.deleteById(id);
 	}
+
+	@Override
+	public List<Customer> findCustomerByAccount(Account account) {
+		return customerRepository.findByAccount(account);
+	}
+
 
 }

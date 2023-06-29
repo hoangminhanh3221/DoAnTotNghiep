@@ -14,7 +14,5 @@ import com.shop.entity.Customer;
 import com.shop.entity.Product;
 
 public interface AccountRepository  extends JpaRepository<Account, String>{
-	@Query("SELECT c FROM Customer c JOIN c.account a WHERE a.username = :username")
-    Customer findCustomerByUsername(@Param("username") String username);
 
 }

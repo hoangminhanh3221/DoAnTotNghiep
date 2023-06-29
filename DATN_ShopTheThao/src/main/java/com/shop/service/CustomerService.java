@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.shop.entity.Account;
 import com.shop.entity.Customer;
 
 public interface CustomerService {
@@ -21,4 +22,7 @@ public interface CustomerService {
 	Customer updateCustomer(Customer customer);
 	
 	void deleteCustomer(Integer id);
+	
+	List<Customer> findCustomerByAccount(Account account);
+	
 }

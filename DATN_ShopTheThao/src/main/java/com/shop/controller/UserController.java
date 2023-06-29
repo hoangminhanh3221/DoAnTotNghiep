@@ -41,17 +41,39 @@ public class UserController {
 	@Autowired
 	private XDate xDate;
 	
-//	@RequestMapping("/info")
-//	public String getInfo(Model model) throws ParseException {
-//	    Account account = accountService.findAccountById("kiet").orElse(null);  
-//	    Customer customer = account.getCustomers().get(0);
-//	    Address address = customer.getAddress();
-//	    model.addAttribute("account", account);
-//	    model.addAttribute("customer", customer);
-//	    model.addAttribute("address", address);
-//	    return "user-page/user-info";
-//	}
+	@RequestMapping("/info")
+	public String getInfo(Model model) {
+	    Account account = accountService.findAccountById("kiet").orElse(null);  
+	    Customer customers = account.getCustomers().get(0);
+	    model.addAttribute("account", account);
+	    model.addAttribute("customer", customers);
+	    return "user-page/user-info";
+	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public String editInfo(
+			@RequestParam("email") String email
+			,@RequestParam("customerName") String name
+			,@RequestParam("numberHome") String numberHome
+			,@RequestParam("ward") String ward
+			,@RequestParam("district") String district
+			,@RequestParam("city") String city
+		) {
+		Account account = accountService.findAccountById("kiet").orElse(null);
+		Customer oldCustomer = customerService.findCustomerByAccount(account).get(0);
+		Address oldAddress = oldCustomer.getAddress();
+		account.setEmail(email);
+		oldCustomer.setAccount(account);
+		oldAddress.setNumberHome(numberHome);
+		oldAddress.setWard(ward);
+		oldAddress.setDistrict(district);
+		oldAddress.setCity(city);
+		oldCustomer.setCustomerName(name);
+		oldCustomer.setAddress(oldAddress);
+	    accountService.updateAccount(account);
+	    customerService.updateCustomer(oldCustomer);
+	    return "redirect:/user/info";
+	}
 	
 	@RequestMapping("/list-order")
 	public String getListOrder(Model model) {

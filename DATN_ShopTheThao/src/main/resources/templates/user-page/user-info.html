@@ -37,22 +37,25 @@
                 <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
               </div>
             </div>
-			<form class="row">
+			<form class="row" th:action="@{/user/edit}" method="post">
 			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="customerName">Họ Tên</label>
-			            <input type="text" class="form-control" id="customerName" placeholder="Nhập họ tên của bạn" />
+			            <input type="text" class="form-control" id="customerName" placeholder="Nhập họ tên của bạn"
+			             th:value="${customer.customerName}" th:name="customerName"/>
 			        </div>
 			    </div>
 			    <div class="col-6">
 			        <div class="form-group pt-2">
 			            <label for="gender">Giới tính:</label> <br />
 			            <div class="form-check form-check-inline ml-4">
-			                <input class="form-check-input" type="radio" name="gender" id="male"/>
+			                <input class="form-check-input" type="radio" name="gender" id="male" 
+								th:checked="${customer.gender}" value="true"/>
 			                <label class="form-check-label pl-0" for="male"> Nam </label>
 			            </div>	
 			            <div class="form-check form-check-inline ml-5">
-			                <input class="form-check-input" type="radio" name="gender" id="female" />
+			                <input class="form-check-input" type="radio" name="gender" id="female" 
+			                th:checked="${!customer.gender}" value="true"/>
 			                <label class="form-check-label pl-0" for="female"> Nữ </label>
 			            </div>
 			        </div>
@@ -61,37 +64,43 @@
 			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="inputEmail">Email</label>
-			            <input type="email" class="form-control" id="inputEmail" placeholder="Nhập Email của bạn" />
-			        </div>
-			    </div>
-			    <div class="col-6">
-			        <div class="form-group">
-			            <label for="customerAddress">Địa Chỉ:</label>
-			            <input type="text" class="form-control" id="customerAddress" placeholder="Nhập số nhà, tên đường" />
+			            <input type="email" class="form-control" id="inputEmail" placeholder="Nhập Email của bạn" th:name="email"
+			            th:value="${account.email}"/>
 			        </div>
 			    </div>
 			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="phoneNumber">Số điện thoại</label>
-			            <input type="text" class="form-control" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"  />
+			            <input type="text" class="form-control" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
+			             th:value="${customer.phoneNumber}" />
 			        </div>
 			    </div>
-			    <div class="col-4">
+			    <div class="col-6">
+			        <div class="form-group">
+			            <label for="customerAddress">Địa Chỉ:</label>
+			            <input type="text" class="form-control" id="customerAddress" placeholder="Nhập số nhà, tên đường" 
+			            th:value="${customer.address.numberHome}" th:name="numberHome"/>
+			        </div>
+			    </div>
+			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="ward">Phường:</label>
-			            <input type="text" class="form-control" id="ward" placeholder="Phường/Xã" />
+			            <input type="text" class="form-control" id="ward" placeholder="Phường/Xã" 
+			            th:value="${customer.address.ward}" th:name="ward"/>
 			        </div>
 			    </div>
-			    <div class="col-4">
+			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="district">Quận:</label>
-			            <input type="text" class="form-control" id="district" placeholder="Quận/Huyện"/>
+			            <input type="text" class="form-control" id="district" placeholder="Quận/Huyện"
+			            th:value="${customer.address.district}"  th:name="district"/>
 			        </div>
 			    </div>
-			    <div class="col-4">
+			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="city">Thành phố:</label>
-			            <input type="text" class="form-control" id="city" placeholder="Thành Phố/Tỉnh" />
+			            <input type="text" class="form-control" id="city" placeholder="Thành Phố/Tỉnh"
+			            th:value="${customer.address.city}" th:name="city"/>
 			        </div>
 			    </div>
 			    <button type="submit" class="btn btn-primary mr-2 ml-3">Edit</button>
