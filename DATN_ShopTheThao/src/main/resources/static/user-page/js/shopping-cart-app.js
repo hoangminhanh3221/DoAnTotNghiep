@@ -58,6 +58,40 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 				.reduce((total,qty)=> total += qty,0);
 			},
 			
+			updateQty(productId, quantity){
+				var item = this.items.find(item => item.productId == productId);
+				if(item && quantity >= 1){
+					item.qty = quantity;
+					console.log(item.qty)
+					this.saveToLocalStorage();
+				}
+			},
+			
+			decreaseQty(productId, quantity){
+				var item = this.items.find(item => item.productId == productId);
+				if(item && quantity >= 1){
+					item.qty--;
+					console.log(item.qty)
+					this.saveToLocalStorage();
+				}
+			},
+			
+			increaseQty(productId, quantity){
+				var item = this.items.find(item => item.productId == productId);
+				if(item && quantity >= 1){
+					item.qty++;
+					console.log(item.qty)
+					this.saveToLocalStorage();
+				}
+			},
+			
+			//Xóa sản phẩm ra giỏ hàng
+			remove(id){
+				var index = this.items.findIndex(item => item.id == id);
+				this.items.splice(index,1);
+				this.saveToLocalStorage();
+			},
+			
 			//Lưu giỏ hàng vào Local Storage
 			saveToLocalStorage(){
 				var json = JSON.stringify(angular.copy(this.items));

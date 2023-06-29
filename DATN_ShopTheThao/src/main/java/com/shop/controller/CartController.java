@@ -11,16 +11,16 @@ import com.shop.service.ProductService;
 
 @Controller
 public class CartController {
-	
-	//@Autowired
-	//private final ProductService productService;
-	
-	//@Autowired
-	//private final OrderService orderService;
-	
-//	@RequestMapping("/cart/add")
-//	public String getAddCart(Model model) {
-//		return null;
-//	}
-	
+
+	@Autowired
+	private ProductService productService;
+
+	@Autowired
+	private OrderService orderService;
+
+	@RequestMapping("/cart/view")
+	public String getViewCart() {
+		return "user-page/shopping-cart";
+	}
+
 }
