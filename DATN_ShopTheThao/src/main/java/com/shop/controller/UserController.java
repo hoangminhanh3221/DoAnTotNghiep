@@ -2,11 +2,13 @@ package com.shop.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,6 +60,8 @@ public class UserController {
 			,@RequestParam("ward") String ward
 			,@RequestParam("district") String district
 			,@RequestParam("city") String city
+			,@RequestParam("gender") boolean gender
+			,@RequestParam("birthday") String birthdayStr
 		) {
 		Account account = accountService.findAccountById("kiet").orElse(null);
 		Customer oldCustomer = customerService.findCustomerByAccount(account).get(0);
@@ -69,6 +73,15 @@ public class UserController {
 		oldAddress.setDistrict(district);
 		oldAddress.setCity(city);
 		oldCustomer.setCustomerName(name);
+		oldCustomer.setGender(gender);
+		Date birthday = null;
+	    try {
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        birthday = dateFormat.parse(birthdayStr);
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
+	    oldCustomer.setBirthday(birthday);
 		oldCustomer.setAddress(oldAddress);
 	    accountService.updateAccount(account);
 	    customerService.updateCustomer(oldCustomer);
@@ -94,5 +107,9 @@ public class UserController {
 	@RequestMapping("/login")
 	public String getlogin() {
 		return "account/login";
+	}
+	@RequestMapping("/home")
+	public String gethome() {
+		return "user-page/home";
 	}
 }
