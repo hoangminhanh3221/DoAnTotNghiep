@@ -11,11 +11,6 @@
 					Trang Chủ <i class="fa fa-angle-right m-l-9 m-r-10"
 					aria-hidden="true"></i>
 				</a>
-				<!-- 
-				<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-					Danh Sách Sản Phẩm <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a> 
-				 -->
 				<span class="stext-109 cl4"> Danh Sách Sản Phẩm </span>
 			</div>
 		</div>
@@ -197,7 +192,7 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l">
-									<a th:href="@{/product/product-detail/}+${product.productId}"
+									<a th:href="@{|/product/product-detail/${product.productId}|}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" th:text="${product.productName}">
 									</a> 
 									<span class="stext-105 cl3" th:text="${product.sellingPrice}">
