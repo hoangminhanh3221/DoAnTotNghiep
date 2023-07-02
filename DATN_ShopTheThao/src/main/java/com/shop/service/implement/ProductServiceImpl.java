@@ -38,8 +38,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Page<Product> findBySubcategoryID(String subcategoryId, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findAllBySubcategoryId(subcategoryId, pageable);
 	}
 
 	@Override
