@@ -57,6 +57,7 @@ public class ProductController {
 		
 		int totalPages = list.getTotalPages();
 		List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().toList();
+		System.out.println(pageNumbers.get(0));
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("sort", sort.get());
 		return "user-page/product";
