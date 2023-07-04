@@ -3615,4 +3615,25 @@ select option {
       .edit-overlay span {
         cursor: pointer;
       }
-
+#form-info{
+	padding-left: 80px;
+	padding-right: 80px;	
+}
+.one{
+	color: rgb(20, 48, 97);
+	font-weight: bolder;	
+}
+.btnInfo{
+	background-color: rgb(121,134,226);
+	color: white;
+}
+.btnInfo:hover {
+	background-color: white;
+	color: rgb(121,134,226);
+	border-style: solid;
+  	border-color:  rgb(121,134,226);
+}
+#form-change{
+	padding-left: 35%;
+	padding-right: 35%;
+}

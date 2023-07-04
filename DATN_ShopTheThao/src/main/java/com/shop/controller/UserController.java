@@ -104,12 +104,16 @@ public class UserController {
 	    model.addAttribute("orderDetails", orderDetails);
 	    return "user-page/order-detail";
 	}
-	@RequestMapping("/login")
-	public String getlogin() {
-		return "account/login";
-	}
 	@RequestMapping("/home")
 	public String gethome() {
 		return "user-page/home";
 	}
+	
+	@RequestMapping("/change-pass")
+	public String getChangePass(Model model) {
+		Account account = accountService.findAccountById("kiet").orElse(null);
+		model.addAttribute("account", account);
+		return "account/change-pass";
+	}
+
 }
