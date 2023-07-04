@@ -25,12 +25,12 @@ public class Color implements Serializable{
 	
 	@Id
 	@Column(name = "ColorId", columnDefinition = "varchar(10)")
-	private String colorId;
+	public String colorId;
 	
 	@Column(name = "ColorName", columnDefinition = "nvarchar(50)", nullable = false)
-	private String colorName;
+	public String colorName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "color", cascade = CascadeType.ALL)
-	private List<Product> products;   
+	public List<Product> products;   
 }

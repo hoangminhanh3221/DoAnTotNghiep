@@ -25,12 +25,12 @@ public class Size implements Serializable{
 	
 	@Id
 	@Column(name = "SizeId", columnDefinition = "varchar(10)")
-	private String sizeId;
+	public String sizeId;
 	
 	@Column(name = "SizeName", columnDefinition = "varchar(10)", nullable = false)
-	private String sizeName;
+	public String sizeName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "size", cascade = CascadeType.ALL)
-	private List<Product> products;
+	public List<Product> products;
 }
