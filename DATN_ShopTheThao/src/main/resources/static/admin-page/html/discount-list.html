@@ -460,14 +460,8 @@
                 </li>
                 <li class="breadcrumb-item active">Danh Sách Khuyến Mãi</li>
               </ol>
-              <!-- Button trigger modal -->
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style="position: absolute; right: 2%; top: 13%; z-index: 1"
-              >
+              <!-- Button thêm -->
+              <button type="button" class="btn btn-primary" style="position: absolute; right: 2%; top: 13%; z-index: 1">
                 Thêm
               </button>
 
@@ -505,13 +499,7 @@
                         <td>00:00:00 01/07/2023</td>
                         <td>23:59:59 01/07/2023</td>
                         <td>
-                          <a
-                            class="pe-2"
-                            href="javascript:void(0);"
-                            data-bs-toggle="modal"
-                            data-bs-target="#staticBackdropUpdate"
-                            ><i class="bx bx-edit-alt"></i
-                          ></a>
+                          <a class="pe-2" href="javascript:void(0);"><i class="bx bx-edit-alt"></i></a>
                           <a
                             class="ps-2"
                             href="javascript:void(0);"
@@ -519,6 +507,42 @@
                             data-bs-target="#modalToggle"
                             ><i class="bx bx-trash"></i
                           ></a>
+                          <!-- Modal Delete-->
+                          <div
+                            class="modal fade"
+                            id="modalToggle"
+                            aria-labelledby="modalToggleLabel"
+                            tabindex="-1"
+                            style="display: none"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  Bạn thật sự muốn xóa thương hiệu <strong>LuisVuton</strong>
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    class="btn btn-danger"
+                                    data-bs-target="#modalToggle2"
+                                    data-bs-toggle="modal"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Xóa
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -593,126 +617,6 @@
                     class="footer-link me-4"
                     >Support</a
                   >
-                </div>
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="staticBackdrop"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm Khuyến Mãi</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form class="row">
-                          <div class="col-6 mb-3">
-                            <label class="form-label" for="basic-default-fullname">Id Khuyến Mãi</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="basic-default-fullname"
-                              placeholder="vd: S001..."
-                            />
-                          </div>
-                          <div class="col-6 mb-3">
-                            <label class="form-label" for="basic-default-fullname">Tên Khuyến Mãi</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="basic-default-fullname"
-                              placeholder="vd: Small..."
-                            />
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary">Thêm</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal Update-->
-                <div
-                  class="modal fade"
-                  id="staticBackdropUpdate"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cập nhật Khuyến Mãi</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form class="row">
-                          <div class="col-6 mb-3">
-                            <label class="form-label" for="basic-default-fullname">Id Khuyến Mãi</label>
-                            <input
-                              type="text"
-                              disabled="true"
-                              class="form-control"
-                              id="basic-default-fullname"
-                              placeholder="vd: S001..."
-                            />
-                          </div>
-                          <div class="col-6 mb-3">
-                            <label class="form-label" for="basic-default-fullname">Tên Khuyến Mãi</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="basic-default-fullname"
-                              placeholder="vd: Small..."
-                            />
-                          </div>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-success">Cập nhật</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal Delete-->
-                <div
-                  class="modal fade"
-                  id="modalToggle"
-                  aria-labelledby="modalToggleLabel"
-                  tabindex="-1"
-                  style="display: none"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">Bạn thật sự muốn xóa Khuyến Mãi <strong>Medium</strong></div>
-                      <div class="modal-footer">
-                        <button
-                          class="btn btn-danger"
-                          data-bs-target="#modalToggle2"
-                          data-bs-toggle="modal"
-                          data-bs-dismiss="modal"
-                        >
-                          Xóa
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </footer>

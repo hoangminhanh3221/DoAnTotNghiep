@@ -195,7 +195,7 @@
                 </li>
               </ul>
             </li>
-           
+
             <!-- Hóa đơn -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -236,7 +236,7 @@
                     <div data-i18n="Thêm Khách Hàng">Tài Khoản Khách Hàng</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item"></li>
                 <li class="menu-item">
                   <a href="account.html" class="menu-link">
                     <div data-i18n="Thêm Khách Hàng">Tài Khoản Nhân viên</div>
@@ -244,8 +244,6 @@
                 </li>
               </ul>
             </li>
-
-            
 
             <!-- Khuyến mãi -->
             <li class="menu-item">
@@ -463,35 +461,48 @@
                 </li>
                 <li class="breadcrumb-item active" th:utext="${title}">Danh Sách Loại Sản phẩm</li>
               </ol>
-              
 
               <!-- Basic Layout -->
-              <div class="card" style="padding: 40px;">
-                <form class="row">
-                        
-                  <div class="col-6 mb-3">
-                    <label class="form-label" for="basic-default-fullname">Id Loại Sản phẩm</label>
-                    <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001...">
-                  </div>
-                  <div class="col-6 mb-3">
-                    <label class="form-label" for="basic-default-fullname">Tên Loại Sản phẩm</label>
-                    <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Áo Thun...">
-                  </div>
-                  <div class="col-4 mb-3">
-                    <label class="form-label" for="defaultSelect">ID Danh Mục</label>
-                    <select id="defaultSelect" class="form-select">
-                      <option value="0">Lựa chọn</option>
-                      <option value="1">C0001</option>
-                      <option value="2">C0002</option>
-                      <option value="3">C0003</option>
-                    </select>
-                  </div>
-                </form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <button th:if="$status=0" type="button" class="btn btn-primary">Thêm</button>
-                <button th:else type="button" class="btn btn-success">Cập nhật</button>
-              </div>
+              <div class="card" style="height: 495px">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                </div>
+                <div class="card-body">
+                  <form class="row">
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Id Loại Sản phẩm</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001..." />
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Tên Loại Sản phẩm</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: Áo Thun..."
+                      />
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="defaultSelect">ID Danh Mục</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">C0001</option>
+                        <option value="2">C0002</option>
+                        <option value="3">C0003</option>
+                      </select>
+                    </div>
+                    <div class="col-12 h-100">
+                      <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
+                      <button
+                        type="submit"
+                        class="btn btn-outline-danger"
+                        style="position: absolute; bottom: 5%; left: 10%"
+                      >
+                        Thoát
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
               <!-- Basic Layout -->
             </div>
@@ -526,7 +537,6 @@
                     >Support</a
                   >
                 </div>
-              
               </div>
             </footer>
             <!-- / Footer -->
