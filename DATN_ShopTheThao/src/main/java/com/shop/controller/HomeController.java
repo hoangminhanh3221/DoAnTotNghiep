@@ -71,4 +71,9 @@ public class HomeController {
 		return "user-page/list-order";
 	}
 	
+	@RequestMapping("/admin")
+	public String admin() {
+		return "admin-page/size-add";
+	}
+	
 }
