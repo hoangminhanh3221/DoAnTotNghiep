@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+<body>
+	<main>
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0);">Sản Phẩm</a>
+                </li>
+                <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+              </ol>
+
+              <!-- Basic Layout -->
+              <div class="card" style="height: 495px">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0 text-uppercase">Thêm khuyến mãi</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <form class="row">
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Mã khuyến mãi:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="basic-default-fullname"
+                            placeholder="vd: TH001..."
+                          />
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-password32">Phần trăm khuyến mãi:</label>
+                          <div class="input-group input-group-merge">
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="basic-default-password32"
+                              aria-describedby="basic-default-password"
+                              data-listener-added_e96c3c0f="true"
+                            />
+                            <span class="input-group-text cursor-pointer" id="basic-default-password">%</span>
+                          </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày bắt đầu</label>
+                          <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày kết thúc</label>
+                          <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                        </div>
+                        <div class="col-12 h-100">
+                          <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">
+                            Thêm
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn btn-outline-danger"
+                            style="position: absolute; bottom: 5%; left: 10%"
+                          >
+                            Thoát
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-8">
+                      <div class="row" style="height: 250px">
+                        <h5>Chọn sản phẩm áp dụng khuyến mãi này</h5>
+                        <div class="col-6 mb-3">
+                          <label for="defaultSelect" class="form-label">Sản phẩm</label>
+                          <select id="defaultSelect" class="form-select">
+                            <option>Chọn sản phẩm</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label for="defaultSelect" class="form-label">Loại sản phẩm</label>
+                          <select id="defaultSelect" class="form-select">
+                            <option>Chọn loại sản phẩm</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                        <div class="table-responsive text-nowrap h-100">
+                          <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th style="width: 30px">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                                    <label class="form-check-label" for="defaultCheck1"> </label>
+                                  </div>
+                                </th>
+                                <th>STT</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Xóa</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                              <tr>
+                                <td>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                    <label class="form-check-label" for="defaultCheck2"> </label>
+                                  </div>
+                                </td>
+                                <td>1</td>
+                                <td>Sản phẩm 01</td>
+                                <td>
+                                  <a
+                                    class="ps-2"
+                                    href="javascript:void(0);"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalToggle"
+                                    ><i class="bx bx-trash"></i
+                                  ></a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Basic Layout -->
+            </div>
+            <!-- / Content -->
+	</main>
+</body>
+</html>

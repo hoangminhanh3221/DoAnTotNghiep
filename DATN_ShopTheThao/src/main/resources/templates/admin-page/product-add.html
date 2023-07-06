@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+<body>
+	<main>
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0);">Sản Phẩm</a>
+                </li>
+                <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+              </ol>
+
+              <!-- Basic Layout -->
+              <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                </div>
+                <div class="card-body">
+                  <form class="row">
+                    <!-- Mã sản phẩm -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Mã sản phẩm</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                    </div>
+                    <!-- Tên sản phẩm -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Tên sản phẩm</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                    </div>
+                    <!-- Số lượng -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Số lượng</label>
+                      <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: 69..."
+                      />
+                    </div>
+                    <!-- Giá nhập -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-email">Giá nhập</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="number"
+                          min="0"
+                          id="basic-default-email"
+                          class="form-control"
+                          placeholder="vd: 100000..."
+                          aria-label="john.doe"
+                          aria-describedby="basic-default-email2"
+                        />
+                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
+                      </div>
+                      <div class="form-text">error</div>
+                    </div>
+                    <!-- Giá bán -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-email">Giá bán</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                          type="number"
+                          min="0"
+                          id="basic-default-email"
+                          class="form-control"
+                          placeholder="vd: 100000..."
+                          aria-label="john.doe"
+                          aria-describedby="basic-default-email2"
+                        />
+                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
+                      </div>
+                      <div class="form-text">Đơn vị tiền tệ Việt Nam</div>
+                    </div>
+                    <!-- Chất liệu -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Chất liệu</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Lụa" />
+                    </div>
+                    <!-- Loại sp -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Loại sản phẩm:</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">H001</option>
+                        <option value="2">H002</option>
+                        <option value="3">H003</option>
+                      </select>
+                    </div>
+                    <!-- Thương hiệu -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Thương hiệu:</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">C001</option>
+                        <option value="2">C002</option>
+                        <option value="3">C003</option>
+                      </select>
+                    </div>
+                    <!-- Màu sắc -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Màu sắc:</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">TL001</option>
+                        <option value="2">TL002</option>
+                        <option value="3">TL003</option>
+                      </select>
+                    </div>
+                    <!-- Kích thước -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Kích thước:</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">S001</option>
+                        <option value="2">S002</option>
+                        <option value="3">S003</option>
+                      </select>
+                    </div>
+                    <!-- Khuyến mãi -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="defaultSelect">Khuyến mãi:</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">GG001</option>
+                        <option value="2">GG002</option>
+                        <option value="3">GG003</option>
+                      </select>
+                    </div>
+                    <!-- Ngày nhập -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Ngày nhập</label>
+                      <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                    </div>
+                    <!-- Trạng thái -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="defaultSelect">Trạng thái</label>
+                      <select id="defaultSelect" class="form-select">
+                        <option value="0">Lựa chọn</option>
+                        <option value="1">Đang bán</option>
+                        <option value="2">Không bán</option>
+                      </select>
+                    </div>
+                    <!-- Chọn hình ảnh 1 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile1" class="form-label">Chọn hình ảnh 1:</label>
+                      <input class="form-control" type="file" id="formFile1" />
+                    </div>
+                    <!-- Chọn hình ảnh 2 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile2" class="form-label">Chọn hình ảnh 2:</label>
+                      <input class="form-control" type="file" id="formFile2" />
+                    </div>
+                    <!-- Chọn hình ảnh 3 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile3" class="form-label">Chọn hình ảnh 3:</label>
+                      <input class="form-control" type="file" id="formFile3" />
+                    </div>
+                    <!-- Chọn hình ảnh 4 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile4" class="form-label">Chọn hình ảnh 4:</label>
+                      <input class="form-control" type="file" id="formFile4" />
+                    </div>
+                    <!-- Mô tả -->
+                    <div class="col-12 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Mô tả</label>
+                      <textarea
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: mô tả"
+                        name=""
+                        id=""
+                        cols="30"
+                        rows="2"
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Thêm</button>
+                      <button type="submit" class="btn btn-outline-danger">Thoát</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- Basic Layout -->
+            </div>
+            <!-- / Content -->
+	</main>
+</body>
+</html>
