@@ -12,7 +12,13 @@ public interface ProductService {
 	
 	Page<Product> findAllProduct(Pageable pageable);
 	
+	Page<Product> findBySubcategoryID(String subcategoryId,Pageable pageable);
+	
+	Page<Product> findByCategoryID(String categoryId,Pageable pageable);
+	
 	List<Product> findAllProduct();
+	
+	List<Product> findByCategoryID(String cid);
 
 	Optional<Product> findProductById(String id);
 	

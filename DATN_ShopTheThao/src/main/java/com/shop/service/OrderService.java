@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.shop.entity.Order;
 
 public interface OrderService{
@@ -14,6 +15,8 @@ public interface OrderService{
 	Page<Order> findAllOrders(Pageable pageable);
 	
 	Optional<Order> findOrderById(Integer orderId);
+	
+	Order createJson(JsonNode orderData);
 	
 	Order createOrder(Order order);
 	

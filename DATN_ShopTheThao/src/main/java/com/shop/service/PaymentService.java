@@ -17,7 +17,7 @@ public interface PaymentService {
 
     Optional<Payment> findPaymentById(Integer paymentId);
 
-    Payment createPayment(String paymentMethod, Double paymentAmount, Date paymentDate, Boolean paymentStatus, Order order);
+    Payment createPayment(Payment payment);
 
     Payment updatePayment(Payment payment);
 
