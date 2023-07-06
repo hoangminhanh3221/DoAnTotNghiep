@@ -47,4 +47,47 @@ public class Feedback implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
 	private Account account;
+
+	public Integer getFeedbackId() {
+		return feedbackId;
+	}
+
+	public void setFeedbackId(Integer feedbackId) {
+		this.feedbackId = feedbackId;
+	}
+
+	public String getReviewContent() {
+		return reviewContent;
+	}
+
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
+	}
+
+	public Date getReviewDate() {
+		return reviewDate;
+	}
+
+	public void setReviewDate(Date reviewDate) {
+		this.reviewDate = reviewDate;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	
+	
+	
 }
