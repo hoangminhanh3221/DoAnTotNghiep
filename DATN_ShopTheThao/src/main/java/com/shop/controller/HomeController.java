@@ -197,4 +197,9 @@ public class HomeController {
 		getDiscountProducts();
         
     }
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin-page/dashboard";
+	}
 }

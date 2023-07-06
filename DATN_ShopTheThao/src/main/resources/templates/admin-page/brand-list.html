@@ -1,142 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+
 <body>
 	<main>
-            <!-- Content -->
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="javascript:void(0);">Sản Phẩm</a>
-                </li>
-                <li class="breadcrumb-item active">Danh Sách Thương Hiệu</li>
-              </ol>
-              <!-- Button thêm -->
-              <button type="button" class="btn btn-primary" style="position: absolute; right: 2%; top: 13%; z-index: 1">
-                Thêm
-              </button>
+		<!-- Content -->
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="javascript:void(0);">Sản
+						Phẩm</a></li>
+				<li class="breadcrumb-item active">Danh Sách Thương Hiệu</li>
+			</ol>
+			<!-- Button thêm -->
+			<button type="button" class="btn btn-primary"
+				style="position: absolute; right: 2%; top: 13%; z-index: 1">
+				Thêm</button>
 
-              <!-- Trang chính -->
-              <div class="card" style="height: 975px">
-                <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>
-                          <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label class="form-check-label" for="defaultCheck1"> </label>
-                          </div>
-                        </th>
-                        <th>STT</th>
-                        <th>Mã Thương Hiệu</th>
-                        <th>Tên Thương Hiệu</th>
-                        <th>Nguồn gốc</th>
-                        <th>Hành Động</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                      <tr>
-                        <td>
-                          <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label class="form-check-label" for="defaultCheck1"> </label>
-                          </div>
-                        </td>
-                        <td>1</td>
-                        <td>TH0001</td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>LuonVuiTuoi</strong></td>
-                        <td>Anh</td>
-                        <td>
-                          <a class="pe-2" href="javascript:void(0);"><i class="bx bx-edit-alt"></i></a>
-                          <a
-                            class="ps-2"
-                            href="javascript:void(0);"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalToggle"
-                            ><i class="bx bx-trash"></i
-                          ></a>
-                          <!-- Modal Delete-->
-                          <div
-                            class="modal fade"
-                            id="modalToggle"
-                            aria-labelledby="modalToggleLabel"
-                            tabindex="-1"
-                            style="display: none"
-                            aria-hidden="true"
-                          >
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
-                                  <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                  ></button>
-                                </div>
-                                <div class="modal-body">
-                                  Bạn thật sự muốn xóa thương hiệu <strong>LuisVuton</strong>
-                                </div>
-                                <div class="modal-footer">
-                                  <button
-                                    class="btn btn-danger"
-                                    data-bs-target="#modalToggle2"
-                                    data-bs-toggle="modal"
-                                    data-bs-dismiss="modal"
-                                  >
-                                    Xóa
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--/ Trang chính -->
+			<!-- Trang chính -->
+			<div class="card" style="height: 975px">
+				<div class="table-responsive text-nowrap">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									<div class="form-check mt-3">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1" /> <label class="form-check-label"
+											for="defaultCheck1"> </label>
+									</div>
+								</th>
+								<th>STT</th>
+								<th>Mã Thương Hiệu</th>
+								<th>Tên Thương Hiệu</th>
+								<th>Nguồn gốc</th>
+								<th>Hành Động</th>
+							</tr>
+						</thead>
+						<tbody class="table-border-bottom-0">
+							<tr>
+								<td>
+									<div class="form-check mt-3">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1" /> <label class="form-check-label"
+											for="defaultCheck1"> </label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>TH0001</td>
+								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>LuonVuiTuoi</strong></td>
+								<td>Anh</td>
+								<td><a class="pe-2" href="javascript:void(0);"><i
+										class="bx bx-edit-alt"></i></a> <a class="ps-2"
+									href="javascript:void(0);" data-bs-toggle="modal"
+									data-bs-target="#modalToggle"><i
+										class="bx bx-trash"></i></a> <!-- Modal Delete-->
+									<div class="modal fade" id="modalToggle"
+										aria-labelledby="modalToggleLabel" tabindex="-1"
+										style="display: none" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="modalToggleLabel">Thông
+														báo xác nhận</h5>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													Bạn thật sự muốn xóa thương hiệu <strong>LuisVuton</strong>
+												</div>
+												<div class="modal-footer">
+													<button class="btn btn-danger"
+														data-bs-target="#modalToggle2" data-bs-toggle="modal"
+														data-bs-dismiss="modal">
+														Xóa</button>
+												</div>
+											</div>
+										</div>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--/ Trang chính -->
 
-              <div class="demo-inline-spacing">
-                <!-- Phân trang -->
-                <nav aria-label="Page navigation">
-                  <ul class="pagination">
-                    <li class="page-item first">
-                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-left"></i></a>
-                    </li>
-                    <li class="page-item prev">
-                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="javascript:void(0);">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:void(0);">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:void(0);">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:void(0);">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:void(0);">5</a>
-                    </li>
-                    <li class="page-item next">
-                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevron-right"></i></a>
-                    </li>
-                    <li class="page-item last">
-                      <a class="page-link" href="javascript:void(0);"><i class="tf-icon bx bx-chevrons-right"></i></a>
-                    </li>
-                  </ul>
-                </nav>
-                <!--/ Phân trang -->
-              </div>
-            </div>
-            <!-- / Content -->
+			<div class="demo-inline-spacing">
+				<!-- Phân trang -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination">
+						<li class="page-item first"><a class="page-link"
+							href="javascript:void(0);"><i
+								class="tf-icon bx bx-chevrons-left"></i></a></li>
+						<li class="page-item prev"><a class="page-link"
+							href="javascript:void(0);"><i
+								class="tf-icon bx bx-chevron-left"></i></a></li>
+						<li class="page-item active"><a class="page-link"
+							href="javascript:void(0);">1</a></li>
+						<li class="page-item"><a class="page-link"
+							href="javascript:void(0);">2</a></li>
+						<li class="page-item"><a class="page-link"
+							href="javascript:void(0);">3</a></li>
+						<li class="page-item"><a class="page-link"
+							href="javascript:void(0);">4</a></li>
+						<li class="page-item"><a class="page-link"
+							href="javascript:void(0);">5</a></li>
+						<li class="page-item next"><a class="page-link"
+							href="javascript:void(0);"><i
+								class="tf-icon bx bx-chevron-right"></i></a></li>
+						<li class="page-item last"><a class="page-link"
+							href="javascript:void(0);"><i
+								class="tf-icon bx bx-chevrons-right"></i></a></li>
+					</ul>
+				</nav>
+				<!--/ Phân trang -->
+			</div>
+		</div>
+		<!-- / Content -->
 	</main>
 </body>
 </html>

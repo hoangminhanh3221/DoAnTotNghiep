@@ -10,28 +10,22 @@
                 <li class="breadcrumb-item">
                   <a href="javascript:void(0);">Sản Phẩm</a>
                 </li>
-                <li class="breadcrumb-item active" th:utext="${title}">Danh Sách Loại Sản phẩm</li>
+                <li class="breadcrumb-item active" th:utext="title">Thêm Kích thước</li>
               </ol>
-
               <!-- Basic Layout -->
               <div class="card" style="height: 495px">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm danh mục</h5>
+                  <h5 class="mb-0 text-uppercase">Thêm kích thước</h5>
                 </div>
                 <div class="card-body">
                   <form class="row">
                     <div class="col-6 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Mã danh mục</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001..." />
+                      <label class="form-label" for="basic-default-fullname">Id Khích Thước</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: S001..." />
                     </div>
                     <div class="col-6 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Teeb danh mục</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="basic-default-fullname"
-                        placeholder="vd: Áo Thun..."
-                      />
+                      <label class="form-label" for="basic-default-fullname">Tên Khích Thước</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Small..." />
                     </div>
                     <div class="col-12 h-100">
                       <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
