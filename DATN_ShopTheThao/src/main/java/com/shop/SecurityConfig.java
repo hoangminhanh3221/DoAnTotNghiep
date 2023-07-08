@@ -25,10 +25,8 @@ import com.shop.service.AccountService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
-	}
+	@Autowired
+	BCryptPasswordEncoder pe;
 	
 	@Autowired
 	AccountService accountService;
@@ -39,9 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			try { 
 				  Optional<Account> user = accountService.findAccountById(username);
 				  
-				  BCryptPasswordEncoder passwordEncoder = passwordEncoder();
-				  String password = passwordEncoder.encode(user.get().getPassword());;
+//				  BCryptPasswordEncoder passwordEncoder = passwordEncoder();
+				  String password = pe.encode(user.get().getPassword());;
 				  
+//				  String password = user.get().getPassword();
 				  String[] roles = user.stream() 
 						  		.map(er -> er.getRole())
 						  		.collect(Collectors.toList()).toArray(new String[0]);
@@ -53,24 +52,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		});
 	}
 	
-	//Phân quyền sử dụng
+	//Phân quyền 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-        http.csrf().disable();
+		//CSRF,CORS
+        http.csrf().disable().cors().disable();
+        
+        //Phân quyền sử dụng
 		http.authorizeHttpRequests()
+			.antMatchers("/rest/authorities").hasRole("admin")
+			.antMatchers("/admin/**").hasAnyRole("admin","user")
 			.antMatchers("/order/**").authenticated()
-			.antMatchers("/admin/**").hasAnyRole("STAF","DIRE")
-			.antMatchers("/rest/authorities").hasRole("DIRE")
-			.anyRequest().permitAll();
+			.anyRequest().permitAll();//khách chưa có tham gia
+		
+		//Giao diện login
         http.formLogin(login -> login
                 .loginPage("/account/login/form")
-                .loginProcessingUrl("/account/login/go")
+                .loginProcessingUrl("/account/login")
                 .defaultSuccessUrl("/account/login/success", false)
-                .failureUrl("/account/login/error"));
+                .failureUrl("/account/login/error")
+                .usernameParameter("email-username")
+                .passwordParameter("password"));
         http.rememberMe(me -> me
-                .tokenValiditySeconds(86400));
+                .rememberMeParameter("remember"));
+        
         http.exceptionHandling(handling -> handling
                 .accessDeniedPage("/account/unauthoried"));
+        //Đăng xuất
         http.logout(logout -> logout
                 .logoutUrl("/account/logoff")
                 .logoutSuccessUrl("/account/logoff/success"));
