@@ -70,19 +70,4 @@ public class HomeController {
 	public String getList() {
 		return "user-page/list-order";
 	}
-	
-<<<<<<< HEAD
-	@Scheduled(fixedDelay = 5000) // Tải lại sau mỗi 1 phút (60 giây)
-    public void updateProducts() {
-        // Gọi phương thức loadProducts() định kỳ để tải sản phẩm khuyến mãi mới
-		getDiscountProducts();
-        
-    }
-	
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin-page/dashboard";
-	}
-=======
->>>>>>> parent of 1ed2f6f (merge dung)
 }
