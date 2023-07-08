@@ -34,36 +34,10 @@
                   <a href="product.html">Sản phẩm</a>
                 </li>
 
-                <li class="active-menu">
-                  <a th:href="@{/product/do-nam}">Đồ Nam</a>
+                <li class="active-menu" th:each="category : ${categories}">
+                  <a th:href="@{|/product/list?category=${category.categoryId}|}" th:text="${category.categoryName}">Đồ Nam</a>
                   <ul class="sub-menu">
-                    <li><a th:href="@{/product/do-nam/ao-balo}">Áo Tập Gym</a></li>
-                    <li><a th:href="@{/product/do-nam/quan-dui}">Quần Tập Gym</a></li>
-                    <li><a th:href="@{/product/do-nam/ao-thun}">Áo Thun</a></li>
-                    <li><a th:href="@{/product/do-nam/quan-dai}">Quần Dài</a></li>
-                    <li><a th:href="@{/product/do-nam/ao-khoac}">Áo Khoác</a></li>
-                  </ul>
-                </li>
-
-                <li class="active-menu">
-                  <a th:href="@{/product/do-nu}">Đồ Nữ</a>
-                  <ul class="sub-menu">
-                    <li><a th:href="@{/product/do-nu/quan-ngan}">Quần Tập Yoga</a></li>
-                    <li><a th:href="@{/product/do-nu/ao-thun}">Áo Thun</a></li>
-                    <li><a th:href="@{/product/do-nu/quan-dai}">Quần Dài</a></li>
-                    <li><a th:href="@{/product/do-nu/ao-khoac}">Áo Khoác</a></li>
-                    <li><a th:href="@{/product/do-nu/ao-tanktop}">Áo CropTop</a></li>
-                  </ul>
-                </li>
-                <li class="active-menu">
-                  <a href="#">Phụ Kiện</a>
-                  <ul class="sub-menu">
-                    <li><a href="#">Tất/Vớ</a></li>
-                    <li><a href="#">Băng Bảo Vệ</a></li>
-                    <li><a href="#">Dây Nhảy</a></li>
-                    <li><a href="#">Găng Tay</a></li>
-                    <li><a href="#">Thảm Yoga</a></li>
-                    <li><a href="#">Túi Thể Thao</a></li>
+                    <li th:each="subcategory : ${__${category.categoryId}__}"><a th:href="@{|/product/list?subcategory=${subcategory.subcategoryId}|}" th:text="${subcategory.subcategoryName}">Áo Tập Gym</a></li>
                   </ul>
                 </li>
                 <li>

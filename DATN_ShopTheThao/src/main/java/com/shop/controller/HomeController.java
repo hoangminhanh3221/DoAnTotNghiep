@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/admin")
 public class HomeController {
 	
 	@RequestMapping("/product/do-nu")
@@ -71,7 +72,7 @@ public class HomeController {
 		return "user-page/list-order";
 	}
 	
-	@RequestMapping("/admin")
+	@RequestMapping("/size")
 	public String admin() {
 		return "admin-page/size-add";
 	}

@@ -1,5 +1,6 @@
 package com.shop.controller;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,24 +20,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shop.entity.Category;
 import com.shop.entity.Product;
+import com.shop.entity.Subcategory;
+import com.shop.service.CategoryService;
 import com.shop.service.ProductService;
+import com.shop.service.SubcategoryService;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 
 	@Autowired
-	private final ProductService productService;
-
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+	private ProductService productService;
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
+	private SubcategoryService subcategoryService;
 
 	@RequestMapping("/list")
 	public String list(
 			Model model, 
 			@RequestParam(value = "categoryId", defaultValue = "null") Optional<String> categoryId,
+			@RequestParam(value = "subcategoryId", defaultValue = "null") Optional<String> subcategoryId,
 			@RequestParam("page") Optional<Integer> page,
 			@RequestParam(value = "sortBy", defaultValue = "null") Optional<String> sort
 		) {
@@ -84,5 +92,6 @@ public class ProductController {
 			return "redirect:/product/list-all-product";
 		}
 	}
+	
 
 }
