@@ -8,37 +8,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SecurityController {
 	@RequestMapping("/account/login/form")
 	public String loginForm(Model model) {
-		model.addAttribute("message","Vui lòng đăng nhập");
 		return "/account/login";
 	}
 	
-	@RequestMapping("/account/login/forgot-password")
+	@RequestMapping("/account/forgot-password")
 	public String forgotPass(Model model) {
-		model.addAttribute("message","Vui lòng đăng nhập");
 		return "/account/forgot-password";
 	}
 	
 	@RequestMapping("/account/login/success")
 	public String loginSuccess(Model model) {
-		model.addAttribute("message","Đăng nhập thành công");
-		return "/account/login";
+		return "/user-page/home";
 	}
 	
 	@RequestMapping("/account/login/error")
 	public String loginError(Model model) {
-		model.addAttribute("message","Sai thông tin");
 		return "/account/login";
+	}
+	
+	@RequestMapping("/user-page/home")
+	public String homeLoad(Model model) {
+		return "/user-page/home";
 	}
 	
 	@RequestMapping("/account/unauthoried")
 	public String unauthoried(Model model) {
-		model.addAttribute("message","Không có quyền");
 		return "/account/login";
 	}
 	
 	@RequestMapping("/account/logoff/success")
 	public String logoffSuccess(Model model) {
-		model.addAttribute("message","Bạn đã đăng xuất");
 		return "/account/login";
 	}
+	
+	@RequestMapping("/account/register")
+	public String accRegister(Model model) {
+		return "/account/register";
+	}
+	
 }
