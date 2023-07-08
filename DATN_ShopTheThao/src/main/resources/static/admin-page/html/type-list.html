@@ -233,13 +233,7 @@
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="account.html" class="menu-link">
-                    <div data-i18n="Thêm Khách Hàng">Tài Khoản Khách Hàng</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                <li class="menu-item">
-                  <a href="account.html" class="menu-link">
-                    <div data-i18n="Thêm Khách Hàng">Tài Khoản Nhân viên</div>
+                    <div data-i18n="Thêm Khách Hàng">Tài Khoản</div>
                   </a>
                 </li>
               </ul>
@@ -464,12 +458,39 @@
                 <li class="breadcrumb-item active">Danh Sách Loại Sản phẩm</li>
               </ol>
               <!-- Button trigger modal -->
-              <a href="subcategory-add.html" class="btn btn-primary" style="position: absolute;
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="position: absolute;
               right:2%;top:13%;z-index:1;">
                 Thêm
-            </a>
+            </button>
 
               <!-- Basic Layout -->
+<<<<<<< HEAD:DATN_ShopTheThao/src/main/resources/static/admin-page/html/size-add.html
+              <div class="card" style="height: 495px">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0 text-uppercase">Thêm kích thước</h5>
+                </div>
+                <div class="card-body">
+                  <form class="row">
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Id Khích Thước</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: S001..." />
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Tên Khích Thước</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Small..." />
+                    </div>
+                    <div class="col-12 h-100">
+                      <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
+                      <button
+                        type="submit"
+                        class="btn btn-outline-danger"
+                        style="position: absolute; bottom: 5%; left: 10%"
+                      >
+                        Thoát
+                      </button>
+                    </div>
+                  </form>
+=======
               <div class="card" style="height: 975px">
                 <div class="table-responsive text-nowrap">
                   <table class="table">
@@ -516,6 +537,7 @@
                       
                     </tbody>
                   </table>
+>>>>>>> parent of 1ed2f6f (merge dung):DATN_ShopTheThao/src/main/resources/static/admin-page/html/type-list.html
                 </div>
               </div>
               <!-- Basic Layout -->
@@ -587,7 +609,96 @@
                     >Support</a
                   >
                 </div>
-                
+                <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm Loại Sản phẩm</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="row">
+                        
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Id Loại Sản phẩm</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001...">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Tên Loại Sản phẩm</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Áo Thun...">
+                        </div>
+                        <div class="col-4 mb-3">
+                          <label class="form-label" for="defaultSelect">ID Danh Mục</label>
+                          <select id="defaultSelect" class="form-select">
+                            <option value="0">Lựa chọn</option>
+                            <option value="1">C0001</option>
+                            <option value="2">C0002</option>
+                            <option value="3">C0003</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-primary">Thêm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Update-->
+              <div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cập nhật Loại Sản phẩm</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="row">
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Id Loại Sản phẩm</label>
+                          <input type="text" disabled="true" class="form-control" id="basic-default-fullname" placeholder="vd: T0001...">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Tên Loại Sản phẩm</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Áo Thun...">
+                        </div>
+                        <div class="col-4 mb-3">
+                          <label class="form-label" for="defaultSelect">ID Danh Mục</label>
+                          <select id="defaultSelect" class="form-select">
+                            <option value="0">Lựa chọn</option>
+                            <option value="1">C0001</option>
+                            <option value="2">C0002</option>
+                            <option value="3">C0003</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-success">Cập nhật</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Delete-->
+              <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">Bạn thật sự muốn xóa Loại Sản phẩm <strong>Áo Tank top</strong></div>
+                    <div class="modal-footer">
+                      <button class="btn btn-danger" data-bs-target="#modalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Xóa
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               </div>
             </footer>
             <!-- / Footer -->

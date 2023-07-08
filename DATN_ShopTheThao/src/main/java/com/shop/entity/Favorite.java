@@ -29,39 +29,14 @@ public class Favorite implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FavoriteId")
-	public Integer favoriteId;
+	private Integer favoriteId;
 	
 	@ManyToOne
 	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
-	public Account account;
+	private Account account;
 	
 	@ManyToOne
 	@JoinColumn(name = "ProductId", referencedColumnName = "ProductId", nullable = false)
 	private Product product;
-
-	public Integer getFavoriteId() {
-		return favoriteId;
-	}
-
-	public void setFavoriteId(Integer favoriteId) {
-		this.favoriteId = favoriteId;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	
 	
 }

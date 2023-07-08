@@ -22,6 +22,4 @@ public interface ProductService {
 
 	void deleteProduct(String id);
 	
-	List<Product> getProductsSortByDateDesc();
-	
 }
