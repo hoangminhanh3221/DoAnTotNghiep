@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0);">Sản Phẩm</a>
+                </li>
+                <li class="breadcrumb-item active" th:utext="${title}">Danh Sách Loại Sản phẩm</li>
+              </ol>
+
+              <!-- Basic Layout -->
+              <div class="card" style="height: 495px">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0 text-uppercase">Thêm danh mục</h5>
+                </div>
+                <div class="card-body">
+                  <form class="row">
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Mã danh mục</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001..." />
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Teeb danh mục</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: Áo Thun..."
+                      />
+                    </div>
+                    <div class="col-12 h-100">
+                      <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
+                      <button
+                        type="submit"
+                        class="btn btn-outline-danger"
+                        style="position: absolute; bottom: 5%; left: 10%"
+                      >
+                        Thoát
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- Basic Layout -->
+            </div>
+            <!-- / Content -->
+	</main>
+</body>
+</html>
