@@ -52,4 +52,8 @@ public class Address implements Serializable{
 	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
 	private List<Employee> employees;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+	private List<OrderInfo> orderInfos;
+	
 }
