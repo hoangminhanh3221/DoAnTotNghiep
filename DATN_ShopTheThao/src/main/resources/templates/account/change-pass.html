@@ -115,6 +115,7 @@ width: 150px;
 										class="bx bx-hide"></i></span>
 								</div>
 							</div>
+							<input type="text" name="confirm" style="display: none"/>
 							<button type="submit" class="btn btn-primary d-grid w-100">Lưu mật khẩu</button>
 						</form>
 							<a th:href="@{/user/home}"> <button class="btn btn-secondary d-grid w-100"> Trở về</button> </a>
@@ -129,11 +130,17 @@ width: 150px;
 
 	<script th:inline="javascript">
 		var status = /*[[${status}]]*/ 1;
-	    if (status == 0) {
-	    	var result = confirm("Đổi mật khẩu thành công, bạn muốn đi đến trang chủ chứ ?");
+	    if (status == 2) {
+	    	var result = confirm("Hãy vào gmail để xác nhận đổi mật khẩu Gmail của bạn");
 	        if (result) {
-	        	window.location.href = "/home";
+	        	window.location.href = "https://mail.google.com/";
 	        }
+	    }
+		if (status == 0) {
+		    	var result = confirm("Đổi mật khẩu thành công, bạn muốn đi đến trang chủ chứ ?");
+		        if (result) {
+		        	window.location.href = "/home";
+		    }
 	    }
 	</script>
 	<!-- Core JS -->

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Account;
 import com.shop.service.AccountService;
+import com.shop.service.MailService;
 
 
 
@@ -19,6 +20,9 @@ public class AccountController {
 	
 	@Autowired
 	AccountService accountService;
+	
+	@Autowired
+	MailService mailService;
 
 	@GetMapping("/changepass")
 	public String getChangePassForm(Model model) {
@@ -30,7 +34,8 @@ public class AccountController {
 	public String getChangePass(Model model,
 			@RequestParam("password") String password, 
 			@RequestParam("newpass") String newpass, 
-			@RequestParam("newpassconfirm")String newpassconfirm) {
+			@RequestParam("newpassconfirm")String newpassconfirm,
+			@RequestParam("confirm") String confirm) {
 		
 		String pattern1 = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$";
 		String pattern2 = "^[a-zA-Z\\d]{6,15}";
@@ -39,7 +44,7 @@ public class AccountController {
 		boolean isMatch2 = Pattern.matches(pattern2, newpass);
 		
 		String message= "";
-		String username= "kiet";
+		String username= "dung";
 	
 	if (newpass=="") {
 		message="Mật khẩu mới không được để trống";
@@ -62,9 +67,10 @@ public class AccountController {
 		if (acc.getPassword().equalsIgnoreCase(password)) {
 			if (newpass.equalsIgnoreCase(newpassconfirm)) {
 				acc.setPassword(newpass);
-				accountService.updateAccount(acc);
-				message="Đổi mật khẩu thành công";
-				model.addAttribute("status", 0);
+				mailService.sendEmail(acc.getEmail(),
+								"Xác nhận đổi mật khẩu","Hãy nhấn vào liên kết dưới đây để đối mật khẩu "
+								+ ": http://localhost:8080/changepass/change/confirm/?id="+acc.getUsername()+"&pass="+newpass);
+				message="Hãy vào gmail để xác nhận đổi mật khẩu của bạn";
 			}else {
 				message="Mật khẩu và mật khẩu xác nhận không giống nhau";
 			}
@@ -72,8 +78,21 @@ public class AccountController {
 		else {
 			message="Mật khẩu hiện tại không đúng";
 		}
+		model.addAttribute("status", 2);
 		model.addAttribute("message", message);
 		return "account/change-pass";
 	}
-
+	@GetMapping("/changepass/change/confirm")
+	public String getChangePass(Model model,
+			@RequestParam("id") String id, 
+			@RequestParam("pass") String pass) {
+		
+		Account acc=  accountService.findAccountById(id).get();
+		acc.setPassword(pass);
+		accountService.updateAccount(acc);
+		
+		model.addAttribute("status", 0);
+		model.addAttribute("message", "Đổi mật khẩu thành công");
+		return "account/change-pass";
+	}
 }
