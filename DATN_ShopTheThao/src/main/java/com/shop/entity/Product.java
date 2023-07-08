@@ -94,5 +94,10 @@ public class Product implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Feedback> feedbacks;
+
+	public char[] getProductName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	 
 }
