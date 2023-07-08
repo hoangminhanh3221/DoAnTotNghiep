@@ -13,24 +13,5 @@ import com.shop.service.ProductService;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-	
-	@Autowired
-	private final ProductService productService;
 
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
-	
-	@RequestMapping("/list-all-product")
-	public String getProduct(Model model) {
-		List<Product> lisProducts = productService.findAllProduct();
-		model.addAttribute("products", lisProducts);
-		return "user-page/product";
-	}
-	
-	@RequestMapping("/home")
-	public String gethome() {
-		return "user-page/home";
-	}
-	
 }
