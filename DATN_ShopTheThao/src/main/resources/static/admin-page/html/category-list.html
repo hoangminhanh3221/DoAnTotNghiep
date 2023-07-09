@@ -195,7 +195,7 @@
                 </li>
               </ul>
             </li>
-
+           
             <!-- Hóa đơn -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -238,6 +238,8 @@
                 </li>
               </ul>
             </li>
+
+            
 
             <!-- Khuyến mãi -->
             <li class="menu-item">
@@ -455,10 +457,11 @@
                 </li>
                 <li class="breadcrumb-item active">Danh Sách Danh Mục</li>
               </ol>
-              <!-- Button thêm -->
-              <button type="button" class="btn btn-primary" style="position: absolute; right: 2%; top: 13%; z-index: 1">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="position: absolute;
+              right:2%;top:13%;z-index:1;">
                 Thêm
-              </button>
+            </button>
 
               <!-- Basic Layout -->
               <div class="card" style="height: 975px">
@@ -466,12 +469,6 @@
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>
-                          <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label class="form-check-label" for="defaultCheck1"> </label>
-                          </div>
-                        </th>
                         <th>STT</th>
                         <th>Mã Danh Mục</th>
                         <th>Tên Danh Mục</th>
@@ -480,62 +477,33 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                       <tr>
-                        <td>
-                          <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label class="form-check-label" for="defaultCheck1"> </label>
-                          </div>
-                        </td>
                         <td>1</td>
                         <td>C0001</td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Áo Nam</strong></td>
                         <td>
-                          <a class="pe-2" href="javascript:void(0);"><i class="bx bx-edit-alt"></i></a>
-                          <a
-                            class="ps-2"
-                            href="javascript:void(0);"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalToggle"
-                            ><i class="bx bx-trash"></i
-                          ></a>
-                          <!-- Modal Delete-->
-                          <div
-                            class="modal fade"
-                            id="modalToggle"
-                            aria-labelledby="modalToggleLabel"
-                            tabindex="-1"
-                            style="display: none"
-                            aria-hidden="true"
-                          >
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
-                                  <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                  ></button>
-                                </div>
-                                <div class="modal-body">
-                                  Bạn thật sự muốn xóa thương hiệu <strong>LuisVuton</strong>
-                                </div>
-                                <div class="modal-footer">
-                                  <button
-                                    class="btn btn-danger"
-                                    data-bs-target="#modalToggle2"
-                                    data-bs-toggle="modal"
-                                    data-bs-dismiss="modal"
-                                  >
-                                    Xóa
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate"><i class="bx bx-edit-alt"></i></a>
+                          <a class="ps-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalToggle"><i class="bx bx-trash"></i></a>
                         </td>
                       </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>C0002</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Quần Nam</strong></td>
+                        <td>
+                          <a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate"><i class="bx bx-edit-alt"></i></a>
+                          <a class="ps-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalToggle"><i class="bx bx-trash"></i></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>C0003</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Phụ Kiện</strong></td>
+                        <td>
+                          <a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate"><i class="bx bx-edit-alt"></i></a>
+                          <a class="ps-2" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalToggle"><i class="bx bx-trash"></i></a>
+                        </td>
+                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>
@@ -609,6 +577,78 @@
                     >Support</a
                   >
                 </div>
+                <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm Danh Mục</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="row">
+                        
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Id Danh Mục</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: C0001...">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Tên Danh Mục</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Áo Nữ...">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-primary">Thêm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Update-->
+              <div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cập nhật Danh Mục</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="row">
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Id Danh Mục</label>
+                          <input type="text" disabled="true" class="form-control" id="basic-default-fullname" placeholder="vd: C0001...">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Tên Danh Mục</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Áo Nữ...">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="button" class="btn btn-success">Cập nhật</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Delete-->
+              <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">Bạn thật sự muốn xóa Danh Mục <strong>Áo Nam</strong></div>
+                    <div class="modal-footer">
+                      <button class="btn btn-danger" data-bs-target="#modalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Xóa
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               </div>
             </footer>
             <!-- / Footer -->
