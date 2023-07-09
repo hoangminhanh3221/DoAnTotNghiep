@@ -50,12 +50,9 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{~/user-page/css/main.css}" />
 <!--===============================================================================================-->
-<!-- Angular 1.6.9 -->
-    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
-<!--===============================================================================================-->
 </head>
 
-<body class="animsition" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<body class="animsition">
 	<!-- Header -->
 	<div th:replace="/user-page/layout/header.html"></div>
 
@@ -376,7 +373,6 @@
 </script>
 	<!--===============================================================================================-->
 	<script th:src="@{/user-page/js/main.js}"></script>
-	<script th:src="@{/user-page/js/shopping-cart-app.js}"></script>
 </body>
 </html>
 
