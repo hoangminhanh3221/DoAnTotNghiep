@@ -51,7 +51,19 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>
+<!--		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>demoSlide4-1</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    <version>2.0.4.RELEASE</version>
+</dependency>
+		
+		</dependencies>
 
 	<build>
 		<plugins>

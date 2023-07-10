@@ -35,6 +35,24 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.findById(id);
 	}
 
+
+	@Override
+	public Page<Product> findBySubcategoryID(String subcategoryId, Pageable pageable) {
+		return productRepository.findAllBySubcategoryId(subcategoryId, pageable);
+	}
+
+	@Override
+	public Page<Product> findByCategoryID(String categoryId, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> findByCategoryID(String cid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public Product createProduct(Product product) {
 		return productRepository.save(product);
