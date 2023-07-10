@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 order-0">
+                  <div class="row">
+                    <!-- Doanh thu -->
+                    <div class="col-3 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <span class="avatar-initial rounded bg-label-primary">
+                                <i class="fa-solid fa-money-bill-trend-up fa-lg" style="color: #696cff"></i>
+                              </span>
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt4"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <span class="fw-semibold d-block mb-1"><strong>Doanh Thu</strong></span>
+                            <span style="position: relative; right: -40px">Tháng 6</span>
+                          </div>
+                          <hr />
+                          <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / Doanh thu -->
+
+                    <!-- Số sản phẩm đã bán -->
+                    <div class="col-3 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <span class="avatar-initial rounded bg-label-primary">
+                                <i class="fa-solid fa-cart-shopping fa-lg" style="color: #696cff"></i>
+                              </span>
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt1"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="cardOpt1">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <span class="fw-semibold d-block mb-1"><strong>Số Sản Phẩm Bán</strong></span>
+                            <span style="position: relative; right: -20px">Tháng 6</span>
+                          </div>
+                          <hr />
+                          <h3 class="card-title mb-2">3652</h3>
+                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / Số sản phẩm đã bán -->
+
+                    <!-- Số đơn hàng -->
+                    <div class="col-3 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <span class="avatar-initial rounded bg-label-primary">
+                                <i class="fa-solid fa-gift fa-lg" style="color: #696cff"></i>
+                              </span>
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt4"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <span class="fw-semibold d-block mb-1"><strong>Số Đơn Hàng</strong></span>
+                            <span style="position: relative; right: -30px">Tháng 6</span>
+                          </div>
+                          <hr />
+                          <h3 class="card-title text-nowrap mb-2">1489</h3>
+                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / Số đơn hàng -->
+
+                    <!-- Số khách mới -->
+                    <div class="col-3 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                              <span class="avatar-initial rounded bg-label-primary">
+                                <i class="fa-solid fa-user-plus fa-lg" style="color: #696cff"></i>
+                              </span>
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt1"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="cardOpt1"></div>
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <span class="fw-semibold d-block mb-1"><strong>Số khách mới</strong></span>
+                            <span style="position: relative; right: -30px">Tháng 6</span>
+                          </div>
+                          <hr />
+                          <h3 class="card-title mb-2">$14,857</h3>
+                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / Số khách mới -->
+                  </div>
+                </div>
+                <!-- Thông báo -->
+                <div class="col-8 order-1 order-md-3 order-lg-2 mb-4">
+                  <div class="card h-100">
+                    <h5 class="card-header">Thông Báo</h5>
+                    <div class="table-responsive text-nowrap">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Thông báo</th>
+                            <th>Thời gian</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                          <tr>
+                            <td>
+                              <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                              <strong
+                                ><i style="margin-right: 20px" class="bi bi-bell-fill"></i>Có 1 đơn hàng mới</strong
+                              >
+                            </td>
+                            <td><strong>22:30</strong> 04-06-2002</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                              <strong
+                                ><i style="margin-right: 20px" class="bi bi-bell-fill"></i>Đã xác nhận 1 đơn
+                                hàng</strong
+                              >
+                            </td>
+                            <td><strong>22:30</strong> 04-06-2002</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                              <strong
+                                ><i style="margin-right: 20px" class="bi bi-bell-fill"></i>Đã thêm 1 tài khoản
+                                mới</strong
+                              >
+                            </td>
+                            <td><strong>22:30</strong> 04-06-2002</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!-- / Thông báo -->
+
+                <div class="col-md-4 order-2 mb-4">
+                  <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                      <div class="card-title mb-0">
+                        <h5 class="m-0 me-2">5 sản phẩm bạn chạy nhất</h5>
+                        <small class="text-muted">Chiếm 19% Tổng Danh Thu</small>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-3 mt-3"
+                        style="position: relative"
+                      >
+                        <div class="d-flex flex-column align-items-center gap-1">
+                          <h2 class="mb-2">1304</h2>
+                          <span>Sản phẩm đã bán</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-1">
+                          <h2 class="mb-2">3672$</h2>
+                          <span>Tổng Doanh thu</span>
+                        </div>
+                      </div>
+                      <ul class="p-0 m-0">
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">Áo thun</h6>
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">1422</small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-closet"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">Áo thun</h6>
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">1422</small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-info"><i class="bx bx-closet"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">Áo thun</h6>
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">1422</small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-warning"><i class="bx bx-closet"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">Áo thun</h6>
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">1422</small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                          <div class="avatar flex-shrink-0 me-3">
+                            <span class="avatar-initial rounded bg-label-danger"><i class="bx bx-closet"></i></span>
+                          </div>
+                          <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="me-2">
+                              <h6 class="mb-0">Áo thun</h6>
+                            </div>
+                            <div class="user-progress">
+                              <small class="fw-semibold">1422</small>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 order-3 order-lg-3 mb-4">
+                  <div class="card h-100">
+                    <div class="card-header">
+                      <h5 class="card-title m-0 me-2">Đánh Giá sản Phẩm</h5>
+                    </div>
+                    <div class="card-body" style="padding: 0; height: 480px; overflow: scroll">
+                      <div class="table-responsive text-nowrap">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>NO.</th>
+                              <th>Tên sản phẩm</th>
+                              <th>Lượt đánh giá</th>
+                              <th>Xem ĐG</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-border-bottom-0">
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button
+                                  type="button"
+                                  class="btn rounded-pill btn-icon btn-outline-primary"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modalScrollable"
+                                >
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong>
+                              </td>
+                              <td>567</td>
+                              <td>
+                                <button type="button" class="btn rounded-pill btn-icon btn-outline-primary">
+                                  <span class="tf-icons bx bx-chat"></span>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 order-4 order-lg-4 mb-4 mb-lg-0">
+                  <div class="card text-center">
+                    <div class="card-header py-3">
+                      <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button
+                            type="button"
+                            class="nav-link active"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#navs-pills-browser"
+                            aria-controls="navs-pills-browser"
+                            aria-selected="true"
+                          >
+                            Sản Phẩm
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button
+                            type="button"
+                            class="nav-link"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#navs-pills-os"
+                            aria-controls="navs-pills-os"
+                            aria-selected="false"
+                            tabindex="-1"
+                          >
+                            Loại
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button
+                            type="button"
+                            class="nav-link"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#navs-pills-country"
+                            aria-controls="navs-pills-country"
+                            aria-selected="false"
+                            tabindex="-1"
+                          >
+                            Danh Mục
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tab-content pt-0">
+                      <div class="tab-pane fade show active" id="navs-pills-browser" role="tabpanel">
+                        <div class="table-responsive text-start" style="height: 450px">
+                          <table class="table table-borderless text-nowrap">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Đã bán</th>
+                              </tr>
+                            </thead>
+                            <tbody style="overflow: scroll">
+                              <tr>
+                                <td>1</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/chrome.png"
+                                      alt="Chrome"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Chrome</span>
+                                  </div>
+                                </td>
+                                <td>8.92k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/safari.png"
+                                      alt="Safari"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Safari</span>
+                                  </div>
+                                </td>
+                                <td>7.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/firefox.png"
+                                      alt="Firefox"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Firefox</span>
+                                  </div>
+                                </td>
+                                <td>6.11k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>4</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/edge.png"
+                                      alt="Edge"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Edge</span>
+                                  </div>
+                                </td>
+                                <td>5.08k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>5</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/opera.png"
+                                      alt="Opera"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Opera</span>
+                                  </div>
+                                </td>
+                                <td>3.93k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>6</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/brave.png"
+                                      alt="Brave"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Brave</span>
+                                  </div>
+                                </td>
+                                <td>3.19k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>7</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/vivaldi.png"
+                                      alt="Vivaldi"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Vivaldi</span>
+                                  </div>
+                                </td>
+                                <td>1.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>8</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/uc.png"
+                                      alt="UC Browser"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>UC Browser</span>
+                                  </div>
+                                </td>
+                                <td>328</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="navs-pills-os" role="tabpanel">
+                        <div class="table-responsive text-start">
+                          <table class="table table-borderless text-nowrap">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Đã bán</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/chrome.png"
+                                      alt="Chrome"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Chrome</span>
+                                  </div>
+                                </td>
+                                <td>8.92k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/safari.png"
+                                      alt="Safari"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Safari</span>
+                                  </div>
+                                </td>
+                                <td>7.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/firefox.png"
+                                      alt="Firefox"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Firefox</span>
+                                  </div>
+                                </td>
+                                <td>6.11k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>4</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/edge.png"
+                                      alt="Edge"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Edge</span>
+                                  </div>
+                                </td>
+                                <td>5.08k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>5</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/opera.png"
+                                      alt="Opera"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Opera</span>
+                                  </div>
+                                </td>
+                                <td>3.93k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>6</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/brave.png"
+                                      alt="Brave"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Brave</span>
+                                  </div>
+                                </td>
+                                <td>3.19k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>7</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/vivaldi.png"
+                                      alt="Vivaldi"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Vivaldi</span>
+                                  </div>
+                                </td>
+                                <td>1.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>8</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/uc.png"
+                                      alt="UC Browser"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>UC Browser</span>
+                                  </div>
+                                </td>
+                                <td>328</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="navs-pills-country" role="tabpanel">
+                        <div class="table-responsive text-start">
+                          <table class="table table-borderless text-nowrap">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th>Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Đã bán</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/chrome.png"
+                                      alt="Chrome"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Chrome</span>
+                                  </div>
+                                </td>
+                                <td>8.92k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/safari.png"
+                                      alt="Safari"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Safari</span>
+                                  </div>
+                                </td>
+                                <td>7.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/firefox.png"
+                                      alt="Firefox"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Firefox</span>
+                                  </div>
+                                </td>
+                                <td>6.11k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>4</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/edge.png"
+                                      alt="Edge"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Edge</span>
+                                  </div>
+                                </td>
+                                <td>5.08k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>5</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/opera.png"
+                                      alt="Opera"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Opera</span>
+                                  </div>
+                                </td>
+                                <td>3.93k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>6</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/brave.png"
+                                      alt="Brave"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Brave</span>
+                                  </div>
+                                </td>
+                                <td>3.19k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>7</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/vivaldi.png"
+                                      alt="Vivaldi"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>Vivaldi</span>
+                                  </div>
+                                </td>
+                                <td>1.29k</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>8</td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img
+                                      src="../../assets/img/icons/brands/uc.png"
+                                      alt="UC Browser"
+                                      height="24"
+                                      class="me-2"
+                                    />
+                                    <span>UC Browser</span>
+                                  </div>
+                                </td>
+                                <td>328</td>
+                                <td>
+                                  <div class="d-flex justify-content-between align-items-center gap-3">
+                                    <small class="fw-semibold">844</small>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Model Comment-->
+              <div class="modal fade" id="modalScrollable" tabindex="-1" style="display: none" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalScrollableTitle">Đánh giá</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="demo-inline-spacing mt-3">
+                        <div class="list-group">
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                          <a
+                            href="javascript:void(0);"
+                            class="list-group-item list-group-item-action flex-column align-items-start"
+                          >
+                            <div class="d-flex justify-content-between w-100">
+                              <h6>Hoàng Dũng</h6>
+                              <small>3 Ngày trước</small>
+                            </div>
+                            <p class="mb-1">Sản Phẩm tuyệt vời, ÔNG MẶT TRỜI !!!!!</p>
+                            <small>Sản phẩm <strong>Áo thun mùa hè</strong></small>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+	</main>
+</body>
+</html>
