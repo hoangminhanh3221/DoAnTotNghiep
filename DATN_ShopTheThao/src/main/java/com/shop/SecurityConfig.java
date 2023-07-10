@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				  Optional<Account> user = accountService.findAccountById(username);
 				  
 //				  BCryptPasswordEncoder passwordEncoder = passwordEncoder();
-				  String password = pe.encode(user.get().getPassword());;
+				  String password = pe.encode(user.get().getPassword());
 				  
 //				  String password = user.get().getPassword();
 				  String[] roles = user.stream() 

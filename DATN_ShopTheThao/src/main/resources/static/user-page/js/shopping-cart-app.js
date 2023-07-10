@@ -6,14 +6,18 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
     
 	   $scope.quantity = 1;
 	   
-	   $scope.increaseQuantity = function() {
-	  	$scope.quantity++;
-		};
-		
-		$scope.decreaseQuantity = function() {
+	   $scope.decreaseQuantity = function() {
 		  if ($scope.quantity > 1) {
 		    $scope.quantity--;
 		  }
+		};
+		
+		$scope.increaseQuantity = function() {
+		  $scope.quantity++;
+		};
+		
+		$scope.setQuantity = function() {
+		  $scope.quantity = 1;
 		};
 
 		$scope.cart = {
@@ -31,15 +35,9 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 						this.saveToLocalStorage();
 					})
 				}
+				$("#getProduct_" + productId).modal("hide");
 			},
-			//Xóa sản phẩm ra giỏ hàng
-			remove(productId) {
-			  var itemIndex = this.items.findIndex(item => item.productId == productId);
-			  if (itemIndex) {
-			    this.items.splice(itemIndex, 1);
-			    this.saveToLocalStorage();
-			  }
-			},
+
 			//Xóa toàn bộ sản phẩm ra giỏ hàng
 			clear(){
 				this.items = [];
@@ -88,9 +86,10 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 			},
 			
 			//Xóa sản phẩm ra giỏ hàng
-			remove(id){
-				var index = this.items.findIndex(item => item.id == id);
+			remove(productId){
+				var index = this.items.findIndex(item => item.productId == productId);
 				this.items.splice(index,1);
+				console.log(index)
 				this.saveToLocalStorage();
 			},
 			
