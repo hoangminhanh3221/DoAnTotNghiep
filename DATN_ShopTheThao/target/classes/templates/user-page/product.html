@@ -251,11 +251,11 @@
 				<!-- Load more -->
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" th:href="@{|product/list?page=${products.number-1}|}"
+						<li class="page-item"><a class="page-link" th:href="@{|/product/list?page=${products.number-1}|}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						</a></li>
-						<li class="page-item" th:each="number : ${pageNumbers}"><a class="page-link" th:href="@{|product/list?page=${number}|}" th:text="${number}"></a></li>
-						<li class="page-item"><a class="page-link" th:href="@{|product/list?page=${products.number+1}|}"
+						<li class="page-item" th:each="number : ${pageNumbers}"><a class="page-link" th:href="@{|/product/list?page=${number-1}|}" th:text="${number}"></a></li>
+						<li class="page-item"><a class="page-link" th:href="@{|/product/list?category=${}&page=${products.number+1}|}"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 					</ul>
