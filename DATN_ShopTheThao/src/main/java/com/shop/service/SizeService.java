@@ -14,12 +14,12 @@ public interface SizeService {
 
 	List<Size> findAllSize();
 
-	Optional<Size> findSizeById(String id);
+	Optional<Size> findSizeById(String sizeId);
 
 	Size createSize(Size size);
 
 	Size updateSize(Size size);
 
-	void deleteSize(String id);
+	void deleteSize(String SizeId);
 
 }

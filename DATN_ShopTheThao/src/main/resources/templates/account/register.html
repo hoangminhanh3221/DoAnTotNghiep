@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-<title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin
+<title>Register Basic - Pages | FSport - Bootstrap 5 HTML Admin
 	Template - Pro</title>
 
 <meta name="description" content="" />
@@ -66,7 +66,7 @@
 					<div class="card-body">
 						<!-- Logo -->
 						<div class="app-brand justify-content-center">
-							<a th:href ="@{index.html}" class="app-brand-link gap-2">
+							<a th:href ="@{home.html}" class="app-brand-link gap-2">
 								<span class="app-brand-logo demo"> <svg width="25"
 										viewBox="0 0 25 42" version="1.1"
 										xmlns="http://www.w3.org/2000/svg"
@@ -119,27 +119,27 @@
                       </g>
                     </svg>
 								</span>
-								<span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+								<span class="app-brand-text demo text-body fw-bolder">FSport</span>
 								</a>
 						</div>
 						<!-- /Logo -->
-						<h4 class="mb-2">Adventure starts here 🚀</h4>
-						<p class="mb-4">Make your app management easy and fun!</p>
+						<h4 class="mb-2">Chuyến tham quan bắt đầu từ đây 🚀</h4>
+						<p class="mb-4">Làm cho ứng dụng của bạn vui vẻ và hài hước nào!</p>
 
-						<form id="formAuthentication" class="mb-3" action="index.html"
+						<form id="formAuthentication" class="mb-3" 
 							method="POST">
 							<div class="mb-3">
-								<label for="username" class="form-label">Username</label> <input
+								<label for="username" class="form-label">Tên đăng nhập</label> <input
 									type="text" class="form-control" id="username" name="username"
-									placeholder="Enter your username" autofocus />
+									placeholder="tên đăng nhập" autofocus />
 							</div>
 							<div class="mb-3">
 								<label for="email" class="form-label">Email</label> <input
 									type="text" class="form-control" id="email" name="email"
-									placeholder="Enter your email" />
+									placeholder="Email" />
 							</div>
 							<div class="mb-3 form-password-toggle">
-								<label class="form-label" for="password">Password</label>
+								<label class="form-label" for="password">Mật khẩu</label>
 								<div class="input-group input-group-merge">
 									<input type="password" id="password" class="form-control"
 										name="password"
@@ -154,17 +154,15 @@
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox"
 										id="terms-conditions" name="terms" /> <label
-										class="form-check-label" for="terms-conditions"> I
-										agree to <a>privacy policy
-											& terms</a>
+										class="form-check-label" for="terms-conditions" aria-required="true"> Tôi đồng ý <a href="/user-page/home">chính sách và điều khoản bảo mật</a>
 									</label>
 								</div>
 							</div>
-							<button class="btn btn-primary d-grid w-100">Sign up</button>
+							<button class="btn btn-primary d-grid w-100" type="submit" > Đăng ký</button>
 						</form>
 
 						<p class="text-center">
-							<span>Already have an account?</span> <a style="color:blue;"> <span>Sign in instead</span>
+							<span>Bạn đã có tài khoản?</span> <a style="color:blue;"> <a href="javascript:history.back()">Đăng nhập thôi nào!</a>
 							</a>
 						</p>
 					</div>
@@ -176,12 +174,12 @@
 
 	<!-- / Content -->
 
-	<div class="buy-now">
+<!--	<div class="buy-now">
 		<a
 			th:href="@{https://themeselection.com/products/sneat-bootstrap-html-admin-template/}"
 			target="_blank" class="btn btn-danger btn-buy-now">Upgrade
 			to Pro</a>
-	</div>
+	</div> -->
 
 	<!-- Core JS -->
 	<!-- build:js assets/vendor/js/core.js -->

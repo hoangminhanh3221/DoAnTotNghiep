@@ -40,4 +40,5 @@ public class OrderDetail implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "productId", referencedColumnName = "productId", nullable = false)
 	private Product product;
+	
 }
