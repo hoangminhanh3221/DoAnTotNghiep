@@ -24,31 +24,30 @@ import com.shop.service.AccountService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
-	@Autowired
-	BCryptPasswordEncoder pe;
-	
+		
 	@Autowired
 	AccountService accountService;
 	
 	//Cung cấp nguồn dữ liệu đăng nhập
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.userDetailsService(username -> {
-			try { 
-				  Optional<Account> user = accountService.findAccountById(username);
-				  
-				  String password = pe.encode(user.get().getPassword());
-				  
-				  String[] roles = user.stream() 
-						  		.map(er -> er.getRole())
-						  		.collect(Collectors.toList()).toArray(new String[0]);
-				  return User.withUsername(username).password(password).roles(roles).build();
-				  
-			}catch (NoSuchElementException e) {
-				throw new UsernameNotFoundException(username + "Not Found");
-			}
-		});
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(username -> {
+	        try {
+	            Optional<Account> user = accountService.findAccountById(username);
+
+	            String password = getBCryptPasswordEncoder().encode(user.get().getPassword());
+
+	            String[] roles = user.stream()
+	                    .map(er -> er.getRole())
+	                    .collect(Collectors.toList())
+	                    .toArray(new String[0]);
+
+	            return User.withUsername(username).password(password).roles(roles).build();
+	        } catch (NoSuchElementException e) {
+	            throw new UsernameNotFoundException(username + "Not Found");
+	        }
+	    });
 	}
+
 	
 	//Phân quyền 
 	@Override
