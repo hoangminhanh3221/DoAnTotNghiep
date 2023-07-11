@@ -54,13 +54,13 @@
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
 			<!-- Left -->
-			<div th:replace="/admin-page/layout/sidebar.html"></div>
+			<div th:replace="@{/admin-page/layout/sidebar.html}"></div>
 			<!-- / Left -->
 
 			<!-- Right -->
 			<div class="layout-page">
 				<!-- Navbar -->
-				<div th:replace="/admin-page/layout/header.html"></div>
+				<div th:replace="@{/admin-page/layout/header.html}"></div>
 				<!-- / Navbar -->
 
 				<!-- Content wrapper -->
@@ -70,7 +70,7 @@
 					<!-- / Content -->
 
 					<!-- Footer -->
-					<div th:replace="/admin-page/layout/footer.html"></div>
+					<div th:replace="@{/admin-page/layout/footer.html}"></div>
 					<!-- / Footer -->
 
 					<div class="content-backdrop fade"></div>

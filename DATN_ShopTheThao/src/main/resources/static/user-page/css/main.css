@@ -514,8 +514,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   flex-grow: unset;
 }
 
-
 /*------------------------------------------------------------------
+
 [ Modal search ]*/
 .modal-search-header {
   position: fixed;
@@ -1741,11 +1741,10 @@ button.mfp-close {
 }
 
 /*---------------------------------------------*/
-.filter-col1 {width: 20%;}
-.filter-col2 {width: 25%;}
-.filter-col3 {width: 18%;}
-.filter-col4 {width: 17%;}
-.filter-col5 {width: 20%;}
+.filter-col1 {width: 27%;}
+.filter-col2 {width: 27%;}
+.filter-col3 {width: 26%;}
+.filter-col4 {width: 20%;}
 
 /*---------------------------------------------*/
 .filter-link {
@@ -1902,6 +1901,42 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ Modal2 ]*/
+.wrap-modal2 {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  overflow: auto;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay-modal2 {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.8;
+}
+
+.show-modal2 {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*//////////////////////////////////////////////////////////////////
 [ Table Shopping Cart ]*/
 
 .wrap-table-shopping-cart {
@@ -1922,7 +1957,8 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-1 {
-  padding-left: 20px;
+  width: 133px;
+  padding-left: 50px;
 }
 
 .table-shopping-cart .column-2 {
@@ -1942,21 +1978,21 @@ input.num-product::-webkit-inner-spin-button {
 
 .table-shopping-cart .column-5 {
   width: 172px;
-  padding-right: 10px;
+  padding-right: 50px;
   text-align: right;
   font-size: 16px;
 }
 
 .table-shopping-cart .table_row {
-  height: 80px;
+  height: 185px;
 }
 
 .table-shopping-cart .table_row td {
-
+  padding-bottom: 20px;
 }
 
 .table-shopping-cart .table_row td.column-1 {
-
+  padding-bottom: 30px;
 }
 
 .table-shopping-cart .table_head th {
@@ -3547,4 +3583,57 @@ select.form-control:not([size]):not([multiple]) {
 select option {
   font-size: 16px;
 }
-
+      .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+      }
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .edit-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .edit-overlay:hover {
+        opacity: 1;
+      }
+      .edit-overlay span {
+        cursor: pointer;
+      }
+#form-info{
+	padding-left: 80px;
+	padding-right: 80px;	
+}
+.one{
+	color: rgb(20, 48, 97);
+	font-weight: bolder;	
+}
+.btnInfo{
+	background-color: rgb(121,134,226);
+	color: white;
+}
+.btnInfo:hover {
+	background-color: white;
+	color: rgb(121,134,226);
+	border-style: solid;
+  	border-color:  rgb(121,134,226);
+}
+#form-change{
+	padding-left: 35%;
+	padding-right: 35%;
+}

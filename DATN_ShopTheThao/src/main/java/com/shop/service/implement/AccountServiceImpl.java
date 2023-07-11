@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shop.entity.Account;
+import com.shop.entity.Address;
+import com.shop.entity.Customer;
 import com.shop.repository.AccountRepository;
 import com.shop.service.AccountService;
 
@@ -50,5 +52,4 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.deleteById(id);
 
 	}
-
 }

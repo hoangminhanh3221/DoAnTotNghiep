@@ -16,27 +16,26 @@
               <!-- Basic Layout -->
               <div class="card" style="height: 495px">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                  <h5 class="mb-0 text-uppercase" th:text="${title}"></h5>
                 </div>
                 <div class="card-body">
-                  <form class="row">
+                  <form class="row" th:object="${color}" method="post">
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Mã Màu</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: CL001..." />
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: CL001..." th:field="*{colorId}"/>
                     </div>
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Tên Màu</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Trắng..." />
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Trắng..." th:field="*{colorName}"/>
                     </div>
                     <div class="col-12 h-100">
                       <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
-                      <button
+                      <a
                         type="submit"
                         class="btn btn-outline-danger"
-                        style="position: absolute; bottom: 5%; left: 10%"
-                      >
+                        style="position: absolute; bottom: 5%; left: 11%" th:href="@{/colorList}">
                         Thoát
-                      </button>
+                      </a>
                     </div>
                   </form>
                 </div>

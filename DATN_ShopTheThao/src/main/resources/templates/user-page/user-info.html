@@ -5,152 +5,107 @@
 	<main>
 	    <!-- breadcrumb -->
 	    <div class="container">
-	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+	      <div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
 	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Home
+	          Trang Chủ
 	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 	        </a>
 	
 	        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Men
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	          Thông tin người dùng
 	        </a>
 	
-	        <span class="stext-109 cl4"> Lightweight Jacket </span>
 	      </div>
 	    </div>
 	
 	    <!-- Content -->
 	    <div class="container">
       <div class="row">
-        <div class="col-3">
-          <ul>
-            <li class="mb-1 mt-3">Thông tin người dùng</li>
-            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
-          </ul>
-        </div>
-        <div class="col-9">
-          <h4 class="mb-3 mt-2">Thông Tin Tài Khoản</h4>
-          <form class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Họ Tên</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập họ tên của bạn"
-                />
+        <div class="col">
+          <h4 class="mb-3 mt-5">Thông Tin Tài Khoản</h4>
+           <div class="profile-picture" style="margin: auto;">
+              <img id="avatar" th:src="@{${customer.customerImage}}" alt="Ảnh đại diện" class="rounded-circle"
+               style="width: 200px; height: 200px;">
+               <div class="edit-overlay">
+                <span id="edit-avatar">Chỉnh sửa</span>
+                <input type="file" name="avatar" id="avatar-upload" accept="image/*" style="display: none;">
               </div>
             </div>
-            <div class="col-6">
-              <div class="form-group pt-2">
-                <label for="gender">Giới tính:</label> <br />
-                <div class="form-check form-check-inline ml-4">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="gender"
-                    id="male"
-                    value="male"
-                  />
-                  <label class="form-check-label pl-0" for="male"> Nam </label>
-                </div>
-                <div class="form-check form-check-inline ml-5">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="gender"
-                    id="female"
-                    value="female"
-                  />
-                  <label class="form-check-label pl-0" for="female"> Nữ </label>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="birthday">Ngày sinh:</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="birthday"
-                  name="birthday"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="inputEmail"
-                  placeholder="Nhập Email của bạn"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Địa Chỉ:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập số nhà, tên đường"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Số điện thoại</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập số điện thoại của bạn"
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Phường:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Quận:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Thành phố:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary mr-2 ml-3">Sửa</button>
-            <button type="button" class="btn btn-secondary">Làm mới</button>
-          </form>
+			<form class="row" id="form-info" th:action="@{/user/edit}" method="post">
+			    <div class="col-6">
+			        <div class="form-group">
+			            <label for="customerName" class="one" >Họ Tên</label>
+			            <input type="text" class="form-control" id="customerName" placeholder="Nhập họ tên của bạn"
+			             th:value="${customer.customerName}" th:name="customerName"/>
+			        </div>
+			    </div>
+			    <div class="col-6">
+			        <div class="form-group pt-2">
+			            <label for="gender" class="one" >Giới tính:</label> <br />
+			            <div class="form-check form-check-inline ml-4">
+			                <input class="form-check-input" type="radio" name="gender" id="male" 
+								th:checked="${customer.gender}" value="true"/>
+			                <label class="form-check-label pl-0" for="male"> Nam </label>
+			            </div>	
+			            <div class="form-check form-check-inline ml-5">
+			                <input class="form-check-input" type="radio" name="gender" id="female" 
+			                th:checked="${!customer.gender}" value="false"/>
+			                <label class="form-check-label pl-0" for="female"> Nữ </label>
+			            </div>
+			        </div>
+			    </div>
+
+			    <div class="col-6">
+			        <div class="form-group">
+			            <label for="inputEmail" class="one" >Email</label>
+			            <input type="email" class="form-control" id="inputEmail" placeholder="Nhập Email của bạn" th:name="email"
+			            th:value="${account.email}"/>
+			        </div>
+			    </div>
+			    <div class="col-6">
+			        <div class="form-group">
+			            <label for="phoneNumber" class="one" >Số điện thoại</label>
+			            <input type="text" class="form-control" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
+			             th:value="${customer.phoneNumber}" />
+			        </div>
+			    </div>
+			     <div class="col-6">
+			        <div class="form-group">
+			            <label for="birthday" class="one" >Ngày sinh:</label>
+			            <input type="date" class="form-control" id="birthday" placeholder="YYYY/MM/dd" 
+			           th:value="${#dates.format(customer.birthday, 'yyyy-MM-dd')}" name="birthday"/>
+			        </div>
+			    </div>
+			    <div class="col-6">
+			        <div class="form-group">
+			            <label for="customerAddress" class="one" >Địa Chỉ:</label>
+			            <input type="text" class="form-control" id="customerAddress" placeholder="Nhập số nhà, tên đường" 
+			            th:value="${customer.address.numberHome}" th:name="numberHome"/>
+			        </div>
+			    </div>
+			    <div class="col-4">
+			        <div class="form-group">
+			            <label for="ward" class="one" >Phường:</label>
+			            <input type="text" class="form-control" id="ward" placeholder="Phường/Xã" 
+			            th:value="${customer.address.ward}" th:name="ward"/>
+			        </div>
+			    </div>
+			    <div class="col-4">
+			        <div class="form-group">
+			            <label for="district" class="one" >Quận:</label>
+			            <input type="text" class="form-control" id="district" placeholder="Quận/Huyện"
+			            th:value="${customer.address.district}"  th:name="district"/>
+			        </div>
+			    </div>
+			    <div class="col-4">
+			        <div class="form-group">
+			            <label for="city" class="one" >Thành phố:</label>
+			            <input type="text" class="form-control" id="city" placeholder="Thành Phố/Tỉnh"
+			            th:value="${customer.address.city}" th:name="city"/>
+			        </div>
+			    </div>
+			    <button type="submit" class="btn btnInfo mr-2 ml-3 mt-2 pr-3 pl-3">Lưu Thông Tin</button>
+			</form>
         </div>
       </div>
     </div>

@@ -12,8 +12,6 @@ public interface SubcategoryService {
 	Page<Subcategory> findAllSubcategory(Pageable pageable);
 	
 	List<Subcategory> findAllSubcategory();
-	
-	List<Subcategory> findSubcategoryByCategoryId(String categoryId);
 
 	Optional<Subcategory> findSubcategoryById(String id);
 	
