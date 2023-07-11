@@ -1,4 +1,4 @@
- ackage com.shop.entity;
+package com.shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;

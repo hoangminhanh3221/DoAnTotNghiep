@@ -1,4 +1,4 @@
-package main.java.com.shop.entity;
+package com.shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -64,12 +64,12 @@ public class Product implements Serializable{
 	private Color color;
 	
 	@ManyToOne
-	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
-	private Image image;
-	
-	@ManyToOne
 	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
 	private Brand brand;
+	
+	@ManyToOne
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
+	private Image image;
 	
 	@ManyToOne
 	@JoinColumn(name = "SizeId", referencedColumnName = "SizeId", nullable = false)

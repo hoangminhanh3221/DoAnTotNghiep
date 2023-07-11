@@ -1,6 +1,5 @@
 package com.shop.controller;
 
-public class HomeController {
     import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
