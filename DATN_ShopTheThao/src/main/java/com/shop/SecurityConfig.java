@@ -37,10 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			try { 
 				  Optional<Account> user = accountService.findAccountById(username);
 				  
-//				  BCryptPasswordEncoder passwordEncoder = passwordEncoder();
 				  String password = pe.encode(user.get().getPassword());
 				  
-//				  String password = user.get().getPassword();
 				  String[] roles = user.stream() 
 						  		.map(er -> er.getRole())
 						  		.collect(Collectors.toList()).toArray(new String[0]);
@@ -60,9 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         
         //Phân quyền sử dụng
 		http.authorizeHttpRequests()
-			.antMatchers("/rest/authorities").hasRole("admin")
-			.antMatchers("/admin/**").hasAnyRole("admin","user")
-			.antMatchers("/order/**").authenticated()
+			.antMatchers("/admin/authorities").hasRole("admin")
+			.antMatchers("/admin/**").hasAnyRole("admin","employee")
+			.antMatchers("/user/**").authenticated()
 			.anyRequest().permitAll();//khách chưa có tham gia
 		
 		//Giao diện login
