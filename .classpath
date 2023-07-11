@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="main/java/com/shop/entity/|main/java/|test/java/" kind="src" path="DATN_ShopTheThao/src"/>
+	<classpathentry excluding="com/shop/entity/" kind="src" path="DATN_ShopTheThao/src/main/java"/>
+	<classpathentry kind="src" path="DATN_ShopTheThao/src/main/java/com/shop/entity"/>
+	<classpathentry kind="src" path="DATN_ShopTheThao/src/test/java"/>
+	<classpathentry kind="lib" path="DATN_ShopTheThao/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="DATN_ShopTheThao/bin"/>
+</classpath>

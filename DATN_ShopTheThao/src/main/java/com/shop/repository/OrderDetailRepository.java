@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.shop.entity.Color;
 import com.shop.entity.OrderDetail;
 
-public interface 	 extends JpaRepository<OrderDetail, Integer>{
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer>{
 
 }
