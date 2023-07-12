@@ -28,4 +28,10 @@ public interface ProductService {
 	
 	List<Product> getProductsSortByDateDesc();
 	
+	List<Product> findBestSellingProducts();
+	
+	List<Product> findMostLikedProducts();
+	
+	List<Product> findProductsOnSale();
+	
 }

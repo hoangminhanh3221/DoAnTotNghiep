@@ -65,4 +65,19 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getProductsSortByDateDesc() {
 		return productRepository.getProductsSortByDateDesc();
 	}
+
+	@Override
+	public List<Product> findBestSellingProducts() {
+		return productRepository.findBestSellingProducts();
+	}
+
+	@Override
+	public List<Product> findMostLikedProducts() {
+		return productRepository.findMostLikedProducts();
+	}
+
+	@Override
+	public List<Product> findProductsOnSale() {
+		return productRepository.findProductsOnSale();
+	}
 }

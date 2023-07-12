@@ -19,4 +19,14 @@ public interface ProductRepository extends JpaRepository<Product, String>{
 
 	@Query(value="select * from Product ORDER BY ArrivalDate DESC", nativeQuery=true)
     List<Product> getProductsSortByDateDesc();
+	
+	@Query("SELECT od.product FROM OrderDetail od GROUP BY od.product ORDER BY COUNT(od.product) DESC")
+	List<Product> findBestSellingProducts();
+	
+	@Query("SELECT f.product FROM Feedback f GROUP BY f.product ORDER BY COUNT(f.product) DESC")
+	List<Product> findMostLikedProducts();
+	
+	@Query("SELECT p FROM Product p JOIN p.discount d WHERE d.discountRate > 0")
+	List<Product> findProductsOnSale();
+
 }
