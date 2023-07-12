@@ -43,6 +43,8 @@ public class HomeController {
 	
 	private List<Product> productsDC;
 	
+	
+
 	@GetMapping("/home")
 	public String index(Model model) {
 		

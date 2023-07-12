@@ -28,24 +28,75 @@ public class Discount implements Serializable{
 	
 	@Id
 	@Column(name = "DiscountId", columnDefinition = "varchar(10)")
-	private String discountId;
+	public String discountId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "StartDate", nullable = false)
-	private Date startDate;
+	public Date startDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "EndDate", nullable = false)
-	private Date endDate;
+	public Date endDate;
 	
 	@Column(name = "DiscountRate", nullable = false)
-	private Integer discountRate;
+	public Integer discountRate;
 	
 	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)
-	private String description;
+	public String description;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "discount", cascade = CascadeType.ALL)
-	private List<Product> products;
+	public List<Product> products;
+
+	public String getDiscountId() {
+		return discountId;
+	}
+
+	public void setDiscountId(String discountId) {
+		this.discountId = discountId;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public Integer getDiscountRate() {
+		return discountRate;
+	}
+
+	public void setDiscountRate(Integer discountRate) {
+		this.discountRate = discountRate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
+	
+	
 	
 }

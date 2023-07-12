@@ -32,7 +32,7 @@ public class Address implements Serializable{
 	@Column(name = "AddressId")
 	private Integer addressId;
 	
-	@Column(name = "NumberHome", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "NumberHome", columnDefinition = "nvarchar(20)", nullable = false)
 	private String numberHome;
 	
 	@Column(name = "Ward", columnDefinition = "nvarchar(20)", nullable = false)
