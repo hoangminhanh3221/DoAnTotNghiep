@@ -100,7 +100,7 @@ public class HomeController {
         // Xắp xếp mảng sản phẩm
         for (int i = 0; i < uniqueNames.size(); i++) {
         	for (int id = 0; id < uniqueNames.size(); id++) {
-    			if (listProductDef.get(id).productId == uniqueNames.get(i)) {
+    			if (listProductDef.get(id).getProductId() == uniqueNames.get(i)) {
 					Collections.swap(listProductDef, i, id);
 				}
     		}
@@ -119,19 +119,19 @@ public class HomeController {
 		//xắp xếp khuyến mãi theo tỉ lệ giảm giá với thứ tự giảm dần
 		for (int i = 0; i < listDC.size(); i++) {
 			for (int j = 1; j < listDC.size(); j++) {
-				if (listDC.get(i).discountRate<listDC.get(j).discountRate) {
+				if (listDC.get(i).getDiscountRate()<listDC.get(j).getDiscountRate()) {
 					Collections.swap(listDC, i, j);
 				}
 			}
 		}
 		for (int j = 0; j < listDC.size(); j++) {
-			if (listDC.get(j).discountId.equalsIgnoreCase("DS04")) {
+			if (listDC.get(j).getDiscountId().equalsIgnoreCase("DS04")) {
 				listDC.remove(j);
 			}
 		}
 		for (int i = 0; i < listDC.size(); i++) {
 			for (int j = 0; j < listPrd.size(); j++) {
-				if (listDC.get(i).discountId.equalsIgnoreCase(listPrd.get(j).discount.discountId )) {
+				if (listDC.get(i).getDiscountId().equalsIgnoreCase(listPrd.get(j).getDiscount().getDiscountId())) {
 					list.add(listPrd.get(j));
 				}
 			}
@@ -153,7 +153,7 @@ public class HomeController {
 		// Đếm số lần xuất hiện của mỗi sản phẩm
         Map<String, Integer> counts = new HashMap<>();
         for (Favorite student : fav) {
-            counts.put(student.getProduct().productId, counts.getOrDefault(student, 0) + 1);
+            counts.put(student.getProduct().getProductId(), counts.getOrDefault(student, 0) + 1);
         }
         
         // Xây dựng danh sách mới chứa sản phẩm và số lần xuất hiện
