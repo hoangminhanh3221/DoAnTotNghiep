@@ -24,6 +24,16 @@ public class ProductServiceImpl implements ProductService{
 	public Page<Product> findAllProduct(Pageable pageable) {
 		return productRepository.findAll(pageable);
 	}
+	
+	@Override
+	public Page<Product> findBySubcategoryID(String subcategoryId, Pageable pageable) {
+		return productRepository.findBySubcategoryID(subcategoryId, pageable);
+	}
+
+	@Override
+	public Page<Product> findByCategoryID(String categoryId, Pageable pageable) {
+		return productRepository.findByCategoryID(categoryId, pageable);
+	}
 
 	@Override
 	public List<Product> findAllProduct() {
@@ -35,24 +45,6 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.findById(id);
 	}
 
-
-	@Override
-	public Page<Product> findBySubcategoryID(String subcategoryId, Pageable pageable) {
-		return productRepository.findAllBySubcategoryId(subcategoryId, pageable);
-	}
-
-	@Override
-	public Page<Product> findByCategoryID(String categoryId, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Product> findByCategoryID(String cid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@Override
 	public Product createProduct(Product product) {
 		return productRepository.save(product);
@@ -68,5 +60,9 @@ public class ProductServiceImpl implements ProductService{
 		productRepository.deleteById(id);
 		
 	}
-    
+	
+	@Override
+	public List<Product> getProductsSortByDateDesc() {
+		return productRepository.getProductsSortByDateDesc();
+	}
 }

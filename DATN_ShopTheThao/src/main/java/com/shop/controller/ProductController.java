@@ -45,21 +45,25 @@ public class ProductController {
 			Model model, 
 			@RequestParam(value = "categoryId", defaultValue = "null") Optional<String> categoryId,
 			@RequestParam(value = "subcategoryId", defaultValue = "null") Optional<String> subcategoryId,
-			@RequestParam("page") Optional<Integer> page,
-			@RequestParam(value = "sortBy", defaultValue = "null") Optional<String> sort
+			@RequestParam("page") Optional<Integer> page
+			//@RequestParam(value = "sortBy", defaultValue = "null") Optional<String> sort
 		) {
 		// Pageable
 		Pageable pageable = PageRequest.of(page.orElse(0), 16);
 		Page<Product> list = null;
+		//Sort sortOption = null;
 		// sort by category
-		if (!categoryId.get().equals("null") && sort.get().equals("null")) {
+		if (!categoryId.get().equals("null")) {
 			list = productService.findByCategoryID(categoryId.get(), pageable);
+			System.out.println("1");
 			model.addAttribute("products", list);
-			model.addAttribute("cateID", categoryId.get());
-		}
-		// onload, no sort option
-		if (categoryId.get().equals("null") && sort.get().equals("null")) {
+		} else if (!subcategoryId.get().equals("null")) {
+			list = productService.findBySubcategoryID(subcategoryId.get(), pageable);
+			System.out.println("2");
+			model.addAttribute("products", list);
+		} else {
 			list = productService.findAllProduct(pageable);
+			System.out.println("3");
 			model.addAttribute("products", list);
 		}
 		
@@ -67,7 +71,6 @@ public class ProductController {
 		List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().toList();
 		System.out.println(pageNumbers.get(0));
 		model.addAttribute("pageNumbers", pageNumbers);
-		model.addAttribute("sort", sort.get());
 		return "user-page/product";
 	}
 

@@ -11,16 +11,12 @@ import com.shop.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, String>{
 	
-	//List<Product> findAllByCategoryId(String categoryId);
+	@Query("SELECT p FROM Product p JOIN p.subcategory s JOIN s.category c WHERE c.categoryId = :categoryId")
+	Page<Product> findByCategoryID(String categoryId, Pageable pageable);
 	
-	@Query("SELECT p FROM Product p " +
-		       "JOIN p.subcategory s " +
-		       "JOIN s.category c " +
-		       "WHERE c.categoryId = ?1")
-	Page<Product> findAllByCategoryId(String categoryId, Pageable pageable);
-	
-	@Query("SELECT p FROM Product p " +
-		       "WHERE p.subcategory.subcategoryId = ?1")
-	Page<Product> findAllBySubcategoryId(String subcategoryId, Pageable pageable);
+	@Query("SELECT p FROM Product p JOIN p.subcategory s WHERE s.subcategoryId = :subcategoryId")
+	Page<Product> findBySubcategoryID(String subcategoryId, Pageable pageable);
 
+	@Query(value="select * from Product ORDER BY ArrivalDate DESC", nativeQuery=true)
+    List<Product> getProductsSortByDateDesc();
 }
