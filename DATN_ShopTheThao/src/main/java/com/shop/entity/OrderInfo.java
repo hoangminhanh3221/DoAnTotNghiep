@@ -56,4 +56,8 @@ public class OrderInfo implements Serializable{
 	@JoinColumn(name = "TransportId", referencedColumnName = "TransportId", nullable = false)
 	private Transport transport;
 	
+	@ManyToOne
+	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = false)
+	private Address address;
+	
 }

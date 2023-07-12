@@ -43,7 +43,7 @@ public class Employee implements Serializable{
 	@Column(name = "Birthday", nullable = false)
 	private Date birthday;
 	
-	@Column(name = "EmployeeImage", columnDefinition = "varchar(50)", nullable = false)
+	@Column(name = "EmployeeImage", columnDefinition = "varchar(50)", nullable = true)
 	private String employeeImage;
 	
 	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
