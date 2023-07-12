@@ -1,5 +1,6 @@
 package com.shop.service.implement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,12 +69,26 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<Product> findBestSellingProducts() {
-		return productRepository.findBestSellingProducts();
+		List<Product> lists = new ArrayList<>();
+		for (String result : productRepository.findBestSellingProducts()) {
+		    Optional<Product> product = this.findProductById(result);
+		    if(product.isPresent()) {
+		    	lists.add(product.get());
+		    }
+		}
+		return lists;
 	}
 
 	@Override
 	public List<Product> findMostLikedProducts() {
-		return productRepository.findMostLikedProducts();
+		List<Product> lists = new ArrayList<>();
+		for (String result : productRepository.findMostLikedProducts()) {
+			Optional<Product> product = this.findProductById(result);
+		    if(product.isPresent()) {
+		    	lists.add(product.get());
+		    }
+		}
+		return lists;
 	}
 
 	@Override
