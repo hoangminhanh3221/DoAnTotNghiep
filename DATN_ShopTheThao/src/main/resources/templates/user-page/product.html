@@ -218,7 +218,7 @@
 					</div>
 				</div>
 
-				<div class="row"  th:if="${products != null}">
+				<div class="row" th:if="${products != null}">
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35"
 						th:each="product : ${products.content}">
 						<!-- Block2 -->
@@ -229,7 +229,8 @@
 								<a type="button"
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04"
 									data-toggle="modal"
-									th:data-target="'#getProduct_' + ${product.productId}" ng-click="setQuantity()">Thêm</a>
+									th:data-target="'#getProduct_' + ${product.productId}"
+									ng-click="setQuantity()">Thêm</a>
 
 								<!-- Modal -->
 								<div class="modal fade"
@@ -251,7 +252,7 @@
 														</div>
 
 														<input class="mtext-104 cl3 txt-center num-product"
-															type="number" name="quantity" ng-model="quantity"/>
+															type="number" name="quantity" ng-model="quantity" />
 
 														<div
 															class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
@@ -301,19 +302,33 @@
 			<!-- Load more -->
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
+					<li class="page-item" th:if="${products.number > 0}"><a
+						class="page-link" th:href="@{|/product/list?page=0|}"
+						aria-label="First"> <span aria-hidden="true">&laquo;&laquo;</span>
+					</a></li>
+					<li class="page-item" th:if="${products.number > 0}"><a
+						class="page-link"
 						th:href="@{|/product/list?page=${products.number-1}|}"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						aria-label="Previous"> <span aria-hidden="true">&gt;</span>
 					</a></li>
 					<li class="page-item" th:each="number : ${pageNumbers}"><a
 						class="page-link" th:href="@{|/product/list?page=${number-1}|}"
 						th:text="${number}"></a></li>
-					<li class="page-item"><a class="page-link"
-						th:href="@{|/product/list?category=${}&page=${products.number+1}|}"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					<li class="page-item"
+						th:if="${products.number < products.totalPages-1}"><a
+						class="page-link"
+						th:href="@{|/product/list?page=${products.number+1}|}"
+						aria-label="Next"> <span aria-hidden="true">&gt;</span>
+					</a></li>
+					<li class="page-item"
+						th:if="${products.number < products.totalPages-1}"><a
+						class="page-link"
+						th:href="@{|/product/list?page=${products.totalPages-1}|}"
+						aria-label="Last"> <span aria-hidden="true">&raquo;</span>
 					</a></li>
 				</ul>
 			</nav>
+
 		</div>
 
 	</main>

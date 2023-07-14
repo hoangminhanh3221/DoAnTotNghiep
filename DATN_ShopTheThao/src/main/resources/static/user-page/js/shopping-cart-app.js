@@ -89,7 +89,6 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 			remove(productId){
 				var index = this.items.findIndex(item => item.productId == productId);
 				this.items.splice(index,1);
-				console.log(index)
 				this.saveToLocalStorage();
 			},
 			
