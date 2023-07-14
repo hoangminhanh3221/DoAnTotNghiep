@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
 
-<body>
-	<main>
+<body ng-app="addressAPI-app">
+	<main ng-controller>
     <!-- breadcrumb -->
     <div class="container">
       <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -73,7 +73,7 @@
                   <div class="col-md-6 form-group">
                     <label for="soDienThoai">Số Điện Thoại:</label>
                     <input
-                      type="email"
+                      type="text"
                       class="form-control"
                       id="soDienThoai"
                       placeholder="Nhập số điện thoại của bạn"

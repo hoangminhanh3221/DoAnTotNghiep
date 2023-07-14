@@ -27,7 +27,10 @@
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
 					<ul class="main-menu">
-						<li><a th:href="@{/product/list}">Sản phẩm</a></li>
+					
+						<li><a th:href="@{/home}">Trang chủ</a></li>
+					
+						<li><a th:href="@{/product/list}">Tất cả</a></li>
 
 						<li class="active-menu" th:each="category : ${categories}"><a
 							th:href="@{|/product/list?categoryId=${category.categoryId}|}"

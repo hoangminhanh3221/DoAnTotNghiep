@@ -105,7 +105,7 @@
 
 					<div class="col-sm-10 col-lg-7 col-xl-4 m-lr-auto m-b-50">
 						<div
-							class="bor10 p-lr-20 p-t-30 p-b-40 m-l-20 m-lr-0-xl p-lr-15-sm">
+							class="bor10 p-lr-20 p-t-30 p-b-40 m-l-30 m-lr-0-xl p-lr-15-sm">
 							<h4 class="mtext-109 cl2 p-b-30">Thông tin giỏ hàng</h4>
 
 							<div class="flex-w flex-t bor12 p-b-13">
@@ -144,13 +144,13 @@
 								</div>
 
 								<div class="size-209 p-t-1" style="text-align: end">
-									<span class="mtext-110 cl2"> $79.65 </span>
+									<span class="mtext-110 cl2"> {{cart.amount.toLocaleString('vi-VN')}} VNĐ </span>
 								</div>
 							</div>
 
 							<a
 								class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
-								href="checkout.html"> Proceed to Checkout </a>
+								th:href="@{/order/checkout}"> Lập Hóa Đơn </a>
 						</div>
 					</div>
 				</div>
