@@ -79,29 +79,34 @@
 			    <div class="col-6">
 			        <div class="form-group">
 			            <label for="customerAddress" class="one" >Địa Chỉ:</label>
-			            <input type="text" class="form-control" id="customerAddress" placeholder="Nhập số nhà, tên đường" 
-			            th:value="${customer.address.numberHome}" th:name="numberHome"/>
+			            <input type="text" class="form-control" id="customerAddress"
+			            th:value="${customer.address.numberHome}+', '+${customer.address.ward}+', '+${customer.address.district}+', '+${customer.address.city}" 
+			            th:name="numberHome" disabled="disabled"/>
+			            
 			        </div>
 			    </div>
 			    <div class="col-4">
 			        <div class="form-group">
-			            <label for="ward" class="one" >Phường:</label>
-			            <input type="text" class="form-control" id="ward" placeholder="Phường/Xã" 
-			            th:value="${customer.address.ward}" th:name="ward"/>
+			            <label for="province" class="one" >Thành phố/Tỉnh:</label>
+			            <select class="form-control" name="" id="province">
+				        	<option ></option>
+				        </select>
 			        </div>
 			    </div>
 			    <div class="col-4">
 			        <div class="form-group">
 			            <label for="district" class="one" >Quận:</label>
-			            <input type="text" class="form-control" id="district" placeholder="Quận/Huyện"
-			            th:value="${customer.address.district}"  th:name="district"/>
+			            <select class="form-control" name="" id="district">
+			                <option ></option>
+			            </select>
 			        </div>
 			    </div>
 			    <div class="col-4">
 			        <div class="form-group">
-			            <label for="city" class="one" >Thành phố:</label>
-			            <input type="text" class="form-control" id="city" placeholder="Thành Phố/Tỉnh"
-			            th:value="${customer.address.city}" th:name="city"/>
+			            <label for="ward" class="one" >Phường:</label>
+		            <select class="form-control" name="" id="ward">
+		                <option ></option>
+		            </select>
 			        </div>
 			    </div>
 			    <button type="submit" class="btn btnInfo mr-2 ml-3 mt-2 pr-3 pl-3">Lưu Thông Tin</button>

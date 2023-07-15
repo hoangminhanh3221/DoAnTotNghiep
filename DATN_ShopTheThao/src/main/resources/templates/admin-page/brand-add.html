@@ -19,7 +19,7 @@
                   <h5 class="mb-0 text-uppercase" th:text="${title}"></h5>
                 </div>
                 <div class="card-body">
-                  <form class="row" th:object="${brand}" method="post">
+                  <form class="row" th:object="${brand}" th:action="@{/brandAdd/create}" method="post">
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Mã Thương Hiệu</label>
                       <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: TH001..." th:field="*{brandId}"/>
@@ -39,12 +39,7 @@
                     </div>
                     <div class="col-12 h-100">
                       <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
-                      <a
-                        type="submit"
-                        class="btn btn-outline-danger"
-                        style="position: absolute; bottom: 5%; left: 11%" th:href="@{/brandList}">
-                        Thoát
-                      </a>
+                      <button type="submit" class="btn btn-danger" style="position: absolute; bottom: 5%; left: 11%" th:formaction="@{/brandList}">Thoát</button>
                     </div>
                   </form>
                 </div>

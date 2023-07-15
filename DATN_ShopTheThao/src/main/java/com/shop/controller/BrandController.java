@@ -29,7 +29,7 @@ public class BrandController {
 	@RequestMapping("/brandList")
 		public String getBarndList(Model model,@RequestParam("page") Optional<Integer> page) {
 		
-		Pageable pageable = PageRequest.of(page.orElse(0), 1);
+		Pageable pageable = PageRequest.of(page.orElse(0), 16);
 		Page<Brand> listBrand = brandService.findAllBrand(pageable);
 		model.addAttribute("brands", listBrand);
 		int totalPages = listBrand.getTotalPages();
@@ -42,6 +42,16 @@ public class BrandController {
 		model.addAttribute("title", "Thêm Thương Hiệu");
 		return "/admin-page/brand-add";
 	}
+	  @RequestMapping("/brandAdd/create")
+	  public String createBrandAdd(
+	  		@RequestParam("brandId") String brandId,
+	  		@RequestParam("brandName") String brandName,
+	  		@RequestParam("origin") String origin)
+	  		{
+		  			Brand brand = new Brand(brandId,brandName,origin);
+		  			brandService.createBrand(brand);
+					return "redirect:/brandList";
+	  		}
 	@RequestMapping("/brandEdit/{id}")
 	public String getBrandEdit(Model model, @PathVariable("id") String id) {
 		Brand brand = brandService.findBrandById(id).get();
