@@ -19,7 +19,7 @@ import com.shop.entity.Brand;
 import com.shop.entity.Color;
 import com.shop.service.BrandService;
 
-//@RequestMapping("/admin")
+@RequestMapping("/admin")
 @Controller
 public class BrandController {
 	
@@ -50,7 +50,7 @@ public class BrandController {
 	  		{
 		  			Brand brand = new Brand(brandId,brandName,origin);
 		  			brandService.createBrand(brand);
-					return "redirect:/brandList";
+					return "redirect:/admin/brandList";
 	  		}
 	@RequestMapping("/brandEdit/{id}")
 	public String getBrandEdit(Model model, @PathVariable("id") String id) {
@@ -59,4 +59,10 @@ public class BrandController {
 		model.addAttribute("brand", brand);
 		return "/admin-page/brand-add";
 	}
+	  @RequestMapping("/brand/delete/{id}")
+	  public String getDeleteBrand(@PathVariable("id") String id) {
+	  	System.out.println("id" + id);
+	      brandService.deleteBrand(id);
+	      return "redirect:/admin/brandList";
+	  }
 }

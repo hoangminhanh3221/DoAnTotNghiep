@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shop.entity.Brand;
 import com.shop.entity.Color;
 import com.shop.service.ColorService;
-//@RequestMapping("/admin")
+@RequestMapping("/admin")
 @Controller
 public class ColorController {
 	@Autowired
@@ -39,6 +40,15 @@ public class ColorController {
 		model.addAttribute("title", "Thêm Màu");
 		return "/admin-page/color-add";
 	}
+	  @RequestMapping("/colorAdd/create")
+	  public String createColorAdd(
+	  		@RequestParam("colorId") String colorId,
+	  		@RequestParam("colorName") String colorName)
+	  		{
+		  			Color color = new Color(colorId, colorName);
+		  			colorService.createColor(color);
+					return "redirect:/admin/colorList";
+	  		}
 	@RequestMapping("/colorEdit/{id}")
 	public String getColorEdit(Model model, @PathVariable("id") String id) {
 		Color color = colorService.findColorById(id).get();
@@ -46,4 +56,10 @@ public class ColorController {
 		model.addAttribute("color", color);
 		return "/admin-page/color-add";
 	}
+	  @RequestMapping("/color/delete/{id}")
+	  public String getDeleteColor(@PathVariable("id") String id) {
+	  	System.out.println("id" + id);
+	      colorService.deleteColor(id);
+	      return "redirect:/admin/colorList";
+	  }
 }

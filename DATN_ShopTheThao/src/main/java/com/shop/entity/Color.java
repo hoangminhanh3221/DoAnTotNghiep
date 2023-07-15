@@ -32,5 +32,13 @@ public class Color implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "color", cascade = CascadeType.ALL)
-	private List<Product> products;   
+	private List<Product> products;
+
+	public Color(String colorId, String colorName) {
+		super();
+		this.colorId = colorId;
+		this.colorName = colorName;
+	}   
+	
+	
 }
