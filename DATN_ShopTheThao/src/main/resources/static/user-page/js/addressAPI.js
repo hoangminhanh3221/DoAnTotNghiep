@@ -1,40 +1,51 @@
-const app = angular.module("addressAPI-app",[]);
-app.controller("addressAPI-ctrl",function($scope,$http){
-// Location
-    const hostLocation = "https://provinces.open-api.vn/api/";
-    $scope.selectedDistrict = false;
-    $scope.selectedWard = false;
-    $scope.provinces = [];
-    $scope.province = {};
-    $scope.districts = [];
-    $scope.wards = [];
-    var provinceId;
-    var wardId;
-    var districtId;
-
-    $scope.callApiGetAll = function (api) {
-        $http.get(api)
-            .then(function (response) {
-                $scope.provinces = response.data;
-            }).catch(function (error) {
+const host = "https://provinces.open-api.vn/api/";
+var callAPI = (api) => {
+    return axios.get(api)
+        .then((response) => {
+            renderData(response.data, "province");
         });
-    };
-
-    $scope.callApiGetAll(hostLocation + "?depth=1");
-
-    $scope.callApiDistrict = function (api) {
-        $http.get(api)
-            .then(function (response) {
-                $scope.districts = response.data.districts;
-            }).catch(function (error) {
+}
+callAPI('https://provinces.open-api.vn/api/?depth=1');
+var callApiDistrict = (api) => {
+    return axios.get(api)
+        .then((response) => {
+            renderData(response.data.districts, "district");
         });
-    };
-
-    $scope.callApiWard = function (api) {
-        $http.get(api)
-            .then(function (response) {
-                $scope.wards = response.data.wards;
-            }).catch(function (error) {
+}
+var callApiWard = (api) => {
+    return axios.get(api)
+        .then((response) => {
+            renderData(response.data.wards, "ward");
         });
-    };
+}
+
+var renderData = (array, select) => {
+    let row = ' <option disable value=""> -- Chọn -- </option>';
+    array.forEach(element => {
+        row += `<option value="${element.code}">${element.name}</option>`
+    });
+    document.querySelector("#" + select).innerHTML = row
+}
+
+$("#province").change(() => {
+    callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
+    printResult();
+});
+$("#district").change(() => {
+    callApiWard(host + "d/" + $("#district").val() + "?depth=2");
+    printResult();
+});
+$("#ward").change(() => {
+    printResult();
 })
+
+var printResult = () => {
+    if ($("#district").val() != "" && $("#province").val() != "" &&
+        $("#ward").val() != "") {
+        let result = $("#province option:selected").text() +
+            " | " + $("#district option:selected").text() + " | " +
+            $("#ward option:selected").text();
+        $("#result").text(result)
+    }
+
+}

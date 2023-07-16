@@ -51,11 +51,13 @@
 	th:href="@{~/user-page/css/main.css}" />
 <!--===============================================================================================-->
 <!-- Angular 1.6.9 -->
-    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
+<script
+	th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
 <!--===============================================================================================-->
 </head>
 
-<body class="animsition" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<body class="animsition" ng-app="shopping-cart-app"
+	ng-controller="shopping-cart-ctrl">
 	<!-- Header -->
 	<div th:replace="/user-page/layout/header.html"></div>
 
@@ -63,7 +65,7 @@
 	<div th:replace="/user-page/layout/cart.html"></div>
 
 	<!-- Content -->
-    <div th:replace="${main}"></div>
+	<div th:replace="${main}"></div>
 	<!-- /Content -->
 
 	<!-- Featured Start -->
@@ -232,16 +234,13 @@
 
 								<a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Facebook"> <i
-									class="fa fa-facebook"></i>
+									data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
 								</a> <a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Twitter"> <i
-									class="fa fa-twitter"></i>
+									data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
 								</a> <a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Google Plus"> <i
-									class="fa fa-google-plus"></i>
+									data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
 								</a>
 							</div>
 						</div>
@@ -377,6 +376,15 @@
 	<!--===============================================================================================-->
 	<script th:src="@{/user-page/js/main.js}"></script>
 	<script th:src="@{/user-page/js/shopping-cart-app.js}"></script>
+	<script
+		th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js}"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script
+		th:src="@{https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js}"
+		integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script th:src="@{/user-page/js/addressAPI.js}"></script>
 </body>
 </html>
 
