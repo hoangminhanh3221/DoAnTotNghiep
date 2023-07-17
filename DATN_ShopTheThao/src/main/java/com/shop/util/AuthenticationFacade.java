@@ -26,4 +26,10 @@ public class AuthenticationFacade {
 		Authentication authentication = getAuthentication();
 		return authentication.getName();
 	}
+	
+	public boolean isAuthenticated() {
+	    Authentication authentication = getAuthentication();
+	    return authentication != null && authentication.isAuthenticated();
+	}
+
 }

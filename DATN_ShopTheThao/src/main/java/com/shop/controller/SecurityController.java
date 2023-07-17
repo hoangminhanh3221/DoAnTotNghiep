@@ -1,6 +1,7 @@
 package com.shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,11 +39,6 @@ public class SecurityController {
 		return "/account/login";
 	}
 	
-	@RequestMapping("/user-page/home")
-	public String homeLoad(Model model) {
-		return "/user-page/home";
-	}
-	
 	@RequestMapping("/account/unauthoried")
 	public String unauthoried(Model model) {
 		return "/account/login";
@@ -50,7 +46,8 @@ public class SecurityController {
 	
 	@RequestMapping("/account/logoff/success")
 	public String logoffSuccess(Model model) {
-		return "/account/login";
+		SecurityContextHolder.clearContext();
+		return "redirect:/home";
 	}
 	
 	@RequestMapping("/account/register")
