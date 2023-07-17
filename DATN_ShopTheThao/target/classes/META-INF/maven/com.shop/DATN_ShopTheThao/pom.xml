@@ -51,8 +51,18 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
-		</dependencies>
+		<!-- Spring Security -->
+	    <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-web</artifactId>
+	        <version>5.5.2</version> <!-- Đặt phiên bản tương ứng -->
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-config</artifactId>
+	        <version>5.5.2</version> <!-- Đặt phiên bản tương ứng -->
+	    </dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

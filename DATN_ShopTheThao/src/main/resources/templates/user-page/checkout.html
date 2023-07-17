@@ -50,77 +50,184 @@
 								<h4
 									style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
 									Thông Tin Hóa Đơn</h4>
-								<form class="row" style="width: 100%; margin: 0 auto !important">
-									<div class="col-md-6 form-group">
-										<label for="name">Họ Tên:</label> <input type="text"
-											class="form-control" id="name" placeholder="Nhập tên của bạn"
-											style="height: 40px" />
-									</div>
-									<div class="col-md-6 form-group">
-										<label for="soDienThoai">Số Điện Thoại:</label> <input
-											type="text" class="form-control" id="soDienThoai"
-											placeholder="Nhập số điện thoại của bạn" style="height: 40px" />
-									</div>
-									<div class="col-md-12 form-group mt-2">
-										<label for="email">Email:</label> <input type="email"
-											class="form-control" id="email" aria-describedby="emailHelp"
-											placeholder="Nhập địa chỉ email của bạn" /> <small
-											id="emailHelp" class="form-text text-muted">Chúng tôi
-											sẽ không bao giờ chia sẻ địa chỉ email của bạn với bất kỳ ai
-											khác.</small>
-									</div>
-									<div class="col-md-12 form-group mt-2">
-										<label for="address">Địa Chỉ:</label> <input type="text"
-											class="form-control" id="address"
-											placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
-											style="height: 40px" />
-										<!-- Button trigger modal -->
-										<a class="text-primary" data-toggle="modal"
-											data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
+								<th:block th:if="${#request.remoteUser}">
+									<form class="row"
+										style="width: 100%; margin: 0 auto !important">
+										<div class="col-md-6 form-group">
+											<label for="name">Họ Tên:</label> <input type="text"
+												class="form-control" id="name"
+												placeholder="Nhập tên của bạn" style="height: 40px" />
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="soDienThoai">Số Điện Thoại:</label> <input
+												type="text" class="form-control" id="soDienThoai"
+												placeholder="Nhập số điện thoại của bạn"
+												style="height: 40px" />
+										</div>
+										<div class="col-md-12 form-group mt-2">
+											<label for="email">Email:</label> <input type="email"
+												class="form-control" id="email" aria-describedby="emailHelp"
+												placeholder="Nhập địa chỉ email của bạn" /> <small
+												id="emailHelp" class="form-text text-muted">Chúng
+												tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn với bất
+												kỳ ai khác.</small>
+										</div>
+										<div class="col-md-12 form-group mt-2">
+											<label for="address">Địa Chỉ:</label> <input type="text"
+												class="form-control" id="address"
+												placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
+												style="height: 40px" />
+											<!-- Button trigger modal -->
+											<a class="text-primary" data-toggle="modal"
+												data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
 
-										<!-- Modal -->
-										<div class="modal fade" id="exampleModal" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true"
-											style="padding-top: 200px;">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-body">
-														<h4>Thay đổi địa chỉ</h4>
-														<form class="row">
-															<div class="col-md-12 form-group">
-																<label for="name">Số nhà:</label> <input type="text"
-																	class="form-control" id="name"
-																	placeholder="Nhập tên của bạn" style="height: 40px" />
-															</div>
-															<div class="col-md-6 form-group mt-2">
-																<label for="province">Thành Phố/Tỉnh</label> <select
-																	class="form-control" id="province">
-																</select>
-															</div>
-															<div class="col-md-6 form-group mt-2">
-																<label for="province">Quận/Huyện</label> <select
-																	class="form-control" id="province">
-																</select>
-															</div>
-															<div class="col-md-6 form-group mt-2">
-																<label for="province">Phường/Xã</label> <select
-																	class="form-control" id="province">
-																</select>
-															</div>
-															<button>
-															</button>
-														</form>
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1"
+												aria-labelledby="exampleModalLabel" aria-hidden="true"
+												style="padding-top: 200px;">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-body">
+															<h4 class="mt-2 mb-2">Thay đổi địa chỉ</h4>
+															<form class="row">
+																<div class="form-group row">
+																	<label for="homeNumber" class="col-sm-4 col-form-label">Địa
+																		chỉ:</label>
+																	<div class="col-sm-8">
+																		<input type="text" class="form-control"
+																			id="homeNumber" placeholder="Số nhà, tên đường">
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="province" class="col-sm-4 col-form-label">Thành
+																		phố/Tỉnh</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="province">
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="district" class="col-sm-4 col-form-label">Quận/Huyện</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="district">
+																			<option disable value="">-- Chọn --</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="ward" class="col-sm-4 col-form-label">Phường/Xã</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="ward">
+																			<option disable value="">-- Chọn --</option>
+																		</select>
+																	</div>
+																</div>
+																<button></button>
+															</form>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-12 form-group mt-2">
-										<label for="note">Ghi Chú:</label>
-										<textarea class="form-control" id="note" rows="3"
-											placeholder="Nhập ghi chú"></textarea>
-									</div>
-								</form>
+										<div class="col-md-12 form-group mt-2">
+											<label for="note">Ghi Chú:</label>
+											<textarea class="form-control" id="note" rows="3"
+												placeholder="Nhập ghi chú"></textarea>
+										</div>
+									</form>
+								</th:block>
+								<th:block th:unless="${#request.remoteUser}">
+									<form class="row"
+										style="width: 100%; margin: 0 auto !important">
+										<div class="col-md-6 form-group">
+											<label for="name">Họ Tên:</label> <input type="text"
+												class="form-control" id="name"
+												placeholder="Nhập tên của bạn" style="height: 40px" />
+										</div>
+										<div class="col-md-6 form-group">
+											<label for="soDienThoai">Số Điện Thoại:</label> <input
+												type="text" class="form-control" id="soDienThoai"
+												placeholder="Nhập số điện thoại của bạn"
+												style="height: 40px" />
+										</div>
+										<div class="col-md-12 form-group mt-2">
+											<label for="email">Email:</label> <input type="email"
+												class="form-control" id="email" aria-describedby="emailHelp"
+												placeholder="Nhập địa chỉ email của bạn" /> <small
+												id="emailHelp" class="form-text text-muted">Chúng
+												tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn với bất
+												kỳ ai khác.</small>
+										</div>
+										<div class="col-md-12 form-group mt-2">
+											<label for="address">Địa Chỉ:</label> <input type="text"
+												class="form-control" id="address"
+												placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
+												style="height: 40px" />
+											<!-- Button trigger modal -->
+											<a class="text-primary" data-toggle="modal"
+												data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
+
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1"
+												aria-labelledby="exampleModalLabel" aria-hidden="true"
+												style="padding-top: 200px;">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-body">
+															<h4 class="mt-2 mb-2">Thay đổi địa chỉ</h4>
+															<form class="row">
+																<div class="form-group row">
+																	<label for="homeNumber" class="col-sm-4 col-form-label">Địa
+																		chỉ:</label>
+																	<div class="col-sm-8">
+																		<input type="text" class="form-control"
+																			id="homeNumber" placeholder="Số nhà, tên đường">
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="province" class="col-sm-4 col-form-label">Thành
+																		phố/Tỉnh</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="province">
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="district" class="col-sm-4 col-form-label">Quận/Huyện</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="district">
+																			<option disable value="">-- Chọn --</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label for="ward" class="col-sm-4 col-form-label">Phường/Xã</label>
+																	<div class="col-sm-8">
+																		<select class="form-control" id="ward">
+																			<option disable value="">-- Chọn --</option>
+																		</select>
+																	</div>
+																</div>
+																<button></button>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12 form-group mt-2">
+											<label for="note">Ghi Chú:</label>
+											<textarea class="form-control" id="note" rows="3"
+												placeholder="Nhập ghi chú"></textarea>
+										</div>
+									</form>
+								</th:block>
 								<h4
 									style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
 									Phương Thức Thanh Toán</h4>
