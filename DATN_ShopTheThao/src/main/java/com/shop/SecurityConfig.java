@@ -56,8 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// Phân quyền sử dụng
 		http.authorizeRequests()
 		.antMatchers("/rest/authorities").hasRole("admin")
-		.antMatchers("/admin/**").hasAnyRole("admin", "user")
-		.antMatchers("/order/**").authenticated()
+		.antMatchers("/admin/**").hasAnyRole("admin", "employee")
+		.antMatchers("/discount/**").authenticated()
 		.anyRequest().permitAll(); // khách chưa có tham gia
 		
 		// Giao diện login
