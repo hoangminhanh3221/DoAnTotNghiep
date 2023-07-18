@@ -14,7 +14,7 @@ public interface CustomerService {
 	
 	List<Customer> findAllCustomer();
 	
-	Customer findCustomerByUsername(String username);
+	Optional<Customer> findCustomerByUsername(String username);
 
 	Optional<Customer> findCustomerById(Integer id);
 	

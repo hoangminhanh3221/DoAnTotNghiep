@@ -7,9 +7,9 @@
 		<!-- breadcrumb -->
 		<div class="container">
 			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-				<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-					Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a> <span class="stext-109 cl4"> Shoping Cart </span>
+				<a th:href="@{/home}" class="stext-109 cl8 hov-cl1 trans-04">
+					Trang chủ <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+				</a> <span class="stext-109 cl4"> Kiểm tra thông tin </span>
 			</div>
 		</div>
 
@@ -43,7 +43,7 @@
 				</div>
 
 				<div class="row justify-content-center pt-5">
-					<div class="col-md-10">
+					<div class="col-md-12">
 						<div class="row">
 							<div class="col-lg-8"
 								style="background-color: whitesmoke; height: 750px">
@@ -75,8 +75,7 @@
 										<div class="col-md-12 form-group mt-2">
 											<label for="address">Địa Chỉ:</label> <input type="text"
 												class="form-control" id="address"
-												placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
-												style="height: 40px" th:value="${customer.address.numberHome + ', ' + customer.address.ward + ', ' + customer.address.district + ', ' + customer.address.city}"/>
+												style="height: 40px" th:value="${customer.address.numberHome + ', ' + customer.address.ward + ', ' + customer.address.district + ', ' + customer.address.city}" disabled/>
 											<!-- Button trigger modal -->
 											<a class="text-primary" data-toggle="modal"
 												data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
@@ -207,19 +206,16 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="cart-detail">
-											<h2>Cart Total</h2>
+											<h2>Chi Tiết Hóa Đơn</h2>
 											<ul>
-												<li><span>Subtotal</span> <span style="text-align: end">$100.00</span>
+												<li><span>Subtotal</span> <span style="text-align: end">{{cart.amount.toLocaleString('vi-VN')}} VNĐ</span>
 													<ul>
-														<li><span style="font-size: 14px; color: gray">1
-																x Product Name</span> <span
-															style="text-align: end; font-size: 14px; color: gray;">$99.00</span>
+														<li ng-repeat="item in cart.items">
+															<span style="font-size: 14px; color: gray">{{item.productName}}</span> 
+															<span style="text-align: end; font-size: 14px; color: gray;">{{(item.qty * item.sellingPrice).toLocaleString('vi-VN')}} VNĐ</span>
 														</li>
-														<li><span style="font-size: 14px; color: gray">1
-																x Product Name</span> <span
-															style="text-align: end; font-size: 14px; color: gray;">$39.00</span>
-														</li>
-													</ul></li>
+													</ul>
+												</li>
 												<li><span>Shipping</span> <span style="text-align: end">$0.00</span>
 												</li>
 												<li><span
@@ -235,7 +231,7 @@
 
 									<div class="col-md-12">
 										<div class="cart-detail">
-											<h2>Payment Method</h2>
+											<h2>Phương Thức Thanh Toán</h2>
 											<div class="form-check"
 												style="margin-left: 20px; margin-bottom: 20px">
 												<input class="form-check-input" type="radio"
@@ -246,16 +242,9 @@
 											<div class="form-check"
 												style="margin-left: 20px; margin-bottom: 20px">
 												<input class="form-check-input" type="radio"
-													name="exampleRadios" id="exampleRadios2" value="option2" />
-												<label class="form-check-label" for="exampleRadios2">
-													Chuyển khoản ngân hàng </label>
-											</div>
-											<div class="form-check"
-												style="margin-left: 20px; margin-bottom: 20px">
-												<input class="form-check-input" type="radio"
 													name="exampleRadios" id="exampleRadios3" value="option3" />
 												<label class="form-check-label" for="exampleRadios3">
-													Thẻ Tín dụng/Ghi nợ </label>
+													Ví điện tử VNPay </label>
 											</div>
 											<div class="form-check"
 												style="margin-left: 20px; margin-bottom: 20px">
@@ -280,7 +269,7 @@
 										<a
 											class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
 											style="width: 90%; margin-left: 5%"
-											href="order-complete.html"> Lập hóa đơn </a>
+											th:href="@{order/complete}"> Lập hóa đơn </a>
 									</div>
 								</div>
 							</div>

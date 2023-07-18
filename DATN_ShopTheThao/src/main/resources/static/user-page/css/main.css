@@ -3534,14 +3534,14 @@ select.form-control:not([size]):not([multiple]) {
 	float: left;
 }
 .cart-detail ul li span:first-child {
-	width: calc(100% - 100px);
+	width: 60%;
 }
 .cart-detail ul li span {
 	margin-bottom: 15px;
 	display: block;
 	float: left;
 	border-bottom: 1px solid #e6e6e6;
-	width: 100px;
+	width: 40%;
 }
 
 select option {

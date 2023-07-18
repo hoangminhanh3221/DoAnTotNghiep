@@ -51,8 +51,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customer findCustomerByUsername(String username) {
-		return customerRepository.findCustomerByUsername(username).get(0);
+	public Optional<Customer> findCustomerByUsername(String username) {
+		return customerRepository.findCustomerByUsername(username).stream().findFirst();
 	}
 
 }

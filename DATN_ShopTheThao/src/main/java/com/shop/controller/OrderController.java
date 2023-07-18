@@ -1,5 +1,7 @@
 package com.shop.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +34,10 @@ public class OrderController {
 	@RequestMapping("/checkout")
 	public String checkout(Model model) {
 	    if (af.isAuthenticated()) {
-	        Customer customer = customerService.findCustomerByUsername(af.getUsername());
-	        model.addAttribute("customer", customer);
+	        Optional<Customer> customer = customerService.findCustomerByUsername(af.getUsername());
+	        if(customer.isPresent()) {
+	        	model.addAttribute("customer", customer.get());
+	        }
 	    }
 	    return "user-page/checkout";
 	}
