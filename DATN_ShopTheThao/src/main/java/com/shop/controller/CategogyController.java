@@ -25,7 +25,7 @@ public class CategogyController {
 	
 	@RequestMapping("/categoryList")
 	public String getCategoryList(Model model,@RequestParam("page") Optional<Integer> page) {
-		Pageable pageable = PageRequest.of(page.orElse(0), 16);
+		Pageable pageable = PageRequest.of(page.orElse(0), 10);
 		Page<Category> listCategory = categoryService.findAllCategory(pageable);
 		model.addAttribute("categorys", listCategory);
 		int totalPages = listCategory.getTotalPages();

@@ -33,15 +33,15 @@
                         placeholder="vd: Áo Thun..."
                       />
                     </div>
-                    <div class="col-6 mb-3">
-                      <label class="form-label" for="defaultSelect">ID Danh Mục</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">C0001</option>
-                        <option value="2">C0002</option>
-                        <option value="3">C0003</option>
-                      </select>
-                    </div>
+					<div class="col-6 mb-3">
+					  <label class="form-label" for="defaultSelect">ID Danh Mục</label>
+					  <select id="defaultSelect" class="form-select">
+					    <option value="0">Lựa chọn</option>
+					    <th:block th:each="category : ${categories}">
+					      <option th:value="${category.categoryId}" th:text="${category.categoryId + '-' + category.categoryName}"></option>
+					    </th:block>
+					  </select>
+					</div>
                     <div class="col-12 h-100">
                       <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
                       <button
