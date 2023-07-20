@@ -13,4 +13,8 @@ public class OrderController {
 	public String list() {
 		return "order/list";
 	}
+	@RequestMapping("/admin/order")
+	public String admorder() {
+		return "admin-page/order-list";
+	}
 }
