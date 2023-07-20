@@ -16,9 +16,9 @@ public interface DiscountService {
 
 	Optional<Discount> findDiscountById(String id);
 	
-	Discount createDiscount(Discount Discount);
+	Discount createProduct(Discount Discount);
 
-	Discount updateDiscount(Discount Discount);
+	Discount updateProduct(Discount Discount);
 
 	void deleteDiscount(String id);
 }
