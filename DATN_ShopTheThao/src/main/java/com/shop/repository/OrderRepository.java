@@ -6,5 +6,5 @@ import com.shop.entity.Color;
 import com.shop.entity.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Integer>{
-
+	
 }

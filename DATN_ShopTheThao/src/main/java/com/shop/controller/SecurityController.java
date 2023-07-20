@@ -36,9 +36,6 @@ public class SecurityController {
 		return "/account/login";
 	}
 	
-	@RequestMapping("/account/register")
-	public String accRegister(Model model) {
-		return "/account/register";
-	}
+	
 	
 }
