@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<!-- Content -->
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="javascript:void(0);">Danh Sách</a></li>
+				<li class="breadcrumb-item active">Chi Tiết Thông Tin Khách Hàng</li>
+			</ol>
+			<!-- Button trigger modal -->
+
+			<!-- Basic Layout -->
+			<div class="card" style="height: 975px">
+				<div class="table-responsive text-nowrap">
+					<div class="container" style="width: 95%;">
+						<form  class="row">
+							<div class="row mb-4">
+								<div class="col d-flex align-items-center justify-content-center mb-4 mt-5">
+									<div class="profile-picture" style="margin: auto;">
+										<img th:src="@{${customer.customerImage}}" style="border:#8895A4 solid 2px; ; border-radius: 50%;width: 200px;height: 200px; object-fit: cover;" alt=""
+											class="img-thumbnail">
+									</div>
+								</div> 
+
+
+								<div class="col-12">
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label for="id">ID:</label> <input type="text"
+													class="form-control" id="username" th:value="${customer.customerId}" disabled>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label for="name">Họ Tên:</label> <input type="text"
+													class="form-control" id="username" th:value="${customer.customerName}"
+													disabled>
+
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label style="padding-bottom: 10px;">Giới tính:</label> <input
+													type="text" class="form-control" id="username" th:value="${customer.gender} ? 'Nam' : 'Nữ'"
+													disabled>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label for="dob">Ngày sinh:</label> <input type="text"
+													class="form-control" id="username" th:value="${#dates.format(customer.birthday , 'yyyy-MM-dd')}"
+													disabled>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label for="phone">Số điện thoại:</label> <input type="text"
+													class="form-control" id="username" th:value="${customer.phoneNumber}"
+													disabled>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label for="username">Tên đăng nhập:</label> <input
+													type="text" class="form-control" id="username" th:value="${customer.account.username}"
+													disabled>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label for="password">Mật khẩu:</label> <input type="text"
+													class="form-control" id="username" th:value="${customer.account.password}" disabled>
+											</div>
+										</div>
+										<div class="col-8">
+											<div class="form-group">
+												<label for="address">Địa chỉ:</label> <input type="text"
+													class="form-control" id="username"
+													th:value="${customer.address.numberHome}+', '+${customer.address.ward}+', '+${customer.address.district}+', '+${customer.address.city}"
+													disabled>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn btn-danger"
+								style="width: 100px; height: 45px; margin-top: 20px;">Thoát</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Basic Layout -->
+
+		<div class="demo-inline-spacing">
+			<!-- Basic Pagination -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li class="page-item first"><a class="page-link"
+						href="javascript:void(0);"><i
+							class="tf-icon bx bx-chevrons-left"></i></a></li>
+					<li class="page-item prev"><a class="page-link"
+						href="javascript:void(0);"><i
+							class="tf-icon bx bx-chevron-left"></i></a></li>
+					<li class="page-item active"><a class="page-link"
+						href="javascript:void(0);">1</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);">2</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);">3</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);">4</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:void(0);">5</a></li>
+					<li class="page-item next"><a class="page-link"
+						href="javascript:void(0);"><i
+							class="tf-icon bx bx-chevron-right"></i></a></li>
+					<li class="page-item last"><a class="page-link"
+						href="javascript:void(0);"><i
+							class="tf-icon bx bx-chevrons-right"></i></a></li>
+				</ul>
+			</nav>
+			<!--/ Basic Pagination -->
+		</div>
+		</div>
+		<!-- / Content -->
+	</main>
+</body>
+</html>

@@ -33,4 +33,12 @@ public class Size implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "size", cascade = CascadeType.ALL)
 	private List<Product> products;
+
+	public Size(String sizeId, String sizeName) {
+		super();
+		this.sizeId = sizeId;
+		this.sizeName = sizeName;
+	}
+	
+	
 }

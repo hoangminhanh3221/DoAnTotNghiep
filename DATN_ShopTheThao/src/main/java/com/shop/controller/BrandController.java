@@ -29,7 +29,7 @@ public class BrandController {
 	@RequestMapping("/brandList")
 		public String getBarndList(Model model,@RequestParam("page") Optional<Integer> page) {
 		
-		Pageable pageable = PageRequest.of(page.orElse(0), 16);
+		Pageable pageable = PageRequest.of(page.orElse(0), 10);
 		Page<Brand> listBrand = brandService.findAllBrand(pageable);
 		model.addAttribute("brands", listBrand);
 		int totalPages = listBrand.getTotalPages();

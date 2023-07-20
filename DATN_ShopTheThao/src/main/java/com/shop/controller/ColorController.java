@@ -27,7 +27,7 @@ public class ColorController {
 	@RequestMapping("/colorList")
 	public String getColorList(Model model,@RequestParam("page") Optional<Integer> page) {
 		
-		Pageable pageable = PageRequest.of(page.orElse(0), 16);
+		Pageable pageable = PageRequest.of(page.orElse(0), 10);
 		Page<Color> listColor = colorService.findAllColor(pageable);
 		model.addAttribute("colors", listColor);
 		int totalPages = listColor.getTotalPages();
