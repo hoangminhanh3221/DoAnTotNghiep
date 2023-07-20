@@ -39,4 +39,6 @@ public class Subcategory implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL)
 	private List<Product> products;
+
+	
 }

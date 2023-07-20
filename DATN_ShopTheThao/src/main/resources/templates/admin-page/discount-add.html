@@ -10,59 +10,152 @@
                 <li class="breadcrumb-item">
                   <a href="javascript:void(0);">Sản Phẩm</a>
                 </li>
-                <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                <li th:if="${status == 0}" class="breadcrumb-item active" id="breadcrumb-item">Thêm khuyến mãi</li>
+                <li th:if="${status == 1}" class="breadcrumb-item active" id="breadcrumb-item">Sửa khuyến mãi</li>
               </ol>
 
               <!-- Basic Layout -->
               <div class="card" style="height: 495px">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm khuyến mãi</h5>
+                  <h5 th:if="${status == 0}" class="mb-0 text-uppercase">Thêm khuyến mãi</h5>
+                  <h5 th:if="${status == 1}" class="mb-0 text-uppercase">Sửa khuyến mãi</h5>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-4">
-                      <form class="row">
+                     
+                      <form th:if="${status == 1}" class="row" th:object="${discount}" th:action="@{update/save}" method="post">
                         <div class="col-12 mb-3">
-                          <label class="form-label" for="basic-default-fullname">Mã khuyến mãi:</label>
+                          <label class="form-label" for="basic-default-fullname">Mã khuyến mãi:</label> 
                           <input
                             type="text"
+                            name="discountId"
                             class="form-control"
                             id="basic-default-fullname"
                             placeholder="vd: TH001..."
-                          />
+                            readonly
+                            th:field="*{discountId}" required/>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Mô tả :</label> 
+                          <input
+                            type="text"
+                            name="description"
+                            class="form-control"
+                            id="basic-default-fullname"
+                            placeholder="vd: sản phẩm tuyệt vời."
+                            th:field="*{description}" required/>
                         </div>
                         <div class="col-12 mb-3">
                           <label class="form-label" for="basic-default-password32">Phần trăm khuyến mãi:</label>
                           <div class="input-group input-group-merge">
                             <input
-                              type="password"
+                              type="number"
+                              name="discountRate"
                               class="form-control"
                               id="basic-default-password32"
-                              aria-describedby="basic-default-password"
-                              data-listener-added_e96c3c0f="true"
-                            />
+                              placeholder="vd: 10"
+                              th:field="*{discountRate}" 
+                              required />
                             <span class="input-group-text cursor-pointer" id="basic-default-password">%</span>
                           </div>
                         </div>
                         <div class="col-12 mb-3">
                           <label class="form-label" for="basic-default-fullname">Ngày bắt đầu</label>
-                          <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                          <input type="datetime-local"
+                          name="startDate"
+                          th:field="*{startDate}" 
+                          class="form-control" 
+                          id="basic-default-fullname" 
+                          required/>
                         </div>
                         <div class="col-12 mb-3">
                           <label class="form-label" for="basic-default-fullname">Ngày kết thúc</label>
-                          <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                          <input type="datetime-local"
+                          name="endDate"
+                          th:field="*{endDate}" 
+                          class="form-control" 
+                          id="basic-default-fullname" 
+                          required/>
                         </div>
                         <div class="col-12 h-100">
-                          <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">
+                          <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%; left: 50%">
                             Thêm
                           </button>
-                          <button
-                            type="submit"
-                            class="btn btn-outline-danger"
-                            style="position: absolute; bottom: 5%; left: 10%"
-                          >
-                            Thoát
+                          <a
+                          	th:href="@{/admin/discount}"
+                            type="button"
+                            class="btn btn-danger"
+                            style="position: absolute; bottom: 5%; left: 75%"
+                          >Thoát
+                          </a>
+                        </div>
+<!-- ----------------------------------------------------------------------------------------------------------------------------- -->
+                      </form>
+                      <form th:if="${status == 0}" class="row" th:object="${discount}" th:action="@{add/save}" method="post">
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Mã khuyến mãi:</label> 
+                          <input
+                            type="text"
+                            name="discountId"
+                            class="form-control"
+                            id="basic-default-fullname"
+                            placeholder="vd: TH001..."
+                            th:field="*{discountId}" required/>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Mô tả :</label> 
+                          <input
+                            type="text"
+                            name="description"
+                            class="form-control"
+                            id="basic-default-fullname"
+                            placeholder="vd: sản phẩm tuyệt vời."
+                            th:field="*{description}" required/>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-password32">Phần trăm khuyến mãi:</label>
+                          <div class="input-group input-group-merge">
+                            <input
+                              type="number"
+                              name="discountRate"
+                              class="form-control"
+                              id="basic-default-password32"
+                              placeholder="vd: 10"
+                              th:field="*{discountRate}" 
+                              required />
+                            <span class="input-group-text cursor-pointer" id="basic-default-password">%</span>
+                          </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày bắt đầu</label>
+                          <input type="datetime-local"
+                          name="startDate"
+                          th:field="*{startDate}" 
+                          class="form-control" 
+                          id="basic-default-fullname" 
+                          required/>
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày kết thúc</label>
+                          <input type="datetime-local"
+                          name="endDate"
+                          th:field="*{endDate}" 
+                          class="form-control" 
+                          id="basic-default-fullname" 
+                          required/>
+                        </div>
+                        <div class="col-12 h-100">
+                          <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%; left: 50%">
+                            Thêm
                           </button>
+                          <a
+                           th:href="@{/admin/discount}"
+                            type="button"
+                            class="btn btn-danger"
+                            style="position: absolute; bottom: 5%; left: 75%"
+                          >Thoát
+                          </a>
                         </div>
                       </form>
                     </div>
@@ -71,20 +164,18 @@
                         <h5>Chọn sản phẩm áp dụng khuyến mãi này</h5>
                         <div class="col-6 mb-3">
                           <label for="defaultSelect" class="form-label">Sản phẩm</label>
-                          <select id="defaultSelect" class="form-select">
-                            <option>Chọn sản phẩm</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                          <select id="selectProduct" class="form-select">
+                            <option value="0">Chọn sản phẩm</option>
+                            <option th:each="p : ${list}" th:value="${p.productId}"
+                            th:text="${p.productId + '  -  ' + p.productName}">sp</option>
                           </select>
                         </div>
                         <div class="col-6 mb-3">
                           <label for="defaultSelect" class="form-label">Loại sản phẩm</label>
-                          <select id="defaultSelect" class="form-select">
-                            <option>Chọn loại sản phẩm</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                          <select id="selectCategory" class="form-select">
+                            <option value="0">Chọn loại sản phẩm</option>
+                             <option th:each="p : ${listCategory}" th:value="${p.categoryId}"
+                            th:text="${p.categoryId + '  -  ' + p.categoryName}">sp</option>
                           </select>
                         </div>
                         <div class="table-responsive text-nowrap h-100">
@@ -102,24 +193,25 @@
                                 <th>Xóa</th>
                               </tr>
                             </thead>
-                            <tbody class="table-border-bottom-0">
-                              <tr>
+                            <tbody class="table-border-bottom-0" id="tblPrd">
+                              <tr th:each="p, iterationStat: ${productsOfDiscount}">
                                 <td>
                                   <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
                                     <label class="form-check-label" for="defaultCheck2"> </label>
                                   </div>
                                 </td>
-                                <td>1</td>
-                                <td>Sản phẩm 01</td>
+                                <td th:text="${iterationStat.count}">1</td>
+                                <td th:text="${p.productName}">Sản phẩm 01</td>
                                 <td>
-                                  <a
+                                  <button
+                                    style="border: none; cursor: pointer;"
                                     class="ps-2"
-                                    href="javascript:void(0);"
+                                    onclick="deleteProduct('/*[[${p.productId}]]*/')"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modalToggle"
                                     ><i class="bx bx-trash"></i
-                                  ></a>
+                                  ></button>
                                 </td>
                               </tr>
                             </tbody>

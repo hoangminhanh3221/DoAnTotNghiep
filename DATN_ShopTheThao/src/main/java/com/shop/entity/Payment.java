@@ -46,54 +46,6 @@ public class Payment implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "OrderId", referencedColumnName = "OrderId", nullable = false)
 	private Order order;
-
-	public Integer getPaymentId() {
-		return paymentId;
-	}
-
-	public void setPaymentId(Integer paymentId) {
-		this.paymentId = paymentId;
-	}
-
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
-
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
-	public Double getPaymentAmount() {
-		return paymentAmount;
-	}
-
-	public void setPaymentAmount(Double paymentAmount) {
-		this.paymentAmount = paymentAmount;
-	}
-
-	public Date getPaymentDate() {
-		return paymentDate;
-	}
-
-	public void setPaymentDate(Date paymentDate) {
-		this.paymentDate = paymentDate;
-	}
-
-	public Boolean getPaymentStatus() {
-		return paymentStatus;
-	}
-
-	public void setPaymentStatus(Boolean paymentStatus) {
-		this.paymentStatus = paymentStatus;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 	
 	
 }
