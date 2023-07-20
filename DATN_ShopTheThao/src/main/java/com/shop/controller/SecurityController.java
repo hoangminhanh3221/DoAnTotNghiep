@@ -10,12 +10,7 @@ public class SecurityController {
 	public String loginForm(Model model) {
 		return "/account/login";
 	}
-	
-	@RequestMapping("/account/forgot-password")
-	public String forgotPass(Model model) {
-		return "/account/forgot-password";
-	}
-	
+
 	@RequestMapping("/account/login/success")
 	public String loginSuccess(Model model) {
 		return "/user-page/home";

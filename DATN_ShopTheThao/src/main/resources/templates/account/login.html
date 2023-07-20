@@ -230,6 +230,11 @@
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
-
+	<script th:inline="javascript">
+		var status = /*[[${status}]]*/ '3';
+		if(status==1){
+			alert('Mật khẩu của bạn đã gửi vào mail!Check đê');
+		}
+	</script>
   </body>
 </html>

@@ -20,6 +20,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.aRep = accountRepository;
     }
+    
 	
 	@Override
 	public Page<Account> findAllAccount(Pageable pageable) {
@@ -49,7 +50,16 @@ public class AccountServiceImpl implements AccountService {
 	@Override	
 	public void deleteAccount(String id) {
 		aRep.deleteById(id);
-
+	}
+	
+	@Override
+	public Account findByEmail(String email) {
+		Account acc = aRep.findByEmail(email);
+		if (acc==null) {
+			return null;
+		} else {
+			return acc;
+		}
 	}
 
 }

@@ -39,4 +39,38 @@ public class Subcategory implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL)
 	private List<Product> products;
+
+	public String getSubcategoryId() {
+		return subcategoryId;
+	}
+
+	public void setSubcategoryId(String subcategoryId) {
+		this.subcategoryId = subcategoryId;
+	}
+
+	public String getSubcategoryName() {
+		return subcategoryName;
+	}
+
+	public void setSubcategoryName(String subcategoryName) {
+		this.subcategoryName = subcategoryName;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
+	
 }
