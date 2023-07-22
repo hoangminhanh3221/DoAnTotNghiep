@@ -3,10 +3,7 @@ package com.shop.service.implement;
 import java.util.List;
 import java.util.Optional;
 
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
-=======
->>>>>>> update-entity
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -55,12 +52,4 @@ public class FeedbackServiceImpl implements FeedbackService{
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< HEAD
-=======
-	
-	@Override
-    public List<Feedback> getListFeedbackByPrdId(String id)  {
-        return feedbackRepository.getlistFeedbackByPrdId(id);
-    }
->>>>>>> update-entity
 }

@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shop.entity.Order;
 import com.shop.entity.Payment;
+import com.shop.repository.OrderDetailRepository;
 import com.shop.repository.PaymentRepository;
 import com.shop.service.PaymentService;
 
@@ -38,18 +40,7 @@ public class PaymentServicelmpl implements PaymentService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public Payment createPayment(Payment payment) {
-=======
-	public Payment createPayment(String paymentMethod, Double paymentAmount, Date paymentDate, Boolean paymentStatus,
-			Order order) {
-		Payment payment = new Payment();
-		payment.setPaymentMethod(paymentMethod);
-		payment.setPaymentAmount(paymentAmount);
-		payment.setPaymentDate(paymentDate);
-		payment.setPaymentStatus(paymentStatus);
-		//payment.setOrder(order);
->>>>>>> update-entity
 		return paymentRepository.save(payment);
 	}
 

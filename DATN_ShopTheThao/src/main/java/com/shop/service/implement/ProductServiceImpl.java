@@ -61,16 +61,11 @@ public class ProductServiceImpl implements ProductService{
 		productRepository.deleteById(id);
 		
 	}
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> update-entity
 	@Override
 	public List<Product> getProductsSortByDateDesc() {
 		return productRepository.getProductsSortByDateDesc();
 	}
-<<<<<<< HEAD
 
 	@Override
 	public List<Product> findBestSellingProducts() {
@@ -100,7 +95,4 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findProductsOnSale() {
 		return productRepository.findProductsOnSale();
 	}
-=======
-    
->>>>>>> update-entity
 }

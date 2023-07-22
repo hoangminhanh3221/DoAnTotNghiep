@@ -6,11 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-<<<<<<< HEAD
-=======
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
->>>>>>> update-entity
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,14 +24,8 @@ import lombok.NoArgsConstructor;
 public class Image implements Serializable{
 
 	@Id
-<<<<<<< HEAD
 	@Column(name = "ImageId", columnDefinition = "varchar(10)")
 	private String imageId;
-=======
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ImageId")
-	private Integer imageId;
->>>>>>> update-entity
 	
 	@Column(name = "ImageName1", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName1;
