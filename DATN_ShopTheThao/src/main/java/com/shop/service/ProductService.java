@@ -28,10 +28,13 @@ public interface ProductService {
 	
 	List<Product> getProductsSortByDateDesc();
 	
+<<<<<<< HEAD
 	List<Product> findBestSellingProducts();
 	
 	List<Product> findMostLikedProducts();
 	
 	List<Product> findProductsOnSale();
 	
+=======
+>>>>>>> update-entity
 }

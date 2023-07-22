@@ -20,4 +20,10 @@ public interface FeedbackService{
 	Feedback updateFeedback(Feedback feedback);
 	
 	void deleteFeedback(Integer feedbackId);
+<<<<<<< HEAD
+=======
+	
+	List<Feedback> getListFeedbackByPrdId(String id);
+		
+>>>>>>> update-entity
 }

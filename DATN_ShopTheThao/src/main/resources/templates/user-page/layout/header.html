@@ -35,12 +35,16 @@
 			</div>
 		</div>
 
+<<<<<<< HEAD
 		<div class="wrap-menu-desktop">
 			<nav class="limiter-menu-desktop container">
 				<!-- Logo desktop -->
 				<a href="#" class="logo"> <img
 					th:src="@{/user-page/images/icons/logo-01.png}" alt="IMG-LOGO" />
 				</a>
+=======
+              <a href="#" class="flex-c-m trans-04 p-lr-25"> EN </a>
+>>>>>>> update-entity
 
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
@@ -50,6 +54,7 @@
 
 						<li><a th:href="@{/product/list}">Tất cả</a></li>
 
+<<<<<<< HEAD
 						<li class="active-menu" th:each="category : ${categories}"><a
 							th:href="@{|/product/list?categoryId=${category.categoryId}|}"
 							th:text="${category.categoryName}"></a>
@@ -61,6 +66,44 @@
 						<li><a href="blog.html">Khuyến mãi</a></li>
 
 						<li><a href="about.html">Giới thiệu</a></li>
+=======
+                <li class="active-menu">
+                  <a href="index.html">Đồ Nam</a>
+                  <ul class="sub-menu">
+                    <li><a href="#">Áo Tập Gym</a></li>
+                    <li><a href="#">Quần Tập Gym</a></li>
+                    <li><a href="#">Áo Thun</a></li>
+                    <li><a href="#">Quần Dài</a></li>
+                    <li><a href="#">Áo Khoác</a></li>
+                  </ul>
+                </li>
+
+                <li class="active-menu">
+                  <a href="index.html">Đồ Nữ</a>
+                  <ul class="sub-menu">
+                    <li><a href="#">Áo Tập Yoga</a></li>
+                    <li><a href="#">Quần Tập Yoga</a></li>
+                    <li><a href="#">Áo Thun</a></li>
+                    <li><a href="#">Quần Dài</a></li>
+                    <li><a href="#">Áo Khoác</a></li>
+                    <li><a href="#">Áo CropTop</a></li>
+                  </ul>
+                </li>
+                <li class="active-menu">
+                  <a href="#">Phụ Kiện</a>
+                  <ul class="sub-menu">
+                    <li><a href="#">Tất/Vớ</a></li>
+                    <li><a href="#">Băng Bảo Vệ</a></li>
+                    <li><a href="#">Dây Nhảy</a></li>
+                    <li><a href="#">Găng Tay</a></li>
+                    <li><a href="#">Thảm Yoga</a></li>
+                    <li><a href="#">Túi Thể Thao</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="blog.html">Khuyến mãi</a>
+                </li>
+>>>>>>> update-entity
 
 						<li><a href="contact.html">Liên hệ</a></li>
 					</ul>
