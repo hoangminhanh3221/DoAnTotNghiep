@@ -53,35 +53,5 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-config/5.5.3/spring-security-config-5.5.3.jar" sourcepath="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-config/5.5.3/spring-security-config-5.5.3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="spring-security-config-5.5.3.jar"/>
-			<attribute name="maven.groupId" value="org.springframework.security"/>
-			<attribute name="maven.artifactId" value="spring-security-config"/>
-			<attribute name="maven.version" value="5.5.3"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-crypto/5.5.3/spring-security-crypto-5.5.3.jar" sourcepath="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-crypto/5.5.3/spring-security-crypto-5.5.3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="spring-security-crypto-5.5.3.jar"/>
-			<attribute name="maven.groupId" value="org.springframework.security"/>
-			<attribute name="maven.artifactId" value="spring-security-crypto"/>
-			<attribute name="maven.version" value="5.5.3"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-core/5.5.3/spring-security-core-5.5.3.jar" sourcepath="C:/Users/hma20/.m2/repository/org/springframework/security/spring-security-core/5.5.3/spring-security-core-5.5.3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="spring-security-core-5.5.3.jar"/>
-			<attribute name="maven.groupId" value="org.springframework.security"/>
-			<attribute name="maven.artifactId" value="spring-security-core"/>
-			<attribute name="maven.version" value="5.5.3"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
