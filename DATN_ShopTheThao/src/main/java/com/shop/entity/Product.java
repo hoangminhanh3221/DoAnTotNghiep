@@ -103,6 +103,30 @@ public class Product implements Serializable{
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	public List<Feedback> feedbacks;
 
+	public Product(String productId, String productName, Double costPrice, Double sellingPrice, Integer quantity,
+			Date arrivalDate, String material, String description, Boolean available, Color color, Brand brand,
+			Size size, Subcategory subcategory, Discount discount, List<OrderDetail> orderDetails,
+			List<Favorite> favorites, List<Feedback> feedbacks) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.costPrice = costPrice;
+		this.sellingPrice = sellingPrice;
+		this.quantity = quantity;
+		this.arrivalDate = arrivalDate;
+		this.material = material;
+		this.description = description;
+		this.available = available;
+		this.color = color;
+		this.brand = brand;
+		this.size = size;
+		this.subcategory = subcategory;
+		this.discount = discount;
+		this.orderDetails = orderDetails;
+		this.favorites = favorites;
+		this.feedbacks = feedbacks;
+	}
+
 	
 	
 }

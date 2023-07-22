@@ -47,11 +47,10 @@ public class DiscountController {
 	SubcategoryService subCategoryService;
 	
 	@GetMapping("/admin/discount")
-	public String index(Model model) {
+	public String index(@RequestParam(defaultValue = "0") int page,Model model) {
 		
-		int pageNumber = 0; // Số trang (bắt đầu từ 0)
 		int pageSize = 10; // Số phần tử trên mỗi trang
-		Pageable pageable = PageRequest.of(pageNumber, pageSize);
+		Pageable pageable = PageRequest.of(page, pageSize);
 		
 		Page<Discount> listDiscount = discountService.findAllDiscount(pageable);
 		

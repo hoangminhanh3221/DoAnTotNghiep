@@ -84,6 +84,37 @@
 							</tr>
 						</tbody>
 					</table>
+					 <!-- Hiển thị phân trang -->
+				    <div th:if="${page.totalPages > 1}">
+				        <nav aria-label="Page navigation">
+				            <ul class="pagination">
+				                <li th:classappend="${page.first} ? 'disabled'">
+				                    <a th:href="@{/admin/discount(page=0)}" aria-label="First">
+				                        <span aria-hidden="true">&laquo;</span>
+				                    </a>
+				                </li>
+				                <li th:classappend="${page.hasPrevious()} ? '' : 'disabled'">
+				                    <a th:href="@{/admin/discount(page=${page.number - 1})}" aria-label="Previous">
+				                        <span aria-hidden="true">&lsaquo;</span>
+				                    </a>
+				                </li>
+				                <li th:each="pageNumber : ${#numbers.sequence(0, page.totalPages - 1)}"
+				                    th:classappend="${pageNumber == page.number} ? 'active'">
+				                    <a th:href="@{/admin/discount(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+				                </li>
+				                <li th:classappend="${page.hasNext()} ? '' : 'disabled'">
+				                    <a th:href="@{/admin/discount(page=${page.number + 1})}" aria-label="Next">
+				                        <span aria-hidden="true">&rsaquo;</span>
+				                    </a>
+				                </li>
+				                <li th:classappend="${page.last} ? 'disabled'">
+				                    <a th:href="@{/admin/discount(page=${page.totalPages - 1})}" aria-label="Last">
+				                        <span aria-hidden="true">&raquo;</span>
+				                    </a>
+				                </li>
+				            </ul>
+				        </nav>
+				    </div>
 				</div>
 			</div>
 			<!-- Basic Layout -->
