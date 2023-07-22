@@ -45,7 +45,7 @@ public class PaymentServicelmpl implements PaymentService {
 		payment.setPaymentAmount(paymentAmount);
 		payment.setPaymentDate(paymentDate);
 		payment.setPaymentStatus(paymentStatus);
-		payment.setOrder(order);
+		//payment.setOrder(order);
 		return paymentRepository.save(payment);
 	}
 

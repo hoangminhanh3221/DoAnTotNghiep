@@ -42,9 +42,9 @@ public class ProductDetailController {
 		
 		List<Feedback> feedbackList = feedbackService.getListFeedbackByPrdId(id);
 		
-		Size Size = sizeService.findSizeById(prd.size.sizeId).get();
+		Size Size = sizeService.findSizeById(prd.getSize().getSizeId()).get();
 		
-		Color Color = colorService.findColorById(prd.color.colorId).get();
+		Color Color = colorService.findColorById(prd.getColor().getColorId()).get();
 		
 		model.addAttribute("prd", prd);
 		model.addAttribute("quantity", 1);
