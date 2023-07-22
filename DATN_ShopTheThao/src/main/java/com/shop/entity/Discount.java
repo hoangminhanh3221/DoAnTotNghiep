@@ -28,24 +28,24 @@ public class Discount implements Serializable{
 	
 	@Id
 	@Column(name = "DiscountId", columnDefinition = "varchar(10)")
-	public String discountId;
+	private String discountId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "StartDate", nullable = false)
-	public Date startDate;
+	private Date startDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "EndDate", nullable = false)
-	public Date endDate;
+	private Date endDate;
 	
 	@Column(name = "DiscountRate", nullable = false)
-	public Integer discountRate;
+	private Integer discountRate;
 	
 	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)
-	public String description;
+	private String description;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "discount", cascade = CascadeType.ALL)
-	public List<Product> products;
+	private List<Product> products;
 	
 }
