@@ -40,5 +40,46 @@ public class OrderDetail implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "productId", referencedColumnName = "productId", nullable = false)
 	private Product product;
+
+	public Integer getOrderDetailId() {
+		return orderDetailId;
+	}
+
+	public void setOrderDetailId(Integer orderDetailId) {
+		this.orderDetailId = orderDetailId;
+	}
+
+	public Double getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(Double productPrice) {
+		this.productPrice = productPrice;
+	}
+
+	public Integer getProductQuantity() {
+		return productQuantity;
+	}
+
+	public void setProductQuantity(Integer productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	
 }
