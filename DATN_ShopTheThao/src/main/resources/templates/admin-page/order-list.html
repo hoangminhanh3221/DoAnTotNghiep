@@ -41,24 +41,90 @@
 								<td th:text="${order.orderId}"></td>
 								<td th:text="${order.account.username}"></td>
 								<td th:text="${order.createDate}"></td>
-								<td th:text="${order.totalPrice}"></td>
+								<td th:text="${total[iterStat.count-1]}"></td>
 								<td>
 									<div>
 										<select id="smallSelect" class="form-select form-select-sm">
-											<option value="1" th:selected="${order.status == 'Đơn mới'}">Đơn mới
+											<option value="1" th:selected="${order.orderStatus == 'Đơn mới'}">Đơn mới
 											</option>
-											<option value="2" th:selected="${order.status == 'Đơn Đã Nhận'}">Đơn Đã Nhận
+											<option value="2" th:selected="${order.orderStatus == 'Đơn Đã Nhận'}">Đơn Đã Nhận
 											</option>
-											<option value="3" th:selected="${order.status == 'Đơn Hoàn Thành'}">Đơn Hoàn
+											<option value="3" th:selected="${order.orderStatus == 'Đơn Hoàn Thành'}">Đơn Hoàn
 												Thành</option>
 										</select>
 									</div>
 								</td>
 								<td>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										data-bs-target="#staticBackdropInfo"><i class="bx bx-info-square"></i></a>
-									<a class="ps-2" href="javascript:void(0);" data-bs-toggle="modal"
-										data-bs-target="#modalToggle"><i class="bx bx-trash"></i></a>
+										 th:data-bs-target=" ${iterStat.count} +'staticBackdropInfo'"><i class="bx bx-info-square"></i></a>
+										<!-- Modal Info-->
+									<div class="modal fade" th:id="${iterStat.count + 'staticBackdropInfo'}"
+										data-bs-backdrop="static" data-bs-keyboard="false"
+										tabindex="-1" aria-labelledby="staticBackdropLabel"
+										aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="staticBackdropLabel">Danh
+														sách Sản phẩm</h1>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<div class="table-responsive text-nowrap">
+														<table class="table">
+															<thead>
+																<tr>
+																	<th>STT</th>
+																	<th>Tên sản phẩm</th>
+																	<th>Số lượng</th>
+																	<th>Giá </th>
+																</tr>
+															</thead>
+															<tbody class="table-border-bottom-0">
+																<tr th:each="orderDT , iterStat :${order.orderDetails}">
+																	<td th:text="${iterStat.count}"></td>
+																	<td th:text="${orderDT.product.productName}"></td>
+																	<td th:text="${orderDT.productQuantity}">2</td>
+																	<td th:text="${orderDT.productPrice}">200.000 <strong>vnđ</strong></td>
+																</tr>
+																
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-bs-dismiss="modal">Đóng</button>
+												</div>
+											</div>
+										</div>
+									</div> <a class="ps-2" href="javascript:void(0);"
+									data-bs-toggle="modal" data-bs-target="#modalToggle"><i
+										class="bx bx-trash"></i></a>
+									<div class="modal fade" id="modalToggle"
+										aria-labelledby="modalToggleLabel" tabindex="-1"
+										style="display: none;" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="modalToggleLabel">Thông
+														báo xác nhận</h5>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													Bạn thật sự muốn xóa hóa đơn <strong>OD0001</strong>
+												</div>
+												<div class="modal-footer">
+													<button class="btn btn-danger"
+														data-bs-target="#modalToggle2" data-bs-toggle="modal"
+														data-bs-dismiss="modal">Xóa</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									
 								</td>
 							</tr>
 						</tbody>
