@@ -14,8 +14,8 @@
 				<label for="defaultSelect" class="form-label">Trạng Thái Đơn</label>
 				<select id="defaultSelect" class="form-select" style="font-weight: bold;">
 					<option value="1" style="font-weight: bold;">Đơn mới</option>
-					<option value="2" style="font-weight: bold">Đơn đã nhận</option>
-					<option value="3" style="font-weight: bold">Đơn Hoàn Thành</option>
+					<option value="2" style="font-weight: bold">Đang giao</option>
+					<option value="3" style="font-weight: bold">Đã giao</option>
 				</select>
 			</div>
 
@@ -47,22 +47,22 @@
 										<select id="smallSelect" class="form-select form-select-sm">
 											<option value="1" th:selected="${order.orderStatus == 'Đơn mới'}">Đơn mới
 											</option>
-											<option value="2" th:selected="${order.orderStatus == 'Đơn Đã Nhận'}">Đơn Đã Nhận
+											<option value="2" th:selected="${order.orderStatus == 'Đang giao'}">Đang giao
 											</option>
-											<option value="3" th:selected="${order.orderStatus == 'Đơn Hoàn Thành'}">Đơn Hoàn
-												Thành</option>
+											<option value="3" th:selected="${order.orderStatus == 'Đã giao'}">Đã giao</option>
 										</select>
 									</div>
 								</td>
 								<td>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										 th:data-bs-target=" ${iterStat.count} +'staticBackdropInfo'"><i class="bx bx-info-square"></i></a>
+										 th:data-bs-target="'#modal' + ${iterStat.count}"><i class="bx bx-info-square"></i></a>
 										<!-- Modal Info-->
-									<div class="modal fade" th:id="${iterStat.count + 'staticBackdropInfo'}"
+									<div class="modal fade" th:id="'modal' + ${iterStat.count}"
 										data-bs-backdrop="static" data-bs-keyboard="false"
 										tabindex="-1" aria-labelledby="staticBackdropLabel"
 										aria-hidden="true">
 										<div class="modal-dialog modal-lg">
+											<!-- Nội dung cửa sổ Modal -->
 											<div class="modal-content">
 												<div class="modal-header">
 													<h1 class="modal-title fs-5" id="staticBackdropLabel">Danh
