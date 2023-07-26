@@ -64,7 +64,7 @@ public class Product implements Serializable{
 	private Color color;
 	
 	@ManyToOne
-	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = true)
 	private Image image;
 	
 	@ManyToOne
@@ -94,5 +94,7 @@ public class Product implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Feedback> feedbacks;
-	 
+
+
+	
 }

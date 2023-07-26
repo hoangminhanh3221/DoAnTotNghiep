@@ -48,8 +48,8 @@ public class ProductDetailController {
 		
 		model.addAttribute("prd", prd);
 		model.addAttribute("quantity", 1);
-		model.addAttribute("size", Size.sizeName);
-		model.addAttribute("color", Color.colorName);
+		model.addAttribute("size", Size.getSizeName());
+		model.addAttribute("color", Color.getColorName());
 		model.addAttribute("review", feedbackList);
 		return "user-page/Product-detail";
 	}
