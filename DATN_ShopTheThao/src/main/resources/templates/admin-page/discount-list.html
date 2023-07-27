@@ -52,35 +52,12 @@
 								<td th:text=${item.discountRate}>10%</td>
 								<td th:text=${item.startDate}>00:00:00 01/07/2023</td>
 								<td th:text=${item.endDate}>23:59:59 01/07/2023</td>
-								<td><a
-									class="pe-2" th:href="@{/admin/discount/update(discountid=${item.discountId})}"><i
-									class="bx bx-edit-alt"></i></a> <a class="ps-2"
-									href="javascript:void(0);" data-bs-toggle="modal"
-									data-bs-target="#modalToggle"><i class="bx bx-trash"></i></a> 
-									<!-- Modal Delete-->
-									<div class="modal fade" id="modalToggle"
-										aria-labelledby="modalToggleLabel" tabindex="-1"
-										style="display: none" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-centered">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="modalToggleLabel">Thông
-														báo xác nhận</h5>
-													<button type="button" class="btn-close"
-														data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													Bạn thật sự muốn xóa giảm giá <strong
-														th:text=${item.discountId}></strong>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-danger"
-														data-bs-target="#modalToggle2" data-bs-toggle="modal"
-														data-bs-dismiss="modal">Xóa</button>
-												</div>
-											</div>
-										</div>
-									</div></td>
+								<td><button
+			                          	style="border: none;background-color: white;color: blue;"
+			                            class="ps-2"
+			                            th:onclick="deleteDa([[${item.discountId}]])"
+			                            ><i class="bx bx-trash"></i></button>
+			                          </td>
 							</tr>
 						</tbody>
 					</table>
@@ -121,14 +98,15 @@
 					
 		</div>
 		<!-- / Content -->
-		<script th:inline="javascript">
-        	var add = /*[[${add}]]*/ '3';
-        	if(add==2){
-        		alert('Thêm khuyến mãi thành công');
-        	}else if(add==1){
-        		alert('Khuyến mãi Đã tồn tại');
-        	}
-    </script>
+		<script>
+			  function deleteDa(id){
+				  var result = confirm('Bạn thật sự muốn xóa Khuyến mãi có ID =  ' + id + ' không?');
+				  if (result) {
+		                console.log('Đã xác nhận xóa Khuyến mãi có ID: ' + id);
+		                window.location.href = "http://localhost:8080/admin/discount/delete?discountId=" + id;
+		            } 
+			  }
+		  </script>
 	</main>
 </body>
 </html>

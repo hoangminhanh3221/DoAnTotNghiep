@@ -240,6 +240,14 @@ public class DiscountController {
 		return "redirect:/admin/discount";
 	}
 	
+	@GetMapping("/admin/discount/delete")
+	public String DiscountDelete(Model model, @RequestParam("discountId") String discountId) {
+
+		discountService.deleteDiscount(discountId);
+		
+		return "redirect:/admin/discount";
+	}
+	
 	// function
 	
 	private List<Product> getProductByCategory(String id) {

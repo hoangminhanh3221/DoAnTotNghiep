@@ -41,7 +41,7 @@ public class HomeController {
 	@Autowired
 	OrderDetailService orderDetailService;
 	
-	private List<Product> productsDC;
+	private List<Product> productsDC = new ArrayList<>();
 	
 	
 
@@ -64,7 +64,8 @@ public class HomeController {
     @ResponseBody
     public List<Product> getPromotions() {
         // Lấy danh sách sản phẩm khuyến mãi từ cơ sở dữ liệu
-        List<Product> promotions = getDiscountProducts();
+		getDiscountProducts();
+        List<Product> promotions = productsDC;
         return promotions;
     }
 
@@ -79,10 +80,10 @@ public class HomeController {
 		
 		//tạo map có tên sản phẩm và số lần bán
 		Map<String, Integer> countMap = new HashMap<>();
-        for (OrderDetail orderDetail : listOrderDef) {
-            String name = orderDetail.toString();
-            countMap.put(name, countMap.getOrDefault(name, 0) + 1);
-        }
+		for (OrderDetail orderDetail : listOrderDef) {
+		    String name = orderDetail.getProduct().getProductId(); // Lấy productId từ sản phẩm liên quan
+		    countMap.put(name, countMap.getOrDefault(name, 0) + 1);
+		}
 
         // Tạo danh sách phụ không trùng lặp
         List<String> uniqueNames = new ArrayList<>(countMap.keySet());
@@ -110,11 +111,10 @@ public class HomeController {
 	
 	}
 	// Lấy sp khuyến mãi
-	List<Product> getDiscountProducts(){
+	void getDiscountProducts(){
 		
 		List<Product> listPrd = productService.findAllProduct();
 		List<Discount> listDC = discountService.findAllDiscount();
-		List<Product> list = new ArrayList<>();
 		
 		//xắp xếp khuyến mãi theo tỉ lệ giảm giá với thứ tự giảm dần
 		for (int i = 0; i < listDC.size(); i++) {
@@ -124,21 +124,15 @@ public class HomeController {
 				}
 			}
 		}
-		for (int j = 0; j < listDC.size(); j++) {
-			if (listDC.get(j).getDiscountId().equalsIgnoreCase("DS04")) {
-				listDC.remove(j);
-			}
-		}
+
 		for (int i = 0; i < listDC.size(); i++) {
 			for (int j = 0; j < listPrd.size(); j++) {
 				if (listDC.get(i).getDiscountId().equalsIgnoreCase(listPrd.get(j).getDiscount().getDiscountId() )) {
-					list.add(listPrd.get(j));
+					productsDC.add(listPrd.get(j));
 				}
 			}
 		}
-		this.productsDC = list;
 		
-		return list;
 	}
 	
 	
@@ -156,36 +150,32 @@ public class HomeController {
             counts.put(student.getProduct().getProductId(), counts.getOrDefault(student, 0) + 1);
         }
         
-        // Xây dựng danh sách mới chứa sản phẩm và số lần xuất hiện
-        List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(counts.entrySet());
+     // Xây dựng danh sách mới chứa sản phẩm và số lần xuất hiện
+        List<Map.Entry<Product, Integer>> sortedList = new ArrayList<Map.Entry<Product, Integer>>();
 
         // Sắp xếp danh sách mới theo số lần xuất hiện giảm dần
-        Collections.sort(sortedList, new Comparator<Map.Entry<String, Integer>>() {
+        Collections.sort(sortedList, new Comparator<Map.Entry<Product, Integer>>() {
             @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+            public int compare(Map.Entry<Product, Integer> o1, Map.Entry<Product, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
 
         // Lọc danh sách mới để loại bỏ các sản phẩm trùng lặp
-        Set<String> uniqueProducts = new HashSet<>();
-        List<String> result = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : sortedList) {
-        	String id = entry.getKey();
-            if (!uniqueProducts.contains(id)) {
-                result.add(id);
-                uniqueProducts.add(id);
+        Set<Product> uniqueProducts = new HashSet<>();
+        List<Product> result = new ArrayList<>();
+        for (Map.Entry<Product, Integer> entry : sortedList) {
+            Product product = entry.getKey();
+            if (!uniqueProducts.contains(product)) {
+                result.add(product);
+                uniqueProducts.add(product);
             }
         }
 
-        // In danh sách kết quả
-        for (String f : result) {
-            System.out.println(f);
-        }
         
         // Duyệt mảng và lấy sản phẩm nổi bật
-        for (String f : result) {
-			Product p = productService.findProductById(f).get();
+        for (Product f : result) {
+			Product p = productService.findProductById(f.getProductId()).get();
 			pro.add(p);
 		}
         return pro;
