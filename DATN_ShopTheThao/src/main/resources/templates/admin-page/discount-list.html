@@ -52,7 +52,13 @@
 								<td th:text=${item.discountRate}>10%</td>
 								<td th:text=${item.startDate}>00:00:00 01/07/2023</td>
 								<td th:text=${item.endDate}>23:59:59 01/07/2023</td>
-								<td><button
+								<td>
+									<a
+			                            class="pe-2"
+			                            th:href="@{discount/update(discountid=${item.discountId})}"
+			                            ><i class="bx bx-edit-alt"></i
+			                          ></a>
+									<button
 			                          	style="border: none;background-color: white;color: blue;"
 			                            class="ps-2"
 			                            th:onclick="deleteDa([[${item.discountId}]])"
