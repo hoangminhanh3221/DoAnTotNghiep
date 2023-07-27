@@ -110,7 +110,6 @@ public class DiscountController {
 			Product prd = productService.findProductById(id).get();
 			list.add(prd);
 			session.removeAttribute("productList");
-			System.out.println("657654754");
 			session.setAttribute("productList", list);
 			return list;
         }

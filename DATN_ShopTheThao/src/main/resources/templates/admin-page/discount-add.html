@@ -207,7 +207,7 @@
                                   <button
                                     style="border: none; cursor: pointer;"
                                     class="ps-2"
-                                    onclick="deleteProduct('/*[[${p.productId}]]*/')"
+                                    th:onclick="deleteProduct([[${p.productId}]])"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modalToggle"
                                     ><i class="bx bx-trash"></i
