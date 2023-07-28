@@ -25,7 +25,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-<title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin
+<title>Register Basic - Pages | FSprot - Bootstrap 5 HTML Admin
 	Template - Pro</title>
 
 <meta name="description" content="" />
@@ -82,7 +82,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+                <a href="home.html" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <svg
                       width="25"
@@ -138,30 +138,30 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">FSport</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              <h4 class="mb-2">Chào mừng đến FSport! 👋</h4>
+              <p class="mb-4">Đăng nhập và bắt đầu shopping nào!</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form th:action="@{/account/login}" id="formAuthentication" class="mb-3" action="go" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Email hoặc Tên đăng nhập</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
                     name="email-username"
-                    placeholder="Enter your email or username"
+                    placeholder="Nhập email hoặc tên đăng nhập"
                     autofocus
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
+                    <label class="form-label" for="password">Mật khẩu</label>
+                    <a href="/account/forgot-password">
+                      <small>Quên mật khẩu?</small>
                     </a>
                   </div>
                   <div class="input-group input-group-merge">
@@ -179,18 +179,18 @@
                 <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                    <label class="form-check-label" name="remember"> Ghi nhớ đăng nhập </label>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <a th:href="@{/account/login/form}"><button class="btn btn-primary d-grid w-100" >Đăng nhập</button></a>
                 </div>
               </form>
 
               <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
+                <span>Bạn là khách hàng mới?</span>
+                <a href="/account/register">
+                  <span>Tạo tài khoản nào !</span>
                 </a>
               </p>
             </div>
@@ -200,16 +200,16 @@
       </div>
     </div>
 
-    <!-- / Content -->
+    <!-- / Content 
 
     <div class="buy-now">
       <a
         href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
         target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
+        class="btn btn-danger btn-buy-now" >Upgrade to Pro</a>
     </div>
+     -->
+    
 	<!-- Core JS -->
 	<!-- build:js assets/vendor/js/core.js -->
 	<script th:src="@{/admin-page/assets/vendor/libs/jquery/jquery.js}"></script>
@@ -230,6 +230,11 @@
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
-
+	<script th:inline="javascript">
+		var status = /*[[${status}]]*/ '3';
+		if(status==1){
+			alert('Mật khẩu của bạn đã gửi vào mail!Check đê');
+		}
+	</script>
   </body>
 </html>

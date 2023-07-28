@@ -16,24 +16,27 @@
               <!-- Basic Layout -->
               <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                  <h5 th:if="${status == 1}" class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                  <h5 th:if="${status == 0}" class="mb-0 text-uppercase">Thêm sản phẩm</h5>
                 </div>
                 <div class="card-body">
-                  <form class="row">
+                  <form class="row" th:if="${status==1}" th:object="${product}" th:action="@{/admin/product/add/save}"  method="post" enctype="multipart/form-data">
                     <!-- Mã sản phẩm -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-fullname">Mã sản phẩm</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                      <input  required type="text" th:field="*{productId}" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
                     </div>
                     <!-- Tên sản phẩm -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-fullname">Tên sản phẩm</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                      <input required type="text" th:field="*{productName}" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
                     </div>
                     <!-- Số lượng -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-fullname">Số lượng</label>
                       <input
+                      	required
+                      	th:field="*{quantity}"
                         type="number"
                         min="0"
                         class="form-control"
@@ -46,6 +49,8 @@
                       <label class="form-label" for="basic-default-email">Giá nhập</label>
                       <div class="input-group input-group-merge">
                         <input
+                        	required
+                          th:field="*{costPrice}"
                           type="number"
                           min="0"
                           id="basic-default-email"
@@ -56,13 +61,15 @@
                         />
                         <span class="input-group-text" id="basic-default-email2">vnđ</span>
                       </div>
-                      <div class="form-text">error</div>
+                      <div class="form-text">Đơn vị tiền tệ Việt Nam</div>
                     </div>
                     <!-- Giá bán -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-email">Giá bán</label>
                       <div class="input-group input-group-merge">
                         <input
+                        	required
+                          th:field="*{sellingPrice}"
                           type="number"
                           min="0"
                           id="basic-default-email"
@@ -78,110 +85,251 @@
                     <!-- Chất liệu -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-fullname">Chất liệu</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Lụa" />
+                      <input type="text" required th:field="*{material}" class="form-control" id="basic-default-fullname" placeholder="vd: Lụa" />
                     </div>
                     <!-- Loại sp -->
                     <div class="col-3 mb-3">
                       <label class="form-label" for="defaultSelect">Loại sản phẩm:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">H001</option>
-                        <option value="2">H002</option>
-                        <option value="3">H003</option>
+                      <select id="defaultSelect" th:field="*{subcategory.subcategoryId}" class="form-select">
+                        <option th:each="c : ${subcategoryL}" th:value="${c.SubcategoryId}"  th:text="${c.SubcategoryId + '  -  ' + c.SubcategoryName}">H001</option>
                       </select>
                     </div>
                     <!-- Thương hiệu -->
                     <div class="col-3 mb-3">
                       <label class="form-label" for="defaultSelect">Thương hiệu:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">C001</option>
-                        <option value="2">C002</option>
-                        <option value="3">C003</option>
+                      <select id="defaultSelect" th:field="*{brand.brandId}" class="form-select">
+                       <option th:each="c : ${brandL}" th:value="${c.brandId}" th:text="${c.brandId + '  -  ' + c.brandName}">H001</option>
                       </select>
                     </div>
                     <!-- Màu sắc -->
                     <div class="col-3 mb-3">
                       <label class="form-label" for="defaultSelect">Màu sắc:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">TL001</option>
-                        <option value="2">TL002</option>
-                        <option value="3">TL003</option>
+                      <select id="defaultSelect"  th:field="*{color.colorId}" class="form-select">
+                        <option th:each="c : ${colorL}" th:value="${c.colorId}" th:text="${c.colorId + '  -  ' + c.colorName}">H001</option>
                       </select>
                     </div>
                     <!-- Kích thước -->
                     <div class="col-3 mb-3">
                       <label class="form-label" for="defaultSelect">Kích thước:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">S001</option>
-                        <option value="2">S002</option>
-                        <option value="3">S003</option>
+                      <select id="defaultSelect" th:field="*{size.sizeId}" class="form-select">
+                        <option th:each="c : ${sizeL}" th:value="${c.sizeId}" th:text="${c.sizeId + '  -  ' + c.sizeName}">H001</option>
                       </select>
                     </div>
                     <!-- Khuyến mãi -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="defaultSelect">Khuyến mãi:</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
-                        <option value="1">GG001</option>
-                        <option value="2">GG002</option>
-                        <option value="3">GG003</option>
+                      <select id="defaultSelect" th:field="*{discount.discountId}" class="form-select">
+                        <option th:each="c : ${discountL}" th:value="${c.discountId}" th:text="${c.discountId + '  -  ' + c.discountRate+ '  %  '}">H001</option>
                       </select>
                     </div>
                     <!-- Ngày nhập -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="basic-default-fullname">Ngày nhập</label>
-                      <input type="datetime-local" class="form-control" id="basic-default-fullname" />
+                      <input required type="datetime-local" th:field="*{arrivalDate}" class="form-control" id="basic-default-fullname" />
                     </div>
                     <!-- Trạng thái -->
                     <div class="col-4 mb-3">
                       <label class="form-label" for="defaultSelect">Trạng thái</label>
-                      <select id="defaultSelect" class="form-select">
-                        <option value="0">Lựa chọn</option>
+                      <select id="defaultSelect" th:field="*{available}" class="form-select">
                         <option value="1">Đang bán</option>
-                        <option value="2">Không bán</option>
+                        <option value="0">Không bán</option>
                       </select>
                     </div>
                     <!-- Chọn hình ảnh 1 -->
                     <div class="col-6 mb-3">
-                      <label for="formFile1" class="form-label">Chọn hình ảnh 1:</label>
-                      <input class="form-control" type="file" id="formFile1" />
+                      <label for="formFiles1" class="form-label">Chọn hình ảnh 1:</label>
+                      <input required class="form-control" name="image1" type="file" id="formFiles1"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 2 -->
                     <div class="col-6 mb-3">
-                      <label for="formFile2" class="form-label">Chọn hình ảnh 2:</label>
-                      <input class="form-control" type="file" id="formFile2" />
+                      <label for="formFiles2" class="form-label">Chọn hình ảnh 2:</label>
+                      <input required class="form-control" name="image2" type="file" id="formFiles2"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 3 -->
                     <div class="col-6 mb-3">
-                      <label for="formFile3" class="form-label">Chọn hình ảnh 3:</label>
-                      <input class="form-control" type="file" id="formFile3" />
+                      <label for="formFiles3" class="form-label">Chọn hình ảnh 3:</label>
+                      <input required class="form-control" name="image3" type="file" id="formFiles3"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 4 -->
                     <div class="col-6 mb-3">
-                      <label for="formFile4" class="form-label">Chọn hình ảnh 4:</label>
-                      <input class="form-control" type="file" id="formFile4" />
+                      <label for="formFiles4" class="form-label">Chọn hình ảnh 4:</label>
+                      <input required class="form-control" name="image4" type="file" id="formFiles4"  accept="image/*" />
                     </div>
                     <!-- Mô tả -->
                     <div class="col-12 mb-3">
                       <label class="form-label" for="basic-default-fullname">Mô tả</label>
                       <textarea
+                      required
+                      th:field="*{description}"
                         class="form-control"
                         id="basic-default-fullname"
                         placeholder="vd: mô tả"
-                        name=""
-                        id=""
                         cols="30"
                         rows="2"
                       ></textarea>
                     </div>
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Thêm</button>
-                      <button type="submit" class="btn btn-outline-danger">Thoát</button>
+                      <a th:href="@{/admin/product}" class="btn btn-outline-danger">Thoát</a>
                     </div>
                   </form>
+                  
+                  <!-- -------------------------------------------------------------------------------------------------------------- -->
+                  
+                  <form th:if="${status == 0}" class="row" th:object="${product}" th:action="@{/admin/product/update/save}"  method="post" enctype="multipart/form-data">
+                    <!-- Mã sản phẩm -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Mã sản phẩm</label>
+                      <input  readonly type="text" th:field="*{productId}" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                    </div>
+                    <!-- Tên sản phẩm -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Tên sản phẩm</label>
+                      <input required type="text" th:field="*{productName}" class="form-control" id="basic-default-fullname" placeholder="vd: SP001..." />
+                    </div>
+                    <!-- Số lượng -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Số lượng</label>
+                      <input
+                      	required
+                      	th:field="*{quantity}"
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: 69..."
+                      />
+                    </div>
+                    <!-- Giá nhập -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-email">Giá nhập</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                        	required
+                          th:field="*{costPrice}"
+                          type="number"
+                          min="0"
+                          id="basic-default-email"
+                          class="form-control"
+                          placeholder="vd: 100000..."
+                          aria-label="john.doe"
+                          aria-describedby="basic-default-email2"
+                        />
+                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
+                      </div>
+                      <div class="form-text">Đơn vị tiền tệ Việt Nam</div>
+                    </div>
+                    <!-- Giá bán -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-email">Giá bán</label>
+                      <div class="input-group input-group-merge">
+                        <input
+                        	required
+                          th:field="*{sellingPrice}"
+                          type="number"
+                          min="0"
+                          id="basic-default-email"
+                          class="form-control"
+                          placeholder="vd: 100000..."
+                          aria-label="john.doe"
+                          aria-describedby="basic-default-email2"
+                        />
+                        <span class="input-group-text" id="basic-default-email2">vnđ</span>
+                      </div>
+                      <div class="form-text">Đơn vị tiền tệ Việt Nam</div>
+                    </div>
+                    <!-- Chất liệu -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Chất liệu</label>
+                      <input type="text" required th:field="*{material}" class="form-control" id="basic-default-fullname" placeholder="vd: Lụa" />
+                    </div>
+                    <!-- Loại sp -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Loại sản phẩm:</label>
+                      <select id="defaultSelect" th:field="*{subcategory.subcategoryId}" class="form-select">
+                        <option th:each="c : ${subcategoryL}" th:value="${c.SubcategoryId}"  th:text="${c.SubcategoryId + '  -  ' + c.SubcategoryName}">H001</option>
+                      </select>
+                    </div>
+                    <!-- Thương hiệu -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Thương hiệu:</label>
+                      <select id="defaultSelect" th:field="*{brand.brandId}" class="form-select">
+                       <option th:each="c : ${brandL}" th:value="${c.brandId}" th:text="${c.brandId + '  -  ' + c.brandName}">H001</option>
+                      </select>
+                    </div>
+                    <!-- Màu sắc -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Màu sắc:</label>
+                      <select id="defaultSelect"  th:field="*{color.colorId}" class="form-select">
+                        <option th:each="c : ${colorL}" th:value="${c.colorId}" th:text="${c.colorId + '  -  ' + c.colorName}">H001</option>
+                      </select>
+                    </div>
+                    <!-- Kích thước -->
+                    <div class="col-3 mb-3">
+                      <label class="form-label" for="defaultSelect">Kích thước:</label>
+                      <select id="defaultSelect" th:field="*{size.sizeId}" class="form-select">
+                        <option th:each="c : ${sizeL}" th:value="${c.sizeId}" th:text="${c.sizeId + '  -  ' + c.sizeName}">H001</option>
+                      </select>
+                    </div>
+                    <!-- Khuyến mãi -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="defaultSelect">Khuyến mãi:</label>
+                      <select id="defaultSelect" th:field="*{discount.discountId}" class="form-select">
+                        <option th:each="c : ${discountL}" th:value="${c.discountId}" th:text="${c.discountId + '  -  ' + c.discountRate+ '  %  '}">H001</option>
+                      </select>
+                    </div>
+                    <!-- Ngày nhập -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Ngày nhập</label>
+                      <input required type="datetime-local" th:field="*{arrivalDate}" class="form-control" id="basic-default-fullname" />
+                    </div>
+                    <!-- Trạng thái -->
+                    <div class="col-4 mb-3">
+                      <label class="form-label" for="defaultSelect">Trạng thái</label>
+                      <select id="defaultSelect" th:field="*{available}" class="form-select">
+                        <option value="1">Đang bán</option>
+                        <option value="0">Không bán</option>
+                      </select>
+                    </div>
+                    <!-- Chọn hình ảnh 1 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile1" class="form-label">Chọn hình ảnh 1:</label>
+                      <input required class="form-control" th:value="${image1}" name="image1" type="file" id="formFile1"  accept="image/*" />
+                    </div>
+                    <!-- Chọn hình ảnh 2 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile2" class="form-label">Chọn hình ảnh 2:</label>
+                      <input required class="form-control" th:value="${image2}" name="image2" type="file" id="formFile2"  accept="image/*" />
+                    </div>
+                    <!-- Chọn hình ảnh 3 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile3" class="form-label">Chọn hình ảnh 3:</label>
+                      <input required class="form-control" th:value="${image3}" name="image3" type="file" id="formFile3"  accept="image/*" />
+                    </div>
+                    <!-- Chọn hình ảnh 4 -->
+                    <div class="col-6 mb-3">
+                      <label for="formFile4" class="form-label">Chọn hình ảnh 4:</label>
+                      <input required class="form-control" th:value="${image4}" name="image4" type="file" id="formFile4"  accept="image/*" />
+                    </div>
+                    <!-- Mô tả -->
+                    <div class="col-12 mb-3">
+                      <label class="form-label" for="basic-default-fullname">Mô tả</label>
+                      <textarea
+                      required
+                      th:field="*{description}"
+                        class="form-control"
+                        id="basic-default-fullname"
+                        placeholder="vd: mô tả"
+                        cols="30"
+                        rows="2"
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                      <a th:href="@{/admin/product}" class="btn btn-outline-danger">Thoát</a>
+                    </div>
+                  </form>
+                  
                 </div>
               </div>
               <!-- Basic Layout -->

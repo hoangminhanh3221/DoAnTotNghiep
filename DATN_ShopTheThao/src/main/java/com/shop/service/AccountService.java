@@ -24,4 +24,6 @@ public interface AccountService {
 
 	void deleteAccount(String id);
 	
+	Account findByEmail(String email);
+	
 }

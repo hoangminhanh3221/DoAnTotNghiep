@@ -14,5 +14,6 @@ import com.shop.entity.Customer;
 import com.shop.entity.Product;
 
 public interface AccountRepository  extends JpaRepository<Account, String>{
-
+	@Query("Select o from Account o where o.email = ?1")
+	Account findByEmail(String email);
 }

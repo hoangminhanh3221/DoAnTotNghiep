@@ -52,4 +52,14 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.deleteById(id);
 
 	}
+	
+	@Override
+	public Account findByEmail(String email) {
+		Account acc = accountRepository.findByEmail(email);
+		if (acc==null) {
+			return null;
+		} else {
+			return acc;
+		}
+	}
 }
