@@ -13,15 +13,9 @@
                 <li class="breadcrumb-item active">Danh Sách Nhân Viên</li>
               </ol>
               <!-- Button trigger modal -->
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style="position: absolute; right: 2%; top: 13%; z-index: 1"
-              >
+ 				<a type="button" class="btn btn-primary" style="position: absolute; right: 2%; top: 13%; z-index: 1" th:href="@{/admin/employeeAdd}">
                 Thêm
-              </button>
+              </a>
 
               <!-- Basic Layout -->
               <div class="card" style="height: 700px">
@@ -48,7 +42,7 @@
 						<td th:text="${#dates.format(employee.birthday , 'yyyy-MM-dd')}"></td>
 						<td th:text="${employee.phoneNumber}"></td>
                         <td>
-                          <a class="pe-2" ><i class="bx bx-edit-alt"></i></a>
+                          <a th:href="@{|/admin/employeeEdit/${employee.employeeId}|}" class="pe-2" ><i class="bx bx-edit-alt"></i></a>
                           <a
                             class="ps-2"
                             data-bs-toggle="modal"
@@ -81,7 +75,7 @@
                                 <div class="modal-footer">
                                   <a
                                     class="btn btn-danger"
-                                    th:href="@{|/admin/employee/delete/${employee.employeeId}|}"
+                                    th:href="@{|/admin/employeeDelete/${employee.employeeId}|}"
                                   >
                                     Xóa
                                   </a>
