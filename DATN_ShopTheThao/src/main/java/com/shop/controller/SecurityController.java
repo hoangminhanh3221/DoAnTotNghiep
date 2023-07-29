@@ -26,6 +26,7 @@ public class SecurityController {
 	
 	@RequestMapping("/account/login/success")
 	public String loginSuccess(Model model) {
+		System.out.println(authenticationFacade.getUsername());
 		if(authenticationFacade.hasRole("ROLE_user")) {
 			System.out.println("1");
 			return "redirect:/home";

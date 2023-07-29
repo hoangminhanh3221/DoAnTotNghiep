@@ -104,4 +104,29 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 			}
 		}
 		$scope.cart.loadFromLocalStorage();
+		
+		// Hàm để lấy productId và qty từ $scope.cart.items và đưa vào một mảng khác
+	    $scope.extractProductIdsAndQtys = function() {
+	        var extractedData = [];
+	        $scope.cart.items.forEach(function(item) {
+	            extractedData.push({
+	                productId: item.productId,
+	                quantity: item.qty,
+	                productPrice: item.sellingPrice
+	            });
+	        });
+	        return extractedData;
+	    };
+	    
+	    $scope.pushShoppingCart = function(){
+			console.log($scope.extractProductIdsAndQtys())
+			$http.post("/api/orders/getAllCart", $scope.extractProductIdsAndQtys())
+            .then(function(response) {
+                // Xử lý phản hồi từ API nếu cần thiết
+            })
+            .catch(function(error) {
+                // Xử lý lỗi nếu cần thiết
+                console.error("Error sending data to API:", error);
+            });
+		}
 })

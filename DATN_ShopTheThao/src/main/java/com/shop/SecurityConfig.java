@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 				String[] roles = user.stream().map(er -> er.getRole()).collect(Collectors.toList())
 						.toArray(new String[0]);
+				
+				System.out.println(password);
 				return User.withUsername(username).password(password).roles(roles).build();
 
 			} catch (NoSuchElementException e) {
@@ -57,16 +59,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/rest/authorities").hasRole("admin")
 		.antMatchers("/admin/**").hasAnyRole("admin", "employee")
-		.antMatchers("/discount/**").authenticated()
-		.anyRequest().permitAll(); // khách chưa có tham gia
-		
+		.antMatchers("/discount/**").authenticated().anyRequest().permitAll();
+
 		// Giao diện login
-		http.formLogin(login -> login.loginPage("/account/login/form")
-				.loginProcessingUrl("/account/login")
-				.defaultSuccessUrl("/account/login/success", false)
-				.failureUrl("/account/login/error")
-				.usernameParameter("email-username")
-				.passwordParameter("password"));
+		http.formLogin(login -> login.loginPage("/account/login/form").loginProcessingUrl("/account/login")
+				.defaultSuccessUrl("/account/login/success", false).failureUrl("/account/login/error")
+				.usernameParameter("email-username").passwordParameter("password"));
 		http.rememberMe(me -> me.rememberMeParameter("remember"));
 
 		http.exceptionHandling(handling -> handling.accessDeniedPage("/account/unauthoried"));
@@ -80,9 +78,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	// Allow truy xuất REST API từ bên ngoài
+	// Cho phép truy xuất REST API từ bên ngoài
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 	}
+
 }
