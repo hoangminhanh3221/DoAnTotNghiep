@@ -9,7 +9,7 @@ public class StatisticController {
 	@GetMapping("/admin/statistic")
 	public String index() {
 		
-		return "";
+		return "admin-page/revenue-statistics";
 	}
 	
 }

@@ -127,8 +127,10 @@ public class HomeController {
 
 		for (int i = 0; i < listDC.size(); i++) {
 			for (int j = 0; j < listPrd.size(); j++) {
-				if (listDC.get(i).getDiscountId().equalsIgnoreCase(listPrd.get(j).getDiscount().getDiscountId() )) {
-					productsDC.add(listPrd.get(j));
+				if (listPrd.get(j).getDiscount()!=null) {
+					if (listDC.get(i).getDiscountId().equalsIgnoreCase(listPrd.get(j).getDiscount().getDiscountId() )) {
+						productsDC.add(listPrd.get(j));
+					}
 				}
 			}
 		}

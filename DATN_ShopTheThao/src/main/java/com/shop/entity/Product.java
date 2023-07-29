@@ -80,7 +80,7 @@ public class Product implements Serializable{
 	private Subcategory subcategory;
 	
 	@ManyToOne
-	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = false)
+	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = true)
 	private Discount discount;
 	
 	@JsonIgnore

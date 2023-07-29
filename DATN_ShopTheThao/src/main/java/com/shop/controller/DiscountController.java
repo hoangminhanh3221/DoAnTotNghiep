@@ -47,13 +47,15 @@ public class DiscountController {
 	SubcategoryService subCategoryService;
 	
 	@GetMapping("/admin/discount")
-	public String index(@RequestParam(defaultValue = "0") int page,Model model) {
+	public String index(@RequestParam(defaultValue = "0") int page,Model model, HttpSession session) {
 		
 		int pageSize = 10; // Số phần tử trên mỗi trang
 		Pageable pageable = PageRequest.of(page, pageSize);
 		
 		Page<Discount> listDiscount = discountService.findAllDiscount(pageable);
-		
+
+		session.removeAttribute("productListDl");
+		session.removeAttribute("productList");
 		model.addAttribute("page", listDiscount);
 		
 		return "admin-page/discount-list";
@@ -120,16 +122,23 @@ public class DiscountController {
 	public List<Product> deleteProduct( @RequestParam("id") String id, HttpSession session) {
 		List<Product> list =(List<Product>) session.getAttribute("productList");
 		int index=-1;
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getProductId().equalsIgnoreCase(id)) {
-				index=i;
-				break;
-			}
+		List<Product> listDl = new ArrayList<>();
+		if (session.getAttribute("productListDl") != null) {
+			listDl = (List<Product>) session.getAttribute("productListDl");
 			
-		}
-		list.remove(index);
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getProductId().equalsIgnoreCase(id)) {
+					index=i;
+					listDl.add(list.get(i));
+					list.remove(index);
+					break;
+				}
+			}
+        } 
 		session.removeAttribute("productList");
 		session.setAttribute("productList",list);
+		session.removeAttribute("productListDl");
+		session.setAttribute("productListDl",listDl);
 		return list;
 		
 	}
@@ -209,6 +218,10 @@ public class DiscountController {
 			return "redirect:/admin/discount";
 		}
 		List<Product> list =(List<Product>) session.getAttribute("productList");
+		List<Product> listDl = new ArrayList<>();
+		if (session.getAttribute("productListDl") != null) {
+			listDl =(List<Product>) session.getAttribute("productListDl");
+		}
 		Discount discount = new Discount();
 		discount.setDiscountId(discountId);
 		discount.setDescription(description);
@@ -219,10 +232,18 @@ public class DiscountController {
 			Date d2 = dateFormat.parse(endDate);
 			discount.setStartDate(d1);
 			discount.setEndDate(d2);
-			System.out.println(12);
 			discountService.createDiscount(discount);
-			System.out.println(142);
 			model.addAttribute("add", 2);
+			if (listDl!= null) {
+				for (Product p : listDl) {
+					if (p.getDiscount().getDiscountId()!=null) {
+						if (p.getDiscount().getDiscountId().equalsIgnoreCase(discountId)) {
+							p.setDiscount(null);
+						}
+					}
+					productService.updateProduct(p);
+				}
+			}
 			if (list!=null) {
 				for (Product l : list) {
 					l.setDiscount(discount);
@@ -230,6 +251,7 @@ public class DiscountController {
 				}
 			}
 			session.removeAttribute("productList");
+			session.removeAttribute("productListDl");
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
