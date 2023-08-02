@@ -46,6 +46,7 @@ var printResult = () => {
             " | " + $("#district option:selected").text() + " | " +
             $("#ward option:selected").text();
         $("#result").text(result)
+        console.log(result)
     }
 
 }

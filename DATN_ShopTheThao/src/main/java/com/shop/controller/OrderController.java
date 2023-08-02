@@ -8,7 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Account;
 import com.shop.entity.Customer;
@@ -68,6 +70,7 @@ public class OrderController {
 	
 	@RequestMapping("/checkout")
 	public String checkout(Model model) {
+		model.addAttribute("orderInfo", new OrderInfo());
 	    if (af.isAuthenticated()) {
 	        Optional<Customer> customer = customerService.findCustomerByUsername(af.getUsername());
 	        if(customer.isPresent()) {
@@ -78,7 +81,9 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/complete")
-	public String complete() {
+	public String complete(
+			@ModelAttribute("orderInfo") OrderInfo orderInfo,
+			@RequestParam("provinceOI") String provinceOI) {
 //		Transport transport = new Transport();
 //		transport.setTransportDate(new Date());
 //		transport.setOrderInfos(new ArrayList<>());
@@ -93,19 +98,23 @@ public class OrderController {
 //		payment.setPaymentMethod("Nhận tiền trực tiếp");
 //		payment.setPaymentStatus(false);
 		
-		Order order = new Order();
-		order.setOrderAmount(shoppingCartService.getTotalAmount());
-		order.setCreateDate(new Date());
-		order.setOrderStatus("Đơn mới");
-		order.setQuantity(shoppingCartService.getTotalQuantity());
-		if (af.isAuthenticated()) {
-			Optional<Account> account = accountService.findAccountById(af.getUsername());
-	        if(account.isPresent()) {
-	        	order.setAccount(account.get());
-	        }
-	    }
-		order.setOrderInfo(orderInfoService.findOrderInfoById(1).get());
-		orderService.createOrder(order);
+//		Order order = new Order();
+//		order.setOrderAmount(shoppingCartService.getTotalAmount());
+//		order.setCreateDate(new Date());
+//		order.setOrderStatus("Đơn mới");
+//		order.setQuantity(shoppingCartService.getTotalQuantity());
+//		if (af.isAuthenticated()) {
+//			Optional<Account> account = accountService.findAccountById(af.getUsername());
+//	        if(account.isPresent()) {
+//	        	order.setAccount(account.get());
+//	        }
+//	    }
+//		order.setOrderInfo(orderInfoService.findOrderInfoById(1).get());
+//		orderService.createOrder(order);
+		
+		System.out.println(orderInfo.getFullName());
+		System.out.println(provinceOI);
+		
 	    return "user-page/order-complete";
 	}
 	

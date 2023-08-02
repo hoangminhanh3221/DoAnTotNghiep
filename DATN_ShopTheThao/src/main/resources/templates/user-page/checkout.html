@@ -139,23 +139,22 @@
 									</form>
 								</th:block>
 								<th:block th:unless="${#request.remoteUser}">
-									<form class="row"
-										style="width: 100%; margin: 0 auto !important">
+									<form class="row" th:object="${orderInfo}" style="width: 100%; margin: 0 auto !important">
 										<div class="col-md-6 form-group">
 											<label for="name">Họ Tên:</label> <input type="text"
 												class="form-control" id="name"
-												placeholder="Nhập tên của bạn" style="height: 40px" />
+												placeholder="Nhập tên của bạn" style="height: 40px" th:field="*{fullName}"/>
 										</div>
 										<div class="col-md-6 form-group">
 											<label for="soDienThoai">Số Điện Thoại:</label> <input
 												type="email" class="form-control" id="soDienThoai"
 												placeholder="Nhập số điện thoại của bạn"
-												style="height: 40px" />
+												style="height: 40px" th:field="*{phoneNumber}"/>
 										</div>
 										<div class="col-md-12 form-group mt-2">
 											<label for="email">Email:</label> <input type="email"
 												class="form-control" id="email" aria-describedby="emailHelp"
-												placeholder="Nhập địa chỉ email của bạn" /> <small
+												placeholder="Nhập địa chỉ email của bạn" th:field="*{email}"/> <small
 												id="emailHelp" class="form-text text-muted">Chúng
 												tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn với bất
 												kỳ ai khác.</small>
@@ -164,22 +163,22 @@
 											<label for="address">Địa Chỉ:</label> <input type="text"
 												class="form-control" id="address"
 												placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
-												style="height: 40px" />
+												style="height: 40px" th:name="homeNumber"/>
 										</div>
 										<div class="col-md-6 form-group mt-2">
 											<label for="province">Thành Phố/Tỉnh</label> <select
-												class="form-control" id="province">
+												class="form-control" id="province" th:name="provinceOI">
 											</select>
 										</div>
 										<div class="col-md-6 form-group mt-2">
 											<label for="district">Quận/Huyện:</label> <select
-												class="form-control" id="district">
+												class="form-control" id="district" th:name="districtOI">
 												<option disable value="">-- Chọn --</option>
 											</select>
 										</div>
 										<div class="col-md-6 form-group mt-2">
 											<label for="ward">Phường/Xã</label> <select
-												class="form-control" id="ward">
+												class="form-control" id="ward" th:name="wardOI">
 													<option disable value="">-- Chọn --</option>
 											</select>
 										</div>
@@ -190,6 +189,7 @@
 										</div>
 									</form>
 								</th:block>
+								
 								<h4
 									style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
 									Phương Thức Thanh Toán</h4>

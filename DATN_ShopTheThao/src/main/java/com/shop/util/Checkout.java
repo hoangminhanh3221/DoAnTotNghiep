@@ -12,7 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Checkout {
-	private Account account;
-	private Customer customer;
-	private Address address;
+	private String fullname;
+	private String phoneNumber;
+	private String email;
+	private String homeNumber;
+	private String city;
+	private String district;
+	private String ward;
+	private String description;
 }
