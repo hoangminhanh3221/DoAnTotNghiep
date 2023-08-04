@@ -24,7 +24,6 @@ public class AuthenticationFacade {
 
 	public String getUsername() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println(authentication.getName());
 		return authentication.getName();
 	}
 	

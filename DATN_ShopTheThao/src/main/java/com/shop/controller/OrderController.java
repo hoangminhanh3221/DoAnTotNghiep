@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Account;
+import com.shop.entity.Address;
 import com.shop.entity.Customer;
 import com.shop.entity.Order;
 import com.shop.entity.OrderInfo;
@@ -35,55 +36,51 @@ import com.shop.util.ShoppingCart;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	
+
 	@Autowired
 	private TransportService transportService;
-	
+
 	@Autowired
 	private PaymentService paymentService;
-	
+
 	@Autowired
 	private AuthenticationFacade af;
-	
+
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private AddressService addressService;
-	
+
 	@Autowired
 	private OrderService orderService;
-	
+
 	@Autowired
 	private OrderDetailService orderDetailService;
-	
+
 	@Autowired
 	private OrderInfoService orderInfoService;
-	
+
 	@Autowired
 	private ShoppingCartService shoppingCartService;
-	
+
 	@Autowired
 	private SessionService sessionService;
-	
+
 	@RequestMapping("/checkout")
-	public String checkout(Model model) {
-		model.addAttribute("orderInfo", new OrderInfo());
-	    if (af.isAuthenticated()) {
-	        Optional<Customer> customer = customerService.findCustomerByUsername(af.getUsername());
-	        if(customer.isPresent()) {
-	        	model.addAttribute("customer", customer.get());
-	        }
-	    }
-	    return "user-page/checkout";
+	public String checkout(Model model, @ModelAttribute OrderInfo orderInfo, @ModelAttribute Customer customer) {
+		if (af.isAuthenticated()) {
+			customer = customerService.findCustomerByUsername(af.getUsername()).orElse(null);
+			model.addAttribute("customer", customer);
+		}
+		return "user-page/checkout";
 	}
-	
+
 	@RequestMapping("/complete")
-	public String complete(
-			@ModelAttribute("orderInfo") OrderInfo orderInfo) {
+	public String complete(@ModelAttribute OrderInfo orderInfo) {
 //		Transport transport = new Transport();
 //		transport.setTransportDate(new Date());
 //		transport.setOrderInfos(new ArrayList<>());
@@ -97,7 +94,7 @@ public class OrderController {
 //		payment.setPaymentDate(new Date());
 //		payment.setPaymentMethod("Nhận tiền trực tiếp");
 //		payment.setPaymentStatus(false);
-		
+
 //		Order order = new Order();
 //		order.setOrderAmount(shoppingCartService.getTotalAmount());
 //		order.setCreateDate(new Date());
@@ -111,12 +108,12 @@ public class OrderController {
 //	    }
 //		order.setOrderInfo(orderInfoService.findOrderInfoById(1).get());
 //		orderService.createOrder(order);
-		
+
 		System.out.println(orderInfo.getFullName());
+		System.out.println(orderInfo.getEmail());
+		System.out.println(orderInfo.getPhoneNumber());
 		AddressAPI addressAPI = sessionService.get("addressAPI");
-		System.out.println(addressAPI.getCity());
-		
-	    return "user-page/order-complete";
+		return "user-page/order-complete";
 	}
-	
+
 }
