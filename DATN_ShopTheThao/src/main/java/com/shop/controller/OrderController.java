@@ -27,6 +27,7 @@ import com.shop.service.OrderService;
 import com.shop.service.PaymentService;
 import com.shop.service.TransportService;
 import com.shop.service.implement.ShoppingCartService;
+import com.shop.util.AddressAPI;
 import com.shop.util.AuthenticationFacade;
 import com.shop.util.SessionService;
 import com.shop.util.ShoppingCart;
@@ -82,8 +83,7 @@ public class OrderController {
 	
 	@RequestMapping("/complete")
 	public String complete(
-			@ModelAttribute("orderInfo") OrderInfo orderInfo,
-			@RequestParam("provinceOI") String provinceOI) {
+			@ModelAttribute("orderInfo") OrderInfo orderInfo) {
 //		Transport transport = new Transport();
 //		transport.setTransportDate(new Date());
 //		transport.setOrderInfos(new ArrayList<>());
@@ -113,7 +113,8 @@ public class OrderController {
 //		orderService.createOrder(order);
 		
 		System.out.println(orderInfo.getFullName());
-		System.out.println(provinceOI);
+		AddressAPI addressAPI = sessionService.get("addressAPI");
+		System.out.println(addressAPI.getCity());
 		
 	    return "user-page/order-complete";
 	}

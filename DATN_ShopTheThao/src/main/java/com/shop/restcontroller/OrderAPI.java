@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.entity.Product;
 import com.shop.service.implement.ShoppingCartService;
+import com.shop.util.AddressAPI;
 import com.shop.util.SessionService;
 import com.shop.util.ShoppingCart;
 
@@ -28,6 +29,12 @@ public class OrderAPI {
 	@RequestMapping("/getAllCart")
 	public ResponseEntity<List<ShoppingCart>> getAll(@RequestBody List<ShoppingCart> shoppingCarts) {
 		sessionService.set("carts", shoppingCarts);
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping("/address")
+	public ResponseEntity<AddressAPI> getAddress(@RequestBody AddressAPI addressAPI) {
+		sessionService.set("addressAPI", addressAPI);
 		return ResponseEntity.ok().build();
 	}
 	

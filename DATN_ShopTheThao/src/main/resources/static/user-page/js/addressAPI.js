@@ -1,52 +1,62 @@
-const host = "https://provinces.open-api.vn/api/";
-var callAPI = (api) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data, "province");
-        });
-}
-callAPI('https://provinces.open-api.vn/api/?depth=1');
-var callApiDistrict = (api) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data.districts, "district");
-        });
-}
-var callApiWard = (api) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data.wards, "ward");
-        });
-}
+angular.module('shopping-cart-app', [])
+    .controller('shopping-cart-ctrl', function ($scope, $http) {
+	const hostLocation = "https://provinces.open-api.vn/api/";
+    $scope.provinces = [];
+    $scope.districts = [];
+    $scope.wards = [];
+    $scope.provinceId = null;
+	$scope.districtId = null;
+	$scope.wardId = null;
+    
+    $scope.callApiGetAll = function (api) {
+      $http
+        .get(api)
+        .then(function (response) {
+          $scope.provinces = response.data;
+        })
+        .catch(function (error) {});
+    };
 
-var renderData = (array, select) => {
-    let row = ' <option disable value=""> -- Chọn -- </option>';
-    array.forEach(element => {
-        row += `<option value="${element.code}">${element.name}</option>`
+    $scope.callApiGetAll(hostLocation + "?depth=1");
+
+    $scope.callApiDistrict = function (api) {
+      $http
+        .get(api)
+        .then(function (response) {
+          $scope.districts = response.data.districts;
+        })
+        .catch(function (error) {});
+    };
+
+    $scope.callApiWard = function (api) {
+      $http
+        .get(api)
+        .then(function (response) {
+          $scope.wards = response.data.wards;
+        })
+        .catch(function (error) {});
+    };
+
+    $scope.updateProvince = function () {
+      // Gọi hàm để lấy dữ liệu quận/huyện của thành phố đã chọn
+      $scope.callApiDistrict(hostLocation + "p/" + $scope.provinceId + "?depth=2");
+    };
+
+    $scope.updateDistrict = function () {
+      // Gọi hàm để lấy dữ liệu Xã/Phường của quận/huyện đã chọn
+      $scope.callApiWard(hostLocation + "d/" + $scope.districtId + "?depth=2");
+    };
+
+    $scope.updateWard = function () {
+      $scope.address = {
+		  ward:$("#ward option:selected").text(),
+		  district:$("#district option:selected").text(),
+		  city:$("#province option:selected").text()
+	  }
+	  $http.post("/api/orders/address", $scope.address)
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {});
+    };
     });
-    document.querySelector("#" + select).innerHTML = row
-}
-
-$("#province").change(() => {
-    callApiDistrict(host + "p/" + $("#province").val() + "?depth=2");
-    printResult();
-});
-$("#district").change(() => {
-    callApiWard(host + "d/" + $("#district").val() + "?depth=2");
-    printResult();
-});
-$("#ward").change(() => {
-    printResult();
-})
-
-var printResult = () => {
-    if ($("#district").val() != "" && $("#province").val() != "" &&
-        $("#ward").val() != "") {
-        let result = $("#province option:selected").text() +
-            " | " + $("#district option:selected").text() + " | " +
-            $("#ward option:selected").text();
-        $("#result").text(result)
-        console.log(result)
-    }
-
-}
