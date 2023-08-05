@@ -30,5 +30,6 @@ public interface OrderService{
 	
 	void deleteOrder(Integer orderId);
 	
+	List<Order> getOrderByStatus(int status);
 	
 }

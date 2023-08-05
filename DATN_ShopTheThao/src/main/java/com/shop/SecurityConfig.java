@@ -89,6 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 	 //Allow truy xuất REST API từ bên ngoài
+	@Override
 	public void configure(WebSecurity web)throws Exception{
 		web.ignoring().antMatchers(HttpMethod.OPTIONS,"/**");
 	}

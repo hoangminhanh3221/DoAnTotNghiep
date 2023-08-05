@@ -25,6 +25,8 @@ public class ForgotPassController {
 		model.addAttribute("status",3);
 		return "/account/forgot-password";
 	}
+	
+	
 	@PostMapping("/account/forgotpass")
 	public String sendPass(@RequestParam("email") String email,Model model) {
 		
@@ -38,6 +40,8 @@ public class ForgotPassController {
 			emailService.sendEmail(acc.getEmail(),"Mật khẩu","Mật khẩu của bạn trong trang fsport shop là:"+acc.getPassword());
 			return "/account/login";
 		}
+		
+		
 	}
 	
 	

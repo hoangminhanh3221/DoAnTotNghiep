@@ -62,8 +62,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order createJson(JsonNode orderData) {
-		
+		return null;
+	}
 
+	@Override
+	public List<Order> getOrderByStatus(int status) {
 		return null;
 	}
 }

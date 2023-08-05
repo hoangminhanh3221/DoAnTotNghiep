@@ -14,8 +14,10 @@
 				<label for="defaultSelect" class="form-label">Trạng Thái Đơn</label>
 				<select id="defaultSelect" class="form-select" style="font-weight: bold;">
 					<option value="1" style="font-weight: bold;">Đơn mới</option>
-					<option value="2" style="font-weight: bold">Đang giao</option>
-					<option value="3" style="font-weight: bold">Đã giao</option>
+					<option value="2" style="font-weight: bold">Đơn đã nhận</option>
+					<option value="3" style="font-weight: bold">Đang giao</option>
+					<option value="4" style="font-weight: bold">Đã giao</option>
+					<option value="5" style="font-weight: bold">Đơn bị từ chối</option>
 				</select>
 			</div>
 
@@ -26,106 +28,124 @@
 						<thead>
 							<tr>
 								<th>STT</th>
-								<th>Mã Đơn hàng</th>
+								<th>Mã Đơn Hàng</th>
 								<th>Khách Hàng</th>
 								<th>Ngày Đặt</th>
-								<th>Tổng giá</th>
-								<th>Trạng thái</th>
+								<th>Tổng Giá</th>
+								<th>PT Thanh Toán</th>
 								<th>Hành Động</th>
 							</tr>
 						</thead>
-						<tbody class="table-border-bottom-0">
+						<tbody class="table-border-bottom-0" id="orderTableBody">
 							<!-- Sử dụng thymeleaf để lặp qua danh sách đơn hàng và hiển thị thông tin -->
-							<tr th:each="order, iterStat : ${orders}">
-								<td th:text="${iterStat.count}"></td>
+							<tr th:each="order : ${orders}">
+								<td></td>
 								<td th:text="${order.orderId}"></td>
 								<td th:text="${order.account.username}"></td>
 								<td th:text="${order.createDate}"></td>
-								<td th:text="${total[iterStat.count-1]}"></td>
-								<td>
-									<div>
-										<select id="smallSelect" class="form-select form-select-sm">
-											<option value="1" th:selected="${order.orderStatus == 'Đơn mới'}">Đơn mới
-											</option>
-											<option value="2" th:selected="${order.orderStatus == 'Đang giao'}">Đang giao
-											</option>
-											<option value="3" th:selected="${order.orderStatus == 'Đã giao'}">Đã giao</option>
-										</select>
-									</div>
-								</td>
+								<td th:text="${order.total}"></td>
+								<td th:text="${order.orderInfo.payment.paymentMethod}"></td>
 								<td>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										 th:data-bs-target="'#modal' + ${iterStat.count}"><i class="bx bx-info-square"></i></a>
-										<!-- Modal Info-->
-									<div class="modal fade" th:id="'modal' + ${iterStat.count}"
-										data-bs-backdrop="static" data-bs-keyboard="false"
-										tabindex="-1" aria-labelledby="staticBackdropLabel"
-										aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<!-- Nội dung cửa sổ Modal -->
-											<div class="modal-content">
-												<div class="modal-header">
-													<h1 class="modal-title fs-5" id="staticBackdropLabel">Danh
-														sách Sản phẩm</h1>
-													<button type="button" class="btn-close"
-														data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													<div class="table-responsive text-nowrap">
-														<table class="table">
-															<thead>
-																<tr>
-																	<th>STT</th>
-																	<th>Tên sản phẩm</th>
-																	<th>Số lượng</th>
-																	<th>Giá </th>
-																</tr>
-															</thead>
-															<tbody class="table-border-bottom-0">
-																<tr th:each="orderDT , iterStat :${order.orderDetails}">
-																	<td th:text="${iterStat.count}"></td>
-																	<td th:text="${orderDT.product.productName}"></td>
-																	<td th:text="${orderDT.productQuantity}">2</td>
-																	<td th:text="${orderDT.productPrice}">200.000 <strong>vnđ</strong></td>
-																</tr>
-																
-															</tbody>
-														</table>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-bs-dismiss="modal">Đóng</button>
-												</div>
+										data-bs-target="'#ModalAccept' + ${order.orderId}"><i
+											class="fa fa-check-square"></i></a>
+									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
+										data-bs-target="'#ModalDelete' + ${order.orderId}"><i
+											class="fa fa-window-close"></i></a>
+									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
+										data-bs-target="'#modal' + ${order.orderId}"><i
+											class="bx bx-info-square"></i></a>
+								</td>
+							</tr>
+							<!-- Modal conform -->
+							<div class="modal fade" th:id="'ModalAccept'+ ${order.orderId}" tabindex="-1"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">Xác nhận đơn hàng</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal"
+												aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<div> Bạn có muốn nhận đơn của khách hàng <span
+													th:text="${order.account.username}"></span> này ?
 											</div>
 										</div>
-									</div> <a class="ps-2" href="javascript:void(0);"
-									data-bs-toggle="modal" data-bs-target="#modalToggle"><i
-										class="bx bx-trash"></i></a>
-									<div class="modal fade" id="modalToggle"
-										aria-labelledby="modalToggleLabel" tabindex="-1"
-										style="display: none;" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-centered">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="modalToggleLabel">Thông
-														báo xác nhận</h5>
-													<button type="button" class="btn-close"
-														data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													Bạn thật sự muốn xóa hóa đơn <strong>OD0001</strong>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-danger"
-														data-bs-target="#modalToggle2" data-bs-toggle="modal"
-														data-bs-dismiss="modal">Xóa</button>
-												</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">Đóng</button>
+											<button type="button" class="btn btn-primary">Xác nhận</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Modal delete -->
+							<div class="modal fade" th:id="'ModalDelete'+ ${order.orderId}" tabindex="-1"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">Từ chối đơn hàng</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal"
+												aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<div> Bạn có muốn từ chối đơn của khách hàng <span
+													th:text="${order.account.username}"></span> này ?
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">Đóng</button>
+											<button type="button" class="btn btn-primary">Xác nhận</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Modal Info-->
+							<div class="modal fade" th:id="'modal'+ ${order.orderId}" data-bs-backdrop="static"
+								data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+								aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<!-- Nội dung cửa sổ Modal -->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="staticBackdropLabel">Danh sách Sản
+												phẩm</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal"
+												aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<div class="table-responsive text-nowrap">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>STT</th>
+															<th>Tên sản phẩm</th>
+															<th>Số lượng</th>
+															<th>Giá </th>
+														</tr>
+													</thead>
+													<tbody class="table-border-bottom-0">
+														<tr th:each="orderDT : ${order.orderDetails}">
+															<td>?</td>
+															<td th:text="${orderDT.product.productName}">?</td>
+															<td th:text="${orderDT.productQuantity}">?</td>
+															<td th:text="${orderDT.productPrice}">
+																?<strong>vnđ</strong></td>
+														</tr>
+
+													</tbody>
+												</table>
 											</div>
 										</div>
 									</div>
-									
-								</td>
+								</div>
+							</div>
+							</td>
 							</tr>
 						</tbody>
 					</table>
@@ -158,5 +178,43 @@
 		<!-- / Content -->
 	</main>
 </body>
+<script th:inline="javascript">
+	$(document).ready(function () {
+		$('#defaultSelect').change(function () {
+			var selectedStatus = $(this).val();
+			$.ajax({
+				type: 'GET',
+				url: '/order?status=' + selectedStatus,
+				success: function (data) {
+					// Cập nhật bảng đơn hàng với dữ liệu mới
+					updateOrderTable(data);
+				},
+				error: function () {
+					console.error("Failed to fetch data from server.");
+				}
+			});
+		});
+
+		function updateOrderTable(data) {
+			// Xóa dữ liệu hiện tại trong bảng
+			$('#orderTableBody').empty();
+
+			// Thêm dữ liệu mới vào bảng
+			for (var i = 0; i < data.length; i++) {
+				var order = data[i];
+				var row = '<tr>' +
+					'<td>' + (i + 1) + '</td>' +
+					'<td>' + order.orderId + '</td>' +
+					'<td>' + order.account.username + '</td>' +
+					'<td>' + order.createDate + '</td>' +
+					'<td>' + order.total + '</td>' +
+					'<td>' + order.orderInfo.payment.paymentMethod + '</td>' +
+					'<td>... </td>' +
+					'</tr>';
+				$('#orderTableBody').append(row);
+			}
+		}
+	});
+</script>
 
 </html>

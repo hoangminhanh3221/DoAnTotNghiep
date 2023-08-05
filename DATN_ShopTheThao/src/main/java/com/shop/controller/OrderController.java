@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Order;
 import com.shop.entity.OrderDetail;
@@ -33,7 +35,7 @@ public class OrderController {
 	        double totalPrice =0;
 	        for (Order order : orders) {
 				for (OrderDetail orderdetail : order.getOrderDetails()) {
-					totalPrice = totalPrice + orderdetail.getProductPrice();
+					totalPrice = totalPrice + orderdetail.getProductPrice() * orderdetail.getProductQuantity();
 				}
 				listTP.add(totalPrice);
 				totalPrice= 0;
@@ -43,5 +45,10 @@ public class OrderController {
 	        return "admin-page/order-list"; // Trả về tên của trang HTML muốn hiển thị (ví dụ: orders.html)
 	}
 	
-
+	@GetMapping("/admin/orders")
+    public String getOrdersByStatus(@RequestParam int status) {
+		// Truy vấn cơ sở dữ liệu để lấy danh sách đơn hàng có trạng thái tương ứng
+        List<Order> orders = orderService.getOrderByStatus(status);
+        return "admin-page/order-list";
+    }
 }
