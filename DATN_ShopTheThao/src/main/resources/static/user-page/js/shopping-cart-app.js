@@ -42,6 +42,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 			clear(){
 				this.items = [];
 				this.saveToLocalStorage();
+				console.log(this.items)
 			},
 
 			//Tính tổng các mặt hàng trong giỏ hàng
@@ -128,7 +129,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
                 // Xử lý lỗi nếu cần thiết
                 console.error("Error sending data to API:", error);
             });
-		}
+		};
 		
 		//api địa chỉ
 	const hostLocation = "https://provinces.open-api.vn/api/";
