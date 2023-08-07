@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -43,7 +44,10 @@ public class Customer implements Serializable{
 	@Column(name = "Birthday", nullable = false)
 	private Date birthday;
 	
-	@Column(name = "CustomerImage", columnDefinition = "varchar(50)", nullable = true)
+	@Transient
+    private String birthdayString;
+	
+	@Column(name = "CustomerImage", columnDefinition = "varchar(200)", nullable = true)
 	private String customerImage;
 	
 	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)

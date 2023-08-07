@@ -211,7 +211,7 @@ public class OrderController {
 		address.setNumberHome(homeNumber);
 		address.setDistrict(addressAPI.getDistrict());
 		address.setWard(addressAPI.getWard());
-		addressService.createAddress(address);
+		addressService.updateAddress(address);
 		
 		sessionService.remove("addressAPI");
 		return "redirect:/order/checkout";
