@@ -94,5 +94,151 @@ public class Product implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Feedback> feedbacks;
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public Double getCostPrice() {
+		return costPrice;
+	}
+
+	public void setCostPrice(Double costPrice) {
+		this.costPrice = costPrice;
+	}
+
+	public Double getSellingPrice() {
+		return sellingPrice;
+	}
+
+	public void setSellingPrice(Double sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Date getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(Date arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	public String getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(String material) {
+		this.material = material;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Size getSize() {
+		return size;
+	}
+
+	public void setSize(Size size) {
+		this.size = size;
+	}
+
+	public Subcategory getSubcategory() {
+		return subcategory;
+	}
+
+	public void setSubcategory(Subcategory subcategory) {
+		this.subcategory = subcategory;
+	}
+
+	public Discount getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
+	}
+
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	public List<Favorite> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
+	}
+
+	public List<Feedback> getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void setFeedbacks(List<Feedback> feedbacks) {
+		this.feedbacks = feedbacks;
+	}
 	 
+	
+	
 }

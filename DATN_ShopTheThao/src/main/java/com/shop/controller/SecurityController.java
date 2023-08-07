@@ -18,12 +18,7 @@ public class SecurityController {
 	public String loginForm(Model model) {
 		return "/account/login";
 	}
-	
-	@RequestMapping("/account/forgot-password")
-	public String forgotPass(Model model) {
-		return "/account/forgot-password";
-	}
-	
+
 	@RequestMapping("/account/login/success")
 	public String loginSuccess(Model model) {
 		System.out.println(authenticationFacade.getUsername());
@@ -51,9 +46,6 @@ public class SecurityController {
 		return "redirect:/home";
 	}
 	
-	@RequestMapping("/account/register")
-	public String accRegister(Model model) {
-		return "/account/register";
-	}
+	
 	
 }

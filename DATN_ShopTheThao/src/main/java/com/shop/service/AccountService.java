@@ -10,7 +10,7 @@ import com.shop.entity.Account;
 
 public interface AccountService {
 	
-	 Page<Account> findAllAccount(Pageable pageable);
+	Page<Account> findAllAccount(Pageable pageable);
 	
 	List<Account> findAllAccount();
 
@@ -21,5 +21,7 @@ public interface AccountService {
 	Account updateAccount(Account account);
 
 	void deleteAccount(String AccountId);
+
+	Account findByEmail(String email);
 	
 }

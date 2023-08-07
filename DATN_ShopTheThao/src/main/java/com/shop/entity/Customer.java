@@ -34,14 +34,14 @@ public class Customer implements Serializable{
 	@Column(name = "CustomerId")
 	private Integer customerId;
 	
-	@Column(name = "CustomerName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "CustomerName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String customerName;
 	
-	@Column(name = "Gender", nullable = false)
+	@Column(name = "Gender", nullable = true)
 	private Boolean gender;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "Birthday", nullable = false)
+	@Column(name = "Birthday", nullable = true)
 	private Date birthday;
 	
 	@Transient
@@ -50,14 +50,14 @@ public class Customer implements Serializable{
 	@Column(name = "CustomerImage", columnDefinition = "varchar(200)", nullable = true)
 	private String customerImage;
 	
-	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
+	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = true)
 	private String phoneNumber;
 	
 	@ManyToOne
-	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
+	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = true)
 	private Account account;
 	
 	@ManyToOne
-	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = false)
+	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = true)
 	private Address address;
 }
