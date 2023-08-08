@@ -21,4 +21,6 @@ public interface OrderDetailService{
 	OrderDetail updateOrderDetail(OrderDetail orderDetail);
 	
 	void deleteOrderDetail(Integer orderDetailId);
+
+	 List<String> getListproductsold();
 }

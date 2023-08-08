@@ -1,9 +1,11 @@
 package com.shop.service.implement;
 
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,4 +52,24 @@ public class OrderServiceImpl implements OrderService{
     public void deleteOrder(Integer orderId) {
         orderRepository.deleteById(orderId);
     }
+    
+    @Override
+    public List<Order> getOrdersByYear(int year){
+        return orderRepository.getOrderByYear(year);
+    }
+    
+    @Override
+    public List<Integer> getYear(){
+        return orderRepository.getYear();
+    }
+    
+    @Override
+    public List<Order> getOrdersByMonth(int monthInput, int year){
+        return orderRepository.getOrderByMonth(monthInput, year);
+    }
+    
+	@Override
+	public List<Order> getRevenueFromTo(Date from, Date to) {
+		return orderRepository.findOrdersInDateRange(from, to);
+	}
 }
