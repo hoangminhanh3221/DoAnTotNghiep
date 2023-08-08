@@ -35,17 +35,17 @@ public class Payment implements Serializable{
 	@Column(name = "PaymentId")
 	private Integer paymentId;
 	
-	@Column(name = "PaymentMethod", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "PaymentMethod", columnDefinition = "nvarchar(50)", nullable = true)
 	private String paymentMethod;
 	
-	@Column(name = "PaymentAmount", nullable = false)
+	@Column(name = "PaymentAmount", nullable = true)
 	private Double paymentAmount;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PaymentDate", nullable = false)
+	@Column(name = "PaymentDate", nullable = true)
 	private Date paymentDate;
 	 
-	@Column(name = "PaymentStatus", nullable = false)
+	@Column(name = "PaymentStatus", nullable = true)
 	private Boolean paymentStatus;
 	
 	@JsonIgnore

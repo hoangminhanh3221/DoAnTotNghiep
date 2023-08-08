@@ -35,17 +35,17 @@ public class Transport implements Serializable{
 	@Column(name = "TransportId")
 	private Integer transportId;
 	
-	@Column(name = "TransportMethod", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "TransportMethod", columnDefinition = "nvarchar(50)", nullable = true)
 	private String transportMethod;
 	
-	@Column(name = "TransportFee", nullable = false)
+	@Column(name = "TransportFee", nullable = true)
 	private Double transportFee;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "TransportDate", nullable = false)
+	@Column(name = "TransportDate", nullable = true)
 	private Date transportDate;
 	 
-	@Column(name = "TransportStatus", nullable = false)
+	@Column(name = "TransportStatus", nullable = true)
 	private Boolean transportStatus;
 	
 	@JsonIgnore

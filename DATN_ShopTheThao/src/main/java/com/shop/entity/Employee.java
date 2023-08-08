@@ -33,27 +33,27 @@ public class Employee implements Serializable{
 	@Column(name = "EmployeeId")
 	private Integer employeeId;
 	
-	@Column(name = "EmployeeName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "EmployeeName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String employeeName;
 	
-	@Column(name = "Gender", nullable = false)
+	@Column(name = "Gender", nullable = true)
 	private Boolean gender;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "Birthday", nullable = false)
+	@Column(name = "Birthday", nullable = true)
 	private Date birthday;
 	
 	@Column(name = "EmployeeImage", columnDefinition = "varchar(50)", nullable = true)
 	private String employeeImage;
 	
-	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
+	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = true)
 	private String phoneNumber;
 	
 	@ManyToOne
-	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
+	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = true)
 	private Account account;
 	
 	@ManyToOne
-	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = false)
+	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = true)
 	private Address address;
 }

@@ -34,53 +34,59 @@ public class Product implements Serializable{
 	@Column(name = "ProductId", columnDefinition = "varchar(10)")
 	private String productId;
 	
-	@Column(name = "ProductName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "ProductName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String productName;
 	
-	@Column(name = "CostPrice", nullable = false)
+	@Column(name = "CostPrice", nullable = true)
 	private Double costPrice;
 	
-	@Column(name = "SellingPrice", nullable = false)
+	@Column(name = "SellingPrice", nullable = true)
 	private Double sellingPrice;
 	
-	@Column(name = "Quantity", nullable = false)
-	private Integer quantity;
+	@Column(name = "QuantityLeft", nullable = true)
+	private Integer quantityLeft;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "ArrivalDate", nullable = false)
+	@Column(name = "ArrivalDate", nullable = true)
 	private Date arrivalDate;
 	
-	@Column(name = "Material", columnDefinition = "nvarchar(100)", nullable = false)
+	@Column(name = "Material", columnDefinition = "nvarchar(100)", nullable = true)
 	private String material;
 	
-	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)
+	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = true)
 	private String description;
 	
-	@Column(name = "Avaiable", nullable = false)
+	@Column(name = "Avaiable", nullable = true)
 	private Boolean available;
 	
+	@Column(name = "TotalQuantity", nullable = true)
+	private Integer totalQuantity;
+	
+	@Column(name = "IsDeleted", nullable = true)
+	private Boolean isDeleted;
+	
 	@ManyToOne
-	@JoinColumn(name = "ColorId", referencedColumnName = "ColorId", nullable = false)
+	@JoinColumn(name = "ColorId", referencedColumnName = "ColorId", nullable = true)
 	private Color color;
 	
 	@ManyToOne
-	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = false)
+	@JoinColumn(name = "ImageId", referencedColumnName = "ImageId", nullable = true)
 	private Image image;
 	
 	@ManyToOne
-	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
+	@JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = true)
 	private Brand brand;
 	
 	@ManyToOne
-	@JoinColumn(name = "SizeId", referencedColumnName = "SizeId", nullable = false)
+	@JoinColumn(name = "SizeId", referencedColumnName = "SizeId", nullable = true)
 	private Size size;
 	
 	@ManyToOne
-	@JoinColumn(name = "SubcategoryId", referencedColumnName = "SubcategoryId", nullable = false)
+	@JoinColumn(name = "SubcategoryId", referencedColumnName = "SubcategoryId", nullable = true)
 	private Subcategory subcategory;
 	
 	@ManyToOne
-	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = false)
+	@JoinColumn(name = "DiscountId", referencedColumnName = "DiscountId", nullable = true)
 	private Discount discount;
 	
 	@JsonIgnore
