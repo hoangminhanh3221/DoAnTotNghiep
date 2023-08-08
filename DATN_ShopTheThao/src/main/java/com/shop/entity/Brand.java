@@ -27,10 +27,10 @@ public class Brand implements Serializable{
 	@Column(name = "BrandId", columnDefinition = "varchar(10)")
 	private String brandId;
 	
-	@Column(name = "BrandName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "BrandName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String brandName;
 	
-	@Column(name = "Origin", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "Origin", columnDefinition = "nvarchar(50)", nullable = true)
 	private String origin;
 	
 	@JsonIgnore

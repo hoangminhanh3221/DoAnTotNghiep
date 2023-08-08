@@ -27,7 +27,7 @@ public class Size implements Serializable{
 	@Column(name = "SizeId", columnDefinition = "varchar(10)")
 	private String sizeId;
 	
-	@Column(name = "SizeName", columnDefinition = "varchar(10)", nullable = false)
+	@Column(name = "SizeName", columnDefinition = "varchar(10)", nullable = true)
 	private String sizeName;
 	
 	@JsonIgnore
