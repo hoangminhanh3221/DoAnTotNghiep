@@ -125,7 +125,6 @@
 						</div>
 						<!-- /Logo -->
 						<h4 class="mb-2">Tạo tài khooản và mua sắm nào !!!</h4>
-						<!-- <p class="mb-4">Làm cho ứng dụng của bạn vui vẻ và hài hước nào!</p> -->
 
 						<form id="formAuthentication" class="mb-3"
 							th:action="@{/account/register}" method="POST"
@@ -152,23 +151,14 @@
 								</div>
 							</div>
 
-							<div class="mb-3">
-								<!-- <div class="form-check">
-									<input class="form-check-input" type="checkbox" id="terms-conditions"
-										name="terms" /> <label class="form-check-label" for="terms-conditions"
-										aria-required="true"> Tôi đồng ý <a href="/user-page/home">chính sách và điều
-											khoản bảo mật</a>
-									</label> 
-								</div> -->
+							<div class="mb-3 text-danger" th:text="${message}">
 							</div>
 							<button class="btn btn-primary d-grid w-100" type="submit">
 								Đăng ký</button>
 						</form>
 
 						<p class="text-center">
-							<span>Bạn đã có tài khoản?</span> <a style="color: blue;"> <a
-								href="/account/login/form">Đăng nhập thôi nào!</a>
-							</a>
+							<span>Bạn đã có tài khoản?</span> <a style="color: blue;" th:href="@{/account/login/form}">Đăng nhập thôi nào!</a>
 						</p>
 					</div>
 				</div>
@@ -178,13 +168,6 @@
 	</div>
 
 	<!-- / Content -->
-
-	<!--	<div class="buy-now">
-		<a
-			th:href="@{https://themeselection.com/products/sneat-bootstrap-html-admin-template/}"
-			target="_blank" class="btn btn-danger btn-buy-now">Upgrade
-			to Pro</a>
-	</div> -->
 
 	<!-- Core JS -->
 	<!-- build:js assets/vendor/js/core.js -->
@@ -206,16 +189,6 @@
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
-	<script th:inline="javascript">
-		var error = /*[[${status}]]*/ '3';
-		if(error==1){
-			alert('Tên tài khoản đã tồn tại !');
-		}else if(error==2){
-			alert('Email đã tồn tại !');
-		}else if(error==4){
-			alert('Đăng ký thành công !');
-		}
-	</script>
 
 </body>
 
