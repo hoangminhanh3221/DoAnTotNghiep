@@ -35,17 +35,17 @@ public class Order implements Serializable{
 	@Column(name = "OrderId")
 	private Integer orderId;
 	
-	@Column(name = "OrderAmount", nullable = false)
+	@Column(name = "OrderAmount", nullable = true)
 	private Double OrderAmount;
 	
-	@Column(name = "Quantity", nullable = false)
+	@Column(name = "Quantity", nullable = true)
 	private Integer quantity;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CreateDate", nullable = false)
+	@Column(name = "CreateDate", nullable = true)
 	private Date createDate;
 	
-	@Column(name = "OrderStatus", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "OrderStatus", columnDefinition = "nvarchar(50)", nullable = true)
 	private String orderStatus;
 	
 	@ManyToOne
@@ -53,7 +53,7 @@ public class Order implements Serializable{
 	private Account account;
 	
 	@ManyToOne
-	@JoinColumn(name = "OrderInfoId", referencedColumnName = "OrderInfoId", nullable = false)
+	@JoinColumn(name = "OrderInfoId", referencedColumnName = "OrderInfoId", nullable = true)
 	private OrderInfo orderInfo;
 	
 	@JsonIgnore
