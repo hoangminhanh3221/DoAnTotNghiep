@@ -12,12 +12,12 @@
 			</ol>
 			<div class="mb-3 col-3">
 				<label for="defaultSelect" class="form-label">Trạng Thái Đơn</label>
-				<select id="defaultSelect" class="form-select" style="font-weight: bold;">
-					<option value="1" style="font-weight: bold;">Đơn mới</option>
-					<option value="2" style="font-weight: bold">Đơn đã nhận</option>
-					<option value="3" style="font-weight: bold">Đang giao</option>
-					<option value="4" style="font-weight: bold">Đã giao</option>
-					<option value="5" style="font-weight: bold">Đơn bị từ chối</option>
+				<select onchange="softByStatus()" th:value="${status}" id="statusSelect" class="form-select" style="font-weight: bold;">
+					<option value="Đơn mới" style="font-weight: bold;">Đơn mới</option>
+					<option value="Đơn đã nhận" style="font-weight: bold">Đơn đã nhận</option>
+					<option value="Đang giao" style="font-weight: bold">Đang giao</option>
+					<option value="Đã giao" style="font-weight: bold">Đã giao</option>
+					<option value="Đơn bị từ chối" style="font-weight: bold">Đơn bị từ chối</option>
 				</select>
 			</div>
 
@@ -38,27 +38,26 @@
 						</thead>
 						<tbody class="table-border-bottom-0" id="orderTableBody">
 							<!-- Sử dụng thymeleaf để lặp qua danh sách đơn hàng và hiển thị thông tin -->
-							<tr th:each="order : ${orders}">
-								<td></td>
-								<td th:text="${order.orderId}"></td>
-								<td th:text="${order.account.username}"></td>
-								<td th:text="${order.createDate}"></td>
-								<td th:text="${order.total}"></td>
-								<td th:text="${order.orderInfo.payment.paymentMethod}"></td>
+							<tr th:each="order, iterStat : ${orders}">
+								<td th:text="${iterStat.count}">?</td>
+								<td th:text="${order.orderId}">?</td>
+								<td th:text="${order.account.username}">?</td>
+								<td th:text="${order.createDate}">?</td>
+								<td th:text="${total[iterStat.count-1]}">?</td>
+								<td th:text="${order.orderInfo.payment.paymentMethod}">?</td>
 								<td>
+									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"><i
+											class="fa fa-check-square" data-bs-toggle="modal"
+											th:data-bs-target="'#ModalAccept' + ${iterStat.count}"></i></a>
+									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"><i
+											class="fa fa-window-close" data-bs-toggle="modal"
+											th:data-bs-target="'#ModalDelete' + ${iterStat.count}"></i></a>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										data-bs-target="'#ModalAccept' + ${order.orderId}"><i
-											class="fa fa-check-square"></i></a>
-									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										data-bs-target="'#ModalDelete' + ${order.orderId}"><i
-											class="fa fa-window-close"></i></a>
-									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
-										data-bs-target="'#modal' + ${order.orderId}"><i
+										th:data-bs-target="'#modal' + ${iterStat.count}"><i
 											class="bx bx-info-square"></i></a>
-								</td>
-							</tr>
+							
 							<!-- Modal conform -->
-							<div class="modal fade" th:id="'ModalAccept'+ ${order.orderId}" tabindex="-1"
+							<div th:each="order, iterStat : ${orders}" class="modal fade" th:id="'ModalAccept'+${order.orderId}" tabindex="-1"
 								aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -106,7 +105,7 @@
 							</div>
 
 							<!-- Modal Info-->
-							<div class="modal fade" th:id="'modal'+ ${order.orderId}" data-bs-backdrop="static"
+							<div class="modal fade"  th:id="'modal' + ${iterStat.count}" data-bs-backdrop="static"
 								data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
 								aria-hidden="true">
 								<div class="modal-dialog modal-lg">
@@ -176,45 +175,43 @@
 			</div>
 		</div>
 		<!-- / Content -->
+		<script th:inline="javascript">
+			var statusAtr = /*[[${status}]]*/ 'Đơn mới';
+				// Lấy tham chiếu đến phần tử select
+				const selectElement = document.getElementById('statusSelect');
+				alert(statusAtr);
+				// Lấy tham chiếu đến tùy chọn bạn muốn làm tùy chọn mặc định
+				const optionToSelect = selectElement.querySelector('[value="'+statusAtr+'"]');
+				optionToSelect=true;
+			 	function softByStatus(){
+					 var statusEle = document.getElementById('statusSelect');
+					 var status= statusEle.value;
+					 window.location.href='http://localhost:8080/admin/order?status=' + status ;
+				 }
+		
+				function updateOrderTable(data) {
+					// Xóa dữ liệu hiện tại trong bảng
+					$('#orderTableBody').empty();
+		
+					// Thêm dữ liệu mới vào bảng
+					for (var i = 0; i < data.length; i++) {
+						var order = data[i];
+						var row = '<tr>' +
+							'<td>' + (i + 1) + '</td>' +
+							'<td>' + order.orderId + '</td>' +
+							'<td>' + order.account.username + '</td>' +
+							'<td>' + order.createDate + '</td>' +
+							'<td>' + order.total + '</td>' +
+							'<td>' + order.orderInfo.payment.paymentMethod + '</td>' +
+							'<td>... </td>' +
+							'</tr>';
+						$('#orderTableBody').append(row);
+					}
+				}
+		
+		</script>
 	</main>
 </body>
-<script th:inline="javascript">
-	$(document).ready(function () {
-		$('#defaultSelect').change(function () {
-			var selectedStatus = $(this).val();
-			$.ajax({
-				type: 'GET',
-				url: '/order?status=' + selectedStatus,
-				success: function (data) {
-					// Cập nhật bảng đơn hàng với dữ liệu mới
-					updateOrderTable(data);
-				},
-				error: function () {
-					console.error("Failed to fetch data from server.");
-				}
-			});
-		});
 
-		function updateOrderTable(data) {
-			// Xóa dữ liệu hiện tại trong bảng
-			$('#orderTableBody').empty();
-
-			// Thêm dữ liệu mới vào bảng
-			for (var i = 0; i < data.length; i++) {
-				var order = data[i];
-				var row = '<tr>' +
-					'<td>' + (i + 1) + '</td>' +
-					'<td>' + order.orderId + '</td>' +
-					'<td>' + order.account.username + '</td>' +
-					'<td>' + order.createDate + '</td>' +
-					'<td>' + order.total + '</td>' +
-					'<td>' + order.orderInfo.payment.paymentMethod + '</td>' +
-					'<td>... </td>' +
-					'</tr>';
-				$('#orderTableBody').append(row);
-			}
-		}
-	});
-</script>
 
 </html>

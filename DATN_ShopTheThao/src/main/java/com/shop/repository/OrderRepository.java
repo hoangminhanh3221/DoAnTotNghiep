@@ -9,6 +9,7 @@ import com.shop.entity.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
-	@Query("select o from Order o where o.orderStatus = ?1")
-	 List<Order> getOrderByStatus(int status);
+	@Query(value ="select * from orders  where OrderStatus = ?1", nativeQuery=true)
+	 List<Order> getOrderByStatus(String status);
+	
 }

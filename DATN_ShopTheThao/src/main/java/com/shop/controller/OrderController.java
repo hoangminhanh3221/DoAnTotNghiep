@@ -27,28 +27,28 @@ public class OrderController {
 	private OrderDetailService orderDetailService;
 	
 	@RequestMapping("/admin/order")
-	public String admorder(Model model) {
-		 List<Order> orders = orderService.findAllOrders();
-	        System.out.println(orders.get(0).getOrderId());
-	        orders.get(0);
-	        List<Double> listTP = new ArrayList<>();
-	        double totalPrice =0;
-	        for (Order order : orders) {
-				for (OrderDetail orderdetail : order.getOrderDetails()) {
-					totalPrice = totalPrice + orderdetail.getProductPrice() * orderdetail.getProductQuantity();
-				}
-				listTP.add(totalPrice);
-				totalPrice= 0;
+	public String admorder(Model model,@RequestParam (value = "status", required = false) String status) {
+		
+		if (status == null) {
+			status = "Đơn mới";
+		}
+		
+		List<Order> orders = orderService.getOrderByStatus(status);
+		System.out.println(status);
+        List<Double> listTP = new ArrayList<>();
+        double totalPrice =0;
+        for (Order order : orders) {
+			for (OrderDetail orderdetail : order.getOrderDetails()) {
+				totalPrice = totalPrice + orderdetail.getProductPrice() * orderdetail.getProductQuantity();
 			}
-	        model.addAttribute("orders", orders);
-	        model.addAttribute("total", listTP);
-	        return "admin-page/order-list"; // Trả về tên của trang HTML muốn hiển thị (ví dụ: orders.html)
+			listTP.add(totalPrice);
+			totalPrice= 0;
+		}
+        model.addAttribute("orders", orders);
+        model.addAttribute("status", status);
+        model.addAttribute("total", listTP);
+        return "admin-page/order-list"; // Trả về tên của trang HTML muốn hiển thị (ví dụ: orders.html)
 	}
 	
-	@GetMapping("/admin/orders")
-    public String getOrdersByStatus(@RequestParam int status) {
-		// Truy vấn cơ sở dữ liệu để lấy danh sách đơn hàng có trạng thái tương ứng
-        List<Order> orders = orderService.getOrderByStatus(status);
-        return "admin-page/order-list";
-    }
+
 }
