@@ -30,9 +30,9 @@
 								<th scope="col">Phí giao hàng</th>
 								<th scope="col">Tổng tiền</th>
 								<th scope="col">Ngày tạo</th>
-								<th scope="col">Thanh toán</th>
-								<th scope="col">Giao hàng</th>
-								<th scope="col">Chi Tiết</th>
+								<th scope="col">Vận chuyển</th>
+								<th scope="col">Đơn hàng</th>
+								<th scope="col">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,8 +44,8 @@
 								<td th:text="${#numbers.formatDecimal(order.orderInfo.transport.transportFee, 0, 'POINT', 0, 'COMMA')}+' VND'"></td>
 								<td th:text="${#numbers.formatDecimal(order.orderAmount + order.orderInfo.transport.transportFee,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
 								<td th:text="${order.createDate}"></td>
-								<td th:text="${order.orderStatus}"></td>
 								<td th:text="${order.orderInfo.transport.transportStatus} ? 'Đã giao hàng' : 'Chưa giao hàng'"></td>
+								<td th:text="${order.orderStatus}"></td>
 								<td>
 									<!-- Button trigger modal -->
 									<button type="button" class="btn btn-primary"
@@ -90,7 +90,7 @@
 																<td th:text="${orderDetail.product.size.sizeName}"></td>
 																<td th:text="${orderDetail.product.color.colorName}"></td>
 																<td th:text="${orderDetail.productQuantity}"></td>
-																<td th:text="${#numbers.formatDecimal(orderDetail.productPrice,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+																<td th:text="${#numbers.formatDecimal(orderDetail.productPrice * orderDetail.productQuantity,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
 															</tr>
 															<!-- Thêm các dòng khác tương tự -->
 														</tbody>

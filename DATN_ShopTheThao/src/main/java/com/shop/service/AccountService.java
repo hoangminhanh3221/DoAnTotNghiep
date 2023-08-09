@@ -14,12 +14,14 @@ public interface AccountService {
 	
 	List<Account> findAllAccount();
 
-	Optional<Account> findAccountById(String AccountId);
+	Optional<Account> findAccountById(String accountId);
 	
 	Account createAccount(Account account);
 
 	Account updateAccount(Account account);
 
-	void deleteAccount(String AccountId);
+	void deleteAccount(String accountId);
+	
+	Optional<Account> findByEmail(String email);
 	
 }

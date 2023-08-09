@@ -39,21 +39,23 @@ public class ProductController {
 		// sort by category
 		if (!categoryId.get().equals("null")) {
 			list = productService.findByCategoryID(categoryId.get(), pageable);
-			System.out.println("1");
 			model.addAttribute("products", list);
 		} else if (!subcategoryId.get().equals("null")) {
 			list = productService.findBySubcategoryID(subcategoryId.get(), pageable);
-			System.out.println("2");
 			model.addAttribute("products", list);
 		} else {
 			list = productService.findAllProduct(pageable);
-			System.out.println("3");
 			model.addAttribute("products", list);
+		}
+		
+		if(list == null) {
+			model.addAttribute("isProductNull", false);
+		} else {
+			model.addAttribute("isProductNull", true);
 		}
 		
 		int totalPages = list.getTotalPages();
 		List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().toList();
-		System.out.println(pageNumbers.get(0));
 		model.addAttribute("pageNumbers", pageNumbers);
 		return "user-page/product";
 	}

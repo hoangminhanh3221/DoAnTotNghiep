@@ -59,10 +59,8 @@ public class UserController {
 	@RequestMapping("/user/info")
 	public String getInfo(Model model, @ModelAttribute Customer customer) {
 		customer = customerService.findCustomerByUsername(af.getUsername()).orElse(null);
-		
-		int randomInt = (int) (Math.random() * (99999 - 10000 + 1)) + 10000;
 
-		model.addAttribute("image", "/user-page/images/avatars/" + customer.getCustomerImage() + "?version=" + randomInt);
+		model.addAttribute("image", "/user-page/images/avatars/" + customer.getCustomerImage());
 		// Chuyển đổi birthday sang chuỗi định dạng yyyy-MM-dd
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String birthdayString = dateFormat.format(customer.getBirthday());
@@ -107,13 +105,10 @@ public class UserController {
 		currentCustomer.setCustomerName(customer.getCustomerName());
 		currentCustomer.setGender(customer.getGender());
 		currentCustomer.setPhoneNumber(customer.getPhoneNumber());
-		System.out.println(avatarFile.getOriginalFilename());
 		try {
-			if(avatarFile.equals(null)) {
-				System.out.println("trueee");
+			if(avatarFile.getOriginalFilename().equals("")) {
 				currentCustomer.setCustomerImage(customer.getCustomerImage());
 			} else {
-				System.out.println("falseee");
 				currentCustomer.setCustomerImage(imageService.saveImage(avatarFile, "customer"+currentCustomer.getCustomerId(), "avatars"));
 			}
 		} catch (IOException e1) {
@@ -147,7 +142,7 @@ public class UserController {
 		addressService.updateAddress(address);
 
 		sessionService.remove("addressAPI");
-		return "redirect:/order/checkout";
+		return "redirect:/user/info";
 	}
 	
 	@RequestMapping("/user/list-order")

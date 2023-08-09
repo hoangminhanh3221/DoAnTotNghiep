@@ -37,6 +37,7 @@ public class SecurityController {
 	
 	@RequestMapping("/account/login/error")
 	public String loginError(Model model) {
+		model.addAttribute("message", "Username hoặc Password không chính xác!");
 		return "/account/login";
 	}
 	
