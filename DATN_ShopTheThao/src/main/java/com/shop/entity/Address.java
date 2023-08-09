@@ -30,16 +30,16 @@ public class Address implements Serializable{
 	@Column(name = "AddressId")
 	private Integer addressId;
 	
-	@Column(name = "NumberHome", columnDefinition = "nvarchar(50)", nullable = true)
+	@Column(name = "NumberHome", columnDefinition = "nvarchar(100)", nullable = true)
 	private String numberHome;
 	
-	@Column(name = "Ward", columnDefinition = "nvarchar(20)", nullable = true)
+	@Column(name = "Ward", columnDefinition = "nvarchar(100)", nullable = true)
 	private String ward;
 	
-	@Column(name = "District", columnDefinition = "nvarchar(20)", nullable = true)
+	@Column(name = "District", columnDefinition = "nvarchar(100)", nullable = true)
 	private String district;
 	
-	@Column(name = "City", columnDefinition = "nvarchar(20)", nullable = true)
+	@Column(name = "City", columnDefinition = "nvarchar(100)", nullable = true)
 	private String city;
 	
 	@JsonIgnore

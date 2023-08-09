@@ -39,15 +39,19 @@
 							<tr th:each="order : ${orders}">
 								<td th:text="${order.orderId}"></td>
 								<td th:text="${order.quantity}"></td>
-								<td th:text="${#numbers.formatDecimal(order.orderAmount, 0, 'POINT', 0, 'COMMA')} + ' VND'"></td>
+								<td
+									th:text="${#numbers.formatDecimal(order.orderAmount, 0, 'POINT', 0, 'COMMA')} + ' VND'"></td>
 
-								<td th:text="${#numbers.formatDecimal(order.orderInfo.transport.transportFee, 0, 'POINT', 0, 'COMMA')}+' VND'"></td>
-								<td th:text="${#numbers.formatDecimal(order.orderAmount + order.orderInfo.transport.transportFee,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+								<td
+									th:text="${#numbers.formatDecimal(order.orderInfo.transport.transportFee, 0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+								<td
+									th:text="${#numbers.formatDecimal(order.orderAmount + order.orderInfo.transport.transportFee,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
 								<td th:text="${order.createDate}"></td>
-								<td th:text="${order.orderInfo.transport.transportStatus} ? 'Đã giao hàng' : 'Chưa giao hàng'"></td>
+								<td
+									th:text="${order.orderInfo.transport.transportStatus} ? 'Đã giao hàng' : 'Chưa giao hàng'"></td>
 								<td th:text="${order.orderStatus}"></td>
 								<td>
-									<!-- Button trigger modal -->
+									<!-- model xem chi tiết -->
 									<button type="button" class="btn btn-primary"
 										data-toggle="modal"
 										th:data-target="'#exampleModalCenter_'+${order.orderId}">
@@ -85,16 +89,49 @@
 															<tr th:each="orderDetail,status : ${order.orderDetails}">
 																<td th:text="${status.index+1}"></td>
 																<td th:text="${orderDetail.product.productName}"></td>
-																<td th:text="${#numbers.formatDecimal(orderDetail.product.sellingPrice,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
-																<td th:text="${orderDetail.product.subcategory.category.categoryName}"></td>
+																<td
+																	th:text="${#numbers.formatDecimal(orderDetail.product.sellingPrice,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+																<td
+																	th:text="${orderDetail.product.subcategory.category.categoryName}"></td>
 																<td th:text="${orderDetail.product.size.sizeName}"></td>
 																<td th:text="${orderDetail.product.color.colorName}"></td>
 																<td th:text="${orderDetail.productQuantity}"></td>
-																<td th:text="${#numbers.formatDecimal(orderDetail.productPrice * orderDetail.productQuantity,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+																<td
+																	th:text="${#numbers.formatDecimal(orderDetail.productPrice * orderDetail.productQuantity,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
 															</tr>
 															<!-- Thêm các dòng khác tương tự -->
 														</tbody>
 													</table>
+												</div>
+											</div>
+										</div>
+									</div> <!-- modal hủy đơn -->
+									<button type="button" class="btn btn-primary"
+										data-toggle="modal"
+										th:data-target="'#delete_'+${order.orderId}">Hủy đơn</button>
+									<!-- Modal -->
+									<div class="modal modal-xl fade"
+										th:id="'delete_'+${order.orderId}" tabindex="-1" role="dialog"
+										aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+										style="z-index: 2000; padding-top: 10%;">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content"
+												style="width: 500px; position: relative; left: -50%">
+												<!-- Modal Header -->
+												<div class="modal-header">
+													<h4 class="modal-title">Modal Tiêu Đề</h4>
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+												</div>
+
+												<!-- Modal Body -->
+												<div class="modal-body">Bạn có chắc chắn muốn hủy đơn hàng?</div>
+
+												<!-- Modal Footer -->
+												<div class="modal-footer">
+													<a type="button" class="btn btn-secondary"
+														data-dismiss="modal">Không</a>
+													<a th:href="@{|/order/delete/${order.orderId}|}" type="button" class="btn btn-primary">Có</a>
 												</div>
 											</div>
 										</div>
@@ -107,7 +144,7 @@
 			</div>
 		</div>
 
-		
+
 	</main>
 </body>
 </html>
