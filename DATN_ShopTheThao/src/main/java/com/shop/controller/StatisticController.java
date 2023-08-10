@@ -5,7 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Order;
 import com.shop.entity.OrderDetail;
+import com.shop.entity.Product;
 import com.shop.service.OrderDetailService;
 import com.shop.service.OrderService;
 import com.shop.service.ProductService;
 
+import model.NumProduct;
 import model.RevenueProduct;
 
 @Controller
@@ -68,12 +73,16 @@ public class StatisticController {
 	        model.addAttribute("revFromTo", RevFromTo);
 		}
 		
-        if (year == null) {
-            // Nếu không có giá trị "year" trong request parameter, sử dụng năm hiện tại
+		// Nếu không có giá trị "year" trong request parameter, sử dụng năm hiện tại
+		if (year == null) {
             year = LocalDate.now().getYear();
             monthIdx = LocalDate.now().getMonthValue();
         }else {
-        	monthIdx = 12;
+        	if (year ==LocalDate.now().getYear()) {
+        		monthIdx = LocalDate.now().getMonthValue();
+			}else {
+				monthIdx = 12;
+			}
         }
         
         Double[] listMonthRev = getListMonthRevenue(monthIdx, year);
@@ -117,8 +126,106 @@ public class StatisticController {
 	
 	// Request trang thống kê sản phẩm
 	@GetMapping("/admin/product-statistic")
-	public String product() {
+	public String product(Model model,
+			@RequestParam(value="year" , required = false) Integer year, 
+			@RequestParam(value="month" , required = false) Integer month) {
 		
+		
+		int monthIdx =0;
+		int allNumPrdSold=0;
+		List<Integer> years = orderService.getYear();
+		List<NumProduct> listNumProductSold = getDataChartDonut3();
+		List<NumProduct> topNumProductSold = new ArrayList<>();
+		
+        List<Product> listAllPrd = productService.findAllProduct();
+
+        // Nếu không có giá trị "year" trong request parameter, sử dụng năm hiện tại
+		if (year == null) {
+            year = LocalDate.now().getYear();
+            monthIdx = LocalDate.now().getMonthValue();
+        }else {
+        	if (year ==LocalDate.now().getYear()) {
+        		monthIdx = LocalDate.now().getMonthValue();
+			}else {
+				monthIdx = 12;
+			}
+        	
+        }
+        // Nếu không có giá trị "month" trong request parameter, sử dụng tháng hiện tại
+        if (month == null) {
+        	month = LocalDate.now().getMonthValue();
+        }
+
+		int numPrdSoldOfYear=getNumprdSoldOfYear(year);
+		int numPrdSoldOfMonth=getNumprdSoldOfMonth(month, year);
+		Integer[] dataChartLine = getDataChartLine(monthIdx, year);
+        
+		//Duyệt mảng và tính số sản phẩm đã bán
+        for (Product p : listAllPrd) {
+        	//tổng sl trừ sl còn lại
+        	int numx1 = p.getTotalQuantity() -p.getQuantityLeft();
+        	allNumPrdSold = allNumPrdSold + numx1;
+		}
+        
+        //Lấy datachartdonut3
+        List<String> listName = new ArrayList<>();
+        List<Integer> listNum = new ArrayList<>();
+     // Sắp xếp theo số lượng giảm dần
+        Collections.sort(listNumProductSold, new Comparator<NumProduct>() {
+            @Override
+            public int compare(NumProduct p1, NumProduct p2) {
+                return Integer.compare(p2.getNum(), p1.getNum());
+            }
+        });
+
+        NumProduct numPrd = new NumProduct("", 0);
+
+        for (int i = 0; i < listNumProductSold.size(); i++) {
+        	NumProduct numPrd2 = new NumProduct();
+            if (i == 4) {
+                numPrd.setName("Khác");
+                numPrd.setNum(listNumProductSold.get(i).getNum());
+            } else if (i > 4) {
+                numPrd.setNum(numPrd.getNum() + listNumProductSold.get(i).getNum());
+            } else {
+                listName.add(listNumProductSold.get(i).getName());
+                listNum.add(listNumProductSold.get(i).getNum());
+                numPrd2.setName(listNumProductSold.get(i).getName());
+                numPrd2.setNum(listNumProductSold.get(i).getNum());
+                topNumProductSold.add(numPrd2);
+            }
+            if (i == listNumProductSold.size() - 1) {
+                listName.add(numPrd.getName());
+                listNum.add(numPrd.getNum());
+                topNumProductSold.add(numPrd);
+            }
+        }
+
+        // Chuyển ArrayList thành mảng String
+        String[] dataNameChartDonut3 = listName.toArray(new String[listName.size()]);
+        // Chuyển ArrayList thành mảng Integer
+        Integer[] dataNumChartDonut3 = listNum.toArray(new Integer[listNum.size()]);
+
+        // In mảng đã chuyển
+        for (String name : dataNameChartDonut3) {
+            System.out.println(name);
+        }
+
+        for (Integer num : dataNumChartDonut3) {
+            System.out.println(num);
+        }
+        
+        model.addAttribute("years", years);
+        model.addAttribute("year", year);
+        model.addAttribute("month", month);
+        model.addAttribute("dataNameChartDonut3", dataNameChartDonut3);
+        model.addAttribute("dataNumChartDonut3", dataNumChartDonut3);
+        model.addAttribute("allNumPrdSold", allNumPrdSold);
+        model.addAttribute("dataChartLine", dataChartLine);
+        model.addAttribute("numPrdSoldOfYear", numPrdSoldOfYear);
+        model.addAttribute("numPrdSoldOfMonth", numPrdSoldOfMonth);
+        model.addAttribute("topNumProductSold", topNumProductSold);
+        
 		return "admin-page/product-statistics";
 	}
 	
@@ -223,7 +330,7 @@ public class StatisticController {
 		    double otherRevenue = 0.0;
 		    
 		    for (int i = 0; i < listTop5.size(); i++) {
-		        if (i < 5) {
+		        if (i < 4) {
 		            finalListTop5.add(listTop5.get(i));
 		        } else {
 		            otherRevenue += listTop5.get(i).getRevenue();
@@ -238,5 +345,61 @@ public class StatisticController {
 		    return finalListTop5;
 		}
 		
-		
+		//Lấy số sản phẩm đã bán theo năm
+		public int getNumprdSoldOfYear(Integer year) {
+			int numPrd=0;
+			List<Order> listOrder = orderService.getOrdersByYear(year);
+			
+			for (Order o : listOrder) {
+				for (OrderDetail od : o.getOrderDetails()) {
+					numPrd = numPrd + od.getProductQuantity();
+				}
+			}
+			
+			return numPrd;
+		}
+		//Lấy số sản phẩm đã bán theo 1 tháng trong năm đã chọn
+		public int getNumprdSoldOfMonth(Integer month, Integer year) {
+			int numPrd=0;
+			List<Order> listOrder = orderService.getOrdersByMonth(month, year);
+			
+			for (Order o : listOrder) {
+				for (OrderDetail od : o.getOrderDetails()) {
+					numPrd = numPrd + od.getProductQuantity();
+				}
+			}
+			
+			return numPrd;
+		}
+		//Lấy datachart doanh số của năm
+		public Integer[] getDataChartLine(Integer monthidx, Integer year) {
+			Integer[] data = new Integer[monthidx];
+			int numPrd=0;
+			for (int i = 1; i < monthidx+1; i++) {
+				List<Order> listOrder = orderService.getOrdersByMonth(i, year);
+				
+				for (Order o : listOrder) {
+					for (OrderDetail od : o.getOrderDetails()) {
+						numPrd = numPrd + od.getProductQuantity();
+					}
+				}
+				data[i-1]=numPrd;
+				numPrd=0;
+			}
+			
+			return data;
+		}
+		//Lấy datachart2 Danh sach
+		public List<NumProduct> getDataChartDonut3() {
+		    List<NumProduct> list = new ArrayList<>();
+		    List<Product> listPrd = productService.findAllProduct();
+		    for (Product p : listPrd) {
+		        NumProduct obj = new NumProduct(); // Tạo một đối tượng mới trong mỗi lần lặp
+		        obj.setName(p.getProductName());
+		        obj.setNum(p.getTotalQuantity() - p.getQuantityLeft());
+		        list.add(obj);
+		    }
+		    
+		    return list;
+		}
 }
