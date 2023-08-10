@@ -4,16 +4,20 @@
 
 <body>
 	<main>
-		<!-- breadcrumb -->
-		<div class="container">
-			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-				<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-					Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-					Men <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-				</a> <span class="stext-109 cl4"> Lightweight Jacket </span>
-			</div>
-		</div>
+<!-- breadcrumb -->
+	    <div class="container">
+	      <div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
+	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+	          Trang Chủ
+	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	        </a>
+	
+	        <a href="user-info.html" class="stext-109 cl8 hov-cl1 trans-04">
+	          Thông tin người dùng
+	        </a>
+	
+	      </div>
+	    </div>
 
 		<!-- Content -->
 		<div class="container">
@@ -24,8 +28,9 @@
 					<form class="row" th:action="@{/user/info/edit}"
 						th:object="${customer}" enctype="multipart/form-data" method="post">
 						<div class="col-12">
-							<div class="profile-picture" style="margin: auto;">
-								<img id="avatar" th:src="@{${image}}" alt="Ảnh đại diện"
+							<div class="profile-picture mb-5" style="margin: auto; 
+							box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
+								<img id="avatar" th:src="@{${image}}"
 									class="rounded-circle" style="width: 200px; height: 200px;">
 								<div class="edit-overlay">
 									<label for="avatar-upload" id="edit-avatar">Chỉnh sửa</label> <input
@@ -89,7 +94,7 @@
 							<div class="col-4">
 								<div class="form-group">
 									<label for="district">Tỉnh/Thành phố:</label> <select
-										class="select floating" id="province" ng-model="provinceId"
+										class="form-control" id="province" ng-model="provinceId"
 										ng-change="updateProvince()"
 										ng-options="province.code as province.name for province in provinces">
 										<option value="" selected disabled>Chọn Tỉnh/Thành
@@ -100,7 +105,7 @@
 							<div class="col-4">
 								<div class="form-group">
 									<label for="district">Quận/Huyện:</label> <select
-										class="select floating" id="district" ng-model="districtId"
+										class="form-control" id="district" ng-model="districtId"
 										ng-options="district.code as district.name for district in districts"
 										ng-change="updateDistrict()" ng-disabled="selectedDistrict">
 										<option value="" selected disabled>Chọn Quận/Huyện</option>
@@ -110,7 +115,7 @@
 							<div class="col-4">
 								<div class="form-group">
 									<label for="ward">Phường/Xã</label> <select
-										class="select floating" id="ward" ng-model="wardId"
+										class="form-control" id="ward" ng-model="wardId"
 										ng-options="option.code as option.name for option in wards"
 										ng-change="updateWard()" ng-disabled="selectedWard">
 										<option value="" selected disabled>Chọn Xã/Phường</option>
@@ -129,7 +134,7 @@
 									data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
 							</div>
 						</th:block>
-						<button type="submit" class="btn btn-primary mr-2 ml-3">Sửa</button>
+						<button type="submit" class="btn btn-primary mr-2 ml-3">Lưu Thông Tin</button>
 					</form>
 				</div>
 			</div>
@@ -151,7 +156,7 @@
 							</div>
 							<div class="col-md-6 form-group mt-2">
 								<label for="district">Tỉnh/Thành phố:</label> <select
-									class="select floating" id="province" ng-model="provinceId"
+									class="form-control" id="province" ng-model="provinceId"
 									ng-change="updateProvince()"
 									ng-options="province.code as province.name for province in provinces">
 									<option value="" selected disabled>Chọn Tỉnh/Thành
@@ -160,7 +165,7 @@
 							</div>
 							<div class="col-md-6 form-group mt-2">
 								<label for="district">Quận/Huyện:</label> <select
-									class="select floating" id="district" ng-model="districtId"
+									class="form-control" id="district" ng-model="districtId"
 									ng-options="district.code as district.name for district in districts"
 									ng-change="updateDistrict()" ng-disabled="selectedDistrict">
 									<option value="" selected disabled>Chọn Quận/Huyện</option>
@@ -168,13 +173,13 @@
 							</div>
 							<div class="col-md-6 form-group mt-2">
 								<label for="ward">Phường/Xã</label> <select
-									class="select floating" id="ward" ng-model="wardId"
+									class="form-control" id="ward" ng-model="wardId"
 									ng-options="option.code as option.name for option in wards"
 									ng-change="updateWard()" ng-disabled="selectedWard">
 									<option value="" selected disabled>Chọn Xã/Phường</option>
 								</select>
 							</div>
-							<button type="submit" class="btn btn-primary">Đổi địa
+							<button type="submit" class="btn btn-primary ml-3">Đổi địa
 								chỉ</button>
 						</form>
 					</div>

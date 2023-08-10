@@ -1,4 +1,4 @@
-package com.shop.controller;
+package com.shop.controller.user;
 
 import java.util.List;
 
@@ -43,14 +43,11 @@ public class DiscountController {
 	
 	@GetMapping("/admin/discount/add")
 	public String add(Model model) {
-		
-		
 		return "admin-page/discount-add";
 	}
 	
 	@GetMapping("/admin/discount/update")
 	public String update(Model model, @RequestParam("discountid") String id) {
-		
 		Discount discount = discountService.findDiscountById(id).get();
 		return "admin-page/discount-add";
 	}

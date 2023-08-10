@@ -1,4 +1,4 @@
-package com.shop.controller;
+package com.shop.controller.user;
 
 import java.io.IOException;
 import java.text.ParseException;

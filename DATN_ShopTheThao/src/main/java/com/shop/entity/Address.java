@@ -29,7 +29,7 @@ public class Address implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AddressId")
 	private Integer addressId;
-	
+	 
 	@Column(name = "NumberHome", columnDefinition = "nvarchar(100)", nullable = true)
 	private String numberHome;
 	

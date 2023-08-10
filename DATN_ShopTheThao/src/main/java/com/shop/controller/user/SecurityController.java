@@ -1,4 +1,4 @@
-package com.shop.controller;
+package com.shop.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +16,12 @@ public class SecurityController {
 	
 	@RequestMapping("/account/login/form")
 	public String loginForm(Model model) {
+		return "/account/login";
+	}
+	
+	@RequestMapping("/account/login/email")
+	public String loginEmail(Model model) {
+		model.addAttribute("mailMessage", "Vui lòng kiểm tra email!");
 		return "/account/login";
 	}
 	
@@ -37,7 +43,7 @@ public class SecurityController {
 	
 	@RequestMapping("/account/login/error")
 	public String loginError(Model model) {
-		model.addAttribute("message", "Username hoặc Password không chính xác!");
+		model.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không chính xác!");
 		return "/account/login";
 	}
 	
