@@ -18,7 +18,7 @@
               <div class="card" style="height: 900px">
                 <div class="table-responsive text-nowrap">
                     <div class="container" style="width: 95%; margin: 0 auto; margin-top: 50px">   
-                                <form class="row" th:action="@{/admin/employeeAdd/create}" method="post">
+                                <form class="row" th:object="${employee}" th:action="@{/admin/employeeAdd/create}" method="post">
                                     <h4>Thông tin</h4>
                                     <div class="row mb-5">
                                         <div class="col-12">
@@ -27,14 +27,14 @@
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="name" style=" font-weight: bold;">Họ Tên:</label>
                                                         <input type="text" class="form-control"
-                                                        th:name="name" id="name" placeholder="Nhập họ tên" >
+                                                         th:field="*{employeeName}" id="name" placeholder="Nhập họ tên" >
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="dob" style=" font-weight: bold;">Ngày sinh:</label>
                                                         <input type="date" class="form-control"
-                                                        id="dob" name="dob">
+                                                        id="dob" name="dob" th:field="*{birthday}">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -42,12 +42,12 @@
                                                         <label  style="padding-bottom: 10px; font-weight: bold;">Giới tính:</label><br>
                                                         <div class="form-check form-check-inline" >
                                                           <input class="form-check-input" type="radio" name="gender" id="genderMale"
-                                                           value="true" th:checked="${gender == true}">
-                                                          <label class="form-check-label" for="genderMale">Nam</label>
+                                                           value="true" th:checked="${gender == true}" th:field="*{gender}"> 
+                                                          <label class="form-check-label" for="genderMale" >Nam</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                           <input class="form-check-input" type="radio" name="gender" id="genderFemale"
-                                                           value="false" th:checked="${gender == false}">
+                                                           value="false" th:checked="${gender == false}" th:field="*{gender}">
                                                           <label class="form-check-label" for="genderFemale">Nữ</label>
                                                         </div>
                                                     </div>
@@ -56,14 +56,14 @@
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="avatar" style=" font-weight: bold;">Hình ảnh:</label> <br>
                                                         <input type="file" class="form-control-file" 
-                                                        th:name="avatar" id="avatar">
+                                                         id="avatar" th:field="*{employeeImage}">
                                                 	</div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="phone" style=" font-weight: bold;">Số điện thoại:</label>
-                                                        <input type="text" class="form-control"
-                                                        th:name="phone" id="phone" placeholder="Nhập số điện thoại nhân viên"
+                                                        <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại nhân viên"
+                                                         th:field="*{phoneNumber}"
                                                         >
                                                     </div>                                           
                                                 </div>
@@ -71,7 +71,7 @@
 		                                             <div class="form-group" style=" margin-bottom: 20px;">
 		                                                <label for="email" style=" font-weight: bold;">Email:</label>
 		                                                <input type="email" class="form-control"
-		                                                th:name="email" id="email" placeholder="Nhập email">
+		                                                id="email" placeholder="Nhập email" th:field="*{account.email}">
 		                                              </div>                                       
                                                 </div>
                                             </div>
@@ -86,12 +86,12 @@
                                             <div class="form-group" style=" margin-bottom: 20px;">
                                                 <label for="username" style=" font-weight: bold;">Tên Đăng Nhập:</label>
                                                 <input type="text" class="form-control"
-                                                th:name="username" id="username" placeholder="Nhập username" >
+                                                 id="username" placeholder="Nhập username" th:field="*{account.username}">
                                             </div>
                                               <div class="form-group" style=" margin-bottom: 20px;">
                                                 <label for="password" style=" font-weight: bold;">Mật Khẩu:</label>
-                                                <input type="password" class="form-control"
-                                                th:name="password" id="password" placeholder="Nhập password">
+                                                <input type="text" class="form-control"
+                                                 id="password" placeholder="Nhập password" th:field="*{account.password}">
                                               </div>
                                         </div>
                                         
@@ -101,7 +101,7 @@
                                                 <div class="col-6">
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="numberHome" style=" font-weight: bold;">Số nhà:</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control" th:field="*{address.numberHome}"
                                                         name="numberHome" id="numberHome" placeholder="Nhập số nhà" >
                                                       </div>
                                                 </div>
@@ -109,7 +109,7 @@
                                                     <div class="form-group" style=" margin-bottom: 20px;">
                                                         <label for="province" style=" font-weight: bold;">Tỉnh/Thành phố:</label> <br>
                                                         <select name="province" id="province" class="form-control">
-                                                            <option  value="">Chọn Tỉnh/Thành Phố</option>
+                                                            <option value="">Chọn Tỉnh/Thành Phố</option>
                                                         </select>
                                                       </div>
                                                 </div>
@@ -139,39 +139,7 @@
                       </div>
                 </div>
               </div>
-		<!-- Basic Layout -->
 
-		<div class="demo-inline-spacing">
-			<!-- Basic Pagination -->
-			<nav aria-label="Page navigation">
-				<ul class="pagination">
-					<li class="page-item first"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevrons-left"></i></a></li>
-					<li class="page-item prev"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevron-left"></i></a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">3</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">4</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">5</a></li>
-					<li class="page-item next"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevron-right"></i></a></li>
-					<li class="page-item last"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevrons-right"></i></a></li>
-				</ul>
-			</nav>
-			<!--/ Basic Pagination -->
-		</div>
-		</div>
 		<!-- / Content -->
 	</main>
 </body>

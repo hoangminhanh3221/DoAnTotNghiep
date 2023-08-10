@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,12 +62,12 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/employeeAdd")
-	public String getEmployeeAdd(Model model) {
+	public String getEmployeeAdd(Model model, @ModelAttribute Employee employee) {
 		model.addAttribute("title", "Thêm Nhân Viên");
 		return "/admin-page/employee-add";
 	}
 	
-	@RequestMapping(value = "/employeeAdd/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/employeeAdd/create")
     public String createEmployeeAdd(
     		@RequestParam("dob") Date birthday,
             @RequestParam("name") String name,
@@ -116,7 +117,14 @@ public class EmployeeController {
         // Chuyển hướng người dùng về trang danh sách nhân viên (employeeList)
         return "redirect:/admin/employeeList";
     }
-	
+
+	@RequestMapping("/employeeEdit/{id}")
+	public String getEmployeeEdit(Model model, @PathVariable("id") Integer id) {
+		Employee employee = employeeService.findEmployeeById(id).get();
+		model.addAttribute("title", "Sửa Nhân Viên");
+		model.addAttribute("employee", employee);
+		return "/admin-page/employee-add";
+	}
 	
 	@RequestMapping("/employeeDelete/{id}")
 	  public String getDeleteEmployee(@PathVariable("id") Integer id) {
