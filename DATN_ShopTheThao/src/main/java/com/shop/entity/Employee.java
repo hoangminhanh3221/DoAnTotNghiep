@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,6 +28,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee implements Serializable{
+	@Transient
+    private String birthdayString;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

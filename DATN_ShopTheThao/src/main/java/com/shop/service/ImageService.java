@@ -13,11 +13,11 @@ public interface ImageService{
 	
 	Page<Image> findAllImages(Pageable pageable);
 	
-	Optional<Image> findImageById(Integer imageId);
+	Optional<Image> findImageById(String imageId);
 	
 	Image createImage(Image image);
 	
 	Image updateImage(Image image);
 	
-	void deleteImage(Integer imageId);
+	void deleteImage(String imageId);
 }

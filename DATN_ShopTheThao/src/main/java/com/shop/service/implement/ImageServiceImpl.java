@@ -31,7 +31,7 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public Optional<Image> findImageById(Integer ImageId) {
+    public Optional<Image> findImageById(String ImageId) {
         return ImageRepository.findById(ImageId);
     }
 
@@ -46,7 +46,7 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public void deleteImage(Integer ImageId) {
+    public void deleteImage(String ImageId) {
         ImageRepository.deleteById(ImageId);
     }
 }

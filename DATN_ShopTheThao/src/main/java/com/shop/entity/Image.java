@@ -26,9 +26,9 @@ import lombok.NoArgsConstructor;
 public class Image implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "ImageId")
-	private Integer imageId;
+	private String imageId;
 	
 	@Column(name = "ImageName1", columnDefinition = "varchar(100)", nullable = true)
 	private String imageName1;
