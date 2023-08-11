@@ -47,7 +47,7 @@ public class OrderController {
         model.addAttribute("orders", orders);
         model.addAttribute("status", status);
         model.addAttribute("total", listTP);
-        return "admin-page/order-list"; // Trả về tên của trang HTML muốn hiển thị (ví dụ: orders.html)
+        return "admin-page/order-list"; // Trả về tên của trang HTML
 	}
 	
 

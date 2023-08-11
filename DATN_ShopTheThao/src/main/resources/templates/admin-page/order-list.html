@@ -48,10 +48,10 @@
 								<td>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"><i
 											class="fa fa-check-square" data-bs-toggle="modal"
-											th:data-bs-target="'#ModalAccept' + ${iterStat.count}"></i></a>
+											th:data-bs-target="'#ModalAccept' +${order.orderId}"></i></a>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"><i
 											class="fa fa-window-close" data-bs-toggle="modal"
-											th:data-bs-target="'#ModalDelete' + ${iterStat.count}"></i></a>
+											th:data-bs-target="'#ModalDelete' +${order.orderId}"></i></a>
 									<a class="pe-2" href="javascript:void(0);" data-bs-toggle="modal"
 										th:data-bs-target="'#modal' + ${iterStat.count}"><i
 											class="bx bx-info-square"></i></a>
@@ -74,7 +74,8 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary"
 												data-bs-dismiss="modal">Đóng</button>
-											<button type="button" class="btn btn-primary">Xác nhận</button>
+											<button type="button" class="btn btn-primary" id="changeStatusButton" 
+											th:onclick="'changeStatus(' + ${order.orderId} + ')';">Xác nhận</button>
 										</div>
 									</div>
 								</div>
@@ -98,7 +99,7 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary"
 												data-bs-dismiss="modal">Đóng</button>
-											<button type="button" class="btn btn-primary">Xác nhận</button>
+											<button type="button" class="btn btn-primary" >Xác nhận</button>
 										</div>
 									</div>
 								</div>
@@ -176,19 +177,20 @@
 		</div>
 		<!-- / Content -->
 		<script th:inline="javascript">
-			var statusAtr = /*[[${status}]]*/ 'Đơn mới';
+			var statusAtr = /*[[${status}]]*/ '';
 				// Lấy tham chiếu đến phần tử select
 				const selectElement = document.getElementById('statusSelect');
-				alert(statusAtr);
+				//alert(statusAtr);
 				// Lấy tham chiếu đến tùy chọn bạn muốn làm tùy chọn mặc định
 				const optionToSelect = selectElement.querySelector('[value="'+statusAtr+'"]');
 				optionToSelect=true;
+			
 			 	function softByStatus(){
 					 var statusEle = document.getElementById('statusSelect');
 					 var status= statusEle.value;
 					 window.location.href='http://localhost:8080/admin/order?status=' + status ;
+					 
 				 }
-		
 				function updateOrderTable(data) {
 					// Xóa dữ liệu hiện tại trong bảng
 					$('#orderTableBody').empty();
@@ -210,8 +212,27 @@
 				}
 		
 		</script>
+		<script>
+			var currentStatus = "Đơn mới";
+			var changeStatusButton = document.getElementById("changeStatusButton");
+    		changeStatusButton.addEventListener("click", function() {
+        // Thay đổi trạng thái tùy theo trạng thái hiện tại
+        	switch (currentStatus) {
+            case "Đơn mới":
+                currentStatus = "Đơn đã nhận";
+                break;
+			default:
+                currentStatus = "Đơn mới";
+        }
+        // Cập nhật giao diện
+        updateStatusUI();
+        });
+        	function updateStatusUI() {
+        	var currentStatusElement = document.getElementById("currentStatus");
+        	
+    	}
+    	
+		</script>
 	</main>
 </body>
-
-
 </html>
