@@ -109,7 +109,7 @@
 									</div> <!-- modal hủy đơn -->
 									<button type="button" class="btn btn-primary"
 										data-toggle="modal"
-										th:data-target="'#delete_'+${order.orderId}">Hủy đơn</button>
+										th:data-target="'#delete_'+${order.orderId}" th:if="${order.orderStatus == 'Đơn mới'}">Hủy đơn</button>
 									<!-- Modal -->
 									<div class="modal modal-xl fade"
 										th:id="'delete_'+${order.orderId}" tabindex="-1" role="dialog"

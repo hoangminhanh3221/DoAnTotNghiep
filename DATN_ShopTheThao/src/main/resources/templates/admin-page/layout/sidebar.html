@@ -81,7 +81,7 @@
 				<div data-i18n="Tài Khoản">Sản Phẩm</div>
 		</a>
 			<ul class="menu-sub">
-				<li class="menu-item"><a href="product-list.html"
+				<li class="menu-item"><a th:href="@{/admin/product}"
 					class="menu-link">
 						<div data-i18n="Sản Phẩm">Sản Phẩm</div>
 				</a></li>
@@ -155,10 +155,10 @@
 				<div data-i18n="Khuyến Mãi">Khuyến Mãi</div>
 		</a>
 			<ul class="menu-sub">
-				<li class="menu-item"><a href="discount.html" class="menu-link">
+				<li class="menu-item"><a th:href="@{/admin/discount/add}" class="menu-link">
 						<div data-i18n="Thêm Khuyến Mãi">Thêm Khuyến Mãi</div>
 				</a></li>
-				<li class="menu-item"><a href="discount-list.html"
+				<li class="menu-item"><a th:href="@{/admin/discount}"
 					class="menu-link">
 						<div data-i18n="Danh Sách Khuyến Mãi">Danh Sách Khuyến Mãi</div>
 				</a></li>
@@ -172,11 +172,11 @@
 				<div data-i18n="Hóa Đơn">Thống Kê</div>
 		</a>
 			<ul class="menu-sub">
-				<li class="menu-item"><a href="revenue-statistics.html"
+				<li class="menu-item"><a th:href="@{/admin/revenue-statistic}"
 					class="menu-link" target="_blank">
 						<div data-i18n="Thêm Hóa Đơn">Doanh Thu</div>
 				</a></li>
-				<li class="menu-item"><a href="order-statistics.html"
+				<li class="menu-item"><a th:href="@{/admin/product-statistic}"
 					class="menu-link" target="_blank">
 						<div data-i18n="Danh Sách Hóa Đơn">Đơn Hàng</div>
 				</a></li>
@@ -184,7 +184,7 @@
 					class="menu-link" target="_blank">
 						<div data-i18n="Thêm Hóa Đơn">Lượng Truy Cập</div>
 				</a></li>
-				<li class="menu-item"><a href="Product-statistics.html"
+				<li class="menu-item"><a th:href="@{/admin/product-statistic}"
 					class="menu-link" target="_blank">
 						<div data-i18n="Danh Sách Hóa Đơn">Sản Phẩm</div>
 				</a></li>

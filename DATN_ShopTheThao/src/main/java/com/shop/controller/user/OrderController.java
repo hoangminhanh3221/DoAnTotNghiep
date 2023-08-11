@@ -220,25 +220,8 @@ public class OrderController {
 	@RequestMapping("/delete/{id}")
 	public String deleteOrrder(@PathVariable("id") Integer id) {
 		Order order = orderService.findOrderById(id).orElse(null);
-		List<OrderDetail> listOrderDetails = order.getOrderDetails();
-		OrderInfo orderInfo = order.getOrderInfo();
-		Payment payment = orderInfo.getPayment();
-		Transport transport = orderInfo.getTransport();
-		Address address = orderInfo.getAddress();
-		
-		try {
-			for(OrderDetail orderDetail : listOrderDetails) {
-				orderDetailService.deleteOrderDetail(orderDetail.getOrderDetailId());
-			}
-			orderService.deleteOrder(id);
-			orderInfoService.deleteOrderInfo(orderInfo.getOrderInfoId());
-			paymentService.deletePayment(payment.getPaymentId());
-			transportService.deleteTransport(transport.getTransportId());
-			addressService.deleteAddress(address.getAddressId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		order.setOrderStatus("Đơn bị hủy");
+		orderService.updateOrder(order);
 		return "redirect:/user/list-order";
 	}
 }

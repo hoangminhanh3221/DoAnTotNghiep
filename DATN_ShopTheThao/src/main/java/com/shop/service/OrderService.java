@@ -18,8 +18,6 @@ public interface OrderService{
 	
 	Optional<Order> findOrderById(Integer orderId);
 	
-	Order createJson(JsonNode orderData);
-	
 	Order createOrder(Order order);
 	
 	Order updateOrder(Order order);

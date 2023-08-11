@@ -158,4 +158,14 @@ public class UserController {
 	    model.addAttribute("orderDetails", orderDetails);
 	    return "user-page/order-detail";
 	}
+	
+	@RequestMapping("/about")
+	public String getAbout() {
+		return "user-page/about";
+	}
+	
+	@RequestMapping("/contact")
+	public String getContact() {
+		return "user-page/contact";
+	}
 }
