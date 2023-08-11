@@ -514,8 +514,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   flex-grow: unset;
 }
 
-/*------------------------------------------------------------------
 
+/*------------------------------------------------------------------
 [ Modal search ]*/
 .modal-search-header {
   position: fixed;
@@ -1741,10 +1741,11 @@ button.mfp-close {
 }
 
 /*---------------------------------------------*/
-.filter-col1 {width: 27%;}
-.filter-col2 {width: 27%;}
-.filter-col3 {width: 26%;}
-.filter-col4 {width: 20%;}
+.filter-col1 {width: 20%;}
+.filter-col2 {width: 25%;}
+.filter-col3 {width: 18%;}
+.filter-col4 {width: 17%;}
+.filter-col5 {width: 20%;}
 
 /*---------------------------------------------*/
 .filter-link {
@@ -1901,42 +1902,6 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*//////////////////////////////////////////////////////////////////
-[ Modal2 ]*/
-.wrap-modal2 {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 9000;
-  overflow: auto;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-
-  visibility: hidden;
-  opacity: 0;
-}
-
-.overlay-modal2 {
-  position: fixed;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.8;
-}
-
-.show-modal2 {
-  visibility: visible;
-  opacity: 1;
-}
-
-/*//////////////////////////////////////////////////////////////////
 [ Table Shopping Cart ]*/
 
 .wrap-table-shopping-cart {
@@ -1957,8 +1922,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-1 {
-  width: 133px;
-  padding-left: 50px;
+  padding-left: 20px;
 }
 
 .table-shopping-cart .column-2 {
@@ -1978,21 +1942,21 @@ input.num-product::-webkit-inner-spin-button {
 
 .table-shopping-cart .column-5 {
   width: 172px;
-  padding-right: 50px;
+  padding-right: 10px;
   text-align: right;
   font-size: 16px;
 }
 
 .table-shopping-cart .table_row {
-  height: 185px;
+  height: 80px;
 }
 
 .table-shopping-cart .table_row td {
-  padding-bottom: 20px;
+
 }
 
 .table-shopping-cart .table_row td.column-1 {
-  padding-bottom: 30px;
+
 }
 
 .table-shopping-cart .table_head th {
@@ -2363,7 +2327,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-110 {
-  font-family: Montserrat-Regular;
+
   font-size: 18px;
   line-height: 1.222222;
 }
@@ -2628,11 +2592,11 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-208 {
-  width: 34.5%;
+  width: 43%;
 }
 
 .size-209 {
-  width: 65.5%;
+  width: 57%;
 }
 
 .size-210 {
@@ -3570,14 +3534,14 @@ select.form-control:not([size]):not([multiple]) {
 	float: left;
 }
 .cart-detail ul li span:first-child {
-	width: calc(100% - 100px);
+	width: 60%;
 }
 .cart-detail ul li span {
 	margin-bottom: 15px;
 	display: block;
 	float: left;
 	border-bottom: 1px solid #e6e6e6;
-	width: 100px;
+	width: 40%;
 }
 
 select option {
@@ -3637,3 +3601,4 @@ select option {
 	padding-left: 35%;
 	padding-right: 35%;
 }
+

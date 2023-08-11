@@ -13,7 +13,11 @@
     <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
-
+    
+	<script
+	th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
+	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+	
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" th:href="@{/admin-page/assets/img/favicon/favicon.ico}" />
 
@@ -32,6 +36,7 @@
     <link rel="stylesheet" th:href="@{/admin-page/assets/vendor/css/core.css}" class="template-customizer-core-css" />
     <link rel="stylesheet" th:href="@{/admin-page/assets/vendor/css/theme-default.css}" class="template-customizer-theme-css" />
     <link rel="stylesheet" th:href="@{/admin-page/assets/css/demo.css}" />
+    <link rel="stylesheet" th:href="@{/user-page/css/main.css}" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" th:href="@{/admin-page/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
@@ -49,7 +54,8 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script th:src="@{/admin-page/assets/js/config.js}"></script>
   </head>
-<body>
+<body ng-app="shopping-cart-app"
+	ng-controller="shopping-cart-ctrl">
 	<!-- Layout wrapper -->
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
@@ -115,8 +121,27 @@
 		th:src="@{https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js}"
 		integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script th:src="@{/user-page/js/addressAPI.js}"></script>
+	<script th:src="@{/user-page/js/shopping-cart-app.js}"></script>
 	
 	<script th:src="@{/admin-page/ajax/DiscountAjax.js}"></script>
+	<script>
+	$(document).ready(function() {
+        $('#edit-avatar').click(function(event) {
+            event.preventDefault(); // Ngăn chặn sự kiện mặc định của label
+            $('#avatar-upload').click();
+        });
+
+        $('#avatar-upload').change(function() {
+            var file = $(this)[0].files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#avatar').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
 </body>
 </html>
