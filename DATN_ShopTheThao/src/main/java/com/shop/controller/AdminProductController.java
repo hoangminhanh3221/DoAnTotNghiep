@@ -2,6 +2,9 @@ package com.shop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -126,7 +129,6 @@ public class AdminProductController {
 		img.setImageName3(new3);
 		img.setImageName4(new4);
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 		    System.out.println(product.getAvailable());
 		    product.setImage(img);
@@ -188,57 +190,104 @@ public class AdminProductController {
 	
 	@PostMapping("/admin/product/update/save")
 	public String ProductUpdateSave(Model model,@ModelAttribute("product") Product product, 
-			@RequestParam("image1") MultipartFile image1,
-			@RequestParam("image2") MultipartFile image2,
-			@RequestParam("image3") MultipartFile image3,
-			@RequestParam("image4") MultipartFile image4) throws IOException {
+			@RequestParam(value="image1", required = false) MultipartFile image1,
+			@RequestParam(value="image2", required = false) MultipartFile image2,
+			@RequestParam(value="image3", required = false) MultipartFile image3,
+			@RequestParam(value="image4", required = false) MultipartFile image4) throws IOException {
 		
+		Product pro = productService.findProductById(product.getProductId()).get();
+		Image img = pro.getImage();
 		
-		String filename1 = image1.getOriginalFilename();
-		String filename2 = image2.getOriginalFilename();
-		String filename3 = image3.getOriginalFilename();
-		String filename4 = image4.getOriginalFilename();
-
-		Image img = new Image();
-
-		String fileExtension1 = filename1.substring(filename1.lastIndexOf("."));
-		String new1 = UUID.randomUUID().toString() + fileExtension1;
-		String fileExtension2 = filename2.substring(filename2.lastIndexOf("."));
-		String new2 = UUID.randomUUID().toString() + fileExtension2;
-		String fileExtension3 = filename3.substring(filename3.lastIndexOf("."));
-		String new3 = UUID.randomUUID().toString() + fileExtension3;
-		String fileExtension4 = filename4.substring(filename4.lastIndexOf("."));
-		String new4 = UUID.randomUUID().toString() + fileExtension4;
-		img.setImageName1(new1);
-		img.setImageName2(new2);
-		img.setImageName3(new3);
-		img.setImageName4(new4);
-
-		Product product2 = productService.findProductById(product.getProductId()).get();
-
-		
-		try {
-		    System.out.println(product.getAvailable());
-		    product.setImage(img);
-		    imageService.deleteImage(product2.getImage().getImageId());
-		    imageService.createImage(img);
-		    productService.createProduct(product);
-
+		if (image1 != null && !image1.isEmpty()) {
+		    // Xử lý khi có tệp hình ảnh được gửi lên
+		    String imagePath = uploadDir+img.getImageName1(); // Đường dẫn đến tệp ảnh cần xóa
+	        // Tạo đối tượng Path từ đường dẫn tệp ảnh
+	        Path imagePathObj = Paths.get(imagePath);
+	        try {
+	            // Sử dụng Files.delete() để xóa tệp
+	            Files.delete(imagePathObj);
+	            System.out.println("Tệp ảnh đã được xóa.");
+	        } catch (IOException e) {
+	            System.out.println("Không thể xóa tệp ảnh: " + e.getMessage());
+	        }
+			
+			String filename1 = image1.getOriginalFilename();
+			String fileExtension1 = filename1.substring(filename1.lastIndexOf("."));
+			String new1 = UUID.randomUUID().toString() + fileExtension1;
+			img.setImageName1(new1);
 		    // Sử dụng đối tượng File để xác định vị trí lưu trữ tệp tải lên
 		    File file1 = new File(uploadDir + new1);
-		    File file2 = new File(uploadDir + new2);
-		    File file3 = new File(uploadDir + new3);
-		    File file4 = new File(uploadDir + new4);
-		    System.out.println(file1.getName());
-		    // Thực hiện transfer tệp tải lên vào vị trí lưu trữ đã xác định
 		    image1.transferTo(file1);
-		    image2.transferTo(file2);
-		    image3.transferTo(file3);
-		    image4.transferTo(file4);
-		} catch (IOException e) {
-		    // Xử lý lỗi nếu có lỗi trong quá trình transfer
-		    e.printStackTrace();
 		}
+		if (image2 != null && !image2.isEmpty()) {
+		    // Xử lý khi có tệp hình ảnh được gửi lên
+		    String imagePath = uploadDir+img.getImageName2(); // Đường dẫn đến tệp ảnh cần xóa
+	        // Tạo đối tượng Path từ đường dẫn tệp ảnh
+	        Path imagePathObj = Paths.get(imagePath);
+	        try {
+	            // Sử dụng Files.delete() để xóa tệp
+	            Files.delete(imagePathObj);
+	            System.out.println("Tệp ảnh đã được xóa.");
+	        } catch (IOException e) {
+	            System.out.println("Không thể xóa tệp ảnh: " + e.getMessage());
+	        }
+			
+			String filename2 = image2.getOriginalFilename();
+			String fileExtension2 = filename2.substring(filename2.lastIndexOf("."));
+			String new2 = UUID.randomUUID().toString() + fileExtension2;
+			img.setImageName1(new2);
+		    // Sử dụng đối tượng File để xác định vị trí lưu trữ tệp tải lên
+		    File file2 = new File(uploadDir + new2);
+		    image2.transferTo(file2);
+		}
+		if (image3 != null && !image3.isEmpty()) {
+		    // Xử lý khi có tệp hình ảnh được gửi lên
+		    String imagePath = uploadDir+img.getImageName3(); // Đường dẫn đến tệp ảnh cần xóa
+	        // Tạo đối tượng Path từ đường dẫn tệp ảnh
+	        Path imagePathObj = Paths.get(imagePath);
+	        try {
+	            // Sử dụng Files.delete() để xóa tệp
+	            Files.delete(imagePathObj);
+	            System.out.println("Tệp ảnh đã được xóa.");
+	        } catch (IOException e) {
+	            System.out.println("Không thể xóa tệp ảnh: " + e.getMessage());
+	        }
+			
+			String filename3 = image3.getOriginalFilename();
+			String fileExtension3 = filename3.substring(filename3.lastIndexOf("."));
+			String new3 = UUID.randomUUID().toString() + fileExtension3;
+			img.setImageName1(new3);
+		    // Sử dụng đối tượng File để xác định vị trí lưu trữ tệp tải lên
+		    File file3 = new File(uploadDir + new3);
+		    image3.transferTo(file3);
+		}
+		if (image4 != null && !image4.isEmpty()) {
+		    // Xử lý khi có tệp hình ảnh được gửi lên
+		    String imagePath = uploadDir+img.getImageName4(); // Đường dẫn đến tệp ảnh cần xóa
+	        // Tạo đối tượng Path từ đường dẫn tệp ảnh
+	        Path imagePathObj = Paths.get(imagePath);
+	        try {
+	            // Sử dụng Files.delete() để xóa tệp
+	            Files.delete(imagePathObj);
+	            System.out.println("Tệp ảnh đã được xóa.");
+	        } catch (IOException e) {
+	            System.out.println("Không thể xóa tệp ảnh: " + e.getMessage());
+	        }
+			
+			String filename4 = image4.getOriginalFilename();
+			String fileExtension4 = filename4.substring(filename4.lastIndexOf("."));
+			String new4 = UUID.randomUUID().toString() + fileExtension4;
+			img.setImageName1(new4);
+		    // Sử dụng đối tượng File để xác định vị trí lưu trữ tệp tải lên
+		    File file4 = new File(uploadDir + new4);
+		    image4.transferTo(file4);
+		}
+
+		Product product2 = productService.findProductById(product.getProductId()).get();
+	    product.setImage(img);
+	    imageService.deleteImage(product2.getImage().getImageId());
+	    imageService.createImage(img);
+	    productService.createProduct(product);
         
 		return "redirect:/admin/product";
 	}

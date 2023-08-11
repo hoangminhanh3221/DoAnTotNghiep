@@ -17,7 +17,7 @@
               <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h5 th:if="${status == 1}" class="mb-0 text-uppercase">Thêm sản phẩm</h5>
-                  <h5 th:if="${status == 0}" class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                  <h5 th:if="${status == 0}" class="mb-0 text-uppercase">Cập nhật sản phẩm</h5>
                 </div>
                 <div class="card-body">
                   <form class="row" th:if="${status==1}" th:object="${product}" th:action="@{/admin/product/add/save}"  method="post" enctype="multipart/form-data">
@@ -36,7 +36,7 @@
                       <label class="form-label" for="basic-default-fullname">Số lượng</label>
                       <input
                       	required
-                      	th:field="*{quantity}"
+                      	th:field="*{quantityLeft}"
                         type="number"
                         min="0"
                         class="form-control"
@@ -192,7 +192,7 @@
                       <label class="form-label" for="basic-default-fullname">Số lượng</label>
                       <input
                       	required
-                      	th:field="*{quantity}"
+                      	th:field="*{quantityLeft}"
                         type="number"
                         min="0"
                         class="form-control"
@@ -294,22 +294,22 @@
                     <!-- Chọn hình ảnh 1 -->
                     <div class="col-6 mb-3">
                       <label for="formFile1" class="form-label">Chọn hình ảnh 1:</label>
-                      <input required class="form-control" th:value="${image1}" name="image1" type="file" id="formFile1"  accept="image/*" />
+                      <input class="form-control" th:value="${image1}" name="image1" type="file" id="formFile1"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 2 -->
                     <div class="col-6 mb-3">
                       <label for="formFile2" class="form-label">Chọn hình ảnh 2:</label>
-                      <input required class="form-control" th:value="${image2}" name="image2" type="file" id="formFile2"  accept="image/*" />
+                      <input class="form-control" th:value="${image2}" name="image2" type="file" id="formFile2"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 3 -->
                     <div class="col-6 mb-3">
                       <label for="formFile3" class="form-label">Chọn hình ảnh 3:</label>
-                      <input required class="form-control" th:value="${image3}" name="image3" type="file" id="formFile3"  accept="image/*" />
+                      <input class="form-control" th:value="${image3}" name="image3" type="file" id="formFile3"  accept="image/*" />
                     </div>
                     <!-- Chọn hình ảnh 4 -->
                     <div class="col-6 mb-3">
                       <label for="formFile4" class="form-label">Chọn hình ảnh 4:</label>
-                      <input required class="form-control" th:value="${image4}" name="image4" type="file" id="formFile4"  accept="image/*" />
+                      <input class="form-control" th:value="${image4}" name="image4" type="file" id="formFile4"  accept="image/*" />
                     </div>
                     <!-- Mô tả -->
                     <div class="col-12 mb-3">

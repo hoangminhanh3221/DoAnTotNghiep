@@ -42,7 +42,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Tổng doanh thu</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${'₫ '+totalRev}">₫  4000.0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(totalRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫  4000.0</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class='bx bxs-bank'  style="color: royalblue;font-size: 30px;"></i>
@@ -60,7 +60,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1" th:text="${'Năm ('+year+')'}">
                                                 Doanh thu năm (year)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"  th:text="${'₫ '+yearRev}">₫ 215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(yearRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫ 215,000</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class='bx bxs-calendar-alt'  style="color: lightgreen;font-size: 30px;"></i>
@@ -97,7 +97,7 @@
 											  </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"  th:text="${'₫ '+monthRev}">₫ 215,000</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(monthRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫ 215,000</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +142,7 @@
                       </div>
 						 <div class="row mt-3 mb-3	">
 							<i class='bx bxs-wallet-alt col-2' style="color: blue;"></i>
-	                    	<p class="card-title text-nowrap col-9" th:text="${revFromTo} + ' vnđ'"></p>
+	                    	<p class="card-title text-nowrap col-9" th:text="${#numbers.formatDecimal(revFromTo,0, 'POINT', 0, 'COMMA')}+' VND'"></p>
 						</div>
                         <button onclick="softDate()" type="button" class="btn rounded-pill btn-primary">
                           <span class="tf-icons bx bx-pie-chart-alt pb-1"></span>
@@ -181,7 +181,7 @@
                             <h6 class="mb-0" th:text="${item.name}">Electronic</h6>
                           </div>
                           <div class="user-progress">
-                            <small class="fw-semibold" th:text="${item.revenue + ' vnđ'}">82.5k</small>
+                            <small class="fw-semibold" th:text="${#numbers.formatDecimal(item.revenue,0, 'POINT', 0, 'COMMA')}+' VND'">82.5k</small>
                           </div>
                         </div>
                       </li>
