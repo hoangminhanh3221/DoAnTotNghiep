@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,7 +131,7 @@ public class AdminProductController {
 		img.setImageName4(new4);
 
 		try {
-		    System.out.println(product.getAvailable());
+			img.setImageId(String.valueOf(generateRandomSevenDigitNumber()));
 		    product.setImage(img);
 		    imageService.createImage(img);
 		    productService.createProduct(product);
@@ -282,7 +283,7 @@ public class AdminProductController {
 		    File file4 = new File(uploadDir + new4);
 		    image4.transferTo(file4);
 		}
-
+		
 		Product product2 = productService.findProductById(product.getProductId()).get();
 	    product.setImage(img);
 	    imageService.deleteImage(product2.getImage().getImageId());
@@ -300,4 +301,10 @@ public class AdminProductController {
 		
 		return "redirect:/admin/product";
 	}
+	
+	//-----function
+	public static int generateRandomSevenDigitNumber() {
+        Random random = new Random();
+        return 1000000 + random.nextInt(9000000); // Tạo số trong khoảng từ 1000000 đến 9999999
+    }
 }
