@@ -394,9 +394,10 @@ public class StatisticController {
 		    List<NumProduct> list = new ArrayList<>();
 		    List<Product> listPrd = productService.findAllProduct();
 		    for (Product p : listPrd) {
+		    	System.out.println(p.getTotalQuantity());
 		        NumProduct obj = new NumProduct(); // Tạo một đối tượng mới trong mỗi lần lặp
 		        obj.setName(p.getProductName());
-		        obj.setNum(p.getTotalQuantity() - p.getQuantityLeft());
+		        obj.setNum(Integer.valueOf(p.getTotalQuantity() - p.getQuantityLeft()));
 		        list.add(obj);
 		    }
 		    

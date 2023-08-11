@@ -55,5 +55,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getProductsSortByDateDesc() {
 		return productRepository.getProductsSortByDateDesc();
 	}
+
+	@Override
+	public Page<Product> getProductsByStatusDel(Pageable pageable, Boolean status) {
+		// TODO Auto-generated method stub
+		return productRepository.findDeletedProducts(pageable,status);
+	}
     
 }

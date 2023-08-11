@@ -24,4 +24,5 @@ public interface ProductService {
 	
 	List<Product> getProductsSortByDateDesc();
 	
+	Page<Product> getProductsByStatusDel(Pageable pageable ,Boolean status);
 }
