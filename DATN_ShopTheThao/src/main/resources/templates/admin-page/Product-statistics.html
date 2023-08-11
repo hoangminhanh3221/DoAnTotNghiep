@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+ 
+<body>
+	<main id="content-wrapper" class="d-flex flex-column">
+            <!-- Content -->
+            <div class="container-fluid" style="font-size: 10px;">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800 mt-4">Thống kê sản phẩm</h1>
+                        <select onchange="soft()" id="yearSelect" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>
+               	       		<option th:each="item : ${years}" th:value="${item}" th:text="${item}">2022</option>
+                        </select>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: royalblue solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Tổng sản phẩm đã bán</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${allNumPrdSold}">100</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bx bxs-bank" style="color: royalblue;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: lightgreen solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" th:text="${'Sản phẩm đã bán năm '+ year}">Sản phẩm đã bán năm (2023)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${numPrdSoldOfYear}">₫ 1200000.0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bx bxs-calendar-alt" style="color: lightgreen;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: deepskyblue solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+											<div class="row">
+	                                            <div class="text-xs font-weight-bold text-info text-uppercase col-6" th:text="${'SP tháng '+ month}">SP tháng (8)</div>
+	                                            <select style="width: auto; height: 70%; font-size: 8px; margin-top: -3px;" onchange="soft()" class="form-select form-select-sm col-5" id="monthSelect">
+													  <option>Chọn tháng</option>
+													  <option value="1">Tháng 1</option>
+													  <option value="2">Tháng 2</option>
+													  <option value="3">Tháng 3</option>
+													  <option value="4">Tháng 4</option>
+													  <option value="5">Tháng 5</option>
+													  <option value="6">Tháng 6</option>
+													  <option value="7">Tháng 7</option>
+													  <option value="8">Tháng 8</option>
+													  <option value="9">Tháng 9</option>
+													  <option value="10">Tháng 10</option>
+													  <option value="11">Tháng 11</option>
+													  <option value="12">Tháng 12</option>
+												  </select>
+											  </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${numPrdSoldOfMonth}">₫ 600000.0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bx bxs-calendar" style="color: deepskyblue;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>              
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Biểu đồ doanh số của năm</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area"><div class="card-body">
+					                    <canvas id="chLine"></canvas>
+					                </div>
+					               </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Top 4 sản phấm bán chạy nhất</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+				                    <div class="d-flex justify-content-between align-items-center mb-3" style="position: relative;">
+				                      <div class="d-flex flex-column align-items-center gap-1">
+				                        <h2 class="mb-2"th:text="${allNumPrdSold}">8,258</h2>
+				                        <span>Sản phẩm</span>
+				                      </div>
+							                <div class="col-1 card-body">
+							                    <canvas id="chDonut3"></canvas>
+							                </div>
+							        </div>
+				                    <ul class="p-0 m-0">
+				                      <li class="d-flex mb-4 pb-1" th:each="item : ${topNumProductSold}">
+				                        <div class="avatar flex-shrink-0 me-3">
+				                          <span class="avatar-initial rounded bg-label-primary"><i class='bx bxl-product-hunt'></i></i></span>
+				                        </div>
+				                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+				                          <div class="me-2">
+				                            <h6 class="mb-0" th:text="${item.name}">Electronic</h6>
+				                          </div>
+				                          <div class="user-progress">
+				                            <small class="fw-semibold" th:text="${item.num}">82.5k</small>
+				                          </div>
+				                        </div>
+				                      </li>
+				                      
+				                    </ul>
+				                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+             <!-- / js         ---------------------------------------- -->
+            <script th:inline="javascript">
+				//-----------------------------------------------------------------------------------function
+				function soft() {
+			        // Lấy phần tử select bằng id
+				    var yearEle = document.getElementById("yearSelect"); 
+				    var monthEle = document.getElementById("monthSelect"); 
+				    // Lấy giá trị đã chọn
+				    var year = yearEle.value;
+				    var month = monthEle.value;
+				    
+				    window.window.location.href ='http://localhost:8080/admin/product-statistic?year='+year+'&month='+month;
+			    }
+			    
+			    
+				//-----------------------------------------------------------------------------------chart
+				var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+				/* large line chart */
+				var chLine = document.getElementById("chLine");
+				var year = /*[[${year}]]*/ 'error';
+				var datac =/*[[${dataChartLine}]]*/ '0';
+				var dataC2Name =/*[[${dataNameChartDonut3}]]*/ '0';
+				var dataC2Value =/*[[${dataNumChartDonut3}]]*/ '0';
+				var chartData = {
+				  labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+				  datasets: [{
+				    data: datac,
+				    backgroundColor: 'transparent',
+				    borderColor: colors[1],
+				    borderWidth: 4,
+				    pointBackgroundColor: colors[0],
+				    label: year
+				    
+				  }]
+				};
+				if (chLine) {
+				  new Chart(chLine, {
+				  type: 'line',
+				  data: chartData,
+				  options: {
+				    scales: {
+				      xAxes: [{
+				        ticks: {
+				          beginAtZero: false
+				        }
+				      }]
+				    },
+				    legend: {
+				      display: false
+				    },
+				    responsive: true
+				  }
+				  });
+				}
+				
+				//------------------chart2
+				var donutOptions = {
+				  cutoutPercentage: 85, 
+				  legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
+				};
+
+				// donut 3
+				var chDonutData3 = {
+				    labels: dataC2Name,
+				    datasets: [
+				      {
+				        backgroundColor: [
+				            'rgb(152, 5, 200)',
+			                'rgb(5, 200, 35)',
+			                'rgb(5, 213, 200)',
+			                'rgb(5, 12, 200)',
+			                'rgb(205, 200, 5)',
+			                'rgb(135, 135, 135)'
+				        ],
+				        borderWidth: 4,
+				        data: dataC2Value
+				      }
+				    ]
+				};
+				var chDonut3 = document.getElementById("chDonut3");
+				if (chDonut3) {
+				  new Chart(chDonut3, {
+				      type: 'pie',
+				      data: chDonutData3,
+				      options: donutOptions
+				  });
+				}
+			</script>
+		</main>
+  </body>
+</html>
