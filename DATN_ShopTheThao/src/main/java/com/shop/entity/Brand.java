@@ -36,5 +36,13 @@ public class Brand implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
 	private List<Product> products;
+
+	public Brand(String brandId, String brandName, String origin) {
+		super();
+		this.brandId = brandId;
+		this.brandName = brandName;
+		this.origin = origin;
+	}
+	
 }
  

@@ -59,7 +59,6 @@ public class UserController {
 	@RequestMapping("/user/info")
 	public String getInfo(Model model, @ModelAttribute Customer customer) {
 		customer = customerService.findCustomerByUsername(af.getUsername()).orElse(null);
-
 		model.addAttribute("image", "/user-page/images/avatars/" + customer.getCustomerImage());
 		// Chuyển đổi birthday sang chuỗi định dạng yyyy-MM-dd
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,7 +93,7 @@ public class UserController {
 		
 		Account currentAccount = currentCustomer.getAccount();
 		currentAccount.setEmail(customer.getAccount().getEmail());
-		
+		System.out.println(avatarFile.getOriginalFilename());
 		try {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date birthday = dateFormat.parse(customer.getBirthdayString());
@@ -106,9 +105,7 @@ public class UserController {
 		currentCustomer.setGender(customer.getGender());
 		currentCustomer.setPhoneNumber(customer.getPhoneNumber());
 		try {
-			if(avatarFile.getOriginalFilename().equals("")) {
-				currentCustomer.setCustomerImage(customer.getCustomerImage());
-			} else {
+			if(!avatarFile.getOriginalFilename().equals("")) {
 				currentCustomer.setCustomerImage(imageService.saveImage(avatarFile, "customer"+currentCustomer.getCustomerId(), "avatars"));
 			}
 		} catch (IOException e1) {

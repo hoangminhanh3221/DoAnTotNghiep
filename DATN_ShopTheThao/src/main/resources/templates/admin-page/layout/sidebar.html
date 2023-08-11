@@ -85,15 +85,15 @@
 					class="menu-link">
 						<div data-i18n="Sản Phẩm">Sản Phẩm</div>
 				</a></li>
-				<li class="menu-item"><a href="brand-list.html"
+				<li class="menu-item"><a th:href="@{/admin/brandList}"
 					class="menu-link">
 						<div data-i18n="Thương Hiệu">Thương Hiệu</div>
 				</a></li>
-				<li class="menu-item"><a href="color-list.html"
+				<li class="menu-item"><a th:href="@{/admin/colorList}"
 					class="menu-link">
 						<div data-i18n="Màu">Màu</div>
 				</a></li>
-				<li class="menu-item"><a href="size-list.html"
+				<li class="menu-item"><a th:href="@{/admin/sizeList}"
 					class="menu-link">
 						<div data-i18n="Kích Thước">Kích Thước</div>
 				</a></li>
@@ -101,7 +101,7 @@
 					class="menu-link">
 						<div data-i18n="Loại Sản phẩm">Loại Sản phẩm</div>
 				</a></li>
-				<li class="menu-item"><a href="category-list.html"
+				<li class="menu-item"><a th:href="@{/admin/categoryList}"
 					class="menu-link">
 						<div data-i18n="Danh Mục">Danh Mục</div>
 				</a></li>
@@ -115,7 +115,7 @@
 				<div data-i18n="Hóa Đơn">Hóa Đơn</div>
 		</a>
 			<ul class="menu-sub">
-				<li class="menu-item"><a href="order.html" class="menu-link"
+				<li class="menu-item"><a th:href="@{/admin/order/orderList?page=0&status=0}" class="menu-link"
 					target="_blank">
 						<div data-i18n="Thêm Hóa Đơn">Hóa Đơn</div>
 				</a></li>

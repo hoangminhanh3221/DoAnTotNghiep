@@ -33,5 +33,11 @@ public class Category implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Subcategory> subcategories;
+
+	public Category(String categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
 	
 }
