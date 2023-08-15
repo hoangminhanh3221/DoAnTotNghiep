@@ -3,6 +3,7 @@ package com.shop.service.implement;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,42 +14,47 @@ import com.shop.service.AccountService;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-
-	private final AccountRepository accountRepository;
+	
+	private final AccountRepository aRep;
 
     public AccountServiceImpl(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+        this.aRep = accountRepository;
     }
 	
 	@Override
 	public Page<Account> findAllAccount(Pageable pageable) {
-		return accountRepository.findAll(pageable);
+		return aRep.findAll(pageable);
 	}
 
 	@Override
 	public List<Account> findAllAccount() {
-		return accountRepository.findAll();
+		return aRep.findAll();
 	}
 
 	@Override
 	public Optional<Account> findAccountById(String id) {
-		return accountRepository.findById(id);
+		return aRep.findById(id);
 	}
 
 	@Override
 	public Account createAccount(Account account) {
-		return accountRepository.save(account);
+		return aRep.save(account);
 	}
 
 	@Override
 	public Account updateAccount(Account account) {
-		return accountRepository.save(account);
+		return aRep.save(account);
+	}
+
+	@Override	
+	public void deleteAccount(String id) {
+		aRep.deleteById(id);
+
 	}
 
 	@Override
-	public void deleteAccount(String id) {
-		accountRepository.deleteById(id);
-
+	public Optional<Account> findByEmail(String email) {
+		return aRep.findAccountByEmail(email);
 	}
 
 }

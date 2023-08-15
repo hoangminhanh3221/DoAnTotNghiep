@@ -27,10 +27,17 @@ public class Size implements Serializable{
 	@Column(name = "SizeId", columnDefinition = "varchar(10)")
 	private String sizeId;
 	
-	@Column(name = "SizeName", columnDefinition = "varchar(10)", nullable = false)
+	@Column(name = "SizeName", columnDefinition = "varchar(10)", nullable = true)
 	private String sizeName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "size", cascade = CascadeType.ALL)
 	private List<Product> products;
+
+	public Size(String sizeId, String sizeName) {
+		super();
+		this.sizeId = sizeId;
+		this.sizeName = sizeName;
+	}
+	
 }

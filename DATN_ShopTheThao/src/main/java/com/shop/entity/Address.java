@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,17 +29,17 @@ public class Address implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AddressId")
 	private Integer addressId;
-	
-	@Column(name = "NumberHome", columnDefinition = "nvarchar(50)", nullable = false)
+	 
+	@Column(name = "NumberHome", columnDefinition = "nvarchar(100)", nullable = true)
 	private String numberHome;
 	
-	@Column(name = "Ward", columnDefinition = "nvarchar(20)", nullable = false)
+	@Column(name = "Ward", columnDefinition = "nvarchar(100)", nullable = true)
 	private String ward;
 	
-	@Column(name = "District", columnDefinition = "nvarchar(20)", nullable = false)
+	@Column(name = "District", columnDefinition = "nvarchar(100)", nullable = true)
 	private String district;
 	
-	@Column(name = "City", columnDefinition = "nvarchar(20)", nullable = false)
+	@Column(name = "City", columnDefinition = "nvarchar(100)", nullable = true)
 	private String city;
 	
 	@JsonIgnore
@@ -51,5 +49,9 @@ public class Address implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
 	private List<Employee> employees;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+	private List<OrderInfo> orderInfos;
 	
 }

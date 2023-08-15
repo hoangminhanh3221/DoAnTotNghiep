@@ -14,12 +14,12 @@ public interface AddressService {
 	
 	List<Address> findAllAddress();
 
-	Optional<Address> findAddressById(Integer id);
+	Optional<Address> findAddressById(Integer addressId);
 	
 	Address createAddress(Address address);
 
 	Address updateAddress(Address address);
 
-	void deleteAddress(Integer id);
+	void deleteAddress(Integer addressId);
 	
 }

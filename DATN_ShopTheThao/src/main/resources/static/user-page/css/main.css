@@ -2327,7 +2327,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-110 {
-  font-family: Montserrat-Regular;
+
   font-size: 18px;
   line-height: 1.222222;
 }
@@ -2592,11 +2592,11 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-208 {
-  width: 34.5%;
+  width: 43%;
 }
 
 .size-209 {
-  width: 65.5%;
+  width: 57%;
 }
 
 .size-210 {
@@ -3534,17 +3534,71 @@ select.form-control:not([size]):not([multiple]) {
 	float: left;
 }
 .cart-detail ul li span:first-child {
-	width: calc(100% - 100px);
+	width: 60%;
 }
 .cart-detail ul li span {
 	margin-bottom: 15px;
 	display: block;
 	float: left;
 	border-bottom: 1px solid #e6e6e6;
-	width: 100px;
+	width: 40%;
 }
 
 select option {
   font-size: 16px;
+}
+      .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+      }
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .edit-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .edit-overlay:hover {
+        opacity: 1;
+      }
+      .edit-overlay span {
+        cursor: pointer;
+      }
+#form-info{
+	padding-left: 80px;
+	padding-right: 80px;	
+}
+.one{
+	color: rgb(20, 48, 97);
+	font-weight: bolder;	
+}
+.btnInfo{
+	background-color: rgb(121,134,226);
+	color: white;
+}
+.btnInfo:hover {
+	background-color: white;
+	color: rgb(121,134,226);
+	border-style: solid;
+  	border-color:  rgb(121,134,226);
+}
+#form-change{
+	padding-left: 35%;
+	padding-right: 35%;
 }
 

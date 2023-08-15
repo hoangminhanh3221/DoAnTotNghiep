@@ -1,5 +1,7 @@
 package com.shop.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,11 +18,18 @@ public interface OrderService{
 	
 	Optional<Order> findOrderById(Integer orderId);
 	
-	Order createJson(JsonNode orderData);
-	
 	Order createOrder(Order order);
 	
 	Order updateOrder(Order order);
 	
 	void deleteOrder(Integer orderId);
+
+	List<Order> getOrdersByYear(int year);
+
+	List<Integer> getYear();
+
+	List<Order> getOrdersByMonth(int monthInput, int year );
+
+	List<Order> getRevenueFromTo(Date from, Date to);
+	
 }

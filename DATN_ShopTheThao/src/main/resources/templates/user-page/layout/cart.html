@@ -15,7 +15,7 @@
         <div class="header-cart-content flex-w js-pscroll">
           <ul class="header-cart-wrapitem w-full">
             <li class="header-cart-item flex-w flex-t m-b-12" ng-repeat="item in cart.items">
-              <div class="header-cart-item-img">
+              <div class="header-cart-item-img"  ng-click="cart.remove(item.productId)">
                 <img src="{{item.image.imageName1}}" alt="IMG" />
               </div>
 
@@ -43,7 +43,7 @@
               </a>
 
               <a
-                href="shoping-cart.html"
+                th:href="@{/order/checkout}" ng-click="pushShoppingCart()"
                 class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"
               >
                 Thanh Toán

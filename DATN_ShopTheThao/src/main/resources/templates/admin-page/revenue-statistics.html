@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+ 
+  <body>
+	  <main style="font-size: 10px;">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y row">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0);">Thống Kê</a>
+                </li>
+                <li class="breadcrumb-item active">Thống Kê Doanh Thu</li>
+              </ol>
+              <!-- Basic Layout -->
+              <div class="dropdown" style="position: absolute;right: 30px; top: 94px; width: 100px;">
+                  <select onchange="soft()" style="border: blue ;color: blue;" id="yearSelect" class="form-select form-select-sm">
+                    <option th:each="item : ${years}" th:value="${item}" th:text="${item}">2022</option>
+                    
+                  </select>
+              </div>
+              <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: royalblue solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Tổng doanh thu</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(totalRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫  4000.0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class='bx bxs-bank'  style="color: royalblue;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: lightgreen solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" th:text="${'Năm ('+year+')'}">
+                                                Doanh thu năm (year)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(yearRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫ 215,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class='bx bxs-calendar-alt'  style="color: lightgreen;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card shadow h-100 py-2" style="border-left: deepskyblue solid 4px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+											<div class="row">
+	                                            <div class="text-xs font-weight-bold text-info text-uppercase col-6" th:text="${'Tháng ('+month+')'}">Tháng
+	                                            </div>
+	                                            <select style="width: auto; height: 70%; font-size: 8px; margin-top: -3px;" onchange="soft()"  class="form-select form-select-sm col-5" id="monthSelect">
+													  <option th:value="${month}" th:text="${'Tháng ('+month+')'}">Tháng</option>
+													  <option value="1" >Tháng 1</option>
+													  <option value="2" >Tháng 2</option>
+													  <option value="3" >Tháng 3</option>
+													  <option value="4" >Tháng 4</option>
+													  <option value="5" >Tháng 5</option>
+													  <option value="6" >Tháng 6</option>
+													  <option value="7" >Tháng 7</option>
+													  <option value="8" >Tháng 8</option>
+													  <option value="9" >Tháng 9</option>
+													  <option value="10" >Tháng 10</option>
+													  <option value="11" >Tháng 11</option>
+													  <option value="12" >Tháng 12</option>
+												  </select>
+											  </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(monthRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫ 215,000</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="bx bxs-calendar" style="color: deepskyblue;font-size: 30px;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+              
+            <!-- date-->
+              <div class="col-lg-6 col-md-12 col-6 mt-2"> 
+					<!-- chart line -->
+	               <div>
+			            <div class="card">
+			                <div class="card-body">
+								<h5 class="text-nowrap mb-4">Biểu đồ thống kê doanh thu trong năm</h5>
+			                    <canvas id="chLine"></canvas>
+			                </div>
+			            </div>
+		        	</div>
+                  <div class="card p-4 mt-4">
+                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3" style="position: relative;">
+                      <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                        <div class="card-title">
+							<h5 class="text-nowrap mb-2">Doanh thu theo khoảng thời gian</h5>
+							<div class="row mt-3">
+								<div class="col-6">
+		                          <p class="form-label" for="startDate">Ngày bắt đầu</p>
+			                      <input required="" type="date" class="form-control" id="startDate" name="arrivalDate" value="">
+			                    </div>
+			                    <div class="col-6">
+									<p class="form-label" for="endDate">Ngày kết thúc</p>
+			                      	<input required="" type="date" class="form-control" id="endDate" name="arrivalDate" value="">
+			                    </div>
+	                        </div>
+                        
+                      </div>
+						 <div class="row mt-3 mb-3	">
+							<i class='bx bxs-wallet-alt col-2' style="color: blue;"></i>
+	                    	<p class="card-title text-nowrap col-9" th:text="${#numbers.formatDecimal(revFromTo,0, 'POINT', 0, 'COMMA')}+' VND'"></p>
+						</div>
+                        <button onclick="softDate()" type="button" class="btn rounded-pill btn-primary">
+                          <span class="tf-icons bx bx-pie-chart-alt pb-1"></span>
+                          &nbsp; Lọc
+                    	</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                          <!-- Top sale-->
+              <div class="col-lg-6 col-md-12 col-6 mt-2">
+                <div class="card h-100">
+                  <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                    <div class="card-title mb-0">
+                      <h5 class="m-0 me-2">Top sản phẩm doanh thu cao nhất</h5>
+                    </div>
+                    
+                  </div>
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3" style="position: relative;">
+                      <div class="d-flex flex-column align-items-center gap-1">
+                        <h2 class="mb-2"th:text="${'₫ '+totalRev}">8,258</h2>
+                        <span>Doanh thu</span>
+                      </div>
+			                <div class="col-1 card-body">
+			                    <canvas id="chDonut3"></canvas>
+			                </div>
+			        </div>
+                    <ul class="p-0 m-0">
+                      <li class="d-flex mb-4 pb-1" th:each="item : ${topRevenue}">
+                        <div class="avatar flex-shrink-0 me-3">
+                          <span class="avatar-initial rounded bg-label-primary"><i class='bx bxl-product-hunt'></i></i></span>
+                        </div>
+                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                          <div class="me-2">
+                            <h6 class="mb-0" th:text="${item.name}">Electronic</h6>
+                          </div>
+                          <div class="user-progress">
+                            <small class="fw-semibold" th:text="${#numbers.formatDecimal(item.revenue,0, 'POINT', 0, 'COMMA')}+' VND'">82.5k</small>
+                          </div>
+                        </div>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            
+            <!-- / js         ---------------------------------------- -->
+            <script th:inline="javascript">
+				//-----------------------------------------------------------------------------------function
+				function soft() {
+			        // Lấy phần tử select bằng id
+				    var yearEle = document.getElementById("yearSelect"); 
+				    var monthEle = document.getElementById("monthSelect"); 
+				    // Lấy giá trị đã chọn
+				    var year = yearEle.value;
+				    var month = monthEle.value;
+				    
+				    window.window.location.href ='http://localhost:8080/admin/revenue-statistic?year='+year+'&month='+month;
+			    }
+			    
+			    function softDate() {
+			        // Lấy phần tử select bằng id
+				    var yearEle = document.getElementById("yearSelect"); 
+				    var monthEle = document.getElementById("monthSelect"); 
+				    var startDateEle = document.getElementById("startDate"); 
+				    var endDateEle = document.getElementById("endDate"); 
+				    // Lấy giá trị đã chọn
+				    var year = yearEle.value;
+				    var month = monthEle.value;
+				    var startDate =startDateEle.value; 
+				    var endDate = endDateEle.value; 
+				    
+				    if (startDate === '') {
+			            alert("Bạn chưa nhập giá trị ngày bắt đầu.");
+			        }else{
+						if (endDate === '') {
+				            alert("Bạn chưa nhập giá trị ngày kết thúc.");
+				        } else {
+				           window.location.href = 'http://localhost:8080/admin/revenue-statistic?year=' + year + '&month=' + month + '&firstDay=' + startDate + '&lastDay=' + endDate;
+				        }
+					}			    
+					
+				}
+				//-----------------------------------------------------------------------------------chart
+				var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+				/* large line chart */
+				var chLine = document.getElementById("chLine");
+				var year = /*[[${year}]]*/ 'error';
+				var datac =/*[[${listMonthRev}]]*/ '0';
+				var dataC2Name =/*[[${dataNameChart2}]]*/ '0';
+				var dataC2Value =/*[[${dataValueChart2}]]*/ '0';
+				var chartData = {
+				  labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+				  datasets: [{
+				    data: datac,
+				    backgroundColor: 'transparent',
+				    borderColor: colors[1],
+				    borderWidth: 4,
+				    pointBackgroundColor: colors[0],
+				    label: year
+				    
+				  }]
+				};
+				if (chLine) {
+				  new Chart(chLine, {
+				  type: 'line',
+				  data: chartData,
+				  options: {
+				    scales: {
+				      xAxes: [{
+				        ticks: {
+				          beginAtZero: false
+				        }
+				      }]
+				    },
+				    legend: {
+				      display: false
+				    },
+				    responsive: true
+				  }
+				  });
+				}
+				
+				//------------------chart2
+				var donutOptions = {
+				  cutoutPercentage: 85, 
+				  legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
+				};
+
+				// donut 3
+				var chDonutData3 = {
+				    labels: dataC2Name,
+				    datasets: [
+				      {
+				        backgroundColor: [
+				            'rgb(152, 5, 200)',
+			                'rgb(5, 200, 35)',
+			                'rgb(5, 213, 200)',
+			                'rgb(5, 12, 200)',
+			                'rgb(205, 200, 5)',
+			                'rgb(135, 135, 135)'
+				        ],
+				        borderWidth: 0,
+				        data: dataC2Value
+				      }
+				    ]
+				};
+				var chDonut3 = document.getElementById("chDonut3");
+				if (chDonut3) {
+				  new Chart(chDonut3, {
+				      type: 'pie',
+				      data: chDonutData3,
+				      options: donutOptions
+				  });
+				}
+			</script>
+		</main>
+            
+  </body>
+</html>

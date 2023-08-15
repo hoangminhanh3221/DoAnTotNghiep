@@ -10,16 +10,18 @@ import com.shop.entity.Account;
 
 public interface AccountService {
 	
-	Page<Account> findAllAccount(Pageable pageable);
+	 Page<Account> findAllAccount(Pageable pageable);
 	
 	List<Account> findAllAccount();
 
-	Optional<Account> findAccountById(String id);
+	Optional<Account> findAccountById(String accountId);
 	
 	Account createAccount(Account account);
 
 	Account updateAccount(Account account);
 
-	void deleteAccount(String id);
+	void deleteAccount(String accountId);
+	
+	Optional<Account> findByEmail(String email);
 	
 }

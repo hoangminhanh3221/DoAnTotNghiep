@@ -13,6 +13,8 @@ public interface CustomerService {
 	Page<Customer> findAllCustomer(Pageable pageable);
 	
 	List<Customer> findAllCustomer();
+	
+	Optional<Customer> findCustomerByUsername(String username);
 
 	Optional<Customer> findCustomerById(Integer id);
 	

@@ -1,107 +1,151 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
 
 <body>
 	<main>
-	    <!-- breadcrumb -->
-	    <div class="container">
-	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Home
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-	        </a>
-	
-	        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Men
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-	        </a>
-	
-	        <span class="stext-109 cl4"> Lightweight Jacket </span>
-	      </div>
-	    </div>
-	
-	    <!-- Content -->
-	    <div class="container">
-	      <div class="row">
-	        <div class="col-3">
-	          <ul>
-	            <li class="mb-1 mt-3">Thông tin người dùng</li>
-	            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
-	          </ul>
-	        </div>
-	        <div class="col-9">
-	          <h4 class="mb-3 mt-2">Lịch Sử Mua Hàng</h4>
-	          <table class="table">
-	            <thead>
-	              <tr>
-	                <th scope="col">Mã đơn hàng</th>
-	                <th scope="col">Số lượng</th>
-	                <th scope="col">Tổng tiền</th>
-	                <th scope="col">Ngày tạo</th>
-	                <th scope="col">Trạng thái</th>
-	                <th scope="col">Chi Tiết</th>
-	              </tr>
-	            </thead>
-	            <tbody>
-	              <tr>
-	                <td>DH002</td>
-	                <td>5</td>
-	                <td>500,000 VND</td>
-	                <td>2023-06-07</td>
-	                <td>Đang xử lý</td>
-	                <td>
-	                  <a href="" class="btn btn-outline-primary js-show-modal1"
-	                    >Xem</a
-	                  >
-	                </td>
-	              </tr>
-	            </tbody>
-	          </table>
-	        </div>
-	      </div>
-	    </div>
-	
-	    <!-- Modal chi tiet don hang -->
-	    <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-      <div class="overlay-modal1 js-hide-modal1"></div>
+		<!-- breadcrumb -->
+		<div class="container">
+			<div class="bread-crumb flex-w p-r-15 p-t-30 p-lr-0-lg">
+				<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+					Trang Chủ <i class="fa fa-angle-right m-l-9 m-r-10"
+					aria-hidden="true"></i>
+				</a> <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+					Lịch sử mua hàng </a>
 
-      <div class="container" style="width: 70%">
-        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-          <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-            <img src="images/icons/icon-close.png" alt="CLOSE" />
-          </button>
+			</div>
+		</div>
 
-          <div class="row">
-            <h3 class="ml-5 mb-4">Chi tiết đơn hàng</h3>
-            <table class="table ml-4" style="width: 95%">
-              <thead>
-                <tr>
-                  <th scope="col">Số thứ tự</th>
-                  <th scope="col">Tên sản phẩm</th>
-                  <th scope="col">Tên loại</th>
-                  <th scope="col">Kích cỡ</th>
-                  <th scope="col">Màu</th>
-                  <th scope="col">Giá sản phẩm</th>
-                  <th scope="col">Số lượng</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Sản phẩm A</td>
-                  <td>Loại A</td>
-                  <td>L</td>
-                  <td>Đen</td>
-                  <td>1,000,000 VND</td>
-                  <td>10</td>
-                </tr>
-                <!-- Thêm các dòng khác tương tự -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+		<!-- Content -->
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h4 class="mb-3 mt-5">Lịch Sử Mua Hàng</h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Mã đơn hàng</th>
+								<th scope="col">Số lượng</th>
+								<th scope="col">Tiền sản phẩm</th>
+								<th scope="col">Phí giao hàng</th>
+								<th scope="col">Tổng tiền</th>
+								<th scope="col">Ngày tạo</th>
+								<th scope="col">Vận chuyển</th>
+								<th scope="col">Đơn hàng</th>
+								<th scope="col">Hành động</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="order : ${orders}">
+								<td th:text="${order.orderId}"></td>
+								<td th:text="${order.quantity}"></td>
+								<td
+									th:text="${#numbers.formatDecimal(order.orderAmount, 0, 'POINT', 0, 'COMMA')} + ' VND'"></td>
+
+								<td
+									th:text="${#numbers.formatDecimal(order.orderInfo.transport.transportFee, 0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+								<td
+									th:text="${#numbers.formatDecimal(order.orderAmount + order.orderInfo.transport.transportFee,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+								<td th:text="${order.createDate}"></td>
+								<td
+									th:text="${order.orderInfo.transport.transportStatus} ? 'Đã giao hàng' : 'Chưa giao hàng'"></td>
+								<td th:text="${order.orderStatus}"></td>
+								<td>
+									<!-- model xem chi tiết -->
+									<button type="button" class="btn btn-primary"
+										data-toggle="modal"
+										th:data-target="'#exampleModalCenter_'+${order.orderId}">
+										Xem</button> 
+										<!-- Modal -->
+									<div class="modal modal-xl fade"
+										th:id="'exampleModalCenter_'+${order.orderId}" tabindex="-1"
+										role="dialog" aria-labelledby="exampleModalCenterTitle"
+										aria-hidden="true" style="z-index: 2000; padding-top: 10%;">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content"
+												style="width: 1000px; position: relative; left: -50%">
+												<div class="modal-header">
+													<h3 class="ml-5 mb-4">Chi tiết đơn hàng</h3>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<table class="table ml-4" style="width: 95%">
+														<thead>
+															<tr>
+																<th scope="col">Số thứ tự</th>
+																<th scope="col">Tên sản phẩm</th>
+																<th scope="col">Giá sản phẩm</th>
+																<th scope="col">Tên loại</th>
+																<th scope="col">Kích cỡ</th>
+																<th scope="col">Màu</th>
+																<th scope="col">Số lượng</th>
+																<th scope="col">Thành tiền</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="orderDetail,status : ${order.orderDetails}">
+																<td th:text="${status.index+1}"></td>
+																<td th:text="${orderDetail.product.productName}"></td>
+																<td
+																	th:text="${#numbers.formatDecimal(orderDetail.product.sellingPrice,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+																<td
+																	th:text="${orderDetail.product.subcategory.category.categoryName}"></td>
+																<td th:text="${orderDetail.product.size.sizeName}"></td>
+																<td th:text="${orderDetail.product.color.colorName}"></td>
+																<td th:text="${orderDetail.productQuantity}"></td>
+																<td
+																	th:text="${#numbers.formatDecimal(orderDetail.productPrice * orderDetail.productQuantity,0, 'POINT', 0, 'COMMA')}+' VND'"></td>
+															</tr>
+															<!-- Thêm các dòng khác tương tự -->
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div> <!-- modal hủy đơn -->
+									<button type="button" class="btn btn-primary"
+										data-toggle="modal"
+										th:data-target="'#delete_'+${order.orderId}" th:if="${order.orderStatus == 'Đơn mới'}">Hủy đơn</button>
+									<!-- Modal -->
+									<div class="modal modal-xl fade"
+										th:id="'delete_'+${order.orderId}" tabindex="-1" role="dialog"
+										aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+										style="z-index: 2000; padding-top: 10%;">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content"
+												style="width: 500px; position: relative; left: -50%">
+												<!-- Modal Header -->
+												<div class="modal-header">
+													<h4 class="modal-title">Modal Tiêu Đề</h4>
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+												</div>
+
+												<!-- Modal Body -->
+												<div class="modal-body">Bạn có chắc chắn muốn hủy đơn hàng?</div>
+
+												<!-- Modal Footer -->
+												<div class="modal-footer">
+													<a type="button" class="btn btn-secondary"
+														data-dismiss="modal">Không</a>
+													<a th:href="@{|/order/delete/${order.orderId}|}" type="button" class="btn btn-primary">Có</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
 	</main>
 </body>
 </html>

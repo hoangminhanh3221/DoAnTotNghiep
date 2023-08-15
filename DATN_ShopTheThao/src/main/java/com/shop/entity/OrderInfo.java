@@ -32,16 +32,16 @@ public class OrderInfo implements Serializable{
 	@Column(name = "OrderInfoId")
 	private Integer orderInfoId;
 	
-	@Column(name = "FullName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "FullName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String fullName;
 	
-	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = false)
+	@Column(name = "PhoneNumber", columnDefinition = "varchar(15)", nullable = true)
 	private String phoneNumber;
 	
-	@Column(name = "Email", columnDefinition = "varchar(50)", nullable = false)
+	@Column(name = "Email", columnDefinition = "varchar(50)", nullable = true)
 	private String email;
 	
-	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)
+	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = true)
 	private String description;
 	
 	@JsonIgnore
@@ -49,11 +49,15 @@ public class OrderInfo implements Serializable{
 	private List<Order> orders;
 	
 	@ManyToOne
-	@JoinColumn(name = "PaymentId", referencedColumnName = "PaymentId", nullable = false)
+	@JoinColumn(name = "PaymentId", referencedColumnName = "PaymentId", nullable = true)
 	private Payment payment;
 	
 	@ManyToOne
-	@JoinColumn(name = "TransportId", referencedColumnName = "TransportId", nullable = false)
+	@JoinColumn(name = "TransportId", referencedColumnName = "TransportId", nullable = true)
 	private Transport transport;
+	
+	@ManyToOne
+	@JoinColumn(name = "AddressId", referencedColumnName = "AddressId", nullable = true)
+	private Address address;
 	
 }

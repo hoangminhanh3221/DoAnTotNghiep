@@ -1,66 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
 
 <body>
 	<main>
 
-	    <!-- breadcrumb -->
-	    <div class="container">
-	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Home
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-	        </a>
-	
-	        <span class="stext-109 cl4"> Shoping Cart </span>
-	      </div>
-	    </div>
-	
-	    <!-- Shoping Cart -->
-	    <div class="colorlib-product">
-      <div class="container">
-        <div
-          class="row row-pb-lg justify-content-center"
-          style="padding-bottom: 5em !important"
-        >
-          <div class="col-sm-10 offset-md-1">
-            <div class="process-wrap">
-              <div class="process text-center active">
-                <p><span>01</span></p>
-                <h3>Shopping Cart</h3>
-              </div>
-              <div class="process text-center active">
-                <p><span>02</span></p>
-                <h3>Checkout</h3>
-              </div>
-              <div class="process text-center active">
-                <p><span>03</span></p>
-                <h3>Order Complete</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-sm-10 offset-sm-1 text-center">
-            <p class="icon-addcart">
-              <span><i class="bi bi-check"></i></span>
-            </p>
-            <h2 class="mb-4">
-              Cảm ơn bạn đã mua hàng!<br />
-              Đơn hàng của bạn sẽ được chuẩn bị sớm nhất
-            </h2>
-            <p>
-              <a href="index.html" class="btn btn-primary btn-outline-primary"
-                >Trang chủ</a
-              >
-              <a href="shop.html" class="btn btn-primary btn-outline-primary"
-                ><i class="icon-shopping-cart"></i> Tiếp tục mua sắm</a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+		<!-- breadcrumb -->
+		<div class="container">
+			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+				<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+					Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+				</a> <span class="stext-109 cl4"> Shoping Cart </span>
+			</div>
+		</div>
+
+		<!-- Shoping Cart -->
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row row-pb-lg justify-content-center"
+					style="padding-bottom: 5em !important">
+					<div class="col-sm-10 offset-md-1">
+						<div class="process-wrap">
+							<div class="process text-center active">
+								<p>
+									<span>01</span>
+								</p>
+								<h3>Shopping Cart</h3>
+							</div>
+							<div class="process text-center active">
+								<p>
+									<span>02</span>
+								</p>
+								<h3>Checkout</h3>
+							</div>
+							<div class="process text-center active">
+								<p>
+									<span>03</span>
+								</p>
+								<h3>Order Complete</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-sm-10 offset-sm-1 text-center">
+						<p class="icon-addcart">
+							<span><i class="bi bi-check"></i></span>
+						</p>
+						<h2 class="mb-4">
+							Cảm ơn bạn đã mua hàng!<br /> Đơn hàng của bạn sẽ được chuẩn bị
+							sớm nhất
+						</h2>
+						<p>
+							<a href="index.html" class="btn btn-primary btn-outline-primary">Trang
+								chủ</a> <a href="shop.html"
+								class="btn btn-primary btn-outline-primary"><i
+								class="icon-shopping-cart"></i> Tiếp tục mua sắm</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script th:inline="javascript">
+		    document.addEventListener("DOMContentLoaded", function() {
+		        var appElement = document.querySelector('[ng-app]');
+		        var $scope = angular.element(appElement).scope();
+		        $scope.$apply(function() {
+		            $scope.cart.clear();
+		        });
+		    });
+		</script>
+		
 	</main>
+	
 </body>
 </html>

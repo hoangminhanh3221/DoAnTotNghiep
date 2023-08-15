@@ -5,6 +5,9 @@
 <title>Trang Chủ</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png"
 	th:href="@{~/user-page/images/icons/favicon.png}" />
@@ -51,11 +54,14 @@
 	th:href="@{~/user-page/css/main.css}" />
 <!--===============================================================================================-->
 <!-- Angular 1.6.9 -->
-    <script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
+<script
+	th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js}"></script>
+	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 <!--===============================================================================================-->
 </head>
 
-<body class="animsition" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<body class="animsition" ng-app="shopping-cart-app"
+	ng-controller="shopping-cart-ctrl">
 	<!-- Header -->
 	<div th:replace="/user-page/layout/header.html"></div>
 
@@ -63,7 +69,7 @@
 	<div th:replace="/user-page/layout/cart.html"></div>
 
 	<!-- Content -->
-    <div th:replace="${main}"></div>
+	<div th:replace="${main}"></div>
 	<!-- /Content -->
 
 	<!-- Featured Start -->
@@ -232,16 +238,13 @@
 
 								<a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Facebook"> <i
-									class="fa fa-facebook"></i>
+									data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
 								</a> <a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Twitter"> <i
-									class="fa fa-twitter"></i>
+									data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
 								</a> <a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Google Plus"> <i
-									class="fa fa-google-plus"></i>
+									data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
 								</a>
 							</div>
 						</div>
@@ -374,9 +377,36 @@
     });
     /*]]>*/
 </script>
+	<script>
+	$(document).ready(function() {
+        $('#edit-avatar').click(function(event) {
+            event.preventDefault(); // Ngăn chặn sự kiện mặc định của label
+            $('#avatar-upload').click();
+        });
+
+        $('#avatar-upload').change(function() {
+            var file = $(this)[0].files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#avatar').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
 	<!--===============================================================================================-->
 	<script th:src="@{/user-page/js/main.js}"></script>
 	<script th:src="@{/user-page/js/shopping-cart-app.js}"></script>
+	<script>
+		$(document).ready(function () {
+		    $(document).on("hidden.bs.modal", ".modal", function () {
+		        // Xóa phần tử .modal-backdrop khi modal ẩn đi
+		        $(".modal-backdrop").remove();
+		    });
+		});
+	</script>
 </body>
 </html>
 

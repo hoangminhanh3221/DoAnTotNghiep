@@ -1,159 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
 
 <body>
 	<main>
-	    <!-- breadcrumb -->
+<!-- breadcrumb -->
 	    <div class="container">
-	      <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+	      <div class="bread-crumb flex-w  p-r-15 p-t-30 p-lr-0-lg">
 	        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Home
+	          Trang Chủ
 	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 	        </a>
 	
-	        <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-	          Men
-	          <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+	        <a href="user-info.html" class="stext-109 cl8 hov-cl1 trans-04">
+	          Thông tin người dùng
 	        </a>
 	
-	        <span class="stext-109 cl4"> Lightweight Jacket </span>
 	      </div>
 	    </div>
-	
-	    <!-- Content -->
-	    <div class="container">
-      <div class="row">
-        <div class="col-3">
-          <ul>
-            <li class="mb-1 mt-3">Thông tin người dùng</li>
-            <li class="mb-1 mt-3">Lịch sử mua hàng</li>
-          </ul>
-        </div>
-        <div class="col-9">
-          <h4 class="mb-3 mt-2">Thông Tin Tài Khoản</h4>
-          <form class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Họ Tên</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập họ tên của bạn"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group pt-2">
-                <label for="gender">Giới tính:</label> <br />
-                <div class="form-check form-check-inline ml-4">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="gender"
-                    id="male"
-                    value="male"
-                  />
-                  <label class="form-check-label pl-0" for="male"> Nam </label>
-                </div>
-                <div class="form-check form-check-inline ml-5">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="gender"
-                    id="female"
-                    value="female"
-                  />
-                  <label class="form-check-label pl-0" for="female"> Nữ </label>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="birthday">Ngày sinh:</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="birthday"
-                  name="birthday"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="inputEmail"
-                  placeholder="Nhập Email của bạn"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Địa Chỉ:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập số nhà, tên đường"
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="customerName">Số điện thoại</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="customerName"
-                  placeholder="Nhập số điện thoại của bạn"
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Phường:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Quận:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleSelect">Thành phố:</label>
-                <select class="form-control" id="exampleSelect">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary mr-2 ml-3">Sửa</button>
-            <button type="button" class="btn btn-secondary">Làm mới</button>
-          </form>
-        </div>
-      </div>
-    </div>
+
+		<!-- Content -->
+		<div class="container">
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					<h4 class="mb-3 mt-2">Thông Tin Tài Khoản</h4>
+					<form class="row" th:action="@{/user/info/edit}"
+						th:object="${customer}" enctype="multipart/form-data" method="post">
+						<div class="col-12">
+							<div class="profile-picture mb-5" style="margin: auto; 
+							box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;">
+								<img id="avatar" th:src="@{${image}}"
+									class="rounded-circle" style="width: 200px; height: 200px;">
+								<div class="edit-overlay">
+									<label for="avatar-upload" id="edit-avatar">Chỉnh sửa</label> <input
+										type="file" name="avatar" id="avatar-upload" accept="image/*"
+										style="display: none;">
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="customerName">Họ Tên</label> <input type="text"
+									class="form-control" id="customerName"
+									placeholder="Nhập họ tên của bạn" th:field="*{customerName}" />
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group pt-2">
+								<label for="gender">Giới tính:</label> <br />
+								<div class="form-check form-check-inline ml-4">
+									<input class="form-check-input" type="radio" name="gender"
+										id="male" value="true" th:field="*{gender}" /> <label
+										class="form-check-label pl-0" for="male"> Nam </label>
+								</div>
+								<div class="form-check form-check-inline ml-5">
+									<input class="form-check-input" type="radio" name="gender"
+										id="female" value="false" th:field="*{gender}" /> <label
+										class="form-check-label pl-0" for="female"> Nữ </label>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="birthday">Ngày sinh:</label> <input type="date"
+									class="form-control" id="birthday" name="birthdayString"
+									th:field="*{birthdayString}" />
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="inputEmail">Email</label> <input type="email"
+									class="form-control" id="inputEmail"
+									placeholder="Nhập Email của bạn" th:field="*{account.email}" />
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="phoneNumber">Số điện thoại</label> <input
+									type="text" class="form-control" id="phoneNumber"
+									placeholder="Nhập số điện thoại của bạn"
+									th:field="*{phoneNumber}" />
+							</div>
+						</div>
+						<th:block th:if="${isAddress}">
+							<div class="col-6">
+								<div class="form-group">
+									<label for="address">Địa Chỉ:</label> <input type="text"
+										class="form-control" id="address"
+										placeholder="Nhập số nhà, tên đường" th:field="*{address.numberHome}"/>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<label for="district">Tỉnh/Thành phố:</label> <select
+										class="form-control" id="province" ng-model="provinceId"
+										ng-change="updateProvince()"
+										ng-options="province.code as province.name for province in provinces">
+										<option value="" selected disabled>Chọn Tỉnh/Thành
+											phố</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<label for="district">Quận/Huyện:</label> <select
+										class="form-control" id="district" ng-model="districtId"
+										ng-options="district.code as district.name for district in districts"
+										ng-change="updateDistrict()" ng-disabled="selectedDistrict">
+										<option value="" selected disabled>Chọn Quận/Huyện</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<label for="ward">Phường/Xã</label> <select
+										class="form-control" id="ward" ng-model="wardId"
+										ng-options="option.code as option.name for option in wards"
+										ng-change="updateWard()" ng-disabled="selectedWard">
+										<option value="" selected disabled>Chọn Xã/Phường</option>
+									</select>
+								</div>
+							</div>
+						</th:block>
+						<th:block th:unless="${isAddress}">
+							<div class="col-6">
+								<label for="address">Địa Chỉ:</label> <input type="text"
+									class="form-control" id="address" style="height: 40px"
+									th:value="${customer.address.numberHome + ', ' + customer.address.ward + ', ' + customer.address.district + ', ' + customer.address.city}"
+									disabled />
+								<!-- Button trigger modal -->
+								<a class="text-primary" data-toggle="modal"
+									data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
+							</div>
+						</th:block>
+						<button type="submit" class="btn btn-primary mr-2 ml-3">Lưu Thông Tin</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true"
+			style="padding-top: 200px;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h4 class="mt-2 mb-2">Thay đổi địa chỉ</h4>
+						<form class="row" th:action="@{/user/changeAddress}">
+							<div class="col-md-6 form-group mt-2">
+								<label for="address">Địa Chỉ:</label> <input type="text"
+									class="form-control" id="address"
+									placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
+									style="height: 40px" name="homeNumber" />
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="district">Tỉnh/Thành phố:</label> <select
+									class="form-control" id="province" ng-model="provinceId"
+									ng-change="updateProvince()"
+									ng-options="province.code as province.name for province in provinces">
+									<option value="" selected disabled>Chọn Tỉnh/Thành
+										phố</option>
+								</select>
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="district">Quận/Huyện:</label> <select
+									class="form-control" id="district" ng-model="districtId"
+									ng-options="district.code as district.name for district in districts"
+									ng-change="updateDistrict()" ng-disabled="selectedDistrict">
+									<option value="" selected disabled>Chọn Quận/Huyện</option>
+								</select>
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="ward">Phường/Xã</label> <select
+									class="form-control" id="ward" ng-model="wardId"
+									ng-options="option.code as option.name for option in wards"
+									ng-change="updateWard()" ng-disabled="selectedWard">
+									<option value="" selected disabled>Chọn Xã/Phường</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-primary ml-3">Đổi địa
+								chỉ</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 </body>
 </html>

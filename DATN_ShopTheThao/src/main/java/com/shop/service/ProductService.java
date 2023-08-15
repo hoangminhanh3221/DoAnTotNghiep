@@ -17,8 +17,6 @@ public interface ProductService {
 	Page<Product> findByCategoryID(String categoryId,Pageable pageable);
 	
 	List<Product> findAllProduct();
-	
-	List<Product> findByCategoryID(String cid);
 
 	Optional<Product> findProductById(String id);
 	
@@ -27,5 +25,13 @@ public interface ProductService {
 	Product updateProduct(Product product);
 
 	void deleteProduct(String id);
+	
+	List<Product> getProductsSortByDateDesc();
+	
+	List<Product> findBestSellingProducts();
+	
+	List<Product> findMostLikedProducts();
+	
+	List<Product> findProductsOnSale();
 	
 }

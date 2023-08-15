@@ -27,10 +27,17 @@ public class Color implements Serializable{
 	@Column(name = "ColorId", columnDefinition = "varchar(10)")
 	private String colorId;
 	
-	@Column(name = "ColorName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "ColorName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String colorName;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "color", cascade = CascadeType.ALL)
-	private List<Product> products;   
+	private List<Product> products;
+
+	public Color(String colorId, String colorName) {
+		super();
+		this.colorId = colorId;
+		this.colorName = colorName;
+	}   
+	
 }

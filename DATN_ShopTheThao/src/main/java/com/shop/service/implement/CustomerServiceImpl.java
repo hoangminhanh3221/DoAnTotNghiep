@@ -50,4 +50,9 @@ public class CustomerServiceImpl implements CustomerService{
 		customerRepository.deleteById(id);
 	}
 
+	@Override
+	public Optional<Customer> findCustomerByUsername(String username) {
+		return customerRepository.findCustomerByUsername(username).stream().findFirst();
+	}
+
 }

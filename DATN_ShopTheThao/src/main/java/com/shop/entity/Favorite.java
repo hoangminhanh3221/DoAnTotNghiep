@@ -32,11 +32,11 @@ public class Favorite implements Serializable{
 	private Integer favoriteId;
 	
 	@ManyToOne
-	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
+	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = true)
 	private Account account;
 	
 	@ManyToOne
-	@JoinColumn(name = "ProductId", referencedColumnName = "ProductId", nullable = false)
+	@JoinColumn(name = "ProductId", referencedColumnName = "ProductId", nullable = true)
 	private Product product;
 	
 }
