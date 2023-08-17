@@ -25,5 +25,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 
 	@Query("SELECT o FROM Order o WHERE o.createDate BETWEEN :startDate AND :endDate")
     List<Order> findOrdersInDateRange(Date startDate, Date endDate);
+	
+	@Query("SELECT o FROM Order o WHERE o.account.username = :userName")
+    List<Order> findOrdersByUserName(String userName);
 }
 

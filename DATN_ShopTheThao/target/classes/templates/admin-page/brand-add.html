@@ -10,42 +10,36 @@
                 <li class="breadcrumb-item">
                   <a href="javascript:void(0);">Sản Phẩm</a>
                 </li>
-                <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                <li class="breadcrumb-item active" >Danh Sách Sản Phẩm</li>
               </ol>
 
               <!-- Basic Layout -->
               <div class="card" style="height: 495px">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
+                  <h5 class="mb-0 text-uppercase" th:text="${title}"></h5>
                 </div>
                 <div class="card-body">
-                  <form class="row">
+                  <form class="row" th:object="${brand}" th:action="@{/admin/brandAdd/create}" method="post">
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Mã Thương Hiệu</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: TH001..." />
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: TH001..." th:field="*{brandId}"/>
                     </div>
                     <div class="col-6 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Tên Thương Hiệu</label>
+                      <label class="form-label" for="basic-default-fullname" >Tên Thương Hiệu</label>
                       <input
                         type="text"
                         class="form-control"
                         id="basic-default-fullname"
-                        placeholder="vd: LuisVuton..."
+                        placeholder="vd: LuisVuton..." th:field="*{brandName}"
                       />
                     </div>
                     <div class="col-6 mb-3">
-                      <label class="form-label" for="basic-default-fullname">Nguồn Gốc</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Mỹ..." />
+                      <label class="form-label" for="basic-default-fullname" >Nguồn Gốc</label>
+                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: Mỹ..." th:field="*{origin}"/>
                     </div>
                     <div class="col-12 h-100">
                       <button type="submit" class="btn btn-primary" style="position: absolute; bottom: 5%">Thêm</button>
-                      <button
-                        type="submit"
-                        class="btn btn-outline-danger"
-                        style="position: absolute; bottom: 5%; left: 10%"
-                      >
-                        Thoát
-                      </button>
+                      <button type="submit" class="btn btn-danger" style="position: absolute; bottom: 5%; left: 11%" th:formaction="@{/admin/brandList}">Thoát</button>
                     </div>
                   </form>
                 </div>

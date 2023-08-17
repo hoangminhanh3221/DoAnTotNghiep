@@ -51,8 +51,6 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<<<<<<< HEAD
-=======
 		<!-- Spring Security -->
 	    <dependency>
 	        <groupId>org.springframework.security</groupId>
@@ -73,7 +71,6 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
->>>>>>> origin/test-admin-page
 	</dependencies>
 
 	<build>
