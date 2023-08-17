@@ -59,7 +59,6 @@ public class CategogyController {
 	
 	@RequestMapping("/category/delete/{id}")
 	public String getDeleteCategory(@PathVariable("id") String id) {
-		System.out.println("id" + id);
 		categoryService.deleteCategory(id);
 		return "redirect:/admin/categoryList";
 	}
