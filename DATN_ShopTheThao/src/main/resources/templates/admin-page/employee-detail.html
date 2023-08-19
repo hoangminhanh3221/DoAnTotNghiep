@@ -46,8 +46,8 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="form-group">
-                                                        <label style="padding-bottom: 10px;">Giới tính:</label>
-                                                        <input type="text" class="form-control" id="username" th:value="${employee.gender} ? 'Nam' : 'Nữ'" disabled>
+                                                        <label for="gender">Giới tính:</label>
+                                                        <input type="text" class="form-control" id="gender" th:value="${employee.gender} ? 'Nam' : 'Nữ'" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -63,18 +63,6 @@
                                                     </div>                                           
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label for="username">Tên đăng nhập:</label>
-                                                        <input type="text" class="form-control" id="username" th:value="${employee.account.username}" disabled>
-                                                    </div>                                           
-                                                </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label for="password">Mật khẩu:</label>
-                                                        <input type="text" class="form-control" id="username" th:value="${employee.account.password}" disabled>
-                                                    </div>                                           
-                                                </div>
-                                                <div class="col-8">
                                                     <div class="form-group">
                                                         <label for="address">Địa chỉ:</label>
                                                         <input type="text" class="form-control" id="username" disabled
@@ -92,38 +80,6 @@
                       </div>
                 </div>
               </div>
-		<!-- Basic Layout -->
-
-		<div class="demo-inline-spacing">
-			<!-- Basic Pagination -->
-			<nav aria-label="Page navigation">
-				<ul class="pagination">
-					<li class="page-item first"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevrons-left"></i></a></li>
-					<li class="page-item prev"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevron-left"></i></a></li>
-					<li class="page-item active"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">3</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">4</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">5</a></li>
-					<li class="page-item next"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevron-right"></i></a></li>
-					<li class="page-item last"><a class="page-link"
-						href="javascript:void(0);"><i
-							class="tf-icon bx bx-chevrons-right"></i></a></li>
-				</ul>
-			</nav>
-			<!--/ Basic Pagination -->
-		</div>
 		</div>
 		<!-- / Content -->
 	</main>
