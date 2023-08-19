@@ -27,7 +27,7 @@ public class Category implements Serializable{
 	@Column(name = "CategoryId", columnDefinition = "varchar(10)")
 	private String categoryId;
 	
-	@Column(name = "CategoryName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "CategoryName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String categoryName;
 	
 	@JsonIgnore

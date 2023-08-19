@@ -27,17 +27,17 @@ public class OrderDetail implements Serializable{
 	@Column(name = "OrderDetailId")
 	private Integer orderDetailId;
 	
-	@Column(name = "ProductPrice", nullable = false)
+	@Column(name = "ProductPrice", nullable = true)
 	private Double productPrice;
 	
-	@Column(name = "ProductQuantity", nullable = false)
+	@Column(name = "ProductQuantity", nullable = true)
 	private Integer productQuantity;
 	
 	@ManyToOne
-	@JoinColumn(name = "orderId", referencedColumnName = "orderId", nullable = false)
+	@JoinColumn(name = "orderId", referencedColumnName = "orderId", nullable = true)
 	private Order order;
 	
 	@ManyToOne
-	@JoinColumn(name = "productId", referencedColumnName = "productId", nullable = false)
+	@JoinColumn(name = "productId", referencedColumnName = "productId", nullable = true)
 	private Product product;
 }

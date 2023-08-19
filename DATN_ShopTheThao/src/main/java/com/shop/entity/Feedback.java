@@ -33,18 +33,18 @@ public class Feedback implements Serializable{
 	@Column(name = "FeedbackId")
 	private Integer feedbackId;
 	
-	@Column(name = "ReviewContent", columnDefinition = "nvarchar(100)", nullable = false)
+	@Column(name = "ReviewContent", columnDefinition = "nvarchar(100)", nullable = true)
 	private String reviewContent;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "ReviewDate", nullable = false)
+	@Column(name = "ReviewDate", nullable = true)
 	private Date reviewDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "ProductId", referencedColumnName = "ProductId", nullable = false)
+	@JoinColumn(name = "ProductId", referencedColumnName = "ProductId", nullable = true)
 	private Product product;
 	
 	@ManyToOne
-	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = false)
+	@JoinColumn(name = "Username", referencedColumnName = "Username", nullable = true)
 	private Account account;
 }

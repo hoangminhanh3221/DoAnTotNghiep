@@ -30,17 +30,17 @@ public class Account implements Serializable {
 	@Column(name = "Username", columnDefinition = "varchar(20)")
 	private String username;
 	
-	@Column(name = "Password", columnDefinition = "varchar(20)", nullable = false)
+	@Column(name = "Password", columnDefinition = "varchar(20)", nullable = true)
 	private String password;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CreateDate", nullable = false)
+	@Column(name = "CreateDate", nullable = true)
 	private Date createDate;
 	
 	@Column(name = "Email", columnDefinition = "varchar(50)", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "Role", columnDefinition = "varchar(20)", nullable = false)
+	@Column(name = "Role", columnDefinition = "varchar(20)", nullable = true)
 	private String role;
 	
 	@JsonIgnore

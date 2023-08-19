@@ -31,14 +31,14 @@ public class Discount implements Serializable{
 	private String discountId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "StartDate", nullable = false)
+	@Column(name = "StartDate", nullable = true)
 	private Date startDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "EndDate", nullable = false)
+	@Column(name = "EndDate", nullable = true)
 	private Date endDate;
 	
-	@Column(name = "DiscountRate", nullable = false)
+	@Column(name = "DiscountRate", nullable = true)
 	private Integer discountRate;
 	
 	@Column(name = "Description", columnDefinition = "nvarchar(MAX)", nullable = false)

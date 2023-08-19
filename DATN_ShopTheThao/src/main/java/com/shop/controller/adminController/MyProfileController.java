@@ -73,7 +73,7 @@ public class MyProfileController {
 			@RequestParam("avatar") MultipartFile avatarFile
 			) {
 		Employee currentEmployee = employeeRepository.findEmployeeByUsername("anh").get(0);
-		System.out.println(employee.getEmployeeImage());
+		System.out.println(employee.getEmployeeName());
 		Address currentAddress = currentEmployee.getAddress();
 		if(currentAddress.getNumberHome() == null) {
 			AddressAPI addressAPI = sessionService.get("addressAPI");
@@ -94,7 +94,7 @@ public class MyProfileController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		currentEmployee.setEmployeeName(employee.getEmployeeImage());
+		currentEmployee.setEmployeeName(employee.getEmployeeName());
 		currentEmployee.setGender(employee.getGender());
 		currentEmployee.setPhoneNumber(employee.getPhoneNumber());
 		try {
@@ -117,7 +117,22 @@ public class MyProfileController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return "redirect:/admin/info";
+	}
+	@RequestMapping("/admin/changeAddress")
+	public String changeAddress(@RequestParam("homeNumber") String homeNumber,  @ModelAttribute Employee employee) {
+		employee =  employeeRepository.findEmployeeByUsername("anh").get(0);
 
+		AddressAPI addressAPI = sessionService.get("addressAPI");
+
+		Address address = employee.getAddress();
+		address.setCity(addressAPI.getCity());
+		address.setNumberHome(homeNumber);
+		address.setDistrict(addressAPI.getDistrict());
+		address.setWard(addressAPI.getWard());
+		addressService.updateAddress(address);
+
+		sessionService.remove("addressAPI");
 		return "redirect:/admin/info";
 	}
 

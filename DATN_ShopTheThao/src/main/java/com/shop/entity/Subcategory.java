@@ -29,11 +29,11 @@ public class Subcategory implements Serializable{
 	@Column(name = "SubcategoryId", columnDefinition = "varchar(10)")
 	private String subcategoryId;
 	
-	@Column(name = "SubcategoryName", columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "SubcategoryName", columnDefinition = "nvarchar(50)", nullable = true)
 	private String subcategoryName;
 	
 	@ManyToOne
-	@JoinColumn(name = "CategoryId", referencedColumnName = "CategoryId", nullable = false)
+	@JoinColumn(name = "CategoryId", referencedColumnName = "CategoryId", nullable = true)
 	private Category category;
 	
 	@JsonIgnore
