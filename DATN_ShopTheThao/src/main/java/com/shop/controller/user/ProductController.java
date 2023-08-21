@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shop.entity.Account;
+import com.shop.entity.Favorite;
 import com.shop.entity.Feedback;
 import com.shop.entity.Order;
 import com.shop.entity.OrderDetail;
 import com.shop.entity.Product;
 import com.shop.service.AccountService;
+import com.shop.service.FavoriteService;
 import com.shop.service.FeedbackService;
 import com.shop.service.OrderService;
 import com.shop.service.ProductService;
@@ -40,6 +42,8 @@ public class ProductController {
 	@Autowired
 	private FeedbackService feedbackService;
 	@Autowired
+	private FavoriteService favoriteService;
+	@Autowired
 	private AccountService accountService;
 	
 	@GetMapping("/list")
@@ -47,12 +51,19 @@ public class ProductController {
 			Model model, 
 			@RequestParam(value = "categoryId", defaultValue = "null") Optional<String> categoryId,
 			@RequestParam(value = "subcategoryId", defaultValue = "null") Optional<String> subcategoryId,
-			@RequestParam("page") Optional<Integer> page
+			@RequestParam(value = "message", required = false) Integer message,
+			@RequestParam("page") Optional<Integer> page  
 			//@RequestParam(value = "sortBy", defaultValue = "null") Optional<String> sort
 		) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		List<Favorite> FavList = favoriteService.findByUsername(userName);
+		
 		// Pageable
 		Pageable pageable = PageRequest.of(page.orElse(0), 16);
 		Page<Product> list = null;
+		List<Boolean> favL = new ArrayList<>();
 		//Sort sortOption = null;
 		// sort by category
 		if (!categoryId.get().equals("null")) {
@@ -71,16 +82,28 @@ public class ProductController {
 		} else {
 			model.addAttribute("isProductNull", true);
 		}
-		
+		for (Product p : list.getContent()) {
+			boolean sta =false;
+			for (Favorite f : FavList) {
+				if (f.getProduct().getProductId().equalsIgnoreCase(p.getProductId())) {
+					sta= true;
+				}
+			}
+			favL.add(sta);
+		}
 		int totalPages = list.getTotalPages();
 		List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().toList();
 		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("favL", favL);
+		System.out.println(message);
+		model.addAttribute("mess", message);
 		return "user-page/product";
 	}
 
 	@GetMapping("/product-detail")
 	public String getProductDetail(
 			@RequestParam("id") String maSP,
+			@RequestParam(value = "message", required = false) String message,
 			@RequestParam(name = "sendFb", required = false, defaultValue = "0") String sendFb,
 			Model model) {
 		
@@ -110,9 +133,19 @@ public class ProductController {
 		if (optionalProduct.isPresent()) {
 			Product product = optionalProduct.get();
 			System.out.println(product.getProductName());
+			boolean fav = false;
+			List<Favorite> favL = favoriteService.findByUsername(authentication.getName());
+			for (Favorite f : favL) {
+				if (f.getProduct().getProductId().equalsIgnoreCase(maSP)) {
+					fav=true;
+					break;
+				}
+			}
 			model.addAttribute("feedBacks", feedBacks);
 			model.addAttribute("status", status);
+			model.addAttribute("fav", fav);
 			model.addAttribute("product", product);
+			model.addAttribute("mess", message);
 			if (sendFb.equalsIgnoreCase("1")) {
 				model.addAttribute("sendFb", sendFb);
 			}
