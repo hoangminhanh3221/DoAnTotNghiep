@@ -35,6 +35,25 @@ public class ImageService {
             throw new IllegalArgumentException("Missing file extension");
         }
     }
+    
+    public String saveImage(String originalFileName, String subfolder) throws IOException {
+        if (originalFileName == null || originalFileName.isEmpty()) {
+            throw new IllegalArgumentException("Invalid original file name");
+        }
+        
+        Path uploadPath = Paths.get(UPLOAD_DIR, subfolder, originalFileName);
+        if (!Files.exists(uploadPath.getParent())) {
+            Files.createDirectories(uploadPath.getParent());
+        }
+        
+        // Simulate saving the file by just creating an empty file
+        Files.createFile(uploadPath);
+        
+        // Return the original file name
+        return originalFileName;
+    }
+
+    
     public void deleteImagesByFileName(String fileName, String subfolder) throws IOException {
         Path uploadPath = Paths.get(UPLOAD_DIR, subfolder);
         if (!Files.exists(uploadPath)) {

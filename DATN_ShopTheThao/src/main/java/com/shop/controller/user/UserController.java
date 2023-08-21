@@ -93,7 +93,7 @@ public class UserController {
 		
 		Account currentAccount = currentCustomer.getAccount();
 		currentAccount.setEmail(customer.getAccount().getEmail());
-		System.out.println(avatarFile.getOriginalFilename());
+
 		try {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date birthday = dateFormat.parse(customer.getBirthdayString());

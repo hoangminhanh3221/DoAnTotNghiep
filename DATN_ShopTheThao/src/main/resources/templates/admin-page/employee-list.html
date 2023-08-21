@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0);">Danh Sách</a>
+                </li>
+                <li class="breadcrumb-item active">Danh Sách Nhân Viên</li>
+              </ol>
+              <!-- Button trigger modal -->
+ 				<a type="button" class="btn btn-primary" style="position: absolute; right: 2%; top: 13%; z-index: 1" th:href="@{/admin/employeeAdd}">
+                Thêm
+              </a>
+
+              <!-- Basic Layout -->
+              <div class="card" style="height: 700px">
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>SĐT</th>
+                        <th>Hành động</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr th:each="employee,status : ${employees.content}">
+                        <td th:text="${status.index+1}"></td>
+                        <td style="width: 70px;"><img id="avatar" th:src="@{/user-page/images/avatars/__${employee.employeeImage}__}" alt="Ảnh đại diện" class="img-thumbnail img-circle"
+                         style="border-radius: 50%;width: 50px;height: 50px; object-fit: cover;"></td>
+                        <td><a th:href="@{|/admin/employeeDetail/${employee.employeeId}|}" th:text="${employee.employeeName}"></a></td>
+                        <td th:text="${employee.gender}? 'Nam' : 'Nữ'"></td>
+						<td th:text="${#dates.format(employee.birthday , 'yyyy-MM-dd')}"></td>
+						<td th:text="${employee.phoneNumber}"></td>
+                        <td>
+                          <a th:href="@{|/admin/employeeEdit/${employee.employeeId}|}" class="pe-2" ><i class="bx bx-edit-alt"></i></a>
+                          <a
+                            class="ps-2"
+                            data-bs-toggle="modal"
+                            th:data-bs-target="'#delete_'+${employee.employeeId}"
+                            ><i class="bx bx-trash"></i
+                          ></a>
+                          <!-- Modal Delete-->
+                          <div
+                            class="modal fade"
+                            th:id="'delete_'+${employee.employeeId}"
+                            aria-labelledby="modalToggleLabel"
+                            tabindex="-1"
+                            style="display: none"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="modalToggleLabel">Thông báo xác nhận</h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  Bạn thật sự muốn xóa khách hàng <strong th:text="${employee.employeeName}"></strong>
+                                </div>
+                                <div class="modal-footer">
+                                  <a
+                                    class="btn btn-danger"
+                                    th:href="@{|/admin/employeeDelete/${employee.employeeId}|}"
+                                  >
+                                    Xóa
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Basic Layout -->
+
+              <div class="demo-inline-spacing">
+                <!-- Basic Pagination -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination">
+						<li class="page-item first"><a class="page-link"
+							th:href="@{|/admin/employeeList?page=${0}|}"><i
+								class="tf-icon bx bx-chevrons-left"></i></a></li>
+						<li class="page-item prev"><a class="page-link"
+							th:href="@{|/admin/employeeList?page=${employees.number-1}|}"><i
+								class="tf-icon bx bx-chevron-left"></i></a></li>
+						<li class="page-item active" th:each="number : ${pageNumbers}"><a class="page-link"
+							 th:href="@{|/admin/employeeList?page=${employees.number-1}|}" th:text="${number}"></a></li>
+						<li class="page-item next"><a class="page-link"
+							th:href="@{|/admin/employeeList?page=${employees.number+1}|}"><i
+								class="tf-icon bx bx-chevron-right"></i></a></li>
+						<li class="page-item last"><a class="page-link"
+							th:href="@{|/admin/employeeList?page=${employees.totalPages - 1}|}"><i
+								class="tf-icon bx bx-chevrons-right"></i></a></li>
+					</ul>
+				</nav>
+                <!--/ Basic Pagination -->
+              </div>
+            </div>
+            <!-- / Content -->
+	</main>
+</body>
+</html>

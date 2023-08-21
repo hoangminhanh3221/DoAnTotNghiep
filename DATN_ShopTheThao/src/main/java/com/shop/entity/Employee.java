@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,6 +43,9 @@ public class Employee implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Birthday", nullable = true)
 	private Date birthday;
+	
+	@Transient
+    private String birthdayString;
 	
 	@Column(name = "EmployeeImage", columnDefinition = "varchar(50)", nullable = true)
 	private String employeeImage;
