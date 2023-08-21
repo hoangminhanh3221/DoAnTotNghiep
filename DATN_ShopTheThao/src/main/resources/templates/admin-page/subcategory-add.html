@@ -19,10 +19,10 @@
                   <h5 class="mb-0 text-uppercase">Thêm sản phẩm</h5>
                 </div>
                 <div class="card-body">
-                  <form class="row">
+                  <form class="row" th:action="@{/admin/subcategoryAdd/create}" th:object="${subcategory}">
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Id Loại Sản phẩm</label>
-                      <input type="text" class="form-control" id="basic-default-fullname" placeholder="vd: T0001..." />
+                      <input type="text" class="form-control" id="basic-default-fullname" th:field="*{subcategoryId}"/>
                     </div>
                     <div class="col-6 mb-3">
                       <label class="form-label" for="basic-default-fullname">Tên Loại Sản phẩm</label>
@@ -30,15 +30,15 @@
                         type="text"
                         class="form-control"
                         id="basic-default-fullname"
-                        placeholder="vd: Áo Thun..."
+                         th:field="*{subcategoryName}"
                       />
                     </div>
 					<div class="col-6 mb-3">
 					  <label class="form-label" for="defaultSelect">ID Danh Mục</label>
-					  <select id="defaultSelect" class="form-select">
+					  <select id="defaultSelect" class="form-select" name="selectedCategoryId">
 					    <option value="0">Lựa chọn</option>
 					    <th:block th:each="category : ${categories}">
-					      <option th:value="${category.categoryId}" th:text="${category.categoryId + '-' + category.categoryName}"></option>
+					      <option th:value="${category.categoryId}" th:selected="${category.categoryId == selectedCategoryId}" th:text="${category.categoryId + '-' + category.categoryName}"></option>
 					    </th:block>
 					  </select>
 					</div>

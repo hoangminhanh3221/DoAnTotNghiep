@@ -36,13 +36,13 @@ public class SubcategoryServiceImpl implements SubcategoryService{
 	}
 
 	@Override
-	public Subcategory createProduct(Subcategory Subcategory) {
-		return subcategoryRepository.save(Subcategory);
+	public Subcategory createSubcategory(Subcategory subcategory) {
+		return subcategoryRepository.save(subcategory);
 	}
 
 	@Override
-	public Subcategory updateProduct(Subcategory Subcategory) {
-		return subcategoryRepository.save(Subcategory);
+	public Subcategory updateSubcategory(Subcategory subcategory) {
+		return subcategoryRepository.save(subcategory);
 	}
 
 	@Override

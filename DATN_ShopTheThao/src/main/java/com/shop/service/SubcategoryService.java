@@ -15,11 +15,11 @@ public interface SubcategoryService {
 	
 	List<Subcategory> findSubcategoryByCategoryId(String categoryId);
 
-	Optional<Subcategory> findSubcategoryById(String SubcategoryId);
+	Optional<Subcategory> findSubcategoryById(String subcategoryId);
 	
-	Subcategory createProduct(Subcategory Subcategory);
+	Subcategory createSubcategory(Subcategory subcategory);
 
-	Subcategory updateProduct(Subcategory Subcategory);
+	Subcategory updateSubcategory(Subcategory subcategory);
 
-	void deleteSubcategory(String SubcategoryId);
+	void deleteSubcategory(String subcategoryId);
 }
