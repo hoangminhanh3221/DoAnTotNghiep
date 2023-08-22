@@ -69,8 +69,8 @@
                         <td th:text="${item.subcategory.SubcategoryName}">Áo</td>
                         <td th:text="${item.costPrice}">200000 vnđ</td>
                         <td th:text="${item.sellingPrice}">240000 vnđ</td>
-                        <td th:if="${item.available == true}"><span class="badge bg-label-primary me-1">Đang bán</span></td>
-                        <td th:if="${item.available == false}"><span class="badge bg-label-danger me-1">Hết hàng</span></td>
+                        <td th:if="${item.isDeleted == false}"><span class="badge bg-label-primary me-1">Đang bán</span></td>
+                        <td th:if="${item.isDeleted == true}"><span class="badge bg-label-danger me-1">Đã xóa </span></td>
                         <td th:if="${status==0}">
                           <a
                             class="pe-2"

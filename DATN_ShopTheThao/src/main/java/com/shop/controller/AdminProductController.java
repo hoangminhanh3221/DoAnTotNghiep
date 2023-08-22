@@ -122,7 +122,8 @@ public class AdminProductController {
 		
 		Product prd = productService.findProductById(id).get();
 		prd.setIsDeleted(false);
-		return "admin-page/product-add";
+		productService.updateProduct(prd);
+		return "redirect:/admin/product?status=1";
 }
 	
 	@PostMapping("/admin/product/add/save")
