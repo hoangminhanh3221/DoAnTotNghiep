@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +8,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.shop.entity.Order;
 
 public interface OrderService{
@@ -29,7 +31,5 @@ public interface OrderService{
 	List<Order> getOrdersByMonth(int monthInput, int year );
 
 	List<Order> getRevenueFromTo(Date from, Date to);
-	
-	List<Order> findOrderByUserName(String userName);
 	
 }

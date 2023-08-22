@@ -23,9 +23,8 @@ import com.shop.entity.Product;
 import com.shop.service.OrderDetailService;
 import com.shop.service.OrderService;
 import com.shop.service.ProductService;
-
-import model.NumProduct;
-import model.RevenueProduct;
+import com.shop.util.NumProduct;
+import com.shop.util.RevenueProduct;
 
 @Controller
 public class StatisticController {
@@ -101,9 +100,11 @@ public class StatisticController {
         //Data biểu đồ top doanh thu
         List<String> dataNameChart2l=new ArrayList<>();
         List<Double> dataValueChart2l=new ArrayList<>();
+        double total = 0.0;
         for (int i = 0; i < topRevenue.size(); i++) {
         	dataNameChart2l.add(topRevenue.get(i).getName());
         	dataValueChart2l.add(topRevenue.get(i).getRevenue());
+        	total += topRevenue.get(i).getRevenue();
 		}
         // Chuyển ArrayList thành mảng kiểu int
         String[] dataNameChart2 = dataNameChart2l.toArray(new String[dataNameChart2l.size()]);
@@ -116,6 +117,7 @@ public class StatisticController {
         model.addAttribute("year", year);
         model.addAttribute("month", month);
         model.addAttribute("totalRev", totalRev);
+        model.addAttribute("total", total);
         model.addAttribute("monthRev", monthRev);
         model.addAttribute("listMonthRev", listMonthRev);
         model.addAttribute("topRevenue", topRevenue);
@@ -241,7 +243,7 @@ public class StatisticController {
 		// Duyệt mảng và tính giá
 		for (OrderDetail odd : listOrderDetail) {
 			double cost = odd.getProduct().getCostPrice() * odd.getProductQuantity();
-			totalRev = totalRev + odd.getProductPrice() - cost;
+			totalRev = totalRev + odd.getProductPrice()*odd.getProductQuantity() - cost;
 		}
 		
 		return totalRev;
@@ -263,7 +265,7 @@ public class StatisticController {
 		// Duyệt mảng và tính giá
 		for (OrderDetail odd : listOrderDetail) {
 			double cost = odd.getProduct().getCostPrice() * odd.getProductQuantity();
-			yearRev = yearRev + odd.getProductPrice() - cost;
+			yearRev = yearRev + odd.getProductPrice()*odd.getProductQuantity() - cost;
 		}
 		return yearRev;
 	}
@@ -284,7 +286,7 @@ public class StatisticController {
 			// Duyệt mảng và tính giá
 			for (OrderDetail odd : listOrderDetail) {
 				double cost = odd.getProduct().getCostPrice() * odd.getProductQuantity();
-				monthRev = monthRev + odd.getProductPrice() - cost;
+				monthRev = monthRev + odd.getProductPrice()*odd.getProductQuantity() - cost;
 			}
 			return monthRev;
 		}
@@ -316,7 +318,7 @@ public class StatisticController {
 		        
 		        for (OrderDetail orderDetail : listOrder) {
 		            if (productName.equalsIgnoreCase(orderDetail.getProduct().getProductName())) {
-		                revenue += orderDetail.getProductPrice();
+		                revenue += orderDetail.getProductPrice()*orderDetail.getProductQuantity();
 		            }
 		        }
 		        

@@ -20,6 +20,4 @@ public interface FeedbackService{
 	Feedback updateFeedback(Feedback feedback);
 	
 	void deleteFeedback(Integer feedbackId);
-	
-	List<Feedback> findFeedBacksByPrdId(String id);
 }

@@ -1,6 +1,7 @@
 package com.shop.service.implement;
 
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.shop.entity.Order;
 import com.shop.repository.OrderRepository;
 import com.shop.service.OrderService;
@@ -70,11 +72,5 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public List<Order> getRevenueFromTo(Date from, Date to) {
 		return orderRepository.findOrdersInDateRange(from, to);
-	}
-
-	@Override
-	public List<Order> findOrderByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return orderRepository.findOrdersByUserName(userName);
 	}
 }

@@ -11,8 +11,6 @@ import com.shop.entity.Favorite;
 public interface FavoriteService{
 	List<Favorite> findAllFavorites();
 	
-	List<Favorite> findByUsername(String userName);
-	
 	Page<Favorite> findAllFavorites(Pageable pageable);
 	
 	Optional<Favorite> findFavoriteById(Integer favoriteId);

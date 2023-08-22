@@ -3,6 +3,7 @@ package com.shop.service.implement;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -50,11 +51,5 @@ public class FeedbackServiceImpl implements FeedbackService{
 	public void deleteFeedback(Integer feedbackId) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public List<Feedback> findFeedBacksByPrdId(String id) {
-		// TODO Auto-generated method stub
-		return feedbackRepository.getlistFeedbackByPrdId(id);
 	}
 }

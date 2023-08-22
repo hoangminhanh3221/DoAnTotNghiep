@@ -221,7 +221,7 @@
 				<div class="row">
 					<th:block th:if="${isProductNull}">
 						<div class="col-sm-6 col-md-4 col-lg-3 p-b-35"
-							th:each="product, iterStat : ${products.content}">
+							th:each="product : ${products.content}">
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
@@ -277,7 +277,7 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l">
-									<a th:href="@{|/product/product-detail?id=${product.productId}|}"
+									<a th:href="@{|/product/product-detail/${product.productId}|}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 js-name-detail"
 										th:text="${product.productName}"> </a> <span
 										class="stext-105 cl3"
@@ -286,13 +286,14 @@
 								</div>
 
 								<div class="block2-txt-child2 flex-r p-t-3">
-									<a th:if="${favL[iterStat.count-1] == true}" th:href="@{|/user/favorite/remove?id=${product.productId}|}">
-										<i style="color: blue;font-size: 20px;" class="bx bxs-heart"></i>
+									<a class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+										<img class="icon-heart1 dis-block trans-04"
+										th:src="@{/user-page/images/icons/icon-heart-01.png}"
+										alt="ICON" /> <img
+										class="icon-heart2 dis-block trans-04 ab-t-l"
+										th:src="@{/user-page/images/icons/icon-heart-02.png}"
+										alt="ICON" />
 									</a>
-									<a  th:if="${favL[iterStat.count-1] == false}"  th:href="@{|/user/favorite/add?id=${product.productId}|}">
-										<i class="bx bx-heart " style="font-size: 20px;"></i>
-									</a>
-									
 								</div>
 							</div>
 						</div>
@@ -334,16 +335,6 @@
 			</nav>
 
 		</div>
-		<script th:inline="javaScript">
-			var mess = /*[[${mess}]]*/ '3';
-			
-			if(mess==0){
-				alert('Sản phẩm đã được thêm vào danh sách yêu thích')
-			}
-			if(mess==1){
-				alert('Sản phẩm đã được xóa khỏi danh sách yêu thích')
-			}
-		</script>
 	</main>
 </body>
 </html>
