@@ -30,6 +30,7 @@ import com.shop.service.FavoriteService;
 import com.shop.service.FeedbackService;
 import com.shop.service.OrderService;
 import com.shop.service.ProductService;
+import com.shop.util.AuthenticationFacade;
 
 @Controller
 @RequestMapping("/product")
@@ -45,6 +46,9 @@ public class ProductController {
 	private FavoriteService favoriteService;
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private AuthenticationFacade af;
 	
 	@GetMapping("/list")
 	public String list(
@@ -110,8 +114,9 @@ public class ProductController {
 		int status = 1;
 		List<Feedback> feedBacks = feedbackService.findFeedBacksByPrdId(maSP);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (authentication.isAuthenticated()) {
+
+		if (!af.getUsername().equalsIgnoreCase("anonymousUser")) {
+			System.out.println("true");
 			String userName = authentication.getName();
 			List<Product> list = purchasedProducts(userName);
 			for (Product p : list) {
@@ -127,6 +132,8 @@ public class ProductController {
 					status=0;
 				}
 			}
+		} else {
+			status=0;
 		}
 		
 		Optional<Product> optionalProduct = productService.findProductById(maSP);

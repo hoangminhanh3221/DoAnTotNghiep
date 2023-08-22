@@ -30,7 +30,7 @@
 							<tr>
 								<th>STT</th>
 								<th>Mã Đơn hàng</th>
-								<th>Khách Hàng</th>
+								<th>Tài khoản</th>
 								<th>Ngày Đặt</th>
 								<th>Số lượng</th>
 								<th>Tổng giá</th>
@@ -42,7 +42,7 @@
 							<tr th:each="order,status : ${orders.content}">
 								<td th:text="${status.index+1}"></td>
 								<td th:text="${order.orderId}"></td>
-								<td th:text="${order.account.username}"></td>
+								<td th:text="${order.account != null ? order.account.username : 'null'}"></td>
 								<td th:text="${order.createDate}"></td>
 								<td th:text="${order.quantity}"></td>
 								<td

@@ -29,7 +29,7 @@ import com.shop.service.CustomerService;
 import com.shop.service.OrderService;
 import com.shop.util.AddressAPI;
 import com.shop.util.AuthenticationFacade;
-import com.shop.util.ImageService;
+import com.shop.util.ImageUtil;
 import com.shop.util.SessionService;
 
 @Controller
@@ -51,7 +51,7 @@ public class UserController {
 	private AccountService accountService;
 	
 	@Autowired
-	private ImageService imageService;
+	private ImageUtil imageUtil;
 	
 	@Autowired
 	private OrderService orderService;
@@ -106,7 +106,7 @@ public class UserController {
 		currentCustomer.setPhoneNumber(customer.getPhoneNumber());
 		try {
 			if(!avatarFile.getOriginalFilename().equals("")) {
-				currentCustomer.setCustomerImage(imageService.saveImage(avatarFile, "customer"+currentCustomer.getCustomerId(), "avatars"));
+				currentCustomer.setCustomerImage(imageUtil.saveImage(avatarFile, "customer"+currentCustomer.getCustomerId(), "avatars"));
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();

@@ -157,33 +157,6 @@
 		</div>
 		<br>
 
-		<!--TimeSale-->
-		<div class="time-sale container mt-5 mb-2">
-			<div class="row">
-				<div class="col-md-6">
-					<button type="button" class="btn mt-1"
-						style="background-color: #fbb1bd; color: rgb(0, 0, 0)">
-						07:00</button>
-					<button type="button" class="btn mt-1"
-						style="background-color: #fbb1bd; color: rgb(0, 0, 0)">
-						11:00</button>
-					<button type="button" class="btn mt-1"
-						style="background-color: #fbb1bd; color: rgb(0, 0, 0)">
-						15:00</button>
-					<button type="button" class="btn btn-danger text-white mt-1">
-						19:00</button>
-					<button type="button" class="btn mt-1"
-						style="background-color: #fbb1bd; color: rgb(0, 0, 0)">
-						23:00</button>
-				</div>
-				<div class="col-md-6 justify-content-end d-flex flex-row pt-1">
-					<p class="mt-2 mr-5 me-2  stext-100 text-dark">đang mở bán</p>
-					<p class="mt-2 mr-2 me-2 stext-103 ">Kết thúc trong:</p>
-					<p class="mt-2 stext-100 text-danger">01:30:10</p>
-				</div>
-			</div>
-		</div>
-
 		<!-- New Product -->
 		<section class="sec-product bg0 p-t-100 p-b-50">
 			<div class="container">
@@ -205,12 +178,12 @@
 										<!-- Block3 -->
 										<div class="block2">
 											<div class="block2-pic hov-img0">
-												<img th:src="@{${item.image.imageName1}}" alt="IMG-PRODUCT" />
+												<img th:src="@{|/user-page/images/products/${item.image.imageName1}|}" alt="IMG-PRODUCT" />
 											</div>
 
 											<div class="block2-txt flex-w flex-t p-t-14">
 												<div class="block2-txt-child1 flex-col-l">
-													<a th:href="@{|/product/product-detail/${item.productId}|}"
+													<a th:href="@{|/product/product-detail?id=${item.productId}|}"
 														class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
 														th:utext="${item.productName}"> </a> <span
 														class="stext-105 cl3"
@@ -252,12 +225,12 @@
 										<!-- Block1 -->
 										<div class="block2">
 											<div class="block2-pic hov-img0">
-												<img th:src="@{${item.image.imageName1}}" alt="IMG-PRODUCT" />
+												<img th:src="@{|/user-page/images/products/${item.image.imageName1}|}" alt="IMG-PRODUCT" />
 											</div>
 
 											<div class="block2-txt flex-w flex-t p-t-14">
 												<div class="block2-txt-child1 flex-col-l">
-													<a th:href="@{|/product/product-detail/${item.productId}|}"
+													<a th:href="@{|/product/product-detail?id=${item.productId}|}"
 														class="stext-105 cl5 hov-cl2 trans-04 js-name-b2 p-b-6"
 														th:utext="${item.productName}" style="height: 40px">
 														Esprit Ruffle Shirt </a>
@@ -314,12 +287,12 @@
 										<!-- Block1 -->
 										<div class="block2">
 											<div class="block2-pic hov-img0">
-												<img th:src="@{${item.image.imageName1}}" alt="IMG-PRODUCT" />
+												<img th:src="@{|/user-page/images/products/${item.image.imageName1}|}" alt="IMG-PRODUCT" />
 											</div>
 
 											<div class="block2-txt flex-w flex-t p-t-14">
 												<div class="block2-txt-child1 flex-col-l">
-													<a th:href="@{|/product/product-detail/${item.productId}|}"
+													<a th:href="@{|/product/product-detail?id=${item.productId}|}"
 														class="stext-105 cl5 hov-cl2 trans-04 js-name-b2 p-b-6"
 														th:utext="${item.productName}" style="height: 40px">
 														Esprit Ruffle Shirt </a>
@@ -377,12 +350,12 @@
 										<!-- Block1 -->
 										<div class="block2">
 											<div class="block2-pic hov-img0">
-												<img th:src="@{${item.image.imageName1}}" alt="IMG-PRODUCT" />
+												<img th:src="@{|/user-page/images/products/${item.image.imageName1}|}" alt="IMG-PRODUCT" />
 											</div>
 
 											<div class="block2-txt flex-w flex-t p-t-14">
 												<div class="block2-txt-child1 flex-col-l">
-													<a th:href="@{|/product/product-detail/${item.productId}|}"
+													<a th:href="@{|/product/product-detail?id=${item.productId}|}"
 														class="stext-105 cl5 hov-cl2 trans-04 js-name-b2 p-b-6"
 														th:utext="${item.productName}"> Esprit Ruffle Shirt </a>
 

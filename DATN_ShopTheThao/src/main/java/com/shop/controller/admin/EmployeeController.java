@@ -37,7 +37,7 @@ import com.shop.service.AddressService;
 import com.shop.service.EmployeeService;
 import com.shop.util.AddressAPI;
 import com.shop.util.AuthenticationFacade;
-import com.shop.util.ImageService;
+import com.shop.util.ImageUtil;
 import com.shop.util.SessionService;
 
 @RequestMapping("/admin")
@@ -57,7 +57,7 @@ public class EmployeeController {
 	@Autowired
 	private AuthenticationFacade af;
 	@Autowired
-	private ImageService imageService;
+	private ImageUtil imageUtil;
 
 	@RequestMapping("/employeeList")
 	public String getEmployeeList(Model model, @RequestParam("page") Optional<Integer> page) {
@@ -114,7 +114,7 @@ public class EmployeeController {
 			if(!avatarFile.getOriginalFilename().equals("")) {
 				Random random = new Random();
 			    int randomSuffix = random.nextInt(1000);
-				employee.setEmployeeImage(imageService.saveImage(avatarFile, "employee"+randomSuffix, "avatars"));
+				employee.setEmployeeImage(imageUtil.saveImage(avatarFile, "employee"+randomSuffix, "avatars"));
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -145,7 +145,7 @@ public class EmployeeController {
 
 		try {
 			if(!avatarFile.getOriginalFilename().equals("")) {
-				currentEmployee.setEmployeeImage(imageService.saveImage(avatarFile.getOriginalFilename(), "avatars"));
+				currentEmployee.setEmployeeImage(imageUtil.saveImage(avatarFile.getOriginalFilename(), "avatars"));
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
