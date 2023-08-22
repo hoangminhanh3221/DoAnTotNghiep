@@ -29,7 +29,6 @@
               <div class="dropdown" style="position: absolute;right: 30px; top: 94px; width: 100px;">
                   <select onchange="soft()" style="border: blue ;color: blue;" id="yearSelect" class="form-select form-select-sm">
                     <option th:each="item : ${years}" th:value="${item}" th:text="${item}">2022</option>
-                    
                   </select>
               </div>
               <div class="row">
@@ -42,7 +41,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Tổng doanh thu</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(totalRev,0, 'POINT', 0, 'COMMA')}+' VND'">₫  4000.0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(totalRev,0, 'POINT', 0, 'COMMA')}+' VND'"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class='bx bxs-bank'  style="color: royalblue;font-size: 30px;"></i>
@@ -164,7 +163,7 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3" style="position: relative;">
                       <div class="d-flex flex-column align-items-center gap-1">
-                        <h2 class="mb-2"th:text="${'₫ '+totalRev}">8,258</h2>
+                        <h2 class="mb-2" th:text="${#numbers.formatDecimal(total, 0, 'POINT', 0, 'COMMA')} + ' VND'">8,258</h2>
                         <span>Doanh thu</span>
                       </div>
 			                <div class="col-1 card-body">

@@ -1,4 +1,4 @@
-package model;
+package com.shop.util;
 
 public class NumProduct {
 	String name;
