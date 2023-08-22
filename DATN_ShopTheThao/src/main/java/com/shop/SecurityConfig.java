@@ -57,11 +57,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Phân quyền sử dụng
 		http.authorizeRequests()
-		.antMatchers("/rest/authorities").hasRole("admin")
+		.antMatchers("/rest/authorities","/admin/**/delete/**").hasRole("admin")
 		.antMatchers("/admin/**").hasAnyRole("admin", "employee")
 		.antMatchers("/user/**").authenticated()
 		.anyRequest().permitAll();
 
+		
 		// Giao diện login
 		http.formLogin(login -> login.loginPage("/account/login/form").loginProcessingUrl("/account/login")
 				.defaultSuccessUrl("/account/login/success", false).failureUrl("/account/login/error")

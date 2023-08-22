@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -60,24 +61,42 @@ public class AdminProductController {
 	ImageService imageService;
 	@Autowired
 	DiscountService discountService;
-	String uploadDir = "C:/Users/Dung/Documents/GitHub/DoAnTotNghiep/DATN_ShopTheThao/src/main/resources/static/user-page/images/product/";
+	//String uploadDir = "C:/Users/Dung/Documents/GitHub/DoAnTotNghiep/DATN_ShopTheThao/src/main/resources/static/user-page/images/product/";
+
+	String uploadDir = "C:/Users/hma20/OneDrive/Documents/GitHub/DoAnTotNghiep/DATN_ShopTheThao/src/main/resources/static/user-page/images/products/";
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
-	
+
 	@GetMapping("/admin/product")
-	public String ProductList(@RequestParam(defaultValue = "0") int page, Model model) {
+	public String ProductList(
+			@RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(value="status" , required = false) Integer status,
+			Model model) {
 		
 		int pageSize = 10; // Số phần tử trên mỗi trang
 		Pageable pageable = PageRequest.of(page, pageSize);
+		List<Product> list = new ArrayList<>();
 		
-		List<Product> list = productService.findAllProduct();
-		Page<Product> pageProduct = productService.findAllProduct(pageable);
+		if (status==null) {
+			status=0;
+		}
+		Page<Product> pageProduct;
+		if (status!=0) {
+			pageProduct = productService.getProductsByStatusDel(pageable, Boolean.TRUE);
+
+			System.out.println(pageProduct.getContent().size());
+
+		}else {
+			pageProduct  = productService.getProductsByStatusDel(pageable,Boolean.FALSE);
+		}
 		model.addAttribute("list", list);
+		model.addAttribute("status", status);
 		model.addAttribute("page", pageProduct);
+		System.out.println(pageProduct.getNumber());
 		return "admin-page/product-list";
 	}
 	
@@ -100,6 +119,14 @@ public class AdminProductController {
 		model.addAttribute("product", pro);
 		model.addAttribute("status", 1);
 		return "admin-page/product-add";
+}
+	@GetMapping("/admin/product/restore")
+	public String RestoreProduct(Model model, @RequestParam("id") String id) {
+		
+		Product prd = productService.findProductById(id).get();
+		prd.setIsDeleted(false);
+		productService.updateProduct(prd);
+		return "redirect:/admin/product?status=1";
 }
 	
 	@PostMapping("/admin/product/add/save")
@@ -133,6 +160,8 @@ public class AdminProductController {
 		try {
 			img.setImageId(String.valueOf(generateRandomSevenDigitNumber()));
 		    product.setImage(img);
+		    product.setIsDeleted(false);
+		    product.setQuantityLeft(product.getTotalQuantity());
 		    imageService.createImage(img);
 		    productService.createProduct(product);
 
@@ -296,8 +325,8 @@ public class AdminProductController {
 	public String ProductDelete(Model model, @RequestParam("id") String id) {
 		
 		Product product =  productService.findProductById(id).get();
-		productService.deleteProduct(id);
-		imageService.deleteImage(product.getImage().getImageId());
+		product.setIsDeleted(true);
+		productService.updateProduct(product);
 		
 		return "redirect:/admin/product";
 	}

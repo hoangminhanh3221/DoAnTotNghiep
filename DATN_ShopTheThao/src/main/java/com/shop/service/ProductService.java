@@ -34,4 +34,6 @@ public interface ProductService {
 	
 	List<Product> findProductsOnSale();
 	
+	Page<Product> getProductsByStatusDel(Pageable pageable ,Boolean status);
+	
 }

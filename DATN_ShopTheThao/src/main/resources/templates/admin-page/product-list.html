@@ -21,7 +21,14 @@
               >
                 Thêm
               </a>
-
+			<div class="mb-3 col-3">
+				<label for="defaultSelect" class="form-label">Trạng Thái Sản Phẩm</label>
+				<select onchange="softProduct()" id="products-status" class="form-select"
+					style="font-weight: bold;">
+					<option th:selected="${status == 0}" value="0" style="font-weight: bold;">Đang Bán</option>
+					<option th:selected="${status != 0}" value="1" style="font-weight: bold;">Đã Xóa</option>
+				</select>
+			</div>
               <!-- Basic Layout -->
               <div class="card" style="height: 700px">
                 <div class="table-responsive text-nowrap">
@@ -60,11 +67,11 @@
                         </td>
                         <td th:text="${item.quantityLeft}">69</td>
                         <td th:text="${item.subcategory.SubcategoryName}">Áo</td>
-                        <td th:text="${item.costPrice}">200000 vnđ</td>
-                        <td th:text="${item.sellingPrice}">240000 vnđ</td>
-                        <td th:if="${item.available == true}"><span class="badge bg-label-primary me-1">Đang bán</span></td>
-                        <td th:if="${item.available == false}"><span class="badge bg-label-danger me-1">Hết hàng</span></td>
-                        <td>
+                        <td th:text="${#numbers.formatDecimal(item.costPrice, 0, 'POINT', 0, 'COMMA')} + ' VND'">200000 vnđ</td>
+                        <td th:text="${#numbers.formatDecimal(item.sellingPrice, 0, 'POINT', 0, 'COMMA')} + ' VND'">240000 vnđ</td>
+                        <td th:if="${item.isDeleted == false}"><span class="badge bg-label-primary me-1">Đang bán</span></td>
+                        <td th:if="${item.isDeleted == true}"><span class="badge bg-label-danger me-1">Đã xóa </span></td>
+                        <td th:if="${status==0}">
                           <a
                             class="pe-2"
                             th:href="@{product/update(id=${item.productId})}"
@@ -76,6 +83,14 @@
                             th:onclick="deleteDa([[${item.productId}]])"
                             ><i class="bx bx-trash"></i
                           ></button>
+                          
+                        </td>
+                        <td th:if="${status!=0}">
+                          <button
+                          	style="border: none;background-color: rgb(231, 231, 255);border-radius: 4px;color: blue;"
+                            class="ps-2"
+                            th:onclick="Restore([[${item.productId}]])"
+                            >Khôi phục</button>
                           
                         </td>
                       </tr>
@@ -123,6 +138,18 @@
 				                console.log('Đã xác nhận xóa sản phẩm có ID: ' + id);
 				                window.location.href = "http://localhost:8080/admin/product/delete?id=" + id;
 				            } 
+					  }
+					  function Restore(id){
+						  var result = confirm('Bạn thật sự muốn Khôi phục sản phẩm có ID =  ' + id + ' không?');
+						  if (result) {
+				                console.log('Đã xác nhận Khôi phục sản phẩm có ID: ' + id);
+				                window.location.href = "http://localhost:8080/admin/product/restore?id=" + id;
+				            } 
+					  }
+					  function softProduct(){
+						  const statusEle = document.getElementById('products-status');
+						  var status = statusEle.value;
+				          window.location.href = "http://localhost:8080/admin/product?status=" + status;
 					  }
 				  </script>
             </div>

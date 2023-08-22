@@ -27,38 +27,38 @@
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3" th:data-thumb="@{${product.image.imageName1}}">
+									<div class="item-slick3" th:data-thumb="@{|/user-page/images/products/${product.image.imageName1}|}">
 										<div class="wrap-pic-w pos-relative">
-											<img th:src="@{${product.image.imageName1}}" alt="IMG-PRODUCT" /> <a
+											<img th:src="@{|/user-page/images/products/${product.image.imageName1}|}" alt="IMG-PRODUCT" /> <a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												th:href="@{${product.image.imageName1}}"> <i class="fa fa-expand"></i>
+												th:href="@{|/user-page/images/products/${product.image.imageName1}|}"> <i class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
-									<div class="item-slick3" th:data-thumb="@{${product.image.imageName2}}">
+									<div class="item-slick3" th:data-thumb="@{|/user-page/images/products/${product.image.imageName2}|}">
 										<div class="wrap-pic-w pos-relative">
-											<img th:src="@{${product.image.imageName2}}" alt="IMG-PRODUCT" /> <a
+											<img th:src="@{|/user-page/images/products/${product.image.imageName2}|}" alt="IMG-PRODUCT" /> <a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												th:href="@{${product.image.imageName2}}"> <i class="fa fa-expand"></i>
+												th:href="@{|/user-page/images/products/${product.image.imageName2}|}"> <i class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
-									<div class="item-slick3" th:data-thumb="@{${product.image.imageName3}}">
+									<div class="item-slick3" th:data-thumb="@{|/user-page/images/products/${product.image.imageName3}|}">
 										<div class="wrap-pic-w pos-relative">
-											<img th:src="@{${product.image.imageName3}}" alt="IMG-PRODUCT" /> <a
+											<img th:src="@{|/user-page/images/products/${product.image.imageName3}|}" alt="IMG-PRODUCT" /> <a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												th:href="@{${product.image.imageName3}}"> <i class="fa fa-expand"></i>
+												th:href="@{|/user-page/images/products/${product.image.imageName3}|}"> <i class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
-									<div class="item-slick3" th:data-thumb="@{${product.image.imageName4}}">
+									<div class="item-slick3" th:data-thumb="@{|/user-page/images/products/${product.image.imageName4}|}">
 										<div class="wrap-pic-w pos-relative">
-											<img th:src="@{${product.image.imageName4}}" alt="IMG-PRODUCT" /> <a
+											<img th:src="@{|/user-page/images/products/${product.image.imageName4}|}" alt="IMG-PRODUCT" /> <a
 												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												th:href="@{${product.image.imageName4}}"> <i class="fa fa-expand"></i>
+												th:href="@{|/user-page/images/products/${product.image.imageName4}|}"> <i class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
@@ -73,7 +73,7 @@
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14"
 								th:text="${product.productName}"></h4>
 
-							<span class="mtext-106 cl2" th:text="${product.sellingPrice}"></span><span>vnđ</span>
+							<span class="mtext-106 cl2" th:text="${#numbers.formatDecimal(product.sellingPrice, 0, 'POINT', 0, 'COMMA')} + ' VND'"></span>
 
 							<p class="stext-102 cl3 p-t-23" th:text="${product.description}"></p>
 

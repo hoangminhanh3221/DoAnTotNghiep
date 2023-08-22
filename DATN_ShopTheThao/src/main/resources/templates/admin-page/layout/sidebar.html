@@ -67,14 +67,6 @@
 					class="menu-link" target="_blank">
 						<div data-i18n="Thêm Hóa Đơn">Hóa Đơn</div>
 				</a></li>
-				<li class="menu-item"><a href="Transport.html"
-					class="menu-link" target="_blank">
-						<div data-i18n="Hóa Đơn">Vận Chuyển</div>
-				</a></li>
-				<li class="menu-item"><a href="payment.html" class="menu-link"
-					target="_blank">
-						<div data-i18n="Thêm Hóa Đơn">Thanh Toán</div>
-				</a></li>
 			</ul></li>
 
 		<!-- Tài Khoản -->
@@ -85,10 +77,10 @@
 				<div data-i18n="Khách Hàng">Tài Khoản</div>
 		</a>
 			<ul class="menu-sub">
-				<li class="menu-item"><a href="account.html" class="menu-link">
+				<li class="menu-item"><a th:href="@{/admin/customerList?page=0}" class="menu-link">
 						<div data-i18n="Thêm Khách Hàng">Tài Khoản Khách Hàng</div>
 				</a></li>
-				<li class="menu-item"><a href="account.html" class="menu-link">
+				<li class="menu-item"><a th:href="@{/admin/employeeList?page=0}" class="menu-link">
 						<div data-i18n="Thêm Khách Hàng">Tài Khoản Nhân viên</div>
 				</a></li>
 			</ul></li>
@@ -128,10 +120,6 @@
 				<li class="menu-item"><a th:href="@{/admin/product-statistic}"
 					class="menu-link" target="_blank">
 						<div data-i18n="Danh Sách Hóa Đơn">Đơn Hàng</div>
-				</a></li>
-				<li class="menu-item"><a href="accesstimes-statistics.html"
-					class="menu-link" target="_blank">
-						<div data-i18n="Thêm Hóa Đơn">Lượng Truy Cập</div>
 				</a></li>
 				<li class="menu-item"><a th:href="@{/admin/product-statistic}"
 					class="menu-link" target="_blank">

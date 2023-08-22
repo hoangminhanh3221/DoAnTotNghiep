@@ -95,4 +95,9 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findProductsOnSale() {
 		return productRepository.findProductsOnSale();
 	}
+	
+	@Override
+	public Page<Product> getProductsByStatusDel(Pageable pageable, Boolean status) {
+		return productRepository.findDeletedProducts(pageable,status);
+	}
 }

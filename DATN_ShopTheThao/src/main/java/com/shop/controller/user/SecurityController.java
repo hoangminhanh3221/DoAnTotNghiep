@@ -49,6 +49,7 @@ public class SecurityController {
 	
 	@RequestMapping("/account/unauthoried")
 	public String unauthoried(Model model) {
+		model.addAttribute("message", "Không có quyền truy cập!");
 		return "/account/login";
 	}
 	
