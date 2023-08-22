@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user-page/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<!-- breadcrumb -->
+		<div class="container">
+			<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+				<a th:href="@{/home}" class="stext-109 cl8 hov-cl1 trans-04">
+					Trang chủ <i class="fa fa-angle-right m-l-9 m-r-10"
+					aria-hidden="true"></i>
+				</a> <span class="stext-109 cl4"> Kiểm tra thông tin </span>
+			</div>
+		</div>
+
+		<!-- Shoping Cart -->
+		<div class="colorlib-product">
+			<div class="container">
+				<div class="row row-pb-lg justify-content-center"
+					style="padding-bottom: 2em !important">
+					<div class="col-sm-10 offset-md-1">
+						<div class="process-wrap">
+							<div class="process text-center active">
+								<p>
+									<span>01</span>
+								</p>
+								<h3>Shopping Cart</h3>
+							</div>
+							<div class="process text-center active">
+								<p>
+									<span>02</span>
+								</p>
+								<h3>Checkout</h3>
+							</div>
+							<div class="process text-center">
+								<p>
+									<span>03</span>
+								</p>
+								<h3>Order Complete</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row justify-content-center pt-5">
+					<div class="col-md-12">
+						<th:block th:if="${#request.remoteUser}">
+							<form class="row" th:action="@{/order/complete/true}"
+								th:object="${customer}">
+								<div class="row">
+									<div class="col-lg-8"
+										style="background-color: whitesmoke; height: 750px">
+										<h4
+											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
+											Thông Tin Hóa Đơn</h4>
+										<div class="row"
+											style="width: 100%; margin: 0 auto !important">
+											<div class="col-md-6 form-group">
+												<label for="name">Họ Tên:</label> <input type="text"
+													class="form-control" id="name"
+													placeholder="Nhập tên của bạn" style="height: 40px"
+													th:field="*{customerName}" />
+											</div>
+											<div class="col-md-6 form-group">
+												<label for="soDienThoai">Số Điện Thoại:</label> <input
+													type="text" class="form-control" id="soDienThoai"
+													placeholder="Nhập số điện thoại của bạn"
+													style="height: 40px" th:field="*{phoneNumber}" />
+											</div>
+											<div class="col-md-12 form-group mt-2">
+												<label for="email">Email:</label> <input type="email"
+													class="form-control" id="email"
+													aria-describedby="emailHelp"
+													placeholder="Nhập địa chỉ email của bạn"
+													th:field="*{account.email}" /> <small id="emailHelp"
+													class="form-text text-muted">Chúng tôi sẽ không bao
+													giờ chia sẻ địa chỉ email của bạn với bất kỳ ai khác.</small>
+											</div>
+											<div class="col-md-12 form-group mt-2">
+												<label for="address">Địa Chỉ:</label> <input type="text"
+													class="form-control" id="address" style="height: 40px"
+													th:value="${customer.address.numberHome + ', ' + customer.address.ward + ', ' + customer.address.district + ', ' + customer.address.city}"
+													disabled />
+												<!-- Button trigger modal -->
+												<a class="text-primary" data-toggle="modal"
+													data-target="#exampleModal"> *Thay đổi địa chỉ*</a>
+
+											</div>
+											<div class="col-md-12 form-group mt-2">
+												<label for="note">Ghi Chú:</label>
+												<textarea class="form-control" id="note" rows="3"
+													placeholder="Nhập ghi chú" name="description"></textarea>
+											</div>
+										</div>
+
+										<h4
+											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
+											Phương Thức Thanh Toán</h4>
+										<select class="form-control" id="thanhPho"
+											style="width: 95%; height: 40px; margin-left: 15px">
+											<option value="" selected>-- Chọn phương thức --</option>
+											<option value="linh-dong">Viettel Post</option>
+											<option value="linh-xuan">Giao hàng nhanh</option>
+											<option value="linh-trung">Giao hàng tiết kiệm</option>
+										</select>
+									</div>
+
+									<div class="col-lg-4">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Chi Tiết Hóa Đơn</h2>
+													<ul>
+														<li><span>Subtotal</span> <span
+															style="text-align: end">{{cart.amount.toLocaleString('vi-VN')}}
+																VNĐ</span>
+															<ul>
+																<li ng-repeat="item in cart.items"><span
+																	style="font-size: 14px; color: gray">{{item.productName}}</span>
+																	<span
+																	style="text-align: end; font-size: 14px; color: gray;">{{(item.qty
+																		* item.sellingPrice).toLocaleString('vi-VN')}} VNĐ</span></li>
+															</ul></li>
+														<li><span>Shipping</span> <span
+															style="text-align: end">$0.00</span></li>
+														<li><span
+															style="color: rgb(226, 113, 113); font-weight: bolder;">Order
+																Total</span> <span
+															style="text-align: end; color: rgb(226, 113, 113); font-weight: bolder;">$180.00</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="w-100"></div>
+
+											<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Phương Thức Thanh Toán</h2>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios1" value="option1"
+															checked /> <label class="form-check-label"
+															for="exampleRadios1"> Thanh toán khi nhận hàng </label>
+													</div>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios3" value="option3" />
+														<label class="form-check-label" for="exampleRadios3">
+															Ví điện tử VNPay </label>
+													</div>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios4" value="option4" />
+														<label class="form-check-label" for="exampleRadios4">
+															Ví điện tử Momo </label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-check mt-3"
+													style="width: 85%; margin-left: 15%">
+													<input class="form-check-input" type="checkbox"
+														id="termsCheck" required /> <label
+														class="form-check-label" for="termsCheck"> Tôi đã
+														đọc và chấp nhận các <a href="#">điều khoản và điều
+															kiện</a>
+													</label>
+												</div>
+												<button
+													class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+													style="width: 90%; margin-left: 5%" type="submit">Lập
+													hóa đơn</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</th:block>
+						<th:block th:unless="${#request.remoteUser}">
+							<form class="row" th:action="@{/order/complete/false}"
+								th:object="${orderInfo}">
+								<div class="row">
+									<div class="col-lg-8"
+										style="background-color: whitesmoke; height: 750px">
+										<h4
+											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
+											Thông Tin Hóa Đơn</h4>
+										<div class="row"
+											style="width: 100%; margin: 0 auto !important">
+											<div class="col-md-6 form-group">
+												<label for="name">Họ Tên:</label> <input type="text"
+													class="form-control" id="name"
+													placeholder="Nhập tên của bạn" style="height: 40px"
+													th:name="fullName" th:field="*{fullName}" />
+											</div>
+											<div class="col-md-6 form-group">
+												<label for="soDienThoai">Số Điện Thoại:</label> <input
+													type="text" class="form-control" id="soDienThoai"
+													placeholder="Nhập số điện thoại của bạn"
+													style="height: 40px" th:name="phoneNumber"
+													th:field="*{phoneNumber}" />
+											</div>
+											<div class="col-md-12 form-group mt-2">
+												<label for="email">Email:</label> <input type="email"
+													class="form-control" id="email"
+													aria-describedby="emailHelp"
+													placeholder="Nhập địa chỉ email của bạn" th:name="email"
+													th:field="*{email}" /> <small id="emailHelp"
+													class="form-text text-muted">Chúng tôi sẽ không bao
+													giờ chia sẻ địa chỉ email của bạn với bất kỳ ai khác.</small>
+											</div>
+											<div class="col-md-6 form-group mt-2">
+												<label for="address">Địa Chỉ:</label> <input type="text"
+													class="form-control" id="address"
+													placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
+													style="height: 40px" name="homeNumber" />
+											</div>
+											<div class="col-md-6 form-group mt-2">
+												<label for="district">Tỉnh/Thành phố:</label> <select
+													class="select floating" id="province" ng-model="provinceId"
+													ng-change="updateProvince()"
+													ng-options="province.code as province.name for province in provinces">
+													<option value="" selected disabled>Chọn
+														Tỉnh/Thành phố</option>
+												</select>
+											</div>
+											<div class="col-md-6 form-group mt-2">
+												<label for="district">Quận/Huyện:</label> <select
+													class="select floating" id="district" ng-model="districtId"
+													ng-options="district.code as district.name for district in districts"
+													ng-change="updateDistrict()" ng-disabled="selectedDistrict">
+													<option value="" selected disabled>Chọn
+														Quận/Huyện</option>
+												</select>
+											</div>
+											<div class="col-md-6 form-group mt-2">
+												<label for="ward">Phường/Xã</label> <select
+													class="select floating" id="ward" ng-model="wardId"
+													ng-options="option.code as option.name for option in wards"
+													ng-change="updateWard()" ng-disabled="selectedWard">
+													<option value="" selected disabled>Chọn
+														Xã/Phường</option>
+												</select>
+											</div>
+											<div class="col-md-12 form-group mt-2">
+												<label for="note">Ghi Chú:</label>
+												<textarea class="form-control" id="note" rows="3"
+													placeholder="Nhập ghi chú" th:field="*{description}"></textarea>
+											</div>
+										</div>
+										<h4
+											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
+											Phương Thức Thanh Toán</h4>
+										<select class="form-control" id="thanhPho"
+											style="width: 95%; height: 40px; margin-left: 15px">
+											<option value="" selected>-- Chọn phương thức --</option>
+											<option value="linh-dong">Viettel Post</option>
+											<option value="linh-xuan">Giao hàng nhanh</option>
+											<option value="linh-trung">Giao hàng tiết kiệm</option>
+										</select>
+									</div>
+
+									<div class="col-lg-4">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Chi Tiết Hóa Đơn</h2>
+													<ul>
+														<li><span>Subtotal</span> <span
+															style="text-align: end">{{cart.amount.toLocaleString('vi-VN')}}
+																VNĐ</span>
+															<ul>
+																<li ng-repeat="item in cart.items"><span
+																	style="font-size: 14px; color: gray">{{item.productName}}</span>
+																	<span
+																	style="text-align: end; font-size: 14px; color: gray;">{{(item.qty
+																		* item.sellingPrice).toLocaleString('vi-VN')}} VNĐ</span></li>
+															</ul></li>
+														<li><span>Shipping</span> <span
+															style="text-align: end">$0.00</span></li>
+														<li><span
+															style="color: rgb(226, 113, 113); font-weight: bolder;">Order
+																Total</span> <span
+															style="text-align: end; color: rgb(226, 113, 113); font-weight: bolder;">$180.00</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="w-100"></div>
+
+											<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Phương Thức Thanh Toán</h2>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios1" value="option1"
+															checked /> <label class="form-check-label"
+															for="exampleRadios1"> Thanh toán khi nhận hàng </label>
+													</div>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios3" value="option3" />
+														<label class="form-check-label" for="exampleRadios3">
+															Ví điện tử VNPay </label>
+													</div>
+													<div class="form-check"
+														style="margin-left: 20px; margin-bottom: 20px">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios4" value="option4" />
+														<label class="form-check-label" for="exampleRadios4">
+															Ví điện tử Momo </label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-check mt-3"
+													style="width: 85%; margin-left: 15%">
+													<input class="form-check-input" type="checkbox"
+														id="termsCheck" required /> <label
+														class="form-check-label" for="termsCheck"> Tôi đã
+														đọc và chấp nhận các <a href="#">điều khoản và điều
+															kiện</a>
+													</label>
+												</div>
+												<button
+													class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+													style="width: 90%; margin-left: 5%" type="submit">Lập
+													hóa đơn</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</th:block>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true"
+			style="padding-top: 200px;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h4 class="mt-2 mb-2">Thay đổi địa chỉ</h4>
+						<form class="row" th:action="@{/order/changeAddress}">
+							<div class="col-md-6 form-group mt-2">
+								<label for="address">Địa Chỉ:</label> <input type="text"
+									class="form-control" id="address"
+									placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
+									style="height: 40px" name="homeNumber" />
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="district">Tỉnh/Thành phố:</label> <select
+									class="select floating" id="province" ng-model="provinceId"
+									ng-change="updateProvince()"
+									ng-options="province.code as province.name for province in provinces">
+									<option value="" selected disabled>Chọn Tỉnh/Thành
+										phố</option>
+								</select>
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="district">Quận/Huyện:</label> <select
+									class="select floating" id="district" ng-model="districtId"
+									ng-options="district.code as district.name for district in districts"
+									ng-change="updateDistrict()" ng-disabled="selectedDistrict">
+									<option value="" selected disabled>Chọn Quận/Huyện</option>
+								</select>
+							</div>
+							<div class="col-md-6 form-group mt-2">
+								<label for="ward">Phường/Xã</label> <select
+									class="select floating" id="ward" ng-model="wardId"
+									ng-options="option.code as option.name for option in wards"
+									ng-change="updateWard()" ng-disabled="selectedWard">
+									<option value="" selected disabled>Chọn Xã/Phường</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-primary">Đổi địa chỉ</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</body>
+</html>
