@@ -221,11 +221,13 @@
 				<div class="row">
 					<th:block th:if="${isProductNull}">
 						<div class="col-sm-6 col-md-4 col-lg-3 p-b-35"
-							th:each="product : ${products.content}">
+							th:each="product, iterStat: ${products.content}">
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
-									<img th:src="@{|/user-page/images/products/${product.image.imageName1}|}" alt="IMG-PRODUCT" />
+									<img
+										th:src="@{|/user-page/images/products/${product.image.imageName1}|}"
+										alt="IMG-PRODUCT" />
 									<!-- Button trigger modal -->
 									<a type="button"
 										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04"
@@ -285,15 +287,15 @@
 									</span>
 								</div>
 
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										th:src="@{/user-page/images/icons/icon-heart-01.png}"
-										alt="ICON" /> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										th:src="@{/user-page/images/icons/icon-heart-02.png}"
-										alt="ICON" />
+								<div class="block2-txt-child2 flex-r p-t-3" th:if="${#request.remoteUser}">
+									<a th:if="${favL[iterStat.count-1] == true}"
+										th:href="@{|/user/favorite/remove?id=${product.productId}|}">
+										<i style="color: blue; font-size: 20px;" class="bx bxs-heart"></i>
+									</a> <a th:if="${favL[iterStat.count-1] == false}"
+										th:href="@{|/user/favorite/add?id=${product.productId}|}">
+										<i class="bx bx-heart " style="font-size: 20px;"></i>
 									</a>
+
 								</div>
 							</div>
 						</div>
@@ -335,6 +337,16 @@
 			</nav>
 
 		</div>
+		<script th:inline="javaScript">
+			var mess = /*[[${mess}]]*/ '3';
+			
+			if(mess==0){
+				alert('Sản phẩm đã được thêm vào danh sách yêu thích')
+			}
+			if(mess==1){
+				alert('Sản phẩm đã được xóa khỏi danh sách yêu thích')
+			}
+		</script>
 	</main>
 </body>
 </html>

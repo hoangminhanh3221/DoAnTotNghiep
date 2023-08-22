@@ -46,10 +46,14 @@ public class FeedbackServiceImpl implements FeedbackService{
         return feedbackRepository.save(feedback);
     }
 
-
 	@Override
 	public void deleteFeedback(Integer feedbackId) {
+		feedbackRepository.deleteById(feedbackId);
+	}
+	
+	@Override
+	public List<Feedback> findFeedBacksByPrdId(String id) {
 		// TODO Auto-generated method stub
-		
+		return feedbackRepository.getlistFeedbackByPrdId(id);
 	}
 }

@@ -20,4 +20,6 @@ public interface FavoriteService{
 	Favorite updateFavorite(Favorite favorite);
 	
 	void deleteFavorite(Integer favoriterId);
+	
+	List<Favorite> findByUsername(String userName);
 }

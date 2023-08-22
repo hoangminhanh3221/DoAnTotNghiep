@@ -32,4 +32,6 @@ public interface OrderService{
 
 	List<Order> getRevenueFromTo(Date from, Date to);
 	
+	List<Order> findOrderByUserName(String userName);
+	
 }

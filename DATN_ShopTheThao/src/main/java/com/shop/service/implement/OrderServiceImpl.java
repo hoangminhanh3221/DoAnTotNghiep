@@ -73,4 +73,10 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> getRevenueFromTo(Date from, Date to) {
 		return orderRepository.findOrdersInDateRange(from, to);
 	}
+	
+	@Override
+	public List<Order> findOrderByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return orderRepository.findOrdersByUserName(userName);
+	}
 }

@@ -50,4 +50,9 @@ public class FavoriteServiceImpl implements FavoriteService{
     public void deleteFavorite(Integer favoriteId) {
         favoriteRepository.deleteById(favoriteId);
     }
+    
+    @Override
+	public List<Favorite> findByUsername(String userName) {
+		return favoriteRepository.findByUsername(userName);
+	}
 }
