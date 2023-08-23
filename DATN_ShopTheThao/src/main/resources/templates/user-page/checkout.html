@@ -60,20 +60,20 @@
 												<label for="name">Họ Tên:</label> <input type="text"
 													class="form-control" id="name"
 													placeholder="Nhập tên của bạn" style="height: 40px"
-													th:field="*{customerName}" />
+													th:field="*{customerName}" required/>
 											</div>
 											<div class="col-md-6 form-group">
 												<label for="soDienThoai">Số Điện Thoại:</label> <input
 													type="text" class="form-control" id="soDienThoai"
 													placeholder="Nhập số điện thoại của bạn"
-													style="height: 40px" th:field="*{phoneNumber}" />
+													style="height: 40px" th:field="*{phoneNumber}" required/>
 											</div>
 											<div class="col-md-12 form-group mt-2">
 												<label for="email">Email:</label> <input type="email"
 													class="form-control" id="email"
 													aria-describedby="emailHelp"
 													placeholder="Nhập địa chỉ email của bạn"
-													th:field="*{account.email}" /> <small id="emailHelp"
+													th:field="*{account.email}" required/> <small id="emailHelp"
 													class="form-text text-muted">Chúng tôi sẽ không bao
 													giờ chia sẻ địa chỉ email của bạn với bất kỳ ai khác.</small>
 											</div>
@@ -90,20 +90,9 @@
 											<div class="col-md-12 form-group mt-2">
 												<label for="note">Ghi Chú:</label>
 												<textarea class="form-control" id="note" rows="3"
-													placeholder="Nhập ghi chú" name="description"></textarea>
+													placeholder="Nhập ghi chú" name="description" required></textarea>
 											</div>
 										</div>
-
-										<h4
-											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
-											Phương Thức Thanh Toán</h4>
-										<select class="form-control" id="thanhPho"
-											style="width: 95%; height: 40px; margin-left: 15px">
-											<option value="" selected>-- Chọn phương thức --</option>
-											<option value="linh-dong">Viettel Post</option>
-											<option value="linh-xuan">Giao hàng nhanh</option>
-											<option value="linh-trung">Giao hàng tiết kiệm</option>
-										</select>
 									</div>
 
 									<div class="col-lg-4">
@@ -144,20 +133,6 @@
 															name="exampleRadios" id="exampleRadios1" value="option1"
 															checked /> <label class="form-check-label"
 															for="exampleRadios1"> Thanh toán khi nhận hàng </label>
-													</div>
-													<div class="form-check"
-														style="margin-left: 20px; margin-bottom: 20px">
-														<input class="form-check-input" type="radio"
-															name="exampleRadios" id="exampleRadios3" value="option3" />
-														<label class="form-check-label" for="exampleRadios3">
-															Ví điện tử VNPay </label>
-													</div>
-													<div class="form-check"
-														style="margin-left: 20px; margin-bottom: 20px">
-														<input class="form-check-input" type="radio"
-															name="exampleRadios" id="exampleRadios4" value="option4" />
-														<label class="form-check-label" for="exampleRadios4">
-															Ví điện tử Momo </label>
 													</div>
 												</div>
 											</div>
@@ -198,21 +173,21 @@
 												<label for="name">Họ Tên:</label> <input type="text"
 													class="form-control" id="name"
 													placeholder="Nhập tên của bạn" style="height: 40px"
-													th:name="fullName" th:field="*{fullName}" />
+													th:name="fullName" th:field="*{fullName}" required/>
 											</div>
 											<div class="col-md-6 form-group">
 												<label for="soDienThoai">Số Điện Thoại:</label> <input
 													type="text" class="form-control" id="soDienThoai"
 													placeholder="Nhập số điện thoại của bạn"
 													style="height: 40px" th:name="phoneNumber"
-													th:field="*{phoneNumber}" />
+													th:field="*{phoneNumber}" required/>
 											</div>
 											<div class="col-md-12 form-group mt-2">
 												<label for="email">Email:</label> <input type="email"
 													class="form-control" id="email"
 													aria-describedby="emailHelp"
 													placeholder="Nhập địa chỉ email của bạn" th:name="email"
-													th:field="*{email}" /> <small id="emailHelp"
+													th:field="*{email}" required /> <small id="emailHelp"
 													class="form-text text-muted">Chúng tôi sẽ không bao
 													giờ chia sẻ địa chỉ email của bạn với bất kỳ ai khác.</small>
 											</div>
@@ -220,7 +195,7 @@
 												<label for="address">Địa Chỉ:</label> <input type="text"
 													class="form-control" id="address"
 													placeholder="Ví dụ: số nhà, số hẻm, tên đường,..."
-													style="height: 40px" name="homeNumber" />
+													style="height: 40px" name="homeNumber" required/>
 											</div>
 											<div class="col-md-6 form-group mt-2">
 												<label for="district">Tỉnh/Thành phố:</label> <select
@@ -252,19 +227,9 @@
 											<div class="col-md-12 form-group mt-2">
 												<label for="note">Ghi Chú:</label>
 												<textarea class="form-control" id="note" rows="3"
-													placeholder="Nhập ghi chú" th:field="*{description}"></textarea>
+													placeholder="Nhập ghi chú" th:field="*{description}" required></textarea>
 											</div>
 										</div>
-										<h4
-											style="font-size: 20px; margin: 30px 15px 40px 15px; font-weight: bolder;">
-											Phương Thức Thanh Toán</h4>
-										<select class="form-control" id="thanhPho"
-											style="width: 95%; height: 40px; margin-left: 15px">
-											<option value="" selected>-- Chọn phương thức --</option>
-											<option value="linh-dong">Viettel Post</option>
-											<option value="linh-xuan">Giao hàng nhanh</option>
-											<option value="linh-trung">Giao hàng tiết kiệm</option>
-										</select>
 									</div>
 
 									<div class="col-lg-4">
@@ -305,20 +270,6 @@
 															name="exampleRadios" id="exampleRadios1" value="option1"
 															checked /> <label class="form-check-label"
 															for="exampleRadios1"> Thanh toán khi nhận hàng </label>
-													</div>
-													<div class="form-check"
-														style="margin-left: 20px; margin-bottom: 20px">
-														<input class="form-check-input" type="radio"
-															name="exampleRadios" id="exampleRadios3" value="option3" />
-														<label class="form-check-label" for="exampleRadios3">
-															Ví điện tử VNPay </label>
-													</div>
-													<div class="form-check"
-														style="margin-left: 20px; margin-bottom: 20px">
-														<input class="form-check-input" type="radio"
-															name="exampleRadios" id="exampleRadios4" value="option4" />
-														<label class="form-check-label" for="exampleRadios4">
-															Ví điện tử Momo </label>
 													</div>
 												</div>
 											</div>

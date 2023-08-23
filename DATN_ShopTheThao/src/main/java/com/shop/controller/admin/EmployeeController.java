@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.UUID;
 import java.util.stream.IntStream;
 
 import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
@@ -145,7 +146,8 @@ public class EmployeeController {
 
 		try {
 			if(!avatarFile.getOriginalFilename().equals("")) {
-				currentEmployee.setEmployeeImage(imageUtil.saveImage(avatarFile.getOriginalFilename(), "avatars"));
+				String new1 = UUID.randomUUID().toString();
+				currentEmployee.setEmployeeImage(imageUtil.saveImage(avatarFile,new1 , "avatars"));
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
