@@ -77,7 +77,8 @@ public class AdminProductController {
 	}
 
 	@GetMapping("/admin/product")
-	public String ProductList(@RequestParam(defaultValue = "0") Integer page,
+	public String ProductList(
+			@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(value = "status", required = false) Integer status, Model model) {
 
 		int pageSize = 10; // Số phần tử trên mỗi trang
@@ -90,8 +91,6 @@ public class AdminProductController {
 		Page<Product> pageProduct;
 		if (status != 0) {
 			pageProduct = productService.getProductsByStatusDel(pageable, Boolean.TRUE);
-
-			System.out.println(pageProduct.getContent().size());
 
 		} else {
 			pageProduct = productService.getProductsByStatusDel(pageable, Boolean.FALSE);
